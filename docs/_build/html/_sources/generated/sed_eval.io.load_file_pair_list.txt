@@ -1,0 +1,6 @@
+sed_eval.io.load_file_pair_list
+===============================
+
+.. currentmodule:: sed_eval.io
+
+.. autofunction:: load_file_pair_list

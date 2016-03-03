@@ -1,0 +1,6 @@
+sed_eval.util.event_roll.match_event_roll_lengths
+=================================================
+
+.. currentmodule:: sed_eval.util.event_roll
+
+.. autofunction:: match_event_roll_lengths

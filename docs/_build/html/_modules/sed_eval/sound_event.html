@@ -1,0 +1,1557 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sed_eval.sound_event &mdash; sed_eval 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sed_eval 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> sed_eval
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#sound-event-detection">Sound event detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#quickstart-using-sed-eval-in-python-code">Quickstart: Using <code class="docutils literal"><span class="pre">sed_eval</span></code> in Python code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#id1">Sound event detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#id2">Acoustic scene classification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sound_event.html">Sound Event Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#intermediate-statistics">Intermediate statistics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#segment-based">Segment-based</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#event-based">Event-based</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#averaging">Averaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#cross-validation">Cross-validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#implemented-metrics">Implemented metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#precision-recall-and-f-score">Precision, Recall and F-score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#sensitivity-and-specificity">Sensitivity and specificity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#accuracy">Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#balanced-accuracy">Balanced accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#error-rate">Error Rate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#module-sed_eval.sound_event">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#segment-based-metrics">Segment based metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.html">sed_eval.sound_event.SegmentBasedMetrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.evaluate.html">sed_eval.sound_event.SegmentBasedMetrics.evaluate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results.html">sed_eval.sound_event.SegmentBasedMetrics.results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_overall.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_overall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#event-based-metrics">Event based metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.html">sed_eval.sound_event.EventBasedMetrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.evaluate.html">sed_eval.sound_event.EventBasedMetrics.evaluate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results.html">sed_eval.sound_event.EventBasedMetrics.results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results_overall_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_overall_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_parameters.html">sed_eval.sound_event.EventBasedMetrics.result_report_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_overall.html">sed_eval.sound_event.EventBasedMetrics.result_report_overall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#rerefences">Rerefences</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene.html">Acoustic Scene Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.html">sed_eval.scene.SceneClassificationMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html">sed_eval.scene.SceneClassificationMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results.html">sed_eval.scene.SceneClassificationMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results_overall_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_parameters.html">sed_eval.scene.SceneClassificationMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metric.html">Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.recall.html">sed_eval.metric.recall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.accuracy.html">sed_eval.metric.accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.accuracy2.html">sed_eval.metric.accuracy2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.balanced_accuracy.html">sed_eval.metric.balanced_accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.sensitivity.html">sed_eval.metric.sensitivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.specificity.html">sed_eval.metric.specificity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.error_rate.html">sed_eval.metric.error_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#event-list-operations">Event list operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_list.unique_event_labels.html">sed_eval.util.event_list.unique_event_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_list.max_event_offset.html">sed_eval.util.event_list.max_event_offset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#event-roll-operations">Event roll operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_roll.event_list_to_event_roll.html">sed_eval.util.event_roll.event_list_to_event_roll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_roll.pad_event_roll.html">sed_eval.util.event_roll.pad_event_roll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_roll.match_event_roll_lengths.html">sed_eval.util.event_roll.match_event_roll_lengths</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#scene-list-operations">Scene list operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../io.html">I/O</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.io.load_event_list.html">sed_eval.io.load_event_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.io.load_scene_list.html">sed_eval.io.load_scene_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.io.load_file_pair_list.html">sed_eval.io.load_file_pair_list</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sed_eval</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>sed_eval.sound_event</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for sed_eval.sound_event</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Segment-based metrics, main functions:</span>
+
+<span class="sd">* :func:`sed_eval.sound_event.SegmentBasedMetrics.evaluate`: Calculate intermediate values for evaluation and accumulate them.</span>
+<span class="sd">* :func:`sed_eval.sound_event.SegmentBasedMetrics.results`: Calculate and return all metrics.</span>
+<span class="sd">* :func:`sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics`: Calculate and return overall metrics (micro-averaged).</span>
+<span class="sd">* :func:`sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics`: Calculate and return class-wise metrics.</span>
+<span class="sd">* :func:`sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics`: Calculate and return class-wise average metrics (macro-averaged).</span>
+
+<span class="sd">Event-based metrics, main functions:</span>
+
+<span class="sd">* :func:`sed_eval.sound_event.EventBasedMetrics.evaluate`: Calculate intermediate values for evaluation and accumulate them.</span>
+<span class="sd">* :func:`sed_eval.sound_event.EventBasedMetrics.results`: Calculate and return all metrics.</span>
+<span class="sd">* :func:`sed_eval.sound_event.EventBasedMetrics.results_overall_metrics`: Calculate and return overall metrics (micro-averaged).</span>
+<span class="sd">* :func:`sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics`: Calculate and return class-wise metrics.</span>
+<span class="sd">* :func:`sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics`: Calculate and return class-wise average metrics (macro-averaged).</span>
+
+<span class="sd">Functions :func:`sed_eval.sound_event.SegmentBasedMetrics.evaluate` and :func:`sed_eval.sound_event.EventBasedMetrics.evaluate`</span>
+<span class="sd">take as a parameter event lists, use :func:`sed_eval.io.load_event_list` to read them from a file.</span>
+
+
+<span class="sd">Usage example:</span>
+
+<span class="sd">.. code-block:: python</span>
+<span class="sd">    :linenos:</span>
+
+<span class="sd">    import sed_eval</span>
+
+<span class="sd">    file_list = [</span>
+<span class="sd">        {</span>
+<span class="sd">         &#39;reference_file&#39;: &#39;office_snr0_high_v2.txt&#39;,</span>
+<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_high_out.txt&#39;</span>
+<span class="sd">        },</span>
+<span class="sd">        {</span>
+<span class="sd">         &#39;reference_file&#39;: &#39;office_snr0_low_v2.txt&#39;,</span>
+<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_low_out.txt&#39;</span>
+<span class="sd">        },</span>
+<span class="sd">        {</span>
+<span class="sd">         &#39;reference_file&#39;: &#39;office_snr0_med_v2.txt&#39;,</span>
+<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_med_out.txt&#39;</span>
+<span class="sd">        },</span>
+<span class="sd">        {</span>
+<span class="sd">         &#39;reference_file&#39;: &#39;office_snr-6_high_v2.txt&#39;,</span>
+<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr-6_high_out.txt&#39;</span>
+<span class="sd">        }</span>
+<span class="sd">    ]</span>
+
+<span class="sd">    data = []</span>
+
+<span class="sd">    # Get used event labels</span>
+<span class="sd">    all_data = sed_eval.util.event_list.EventList()</span>
+<span class="sd">    for file_pair in file_list:</span>
+<span class="sd">        reference_event_list = sed_eval.io.load_event_list(file_pair[&#39;reference_file&#39;])</span>
+<span class="sd">        estimated_event_list = sed_eval.io.load_event_list(file_pair[&#39;estimated_file&#39;])</span>
+<span class="sd">        data.append({&#39;reference_event_list&#39;: reference_event_list,</span>
+<span class="sd">                     &#39;estimated_event_list&#39;: estimated_event_list})</span>
+<span class="sd">        all_data += reference_event_list</span>
+<span class="sd">    event_labels = all_data.unique_event_labels</span>
+
+<span class="sd">    # Start evaluating</span>
+
+<span class="sd">    # Create metrics classes, define parameters</span>
+<span class="sd">    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(event_label_list=event_labels,</span>
+<span class="sd">                                                                     time_resolution=1)</span>
+<span class="sd">    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(event_label_list=event_labels,</span>
+<span class="sd">                                                                 t_collar=0.250)</span>
+
+<span class="sd">    # Go through files</span>
+<span class="sd">    for file_pair in data:</span>
+<span class="sd">        segment_based_metrics.evaluate(file_pair[&#39;reference_event_list&#39;],</span>
+<span class="sd">                                       file_pair[&#39;estimated_event_list&#39;])</span>
+<span class="sd">        event_based_metrics.evaluate(file_pair[&#39;reference_event_list&#39;],</span>
+<span class="sd">                                     file_pair[&#39;estimated_event_list&#39;])</span>
+
+<span class="sd">    # Get only certain metrics</span>
+<span class="sd">    overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()</span>
+<span class="sd">    print &quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;]</span>
+
+<span class="sd">    # Or print all metrics as reports</span>
+<span class="sd">    print segment_based_metrics</span>
+<span class="sd">    print event_based_metrics</span>
+
+<span class="sd">Segment based metrics</span>
+<span class="sd">^^^^^^^^^^^^^^^^^^^^^</span>
+
+<span class="sd">.. autosummary::</span>
+<span class="sd">    :toctree: generated/</span>
+
+<span class="sd">    SegmentBasedMetrics</span>
+<span class="sd">    SegmentBasedMetrics.evaluate</span>
+<span class="sd">    SegmentBasedMetrics.results</span>
+<span class="sd">    SegmentBasedMetrics.results_overall_metrics</span>
+<span class="sd">    SegmentBasedMetrics.results_class_wise_metrics</span>
+<span class="sd">    SegmentBasedMetrics.results_class_wise_average_metrics</span>
+<span class="sd">    SegmentBasedMetrics.result_report_parameters</span>
+<span class="sd">    SegmentBasedMetrics.result_report_overall</span>
+<span class="sd">    SegmentBasedMetrics.result_report_class_wise</span>
+<span class="sd">    SegmentBasedMetrics.result_report_class_wise_average</span>
+
+<span class="sd">.. autoclass:: SegmentBasedMetrics</span>
+<span class="sd">   :members:</span>
+
+<span class="sd">Event based metrics</span>
+<span class="sd">^^^^^^^^^^^^^^^^^^^</span>
+
+<span class="sd">.. autosummary::</span>
+<span class="sd">    :toctree: generated/</span>
+
+<span class="sd">    EventBasedMetrics</span>
+<span class="sd">    EventBasedMetrics.evaluate</span>
+<span class="sd">    EventBasedMetrics.results</span>
+<span class="sd">    EventBasedMetrics.results_overall_metrics</span>
+<span class="sd">    EventBasedMetrics.results_class_wise_metrics</span>
+<span class="sd">    EventBasedMetrics.results_class_wise_average_metrics</span>
+<span class="sd">    EventBasedMetrics.result_report_parameters</span>
+<span class="sd">    EventBasedMetrics.result_report_overall</span>
+<span class="sd">    EventBasedMetrics.result_report_class_wise</span>
+<span class="sd">    EventBasedMetrics.result_report_class_wise_average</span>
+
+<span class="sd">.. autoclass:: EventBasedMetrics</span>
+<span class="sd">   :members:</span>
+<span class="sd">   :undoc-members:</span>
+<span class="sd">   :inherited-members:</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">metric</span>
+<span class="kn">import</span> <span class="nn">util</span>
+
+
+<span class="k">class</span> <span class="nc">SoundEventMetrics</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for sound event detection metrics.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Reports</span>
+    <span class="k">def</span> <span class="nf">result_report_overall</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report overall results</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        report : str</span>
+<span class="sd">            result report in string format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;  Overall metrics (micro-average)</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  ===============</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">]:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  F-measure</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;F-measure (F)&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Precision&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Recall&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">]:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  Error rate</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} :  {:3.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Error rate (ER)&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">]))</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} :  {:3.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Substitution rate&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;substitution_rate&#39;</span><span class="p">]))</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} :  {:3.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Deletion rate&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;deletion_rate&#39;</span><span class="p">]))</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} :  {:3.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Insertion rate&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;insertion_rate&#39;</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  Accuracy</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Sensitivity&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Specificity&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;specificity&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Balanced accuracy&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="k">def</span> <span class="nf">result_report_class_wise_average</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report class-wise averages</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        report : str</span>
+<span class="sd">            result report in string format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_class_wise_average_metrics</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;  Class-wise average metrics (macro-average)</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  ===============</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">]:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  F-measure</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;F-measure (F)&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Precision&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Recall&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">]:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  Error rate</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} :  {:3.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Error rate (ER)&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">]))</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} :  {:3.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Deletion rate&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;deletion_rate&#39;</span><span class="p">]))</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} :  {:3.2f}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Insertion rate&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;insertion_rate&#39;</span><span class="p">]))</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  Accuracy</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Sensitivity&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Specificity&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;specificity&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Balanced accuracy&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Accuracy&#39;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="k">def</span> <span class="nf">result_report_class_wise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report class-wise results</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        report : str</span>
+<span class="sd">            result report in string format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_class_wise_metrics</span><span class="p">()</span>
+
+        <span class="n">accuracy_present</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">for</span> <span class="n">event_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;accuracy&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+                <span class="n">accuracy_present</span> <span class="o">=</span> <span class="bp">False</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;  Class-wise metrics</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  ===============</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} | {:^4s} | {:^4s} | {:^7s} : {:^7s} : {:^7s} | {:^5s} : {:^5s} : {:^5s} |&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Event label&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;Nref&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;Nsys&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;F&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;Pre&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;Rec&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;ER&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;Del&#39;</span><span class="p">,</span>
+                                                                                                                  <span class="s1">&#39;Ins&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">accuracy_present</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot; {:^7s} : {:^7s} : {:^7s} | {:^7s} |&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Sens&#39;</span><span class="p">,</span> <span class="s1">&#39;Spec&#39;</span><span class="p">,</span> <span class="s1">&#39;Bacc&#39;</span><span class="p">,</span> <span class="s1">&#39;Acc&#39;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    ------------------+------+------+---------+---------+---------+-------+-------+-------+&quot;</span>
+        <span class="k">if</span> <span class="n">accuracy_present</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;---------+---------+---------+---------+&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="k">for</span> <span class="n">event_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} | {:4.0f} | {:4.0f} | {:5.1f} %   {:5.1f} %   {:5.1f} % |  {:3.2f}    {:3.2f}    {:3.2f} |&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">event_label</span><span class="p">,</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">],</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">],</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;deletion_rate&#39;</span><span class="p">],</span>
+                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;insertion_rate&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">accuracy_present</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot; {:5.1f} %   {:5.1f} %   {:5.1f} % | {:5.1f} % |&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
+                                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;specificity&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
+                                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
+                                                                                    <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="c1"># Metrics / overall</span>
+    <span class="k">def</span> <span class="nf">overall_f_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">overall_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">overall_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    
+    <span class="c1"># Metrics / class-wise</span>
+    <span class="k">def</span> <span class="nf">class_wise_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    
+    <span class="k">def</span> <span class="nf">class_wise_f_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">class_wise_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">class_wise_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="c1"># Results</span>
+    <span class="k">def</span> <span class="nf">results_overall_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overall metrics</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;f_measure&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall_f_measure</span><span class="p">(),</span>
+                <span class="s1">&#39;error_rate&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall_error_rate</span><span class="p">(),</span>
+                <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall_accuracy</span><span class="p">()}</span>
+
+    <span class="k">def</span> <span class="nf">results_class_wise_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise metrics</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">event_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">event_label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+                <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise_f_measure</span><span class="p">(</span><span class="n">event_label</span><span class="p">)</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise_accuracy</span><span class="p">(</span><span class="n">event_label</span><span class="p">)</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise_error_rate</span><span class="p">(</span><span class="n">event_label</span><span class="p">)</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise_count</span><span class="p">(</span><span class="n">event_label</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">results_class_wise_average_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise averaged metrics</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">event_wise_results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_class_wise_metrics</span><span class="p">()</span>
+
+        <span class="n">event_wise_f_measure</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">event_wise_precision</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">event_wise_recall</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="n">event_wise_error_rate</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">event_wise_deletion_rate</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">event_wise_insertion_rate</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="n">event_wise_sensitivity</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">event_wise_specificity</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">event_wise_balanced_accuracy</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">event_wise_accuracy</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">event_label</span> <span class="ow">in</span> <span class="n">event_wise_results</span><span class="p">:</span>
+            <span class="c1"># F-measure</span>
+            <span class="n">event_wise_f_measure</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">])</span>
+            <span class="n">event_wise_precision</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;precision&#39;</span><span class="p">])</span>
+            <span class="n">event_wise_recall</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;f_measure&#39;</span><span class="p">][</span><span class="s1">&#39;recall&#39;</span><span class="p">])</span>
+            
+            <span class="c1"># Error rate</span>
+            <span class="n">event_wise_error_rate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">])</span>
+            <span class="n">event_wise_deletion_rate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;deletion_rate&#39;</span><span class="p">])</span>
+            <span class="n">event_wise_insertion_rate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;error_rate&#39;</span><span class="p">][</span><span class="s1">&#39;insertion_rate&#39;</span><span class="p">])</span>
+
+            <span class="c1"># Accuracy</span>
+            <span class="k">if</span> <span class="s1">&#39;sensitivity&#39;</span> <span class="ow">in</span> <span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+                <span class="n">event_wise_sensitivity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="s1">&#39;specificity&#39;</span> <span class="ow">in</span> <span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+                <span class="n">event_wise_specificity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;specificity&#39;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="s1">&#39;balanced_accuracy&#39;</span> <span class="ow">in</span> <span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+                <span class="n">event_wise_balanced_accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="s1">&#39;accuracy&#39;</span> <span class="ow">in</span> <span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]:</span>
+                <span class="n">event_wise_accuracy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event_wise_results</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">event_wise_f_measure</span><span class="p">:</span>
+            <span class="n">event_wise_f_measure_dict</span> <span class="o">=</span> <span class="p">{</span>
+                                         <span class="s1">&#39;f_measure&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_f_measure</span><span class="p">)),</span>
+                                         <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_precision</span><span class="p">)),</span>
+                                         <span class="s1">&#39;recall&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_recall</span><span class="p">))</span>
+                                        <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event_wise_f_measure_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">event_wise_error_rate</span><span class="p">:</span>
+            <span class="n">event_wise_error_rate_dict</span> <span class="o">=</span> <span class="p">{</span>
+                                          <span class="s1">&#39;error_rate&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_error_rate</span><span class="p">)),</span>
+                                          <span class="s1">&#39;deletion_rate&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_deletion_rate</span><span class="p">)),</span>
+                                          <span class="s1">&#39;insertion_rate&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_insertion_rate</span><span class="p">))</span>
+                                         <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event_wise_error_rate_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">event_wise_accuracy</span><span class="p">:</span>
+            <span class="n">event_wise_accuracy_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;sensitivity&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_sensitivity</span><span class="p">)),</span>
+                                        <span class="s1">&#39;specificity&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_specificity</span><span class="p">)),</span>
+                                        <span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_balanced_accuracy</span><span class="p">)),</span>
+                                        <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">event_wise_accuracy</span><span class="p">))}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">event_wise_accuracy_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;f_measure&#39;</span><span class="p">:</span> <span class="n">event_wise_f_measure_dict</span><span class="p">,</span>
+                <span class="s1">&#39;error_rate&#39;</span><span class="p">:</span> <span class="n">event_wise_error_rate_dict</span><span class="p">,</span>
+                <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span><span class="n">event_wise_accuracy_dict</span>
+                <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;All metrics</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;overall&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">(),</span>
+                <span class="s1">&#39;class_wise&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_class_wise_metrics</span><span class="p">(),</span>
+                <span class="s1">&#39;class_wise_average&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">results_class_wise_average_metrics</span><span class="p">()}</span>
+
+
+<div class="viewcode-block" id="SegmentBasedMetrics"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics">[docs]</a><span class="k">class</span> <span class="nc">SegmentBasedMetrics</span><span class="p">(</span><span class="n">SoundEventMetrics</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentBasedMetrics.__init__"><a class="viewcode-back" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.html#sed_eval.sound_event.SegmentBasedMetrics.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">event_label_list</span><span class="p">,</span>
+                 <span class="n">time_resolution</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">eps</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">spacing</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        event_label_list : list</span>
+<span class="sd">            List of unique event labels</span>
+<span class="sd">        time_resolution : float (0,]</span>
+<span class="sd">            Segment size used in the evaluation, in seconds</span>
+<span class="sd">            (Default value=1.0)</span>
+<span class="sd">        eps : float (0,]</span>
+<span class="sd">            Eps</span>
+<span class="sd">            (Default value=numpy.spacing(1))</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">SoundEventMetrics</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span> <span class="o">=</span> <span class="n">event_label_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span> <span class="o">=</span> <span class="n">time_resolution</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;ER&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="n">event_label_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="p">}</span>
+</div>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print result reports</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        report : str</span>
+<span class="sd">            result report in string format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Segment based metrics </span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;----------------------------------------------------------------------</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_parameters</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_overall</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_class_wise_average</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_class_wise</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+<div class="viewcode-block" id="SegmentBasedMetrics.evaluate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_event_list</span><span class="p">,</span> <span class="n">estimated_event_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate file pair (reference and estimated)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        reference_event_list : event list</span>
+<span class="sd">            Reference event list</span>
+
+<span class="sd">        estimated_event_list : event list</span>
+<span class="sd">            Estimated event list</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            Nothing</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Convert event list into frame-based representation</span>
+        <span class="n">reference_event_roll</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">event_list_to_event_roll</span><span class="p">(</span><span class="n">event_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">,</span>
+                                                             <span class="n">event_label_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">,</span>
+                                                             <span class="n">time_resolution</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span><span class="p">)</span>
+
+        <span class="n">estimated_event_roll</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">event_list_to_event_roll</span><span class="p">(</span><span class="n">event_list</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">,</span>
+                                                             <span class="n">event_label_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">,</span>
+                                                             <span class="n">time_resolution</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span> <span class="o">+=</span> <span class="n">util</span><span class="o">.</span><span class="n">max_event_offset</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">reference_event_roll</span><span class="p">,</span> <span class="n">estimated_event_roll</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">match_event_roll_lengths</span><span class="p">(</span><span class="n">reference_event_roll</span><span class="p">,</span> <span class="n">estimated_event_roll</span><span class="p">)</span>
+
+        <span class="c1"># Compute segment-based overall metrics</span>
+        <span class="k">for</span> <span class="n">segment_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">reference_event_roll</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">annotated_segment</span> <span class="o">=</span> <span class="n">reference_event_roll</span><span class="p">[</span><span class="n">segment_id</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">system_segment</span> <span class="o">=</span> <span class="n">estimated_event_roll</span><span class="p">[</span><span class="n">segment_id</span><span class="p">,</span> <span class="p">:]</span>
+
+            <span class="n">Ntp</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">+</span> <span class="n">annotated_segment</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">Ntn</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">+</span> <span class="n">annotated_segment</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">Nfp</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">-</span> <span class="n">annotated_segment</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">Nfn</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">annotated_segment</span> <span class="o">-</span> <span class="n">system_segment</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">Nref</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">annotated_segment</span><span class="p">)</span>
+            <span class="n">Nsys</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span><span class="p">)</span>
+
+            <span class="n">S</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">Nref</span><span class="p">,</span> <span class="n">Nsys</span><span class="p">)</span> <span class="o">-</span> <span class="n">Ntp</span>
+            <span class="n">D</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Nref</span> <span class="o">-</span> <span class="n">Nsys</span><span class="p">)</span>
+            <span class="n">I</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Nsys</span> <span class="o">-</span> <span class="n">Nref</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntn</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfn</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nref</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nsys</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">S</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">D</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">I</span>
+
+        <span class="c1"># Compute segment-based class-wise metrics</span>
+        <span class="k">for</span> <span class="n">class_id</span><span class="p">,</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">):</span>
+            <span class="n">annotated_segment</span> <span class="o">=</span> <span class="n">reference_event_roll</span><span class="p">[:,</span> <span class="n">class_id</span><span class="p">]</span>
+            <span class="n">system_segment</span> <span class="o">=</span> <span class="n">estimated_event_roll</span><span class="p">[:,</span> <span class="n">class_id</span><span class="p">]</span>
+
+            <span class="n">Ntp</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">+</span> <span class="n">annotated_segment</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">Ntn</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">+</span> <span class="n">annotated_segment</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">Nfp</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span> <span class="o">-</span> <span class="n">annotated_segment</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">Nfn</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">annotated_segment</span> <span class="o">-</span> <span class="n">system_segment</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">Nref</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">annotated_segment</span><span class="p">)</span>
+            <span class="n">Nsys</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">system_segment</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Ntn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntn</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nfp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nfn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfn</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nref</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nsys</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="c1"># Reports</span></div>
+<div class="viewcode-block" id="SegmentBasedMetrics.result_report_parameters"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">result_report_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report metric parameters</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        report : str</span>
+<span class="sd">            result report in string format</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5.1f} sec</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Evaluated length&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5d} files</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Evaluated files&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5.0f} ms</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Segment length&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5.2f} sec</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Segment length&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="c1"># Metrics</span></div>
+<div class="viewcode-block" id="SegmentBasedMetrics.overall_f_measure"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.overall_f_measure">[docs]</a>    <span class="k">def</span> <span class="nf">overall_f_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overall f-measure metrics (f_measure, precision, and recall)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">])</span>
+        <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">])</span>
+        <span class="n">f_measure</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">f_measure</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="o">=</span><span class="n">recall</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;f_measure&#39;</span><span class="p">:</span> <span class="n">f_measure</span><span class="p">,</span>
+                <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="n">precision</span><span class="p">,</span>
+                <span class="s1">&#39;recall&#39;</span><span class="p">:</span> <span class="n">recall</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="SegmentBasedMetrics.overall_error_rate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.overall_error_rate">[docs]</a>    <span class="k">def</span> <span class="nf">overall_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overall error rate metrics (error_rate, substitution_rate, deletion_rate, and insertion_rate)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">substitution_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">substitution_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                                     <span class="n">Nsubstitutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">])</span>
+        <span class="n">deletion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">deletion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                             <span class="n">Ndeletions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">])</span>
+        <span class="n">insertion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">insertion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                               <span class="n">Ninsertions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;I&#39;</span><span class="p">])</span>
+        <span class="n">error_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">error_rate</span><span class="p">(</span><span class="n">substitution_rate_value</span><span class="o">=</span><span class="n">substitution_rate</span><span class="p">,</span>
+                                       <span class="n">deletion_rate_value</span><span class="o">=</span><span class="n">deletion_rate</span><span class="p">,</span>
+                                       <span class="n">insertion_rate_value</span><span class="o">=</span><span class="n">insertion_rate</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error_rate&#39;</span><span class="p">:</span> <span class="n">error_rate</span><span class="p">,</span>
+                <span class="s1">&#39;substitution_rate&#39;</span><span class="p">:</span> <span class="n">substitution_rate</span><span class="p">,</span>
+                <span class="s1">&#39;deletion_rate&#39;</span><span class="p">:</span> <span class="n">deletion_rate</span><span class="p">,</span>
+                <span class="s1">&#39;insertion_rate&#39;</span><span class="p">:</span> <span class="n">insertion_rate</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="SegmentBasedMetrics.overall_accuracy"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.overall_accuracy">[docs]</a>    <span class="k">def</span> <span class="nf">overall_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overall accuracy metrics (sensitivity, specificity, accuracy, and balanced_accuracy)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        factor : float [0-1]</span>
+<span class="sd">            balance factor</span>
+<span class="sd">            (Default value=0.5)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">sensitivity</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">sensitivity</span><span class="p">(</span><span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="n">Nfn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfn&#39;</span><span class="p">])</span>
+        <span class="n">specificity</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">specificity</span><span class="p">(</span><span class="n">Ntn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntn&#39;</span><span class="p">],</span> <span class="n">Nfp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfp&#39;</span><span class="p">])</span>
+        <span class="n">balanced_accuracy</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">balanced_accuracy</span><span class="p">(</span><span class="n">sensitivity</span><span class="o">=</span><span class="n">sensitivity</span><span class="p">,</span>
+                                                     <span class="n">specificity</span><span class="o">=</span><span class="n">specificity</span><span class="p">,</span>
+                                                     <span class="n">factor</span><span class="o">=</span><span class="n">factor</span><span class="p">)</span>
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="n">Ntn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntn&#39;</span><span class="p">],</span> <span class="n">Nfp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfp&#39;</span><span class="p">],</span> <span class="n">Nfn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfn&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span>
+                <span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">:</span> <span class="n">balanced_accuracy</span><span class="p">,</span>            
+                <span class="s1">&#39;sensitivity&#39;</span><span class="p">:</span> <span class="n">sensitivity</span><span class="p">,</span>
+                <span class="s1">&#39;specificity&#39;</span><span class="p">:</span> <span class="n">specificity</span>
+                <span class="p">}</span>
+</div>
+<div class="viewcode-block" id="SegmentBasedMetrics.class_wise_count"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.class_wise_count">[docs]</a>    <span class="k">def</span> <span class="nf">class_wise_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise counts (Nref and Nsys)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">])}</span>
+</div>
+<div class="viewcode-block" id="SegmentBasedMetrics.class_wise_f_measure"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.class_wise_f_measure">[docs]</a>    <span class="k">def</span> <span class="nf">class_wise_f_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise f-measure metrics (f_measure, precision, and recall)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">])</span>
+        <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">])</span>
+        <span class="n">f_measure</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">f_measure</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="o">=</span><span class="n">recall</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;f_measure&#39;</span><span class="p">:</span> <span class="n">f_measure</span><span class="p">,</span>
+                <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="n">precision</span><span class="p">,</span>
+                <span class="s1">&#39;recall&#39;</span><span class="p">:</span> <span class="n">recall</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="SegmentBasedMetrics.class_wise_error_rate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.class_wise_error_rate">[docs]</a>    <span class="k">def</span> <span class="nf">class_wise_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deletion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">deletion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                             <span class="n">Ndeletions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfn&#39;</span><span class="p">])</span>
+        <span class="n">insertion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">insertion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                               <span class="n">Ninsertions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfp&#39;</span><span class="p">])</span>
+        <span class="n">error_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">error_rate</span><span class="p">(</span><span class="n">deletion_rate_value</span><span class="o">=</span><span class="n">deletion_rate</span><span class="p">,</span>
+                                       <span class="n">insertion_rate_value</span><span class="o">=</span><span class="n">insertion_rate</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error_rate&#39;</span><span class="p">:</span> <span class="n">error_rate</span><span class="p">,</span>
+                <span class="s1">&#39;deletion_rate&#39;</span><span class="p">:</span> <span class="n">deletion_rate</span><span class="p">,</span>
+                <span class="s1">&#39;insertion_rate&#39;</span><span class="p">:</span> <span class="n">insertion_rate</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="SegmentBasedMetrics.class_wise_accuracy"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.class_wise_accuracy">[docs]</a>    <span class="k">def</span> <span class="nf">class_wise_accuracy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise accuracy metrics (sensitivity, specificity, accuracy, and balanced_accuracy)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">sensitivity</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">sensitivity</span><span class="p">(</span><span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="n">Nfn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfn&#39;</span><span class="p">])</span>
+        <span class="n">specificity</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">specificity</span><span class="p">(</span><span class="n">Ntn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntn&#39;</span><span class="p">],</span> <span class="n">Nfp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfp&#39;</span><span class="p">])</span>
+        <span class="n">balanced_accuracy</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">balanced_accuracy</span><span class="p">(</span><span class="n">sensitivity</span><span class="o">=</span><span class="n">sensitivity</span><span class="p">,</span>
+                                                     <span class="n">specificity</span><span class="o">=</span><span class="n">specificity</span><span class="p">,</span>
+                                                     <span class="n">factor</span><span class="o">=</span><span class="n">factor</span><span class="p">)</span>
+
+        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
+                                   <span class="n">Ntn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntn&#39;</span><span class="p">],</span>
+                                   <span class="n">Nfp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfp&#39;</span><span class="p">],</span>
+                                   <span class="n">Nfn</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfn&#39;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+                <span class="s1">&#39;accuracy&#39;</span><span class="p">:</span> <span class="n">accuracy</span><span class="p">,</span>
+                <span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">:</span> <span class="n">balanced_accuracy</span><span class="p">,</span>
+                <span class="s1">&#39;sensitivity&#39;</span><span class="p">:</span> <span class="n">sensitivity</span><span class="p">,</span>
+                <span class="s1">&#39;specificity&#39;</span><span class="p">:</span> <span class="n">specificity</span>
+                <span class="p">}</span>
+
+</div></div>
+<div class="viewcode-block" id="EventBasedMetrics"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics">[docs]</a><span class="k">class</span> <span class="nc">EventBasedMetrics</span><span class="p">(</span><span class="n">SoundEventMetrics</span><span class="p">):</span>
+<div class="viewcode-block" id="EventBasedMetrics.__init__"><a class="viewcode-back" href="../../generated/sed_eval.sound_event.EventBasedMetrics.html#sed_eval.sound_event.EventBasedMetrics.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">event_label_list</span><span class="p">,</span>
+                 <span class="n">evaluate_onset</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                 <span class="n">evaluate_offset</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                 <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">,</span>
+                 <span class="n">percentage_of_length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">eps</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">spacing</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        event_label_list : list</span>
+<span class="sd">            List of unique event labels</span>
+
+<span class="sd">        evaluate_onset : bool</span>
+<span class="sd">            Evaluate onset</span>
+<span class="sd">            (Default value=True)</span>
+
+<span class="sd">        evaluate_offset : bool</span>
+<span class="sd">            Evaluate offset</span>
+<span class="sd">            (Default value=True)</span>
+
+<span class="sd">        t_collar : float (0,]</span>
+<span class="sd">            Time collar used when evaluating validty of the onset and offset, in seconds</span>
+<span class="sd">            (Default value=0.2)</span>
+
+<span class="sd">        percentage_of_length : float in [0, 1]</span>
+<span class="sd">            Second condition, percentage of the length within which the estimated offset has to be in order to be consider valid estimation</span>
+<span class="sd">            (Default value = 0.5)</span>
+
+<span class="sd">        eps : float (0,]</span>
+<span class="sd">            Eps</span>
+<span class="sd">            (Default value=numpy.spacing(1))</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            Nothing</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">SoundEventMetrics</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span> <span class="o">=</span> <span class="n">event_label_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">evaluate_onset</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">evaluate_offset</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Both evaluate_onset and evaluate_offset cannot be set to False&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span> <span class="o">=</span> <span class="n">evaluate_onset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span> <span class="o">=</span> <span class="n">evaluate_offset</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span> <span class="o">=</span> <span class="n">t_collar</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span> <span class="o">=</span> <span class="n">percentage_of_length</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nsubs&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="n">event_label_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="p">}</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="EventBasedMetrics.validate_onset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.validate_onset">[docs]</a>    <span class="k">def</span> <span class="nf">validate_onset</span><span class="p">(</span><span class="n">reference_event</span><span class="p">,</span> <span class="n">estimated_event</span><span class="p">,</span> <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate estimated event based on event onset</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        reference_event : dict</span>
+<span class="sd">            Reference event</span>
+<span class="sd">        estimated_event: dict</span>
+<span class="sd">            Estimated event</span>
+<span class="sd">        t_collar : float &gt; 0, seconds</span>
+<span class="sd">            Time collar with which the estimated onset has to be in order to be consider valid estimation</span>
+<span class="sd">            (Default value = 0.2)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        validity: bool</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">reference_event</span><span class="p">[</span><span class="s1">&#39;event_onset&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">estimated_event</span><span class="p">[</span><span class="s1">&#39;event_onset&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">t_collar</span>
+</div>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="EventBasedMetrics.validate_offset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.validate_offset">[docs]</a>    <span class="k">def</span> <span class="nf">validate_offset</span><span class="p">(</span><span class="n">reference_event</span><span class="p">,</span> <span class="n">estimated_event</span><span class="p">,</span> <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">,</span> <span class="n">percentage_of_length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate estimated event based on event offset</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        reference_event : dict</span>
+<span class="sd">            Reference event</span>
+
+<span class="sd">        estimated_event : dict</span>
+<span class="sd">            Estimated event</span>
+
+<span class="sd">        t_collar : float &gt; 0, seconds</span>
+<span class="sd">            First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation</span>
+<span class="sd">            (Default value = 0.2)</span>
+
+<span class="sd">        percentage_of_length : float in [0, 1]</span>
+<span class="sd">            Second condition, percentage of the length within which the estimated offset has to be in order to be consider valid estimation</span>
+<span class="sd">            (Default value = 0.5)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        validity : bool</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">annotated_length</span> <span class="o">=</span> <span class="n">reference_event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">reference_event</span><span class="p">[</span><span class="s1">&#39;event_onset&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">reference_event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">estimated_event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_collar</span><span class="p">,</span> <span class="n">percentage_of_length</span> <span class="o">*</span> <span class="n">annotated_length</span><span class="p">)</span>
+</div>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print result reports</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        report: str</span>
+<span class="sd">            result report in string format</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Event based metrics (onset-offset)</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Event based metrics (onset only)</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Event based metrics (offset only)</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Event based metrics</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;----------------------------------------------------------------------</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_parameters</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_overall</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_class_wise_average</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result_report_class_wise</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+<div class="viewcode-block" id="EventBasedMetrics.evaluate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_event_list</span><span class="p">,</span> <span class="n">estimated_event_list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate file pair (reference and estimated)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        reference_event_list : event list</span>
+<span class="sd">            Reference event list</span>
+
+<span class="sd">        estimated_event_list : event list</span>
+<span class="sd">            Estimated event list</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            Nothing</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span> <span class="o">+=</span> <span class="n">util</span><span class="o">.</span><span class="n">max_event_offset</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Overall metrics</span>
+
+        <span class="c1"># Total number of detected and reference events</span>
+        <span class="n">Nsys</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)</span>
+        <span class="n">Nref</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)</span>
+
+        <span class="n">sys_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">ref_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nref</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+        <span class="c1"># Number of correctly transcribed events</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                <span class="n">label_condition</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span><span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                                          <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                          <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">True</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span><span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                                            <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                            <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                                            <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">True</span>
+
+                <span class="k">if</span> <span class="n">label_condition</span> <span class="ow">and</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                    <span class="n">ref_correct</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="n">sys_correct</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">break</span>
+
+        <span class="n">Ntp</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sys_correct</span><span class="p">)</span>
+
+        <span class="n">sys_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">negative</span><span class="p">(</span><span class="n">sys_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ref_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">negative</span><span class="p">(</span><span class="n">ref_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Substitutions</span>
+        <span class="n">Nsubs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ref_leftover</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sys_leftover</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span><span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                                          <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                          <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">True</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span><span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                                            <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                            <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                                            <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">True</span>
+
+                <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                    <span class="n">Nsubs</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+
+        <span class="n">Nfp</span> <span class="o">=</span> <span class="n">Nsys</span> <span class="o">-</span> <span class="n">Ntp</span> <span class="o">-</span> <span class="n">Nsubs</span>
+        <span class="n">Nfn</span> <span class="o">=</span> <span class="n">Nref</span> <span class="o">-</span> <span class="n">Ntp</span> <span class="o">-</span> <span class="n">Nsubs</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nref</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nsys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsubs&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nsubs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfn</span>
+
+        <span class="c1"># Class-wise metrics</span>
+        <span class="k">for</span> <span class="n">class_id</span><span class="p">,</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">):</span>
+            <span class="n">Nref</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">Nsys</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">Ntp</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+            <span class="c1"># Count event frequencies in the ground truth</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
+                    <span class="n">Nref</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># Count event frequencies in the system output</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
+                    <span class="n">Nsys</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span> <span class="ow">and</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span><span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                                                  <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                                  <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">True</span>
+
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span><span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                                                    <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                                    <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                                                    <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">True</span>
+
+                        <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                            <span class="n">Ntp</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">break</span>
+
+            <span class="n">Nfp</span> <span class="o">=</span> <span class="n">Nsys</span> <span class="o">-</span> <span class="n">Ntp</span>
+            <span class="n">Nfn</span> <span class="o">=</span> <span class="n">Nref</span> <span class="o">-</span> <span class="n">Ntp</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nref</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nsys</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Ntp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nfp&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nfn&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nfn</span>
+
+    <span class="c1"># Reports</span></div>
+<div class="viewcode-block" id="EventBasedMetrics.result_report_parameters"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.result_report_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">result_report_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Report metric parameters</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">            Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        report : str</span>
+<span class="sd">            result report in string format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:5.1f} sec</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Evaluated length&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5d} files</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Evaluated files&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {} </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Evaluate onset&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {} </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Evaluate offset&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5.0f} ms</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;T collar&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5.1f} sec</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;T collar&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;    {:17s} : {:&lt;5.0f} %</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Offset (length)&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;  </span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">output</span>
+
+    <span class="c1"># Metrics</span></div>
+<div class="viewcode-block" id="EventBasedMetrics.overall_f_measure"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.overall_f_measure">[docs]</a>    <span class="k">def</span> <span class="nf">overall_f_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overall f-measure metrics (f_measure, precision, and recall)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">])</span>
+        <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">])</span>
+        <span class="n">f_measure</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">f_measure</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="o">=</span><span class="n">recall</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;f_measure&#39;</span><span class="p">:</span> <span class="n">f_measure</span><span class="p">,</span>
+                <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="n">precision</span><span class="p">,</span>
+                <span class="s1">&#39;recall&#39;</span><span class="p">:</span> <span class="n">recall</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="EventBasedMetrics.overall_error_rate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.overall_error_rate">[docs]</a>    <span class="k">def</span> <span class="nf">overall_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overall error rate metrics (error_rate, substitution_rate, deletion_rate, and insertion_rate)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">substitution_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">substitution_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                                     <span class="n">Nsubstitutions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsubs&#39;</span><span class="p">])</span>
+        <span class="n">deletion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">deletion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                             <span class="n">Ndeletions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfn&#39;</span><span class="p">])</span>
+        <span class="n">insertion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">insertion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                               <span class="n">Ninsertions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nfp&#39;</span><span class="p">])</span>
+        <span class="n">error_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">error_rate</span><span class="p">(</span><span class="n">substitution_rate_value</span><span class="o">=</span><span class="n">substitution_rate</span><span class="p">,</span>
+                                       <span class="n">deletion_rate_value</span><span class="o">=</span><span class="n">deletion_rate</span><span class="p">,</span>
+                                       <span class="n">insertion_rate_value</span><span class="o">=</span><span class="n">insertion_rate</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error_rate&#39;</span><span class="p">:</span> <span class="n">error_rate</span><span class="p">,</span>
+                <span class="s1">&#39;substitution_rate&#39;</span><span class="p">:</span> <span class="n">substitution_rate</span><span class="p">,</span>
+                <span class="s1">&#39;deletion_rate&#39;</span><span class="p">:</span> <span class="n">deletion_rate</span><span class="p">,</span>
+                <span class="s1">&#39;insertion_rate&#39;</span><span class="p">:</span> <span class="n">insertion_rate</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="EventBasedMetrics.class_wise_count"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.class_wise_count">[docs]</a>    <span class="k">def</span> <span class="nf">class_wise_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise counts (Nref and Nsys)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]}</span>
+</div>
+<div class="viewcode-block" id="EventBasedMetrics.class_wise_f_measure"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.class_wise_f_measure">[docs]</a>    <span class="k">def</span> <span class="nf">class_wise_f_measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise f-measure metrics (f_measure, precision, and recall)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">])</span>
+        <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">])</span>
+        <span class="n">f_measure</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">f_measure</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="o">=</span><span class="n">recall</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;f_measure&#39;</span><span class="p">:</span> <span class="n">f_measure</span><span class="p">,</span>
+                <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="n">precision</span><span class="p">,</span>
+                <span class="s1">&#39;recall&#39;</span><span class="p">:</span> <span class="n">recall</span><span class="p">}</span>
+</div>
+<div class="viewcode-block" id="EventBasedMetrics.class_wise_error_rate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate">[docs]</a>    <span class="k">def</span> <span class="nf">class_wise_error_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event_label</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        Nothing</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        results : dict</span>
+<span class="sd">            results in a dictionary format</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deletion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">deletion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                             <span class="n">Ndeletions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfn&#39;</span><span class="p">])</span>
+        <span class="n">insertion_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">insertion_rate</span><span class="p">(</span><span class="n">Nref</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nref&#39;</span><span class="p">],</span>
+                                               <span class="n">Ninsertions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nfp&#39;</span><span class="p">])</span>
+        <span class="n">error_rate</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">error_rate</span><span class="p">(</span><span class="n">deletion_rate_value</span><span class="o">=</span><span class="n">deletion_rate</span><span class="p">,</span>
+                                       <span class="n">insertion_rate_value</span><span class="o">=</span><span class="n">insertion_rate</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;error_rate&#39;</span><span class="p">:</span> <span class="n">error_rate</span><span class="p">,</span>
+                <span class="s1">&#39;deletion_rate&#39;</span><span class="p">:</span> <span class="n">deletion_rate</span><span class="p">,</span>
+                <span class="s1">&#39;insertion_rate&#39;</span><span class="p">:</span> <span class="n">insertion_rate</span><span class="p">}</span></div></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Toni Heittola et al..
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

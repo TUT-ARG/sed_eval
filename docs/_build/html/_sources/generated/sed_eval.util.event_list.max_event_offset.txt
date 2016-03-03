@@ -1,0 +1,6 @@
+sed_eval.util.event_list.max_event_offset
+=========================================
+
+.. currentmodule:: sed_eval.util.event_list
+
+.. autofunction:: max_event_offset

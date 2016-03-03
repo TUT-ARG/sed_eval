@@ -1,0 +1,6 @@
+sed_eval.metric.accuracy
+========================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: accuracy

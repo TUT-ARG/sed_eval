@@ -1,0 +1,6 @@
+sed_eval.sound_event.SegmentBasedMetrics.result_report_overall
+==============================================================
+
+.. currentmodule:: sed_eval.sound_event
+
+.. automethod:: SegmentBasedMetrics.result_report_overall

@@ -1,0 +1,6 @@
+sed_eval.metric.f_measure
+=========================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: f_measure

@@ -1,0 +1,6 @@
+sed_eval.metric.recall
+======================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: recall

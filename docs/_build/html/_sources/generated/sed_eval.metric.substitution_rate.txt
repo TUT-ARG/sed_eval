@@ -1,0 +1,6 @@
+sed_eval.metric.substitution_rate
+=================================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: substitution_rate

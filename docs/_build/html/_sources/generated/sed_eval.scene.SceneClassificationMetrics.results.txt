@@ -1,0 +1,6 @@
+sed_eval.scene.SceneClassificationMetrics.results
+=================================================
+
+.. currentmodule:: sed_eval.scene
+
+.. automethod:: SceneClassificationMetrics.results

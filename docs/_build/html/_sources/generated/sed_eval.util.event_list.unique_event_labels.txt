@@ -1,0 +1,6 @@
+sed_eval.util.event_list.unique_event_labels
+============================================
+
+.. currentmodule:: sed_eval.util.event_list
+
+.. autofunction:: unique_event_labels

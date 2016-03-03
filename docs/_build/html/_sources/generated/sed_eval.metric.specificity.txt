@@ -1,0 +1,6 @@
+sed_eval.metric.specificity
+===========================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: specificity

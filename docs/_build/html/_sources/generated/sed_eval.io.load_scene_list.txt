@@ -1,0 +1,6 @@
+sed_eval.io.load_scene_list
+===========================
+
+.. currentmodule:: sed_eval.io
+
+.. autofunction:: load_scene_list

@@ -1,0 +1,6 @@
+sed_eval.metric.deletion_rate
+=============================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: deletion_rate
