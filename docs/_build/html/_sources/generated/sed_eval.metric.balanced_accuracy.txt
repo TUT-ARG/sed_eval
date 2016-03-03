@@ -1,0 +1,6 @@
+sed_eval.metric.balanced_accuracy
+=================================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: balanced_accuracy

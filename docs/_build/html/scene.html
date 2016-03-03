@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Acoustic Scene Classification &mdash; sed_eval 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="sed_eval 0.1 documentation" href="index.html"/>
+        <link rel="next" title="sed_eval.scene.SceneClassificationMetrics" href="generated/sed_eval.scene.SceneClassificationMetrics.html"/>
+        <link rel="prev" title="sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average" href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> sed_eval
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#sound-event-detection">Sound event detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart-using-sed-eval-in-python-code">Quickstart: Using <code class="docutils literal"><span class="pre">sed_eval</span></code> in Python code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#id1">Sound event detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#id2">Acoustic scene classification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="sound_event.html">Sound Event Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sound_event.html#intermediate-statistics">Intermediate statistics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#segment-based">Segment-based</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#event-based">Event-based</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#averaging">Averaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#cross-validation">Cross-validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sound_event.html#implemented-metrics">Implemented metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#precision-recall-and-f-score">Precision, Recall and F-score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#sensitivity-and-specificity">Sensitivity and specificity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#accuracy">Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#balanced-accuracy">Balanced accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#error-rate">Error Rate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sound_event.html#module-sed_eval.sound_event">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#segment-based-metrics">Segment based metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.html">sed_eval.sound_event.SegmentBasedMetrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.evaluate.html">sed_eval.sound_event.SegmentBasedMetrics.evaluate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.results.html">sed_eval.sound_event.SegmentBasedMetrics.results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_overall.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_overall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="sound_event.html#event-based-metrics">Event based metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.html">sed_eval.sound_event.EventBasedMetrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.evaluate.html">sed_eval.sound_event.EventBasedMetrics.evaluate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.results.html">sed_eval.sound_event.EventBasedMetrics.results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.results_overall_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_overall_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_parameters.html">sed_eval.sound_event.EventBasedMetrics.result_report_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_overall.html">sed_eval.sound_event.EventBasedMetrics.result_report_overall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sound_event.html#rerefences">Rerefences</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Acoustic Scene Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.html">sed_eval.scene.SceneClassificationMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html">sed_eval.scene.SceneClassificationMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results.html">sed_eval.scene.SceneClassificationMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_overall_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_parameters.html">sed_eval.scene.SceneClassificationMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="metric.html">Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.recall.html">sed_eval.metric.recall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.accuracy.html">sed_eval.metric.accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.accuracy2.html">sed_eval.metric.accuracy2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.balanced_accuracy.html">sed_eval.metric.balanced_accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.sensitivity.html">sed_eval.metric.sensitivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.specificity.html">sed_eval.metric.specificity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.error_rate.html">sed_eval.metric.error_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="util.html#event-list-operations">Event list operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_list.unique_event_labels.html">sed_eval.util.event_list.unique_event_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_list.max_event_offset.html">sed_eval.util.event_list.max_event_offset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#event-roll-operations">Event roll operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_roll.event_list_to_event_roll.html">sed_eval.util.event_roll.event_list_to_event_roll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_roll.pad_event_roll.html">sed_eval.util.event_roll.pad_event_roll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_roll.match_event_roll_lengths.html">sed_eval.util.event_roll.match_event_roll_lengths</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#scene-list-operations">Scene list operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">I/O</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.io.load_event_list.html">sed_eval.io.load_event_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.io.load_scene_list.html">sed_eval.io.load_scene_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.io.load_file_pair_list.html">sed_eval.io.load_file_pair_list</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">sed_eval</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Acoustic Scene Classification</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/scene.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="acoustic-scene-classification">
+<span id="scene"></span><h1>Acoustic Scene Classification<a class="headerlink" href="#acoustic-scene-classification" title="Permalink to this headline">¶</a></h1>
+<p>The goal of acoustic scene classification is to classify a test recording into one of predefined classes that
+characterizes the environment in which it was recorded — for example &#8220;outdoor market&#8221;, &#8220;busy street&#8221;, &#8220;office&#8221;.</p>
+<p>Classification performance is measured using accuracy: the number of correctly classified segments
+among the total number of test segments.</p>
+<span class="target" id="module-sed_eval.scene"></span><div class="section" id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
+<p>Segment-based metrics, main functions:</p>
+<ul class="simple">
+<li><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate" title="sed_eval.scene.SceneClassificationMetrics.evaluate"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.scene.SceneClassificationMetrics.evaluate</span></code></a>: Calculate intermediate values for evaluation and accumulate them.</li>
+<li><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results.html#sed_eval.scene.SceneClassificationMetrics.results" title="sed_eval.scene.SceneClassificationMetrics.results"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.scene.SceneClassificationMetrics.results</span></code></a>: Calculate and return all metrics.</li>
+<li><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_overall_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_overall_metrics" title="sed_eval.scene.SceneClassificationMetrics.results_overall_metrics"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.scene.SceneClassificationMetrics.results_overall_metrics</span></code></a>: Calculate and return overall metrics (micro-averaged).</li>
+<li><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics" title="sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics</span></code></a>: Calculate and return class-wise metrics.</li>
+<li><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics" title="sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics</span></code></a>: Calculate and return class-wise average metrics (macro-averaged).</li>
+</ul>
+<p>Function <a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate" title="sed_eval.scene.SceneClassificationMetrics.evaluate"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.scene.SceneClassificationMetrics.evaluate</span></code></a> takes as a parameter scene lists, use <a class="reference internal" href="generated/sed_eval.io.load_scene_list.html#sed_eval.io.load_scene_list" title="sed_eval.io.load_scene_list"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.io.load_scene_list</span></code></a> to read them from a file.</p>
+<p>Usage example:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+
+<span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_estimated.txt&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold2_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold2_estimated.txt&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold3_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold3_estimated.txt&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold4_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold4_estimated.txt&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold5_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold5_estimated.txt&#39;</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Get used scene labels</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file_pair</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+    <span class="n">reference_scene_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_scene_list</span><span class="p">(</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_file&#39;</span><span class="p">])</span>
+    <span class="n">estimated_scene_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_scene_list</span><span class="p">(</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_file&#39;</span><span class="p">])</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;reference_scene_list&#39;</span><span class="p">:</span> <span class="n">reference_scene_list</span><span class="p">,</span>
+                 <span class="s1">&#39;estimated_scene_list&#39;</span><span class="p">:</span> <span class="n">estimated_scene_list</span><span class="p">})</span>
+    <span class="n">all_data</span> <span class="o">+=</span> <span class="n">reference_scene_list</span>
+
+<span class="n">scene_labels</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">unique_scene_labels</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+
+<span class="c1"># Create metrics class</span>
+<span class="n">scene_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneClassificationMetrics</span><span class="p">(</span><span class="n">scene_labels</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">file_pair</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">scene_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_scene_list&#39;</span><span class="p">],</span>
+                           <span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_scene_list&#39;</span><span class="p">])</span>
+
+<span class="c1"># Get only certain metrics</span>
+<span class="n">overall_metrics_results</span> <span class="o">=</span> <span class="n">scene_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
+<span class="k">print</span> <span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_metrics_results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+
+<span class="c1"># Or print all metrics as reports</span>
+<span class="k">print</span> <span class="n">scene_metrics</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.html#sed_eval.scene.SceneClassificationMetrics" title="sed_eval.scene.SceneClassificationMetrics"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics</span></code></a>([scene_labels])</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate" title="sed_eval.scene.SceneClassificationMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.evaluate</span></code></a>(...)</td>
+<td>Evaluate file pair (reference and estimated)</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results.html#sed_eval.scene.SceneClassificationMetrics.results" title="sed_eval.scene.SceneClassificationMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.results</span></code></a>()</td>
+<td>All metrics</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_overall_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_overall_metrics" title="sed_eval.scene.SceneClassificationMetrics.results_overall_metrics"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.results_overall_metrics</span></code></a>()</td>
+<td>Overall metrics</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics" title="sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.results_class_wise_metrics</span></code></a>()</td>
+<td>Class-wise metrics</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics" title="sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.results_class_wise_average_metrics</span></code></a>()</td>
+<td>Class-wise averaged metrics</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_parameters.html#sed_eval.scene.SceneClassificationMetrics.result_report_parameters" title="sed_eval.scene.SceneClassificationMetrics.result_report_parameters"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.result_report_parameters</span></code></a>()</td>
+<td>Report metric parameters</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise.html#sed_eval.scene.SceneClassificationMetrics.result_report_class_wise" title="sed_eval.scene.SceneClassificationMetrics.result_report_class_wise"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.result_report_class_wise</span></code></a>()</td>
+<td>Report class-wise results</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average.html#sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average" title="sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.result_report_class_wise_average</span></code></a>()</td>
+<td>Report class-wise averages</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="generated/sed_eval.scene.SceneClassificationMetrics.html" class="btn btn-neutral float-right" title="sed_eval.scene.SceneClassificationMetrics" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average.html" class="btn btn-neutral" title="sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Toni Heittola et al..
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

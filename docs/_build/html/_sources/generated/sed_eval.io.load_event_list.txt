@@ -1,0 +1,6 @@
+sed_eval.io.load_event_list
+===========================
+
+.. currentmodule:: sed_eval.io
+
+.. autofunction:: load_event_list

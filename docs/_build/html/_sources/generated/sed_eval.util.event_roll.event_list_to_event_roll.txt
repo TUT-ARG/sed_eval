@@ -1,0 +1,6 @@
+sed_eval.util.event_roll.event_list_to_event_roll
+=================================================
+
+.. currentmodule:: sed_eval.util.event_roll
+
+.. autofunction:: event_list_to_event_roll

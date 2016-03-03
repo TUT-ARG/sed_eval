@@ -1,0 +1,6 @@
+sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics
+=================================================================
+
+.. currentmodule:: sed_eval.sound_event
+
+.. automethod:: EventBasedMetrics.results_class_wise_metrics

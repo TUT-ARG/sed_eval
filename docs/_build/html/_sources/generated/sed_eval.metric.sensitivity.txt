@@ -1,0 +1,6 @@
+sed_eval.metric.sensitivity
+===========================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: sensitivity

@@ -1,0 +1,6 @@
+sed_eval.metric.insertion_rate
+==============================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: insertion_rate

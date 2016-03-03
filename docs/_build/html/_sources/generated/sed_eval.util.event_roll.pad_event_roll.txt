@@ -1,0 +1,6 @@
+sed_eval.util.event_roll.pad_event_roll
+=======================================
+
+.. currentmodule:: sed_eval.util.event_roll
+
+.. autofunction:: pad_event_roll

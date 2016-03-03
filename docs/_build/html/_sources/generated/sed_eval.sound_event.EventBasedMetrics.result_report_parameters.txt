@@ -1,0 +1,6 @@
+sed_eval.sound_event.EventBasedMetrics.result_report_parameters
+===============================================================
+
+.. currentmodule:: sed_eval.sound_event
+
+.. automethod:: EventBasedMetrics.result_report_parameters

@@ -1,0 +1,40 @@
+sed_eval.sound_event.EventBasedMetrics
+======================================
+
+.. currentmodule:: sed_eval.sound_event
+
+.. autoclass:: EventBasedMetrics
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~EventBasedMetrics.__init__
+      ~EventBasedMetrics.class_wise_accuracy
+      ~EventBasedMetrics.class_wise_count
+      ~EventBasedMetrics.class_wise_error_rate
+      ~EventBasedMetrics.class_wise_f_measure
+      ~EventBasedMetrics.evaluate
+      ~EventBasedMetrics.overall_accuracy
+      ~EventBasedMetrics.overall_error_rate
+      ~EventBasedMetrics.overall_f_measure
+      ~EventBasedMetrics.result_report_class_wise
+      ~EventBasedMetrics.result_report_class_wise_average
+      ~EventBasedMetrics.result_report_overall
+      ~EventBasedMetrics.result_report_parameters
+      ~EventBasedMetrics.results
+      ~EventBasedMetrics.results_class_wise_average_metrics
+      ~EventBasedMetrics.results_class_wise_metrics
+      ~EventBasedMetrics.results_overall_metrics
+      ~EventBasedMetrics.validate_offset
+      ~EventBasedMetrics.validate_onset
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+sed_eval.util.scene_list.unique_scene_labels
+============================================
+
+.. currentmodule:: sed_eval.util.scene_list
+
+.. autofunction:: unique_scene_labels
