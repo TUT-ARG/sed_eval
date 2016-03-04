@@ -247,39 +247,41 @@
 <div class="section" id="using-pip">
 <h2>Using pip<a class="headerlink" href="#using-pip" title="Permalink to this headline">¶</a></h2>
 <p>The latest stable release is available on PyPI, and you can install with pip:</p>
-<p><code class="docutils literal"><span class="pre">`</span>
-<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">sed_eval</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install sed_eval
+</pre></div>
+</div>
 <p>Alternatively you can download or clone toolbox and use <code class="docutils literal"><span class="pre">pip</span></code> to handle dependencies:</p>
-<p><code class="docutils literal"><span class="pre">`</span>
-<span class="pre">unzip</span> <span class="pre">sed_eval.zip</span>
-<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">sed_eval</span>
-<span class="pre">`</span></code>
-or
-<code class="docutils literal"><span class="pre">`</span>
-<span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/TUT-ARG/sed_eval.git</span>
-<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">sed_eval</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>unzip sed_eval.zip
+pip install -e sed_eval
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>git clone https://github.com/TUT-ARG/sed_eval.git
+pip install -e sed_eval
+</pre></div>
+</div>
 </div>
 <div class="section" id="using-setyp-py">
 <h2>Using <code class="docutils literal"><span class="pre">setyp.py</span></code><a class="headerlink" href="#using-setyp-py" title="Permalink to this headline">¶</a></h2>
-<p>You can install <code class="docutils literal"><span class="pre">sed_eval</span></code> from source by first installing the dependencies</p>
-<p><code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
-<p>and then running</p>
-<p><code class="docutils literal"><span class="pre">`</span>
-<span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span>
-<span class="pre">`</span></code></p>
+<p>You can install <code class="docutils literal"><span class="pre">sed_eval</span></code> from source by first installing the dependencies:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+<p>and then running:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python setup.py install
+</pre></div>
+</div>
 <p>To uninstall the toolbox if it was installed with <code class="docutils literal"><span class="pre">setyp.py</span></code>:</p>
 <p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--record</span> <span class="pre">files.txt</span></code> to get files associated with toolbox
 <code class="docutils literal"><span class="pre">cat</span> <span class="pre">files.txt</span> <span class="pre">|</span> <span class="pre">xargs</span> <span class="pre">rm</span> <span class="pre">-rf</span></code> to remove the files recorded by the previous step.</p>
 <p>You can also install the toolbox in <em>develop</em> mode:</p>
-<p><code class="docutils literal"><span class="pre">`</span>
-<span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python setup.py develop
+</pre></div>
+</div>
 <p>Toolbox can be uninstalled:</p>
-<p><code class="docutils literal"><span class="pre">`</span>
-<span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span> <span class="pre">--uninstall</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>python setup.py develop --uninstall
+</pre></div>
+</div>
 </div>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
