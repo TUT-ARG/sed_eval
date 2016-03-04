@@ -7,6 +7,11 @@ before_install:
 
 # command to install dependencies
 install:
+    - "mkdir tests/dcase2016/"
+    - "cd tests/dcase2016/"
+    - "wget https://github.com/TUT-ARG/DCASE2016-baseline-system-python/archive/v1.0.2.zip"
+    - "unzip v1.0.2.zip"
+    - "cd ../../"
     - "pip install -r requirements.txt"
     - "python setup.py develop"
 
