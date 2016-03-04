@@ -13,6 +13,7 @@ install:
     - "unzip v1.0.2.zip"
     - "cd ../../"
     - "pip install -r requirements.txt"
+    - "pip install scikit-learn"
     - "python setup.py develop"
 
 # command to run tests
