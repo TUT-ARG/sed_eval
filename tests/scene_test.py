@@ -28,6 +28,3 @@ overall_metrics_results = scene_metrics.results_overall_metrics()
 print "Accuracy:", overall_metrics_results['accuracy']
 
 print scene_metrics
-
-from IPython import embed
-embed()
