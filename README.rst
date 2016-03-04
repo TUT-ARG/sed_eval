@@ -10,30 +10,37 @@ sed_eval - Evaluation toolbox for Sound Event Detection
 sed_eval is an open source Python toolbox which provides a standardized, 
 and transparent way to evaluate sound event detection systems. 
 
-Documentation and usage information: http://tut-arg.github.io/sed_eval
+Authors
+
+- Toni Heittola (toni.heittola@tut.fi, `home page <http://www.cs.tut.fi/~heittolt/>`_)
+- Annamaria Mesaros (annamaria.mesaros@tut.fi, `home page <http://www.cs.tut.fi/~mesaros/>`_)
+
+
+Documentation
+=============
+
+See http://tut-arg.github.io/sed_eval for manual and tutorials.
 
 Installation instructions
 =========================
 
-You can install ``sed_eval``, run:
+The latest stable release is available on PyPI, and you can install with pip:
 
-``python setup.py install``
+```
+pip install sed_eval
+```
 
-from the source directory.
+Alternatively you can download or clone toolbox and use ``pip`` to handle dependencies:
 
-To uninstall the toolbox:
-
-``python setup.py install --record files.txt`` to get files associated with toolbox
-
-``cat files.txt | xargs rm -rf`` to remove the files recorded by the previous step.
-
-You can also install the toolbox in develop mode:
-
-``python setup.py develop``
-
-Toolbox can be uninstalled:
-
-``python setup.py develop --uninstall``
+```
+unzip sed_eval.zip
+pip install -e sed_eval
+```
+or
+```
+git clone https://github.com/TUT-ARG/sed_eval.git
+pip install -e sed_eval
+```
 
 Dependencies
 ------------
