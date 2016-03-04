@@ -12,8 +12,8 @@ and transparent way to evaluate sound event detection systems.
 
 Authors
 
-- Toni Heittola (toni.heittola@tut.fi, `GitHub <https://github.com/toni-heittola>`_, `home page <http://www.cs.tut.fi/~heittolt/>`_)
-- Annamaria Mesaros (annamaria.mesaros@tut.fi, `home page <http://www.cs.tut.fi/~mesaros/>`_)
+- Toni Heittola (toni.heittola@tut.fi, `GitHub <https://github.com/toni-heittola>`_, `<http://www.cs.tut.fi/~heittolt/>`_)
+- Annamaria Mesaros (annamaria.mesaros@tut.fi, `<http://www.cs.tut.fi/~mesaros/>`_)
 
 Documentation
 =============
@@ -25,21 +25,23 @@ Installation instructions
 
 The latest stable release is available on PyPI, and you can install with pip:
 
-```
+``
 pip install sed_eval
-```
+``
 
 Alternatively you can download or clone toolbox and use ``pip`` to handle dependencies:
 
-```
+``
 unzip sed_eval.zip
 pip install -e sed_eval
-```
+``
+
 or
-```
+
+``
 git clone https://github.com/TUT-ARG/sed_eval.git
 pip install -e sed_eval
-```
+``
 
 Dependencies
 ------------
