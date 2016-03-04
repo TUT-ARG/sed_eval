@@ -12,8 +12,6 @@ virtualenv:
 
 before_install:
     - "sudo apt-get install -qq python-scipy"
-    - "pip install python-coveralls"
-
 
 # command to install dependencies
 install:
@@ -23,15 +21,18 @@ install:
     - "unzip v1.0.2.zip"
     - "cd ../../"
     - "pip install -r requirements.txt"
+    - "pip install python-coveralls"
+    - "pip install coveralls"
+    - "pip install nose"
     - "pip install scikit-learn"
     - "python setup.py develop"
 
 # command to run tests
 script:
-    - nosetests --with-coverage --cover-erase --cover-package=sed_eval -v -w tests/
+    - "nosetests --with-coverage --cover-erase --cover-package=sed_eval -v -w tests/"
 
 after_success:
-    - coveralls
+    - "coveralls"
     - "python setup.py develop --uninstall"
 
 after_failure:
