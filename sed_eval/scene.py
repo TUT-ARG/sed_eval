@@ -72,7 +72,6 @@ Usage example:
 
 import numpy
 import metric
-from IPython import embed
 
 
 class SceneClassificationMetrics:
@@ -294,13 +293,13 @@ class SceneClassificationMetrics:
             if scene_label not in results:
                 results[scene_label] = {}
 
-            #results[scene_label]['accuracy'] = self.class_wise_accuracy(scene_label)
             results[scene_label]['count'] = {}
             results[scene_label]['count']['Ncorr'] = self.scene_wise[scene_label]['Ncorr']
             results[scene_label]['count']['Nref'] = self.scene_wise[scene_label]['Nref']
             results[scene_label]['count']['Nsys'] = self.scene_wise[scene_label]['Nsys']
             results[scene_label]['accuracy'] = {}
-            results[scene_label]['accuracy']['accuracy'] = self.scene_wise[scene_label]['Ncorr'] / self.scene_wise[scene_label]['Nref']
+            results[scene_label]['accuracy']['accuracy'] = metric.accuracy_corr(Ncorr=self.scene_wise[scene_label]['Ncorr'],
+                                                                                N=self.scene_wise[scene_label]['Nref'])
         return results
 
     def results_class_wise_average_metrics(self):
