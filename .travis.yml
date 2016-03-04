@@ -2,14 +2,18 @@ language:
     - python
 python:
     - "2.7"
-before_install:
-    - "pip install python-coveralls"
+
+notifications:
+  email: false
 
 virtualenv:
   system_site_packages: true
 
+
 before_install:
- - sudo apt-get install -qq python-scipy
+    - "sudo apt-get install -qq python-scipy"
+    - "pip install python-coveralls"
+
 
 # command to install dependencies
 install:
