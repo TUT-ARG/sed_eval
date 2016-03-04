@@ -1,6 +1,9 @@
 ``sed_eval`` - Evaluation toolbox for Sound Event Detection
 ===========================================================
 
+- Toni Heittola (toni.heittola@tut.fi, `GitHub <https://github.com/toni-heittola>`_, `Home <http://www.cs.tut.fi/~heittolt/>`_)
+- Annamaria Mesaros (annamaria.mesaros@tut.fi, `Home <http://www.cs.tut.fi/~mesaros/>`_)
+
 .. figure:: _static/evaluation_overview.png
     :target: _static/evaluation_overview.png
     :align: center
