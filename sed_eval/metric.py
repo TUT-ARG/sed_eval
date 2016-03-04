@@ -222,6 +222,31 @@ def accuracy(Ntp, Ntn, Nfp, Nfn, eps=numpy.spacing(1)):
     return (Ntp + Ntn) / (Ntp + Ntn + Nfn + Nfp + eps)
 
 
+def accuracy_corr(Ncorr, N, eps=numpy.spacing(1)):
+    """Accuracy
+
+    Parameters
+    ----------
+    Ncorr : int >= 0
+        Number of correct items
+
+    N : int >= 0
+        Number of all items
+
+    eps : float
+        eps
+        (Default value=numpy.spacing(1))
+
+    Returns
+    -------
+    acc: float
+        Accuracy
+
+    """
+
+    return (Ncorr) / (N + eps)
+
+
 def accuracy2(Ntp, Nfp, Nfn, eps=numpy.spacing(1)):
     """Accuracy
 
