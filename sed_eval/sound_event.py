@@ -1120,7 +1120,7 @@ class EventBasedMetrics(SoundEventMetrics):
 
         Parameters
         ----------
-            Nothing
+        Nothing
 
         Returns
         -------
