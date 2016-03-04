@@ -1,16 +1,15 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-with open('README.md') as f:
-    long_description = f.read()
+long_description = open('README.rst').read()
 
 setup(
     name='sed_eval',
-    version='0.1',
+    version='0.1.0',
     description='Evaluation toolbox for Sound Event Detection',
     author='Toni Heittola',
     author_email='toni.heittola@gmail.com',
     url='https://github.com/TUT-ARG/sed_eval',
-    packages=['sed_eval'],
+    packages=find_packages(),
     long_description=long_description,
     classifiers=[
         "License :: OSI Approved :: MIT License",
