@@ -1,8 +1,11 @@
-sed_eval -- Evaluation toolbox for Sound Event Detection
-========================================================
+sed_eval - Evaluation toolbox for Sound Event Detection
+=======================================================
 
-[![Build Status](https://travis-ci.org/TUT-ARG/sed_eval.svg?branch=master)](https://travis-ci.org/TUT-ARG/sed_eval)
-[![Coverage Status](https://coveralls.io/repos/github/TUT-ARG/sed_eval/badge.svg?branch=master)](https://coveralls.io/github/TUT-ARG/sed_eval?branch=master)
+.. image:: https://travis-ci.org/TUT-ARG/sed_eval.svg?branch=master
+    :target: https://travis-ci.org/TUT-ARG/sed_eval
+
+.. image:: https://coveralls.io/repos/github/TUT-ARG/sed_eval/badge.svg?branch=master 
+    :target: https://coveralls.io/github/TUT-ARG/sed_eval?branch=master
 
 sed_eval is an open source Python toolbox which provides a standardized, 
 and transparent way to evaluate sound event detection systems. 
@@ -42,4 +45,4 @@ The toolbox is tested with Python 2.7.10.
 License
 =======
 
-Code released under [the MIT license](https://github.com/TUT-ARG/sed_eval/tree/master/LICENSE.txt). 
+Code released under `the MIT license <https://github.com/TUT-ARG/sed_eval/tree/master/LICENSE.txt>`_.
