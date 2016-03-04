@@ -23,25 +23,21 @@ See http://tut-arg.github.io/sed_eval for manual and tutorials.
 Installation instructions
 =========================
 
-The latest stable release is available on PyPI, and you can install with pip:
+The latest stable release is available on PyPI, and you can install with pip::
 
-``
-pip install sed_eval
-``
+    pip install sed_eval
 
-Alternatively you can download or clone toolbox and use ``pip`` to handle dependencies:
+Alternatively you can download or clone toolbox and use ``pip`` to handle dependencies::
 
-``
-unzip sed_eval.zip
-pip install -e sed_eval
-``
+    unzip sed_eval.zip
+    pip install -e sed_eval
 
-or
 
-``
-git clone https://github.com/TUT-ARG/sed_eval.git
-pip install -e sed_eval
-``
+or::
+
+    git clone https://github.com/TUT-ARG/sed_eval.git
+    pip install -e sed_eval
+
 
 Dependencies
 ------------
