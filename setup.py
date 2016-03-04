@@ -19,7 +19,6 @@ setup(
         "Topic :: Multimedia :: Sound/Audio :: Analysis",
         "Programming Language :: Python :: 2.7",
     ],
-    download_url='https://github.com/TUT-ARG/sed_eval/tarball/v0.1.0',
     keywords=['audio analysis', 'sound event detection', 'dsp'],
     license='MIT',
     install_requires=[
