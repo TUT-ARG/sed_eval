@@ -12,9 +12,8 @@ and transparent way to evaluate sound event detection systems.
 
 Authors
 
-- Toni Heittola (toni.heittola@tut.fi, `home page <http://www.cs.tut.fi/~heittolt/>`_)
+- Toni Heittola (toni.heittola@tut.fi, `GitHub <https://github.com/toni-heittola>`_, `home page <http://www.cs.tut.fi/~heittolt/>`_)
 - Annamaria Mesaros (annamaria.mesaros@tut.fi, `home page <http://www.cs.tut.fi/~mesaros/>`_)
-
 
 Documentation
 =============
