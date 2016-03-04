@@ -1,0 +1,17 @@
+README.rst
+setup.cfg
+setup.py
+sed_eval/__init__.py
+sed_eval/io.py
+sed_eval/metric.py
+sed_eval/scene.py
+sed_eval/sound_event.py
+sed_eval.egg-info/PKG-INFO
+sed_eval.egg-info/SOURCES.txt
+sed_eval.egg-info/dependency_links.txt
+sed_eval.egg-info/requires.txt
+sed_eval.egg-info/top_level.txt
+sed_eval/util/__init__.py
+sed_eval/util/event_list.py
+sed_eval/util/event_roll.py
+sed_eval/util/scene_list.py

@@ -1,0 +1,89 @@
+# ==========================================================
+# Flow
+# ==========================================================
+flow:
+  initialize: true
+  extract_features: true
+  feature_normalizer: true
+  train_system: true
+  test_system: true
+  evaluate_system: true
+
+# ==========================================================
+# General
+# ==========================================================
+general:
+  development_dataset: TUTSoundEvents_2016_DevelopmentSet
+  challenge_dataset: TUTSoundEvents_2016_EvaluationSet
+
+  overwrite: false              # Overwrite previously stored data 
+
+# ==========================================================
+# Paths
+# ==========================================================
+path:
+  data: data/
+
+  base: system/baseline_dcase2016_task3/
+  features: features/
+  feature_normalizers: feature_normalizers/
+  models: acoustic_models/
+  results: evaluation_results/
+
+  challenge_results: challenge_submission/task_3_sound_event_detection_in_real_life_audio/
+
+# ==========================================================
+# Feature extraction
+# ==========================================================
+features:
+  fs: 44100
+  win_length_seconds: 0.04
+  hop_length_seconds: 0.02
+
+  include_mfcc0: false
+  include_delta: true
+  include_acceleration: true
+
+  mfcc:
+    window: hamming_asymmetric  # [hann_asymmetric, hamming_asymmetric]
+    n_mfcc: 20                  # Number of MFCC coefficients
+    n_mels: 40                  # Number of MEL bands used
+    n_fft: 2048                 # FFT length
+    fmin: 0                     # Minimum frequency when constructing MEL bands
+    fmax: 22050                 # Maximum frequency when constructing MEL band
+    htk: false                  # Switch for HTK-styled MEL-frequency equation
+
+  mfcc_delta:
+    width: 9
+
+  mfcc_acceleration:
+    width: 9
+
+# ==========================================================
+# Classifier
+# ==========================================================
+classifier:
+  method: gmm                   # The system supports only gmm
+  parameters: !!null            # Parameters are copied from classifier_parameters based on defined method
+
+classifier_parameters:
+  gmm:
+    n_components: 16            # Number of Gaussian components
+    covariance_type: diag       # [diag|full] Diagonal or full covariance matrix
+    random_state: 0
+    thresh: !!null
+    tol: 0.001
+    min_covar: 0.001
+    n_iter: 40
+    n_init: 1
+    params: wmc
+    init_params: wmc
+
+# ==========================================================
+# Detector
+# ==========================================================
+detector:
+  decision_threshold: 160.0
+  smoothing_window_length: 1.0  # seconds
+  minimum_event_length: 0.1     # seconds
+  minimum_event_gap: 0.1        # seconds

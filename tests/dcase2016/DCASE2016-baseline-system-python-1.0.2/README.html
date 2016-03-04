@@ -1,0 +1,1597 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>README</title></head><body><article class="markdown-body"><h1 id="dcase2016-baseline-system"><a name="user-content-dcase2016-baseline-system" href="#dcase2016-baseline-system" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>DCASE2016 Baseline system</h1>
+<p><a href="http://arg.cs.tut.fi/">Audio Research Group / Tampere University of Technology</a></p>
+<p><em>Python implementation</em></p>
+<p>Systems:<br />
+- Task 1 - Acoustic scene classification<br />
+- Task 3 - Sound event detection in real life audio</p>
+<p>Authors<br />
+- Toni Heittola (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#111;&#110;&#105;&#46;&#104;&#101;&#105;&#116;&#116;&#111;&#108;&#97;&#64;&#116;&#117;&#116;&#46;&#102;&#105;">&#116;&#111;&#110;&#105;&#46;&#104;&#101;&#105;&#116;&#116;&#111;&#108;&#97;&#64;&#116;&#117;&#116;&#46;&#102;&#105;</a>, <a href="http://www.cs.tut.fi/~heittolt/">http://www.cs.tut.fi/~heittolt/</a>)<br />
+- Annamaria Mesaros (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#110;&#97;&#109;&#97;&#114;&#105;&#97;&#46;&#109;&#101;&#115;&#97;&#114;&#111;&#115;&#64;&#116;&#117;&#116;&#46;&#102;&#105;">&#97;&#110;&#110;&#97;&#109;&#97;&#114;&#105;&#97;&#46;&#109;&#101;&#115;&#97;&#114;&#111;&#115;&#64;&#116;&#117;&#116;&#46;&#102;&#105;</a>, <a href="http://www.cs.tut.fi/~mesaros/">http://www.cs.tut.fi/~mesaros/</a>)<br />
+- Tuomas Virtanen (<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#117;&#111;&#109;&#97;&#115;&#46;&#118;&#105;&#114;&#116;&#97;&#110;&#101;&#110;&#64;&#116;&#117;&#116;&#46;&#102;&#105;">&#116;&#117;&#111;&#109;&#97;&#115;&#46;&#118;&#105;&#114;&#116;&#97;&#110;&#101;&#110;&#64;&#116;&#117;&#116;&#46;&#102;&#105;</a>, <a href="http://www.cs.tut.fi/~tuomasv/">http://www.cs.tut.fi/~tuomasv/</a>)</p>
+<h1 id="table-of-contents"><a name="user-content-table-of-contents" href="#table-of-contents" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Table of Contents</h1>
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-installation">Installation</a></li>
+<li><a href="#3-usage">Usage</a></li>
+<li><a href="#4-system-blocks">System blocks</a></li>
+<li><a href="#5-system-evaluation">System evaluation</a></li>
+<li><a href="#6-system-parameters">System parameters</a></li>
+<li><a href="#7-changelog">Changelog</a></li>
+<li><a href="#8-license">License</a></li>
+</ol>
+<h1 id="1-introduction"><a name="user-content-1-introduction" href="#1-introduction" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1. Introduction</h1>
+<p>This document describes the Python implementation of the baseline systems for the <a href="http://www.cs.tut.fi/sgn/arg/dcase2016/">Detection and Classification of Acoustic Scenes and Events 2016 (DCASE2016) challenge</a> <strong><a href="#11-acoustic-scene-classification">tasks 1</a></strong> and <strong><a href="#12-sound-event-detection">task 3</a></strong>. The challenge consists of four tasks:</p>
+<ol>
+<li><a href="http://www.cs.tut.fi/sgn/arg/dcase2016/task-acoustic-scene-classification">Acoustic scene classification</a></li>
+<li><a href="http://www.cs.tut.fi/sgn/arg/dcase2016/task-sound-event-detection-in-synthetic-audio">Sound event detection in synthetic audio</a></li>
+<li><a href="http://www.cs.tut.fi/sgn/arg/dcase2016/task-sound-event-detection-in-real-life-audio">Sound event detection in real life audio</a></li>
+<li><a href="http://www.cs.tut.fi/sgn/arg/dcase2016/task-audio-tagging">Domestic audio tagging</a></li>
+</ol>
+<p>The baseline systems for task 1 and 3 shares the same basic approach: <a href="https://en.wikipedia.org/wiki/Mel-frequency_cepstrum">MFCC</a> based acoustic features and <a href="https://en.wikipedia.org/wiki/Mixture_model">GMM</a> based classifier. The main motivation to have similar approaches for both tasks was to provide low entry level and allow easy switching between the tasks. </p>
+<p>The dataset handling is hidden behind dataset access class, which should help DCASE challenge participants implementing their own systems.</p>
+<p>The <a href="https://github.com/TUT-ARG/DCASE2016-baseline-system-matlab">Matlab implementation</a> is also available. </p>
+<h4 id="11-acoustic-scene-classification"><a name="user-content-11-acoustic-scene-classification" href="#11-acoustic-scene-classification" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1. Acoustic scene classification</h4>
+<p>The acoustic features include MFCC static coefficients (with 0th coefficient), delta coefficients and acceleration coefficients. The system learns one acoustic model per acoustic scene class, and does the classification with maximum likelihood classification scheme. </p>
+<h4 id="12-sound-event-detection"><a name="user-content-12-sound-event-detection" href="#12-sound-event-detection" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2. Sound event detection</h4>
+<p>The acoustic features include MFCC static coefficients (0th coefficient omitted), delta coefficients and acceleration coefficients. The system has a binary classifier for each sound event class included. For the classifier, two acoustic models are trained from the mixture signals: one with positive examples (target sound event active) and one with negative examples (target sound event non-active). The classification is done between these two models as likelihood ratio. Post-processing is applied to get sound event detection output. </p>
+<h1 id="2-installation"><a name="user-content-2-installation" href="#2-installation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2. Installation</h1>
+<p>The systems are developed for <a href="https://www.python.org/">Python 2.7.0</a>. Currently, the baseline system is tested only with Linux operating system. </p>
+<p>Run to ensure that all external modules are installed</p>
+<pre><code>pip install -r requirements.txt
+</code></pre>
+<p><strong>External modules required</strong></p>
+<p><a href="http://www.numpy.org/"><em>numpy</em></a>, <a href="http://www.scipy.org/"><em>scipy</em></a>, <a href="http://scikit-learn.org/"><em>scikit-learn</em></a><br />
+<code>pip install numpy scipy scikit-learn</code></p>
+<p>Scikit-learn (version &gt;= 0.16) is required for the machine learning implementations.</p>
+<p><a href="http://pyyaml.org/"><em>PyYAML</em></a><br />
+<code>pip install pyyaml</code></p>
+<p>PyYAML is required for handling the configuration files.</p>
+<p><a href="https://github.com/bmcfee/librosa"><em>librosa</em></a><br />
+<code>pip install librosa</code></p>
+<p>Librosa is required for the feature extraction.</p>
+<h1 id="3-usage"><a name="user-content-3-usage" href="#3-usage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3. Usage</h1>
+<p>For each task there is separate executable (.py file):</p>
+<ol>
+<li><em>task1_scene_classification.py</em>, Acoustic scene classification</li>
+<li><em>task3_sound_event_detection_in_real_life_audio.py</em>, Real life audio sound event detection</li>
+</ol>
+<p>Each system has two operating modes: <strong>Development mode</strong> and <strong>Challenge mode</strong>. </p>
+<p>All the usage parameters are shown by <code>python task1_scene_classification.py -h</code> and <code>python task3_sound_event_detection_in_real_life_audio.py -h</code></p>
+<p>The system parameters are defined in <code>task1_scene_classification.yaml</code> and <code>task3_sound_event_detection_in_real_life_audio.yaml</code>. </p>
+<p>With default parameter settings, the system will download needed dataset from Internet and extract it under directory <code>data</code> (storage path is controlled with parameter <code>path-&gt;data</code>). </p>
+<h4 id="development-mode"><a name="user-content-development-mode" href="#development-mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Development mode</h4>
+<p>In this mode, the system is trained and evaluated with the development dataset. This is the default operating mode. </p>
+<p>To run the system in this mode:<br />
+<code>python task1_scene_classification.py</code> <br />
+or <code>python task1_scene_classification.py -development</code>.</p>
+<h4 id="challenge-mode"><a name="user-content-challenge-mode" href="#challenge-mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Challenge mode</h4>
+<p>In this mode, the system is trained with the provided development dataset and the evaluation dataset is run through the developed system. Output files are generated in correct format for the challenge submission. The system ouput is saved in the path specified with the parameter: <code>path-&gt;challenge_results</code>.</p>
+<p>To run the system in this mode:<br />
+<code>python task1_scene_classification.py -challenge</code>.</p>
+<h1 id="4-system-blocks"><a name="user-content-4-system-blocks" href="#4-system-blocks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4. System blocks</h1>
+<p>The system implements following blocks:</p>
+<ol>
+<li>
+<p>Dataset initialization <br />
+  - Downloads the dataset from the Internet if needed<br />
+  - Extracts the dataset package if needed<br />
+  - Makes sure that the meta files are appropriately formated</p>
+</li>
+<li>
+<p>Feature extraction (<code>do_feature_extraction</code>)<br />
+  - Goes through all the training material and extracts the acoustic features<br />
+  - Features are stored file-by-file on the local disk (pickle files)</p>
+</li>
+<li>
+<p>Feature normalization (<code>do_feature_normalization</code>)<br />
+  - Goes through the training material in evaluation folds, and calculates global mean and std of the data.<br />
+  - Stores the normalization factors (pickle files)</p>
+</li>
+<li>
+<p>System training (<code>do_system_training</code>)<br />
+  - Trains the system<br />
+  - Stores the trained models and feature normalization factors together on the local disk (pickle files)</p>
+</li>
+<li>
+<p>System testing (<code>do_system_testing</code>)<br />
+  - Goes through the testing material and does the classification / detection <br />
+  - Stores the results (text files)</p>
+</li>
+<li>
+<p>System evaluation (<code>do_system_evaluation</code>)<br />
+  - Reads the ground truth and the output of the system and calculates evaluation metrics</p>
+</li>
+</ol>
+<h1 id="5-system-evaluation"><a name="user-content-5-system-evaluation" href="#5-system-evaluation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5. System evaluation</h1>
+<h2 id="task-1-acoustic-scene-classification"><a name="user-content-task-1-acoustic-scene-classification" href="#task-1-acoustic-scene-classification" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Task 1 - Acoustic scene classification</h2>
+<h3 id="metrics"><a name="user-content-metrics" href="#metrics" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Metrics</h3>
+<p>The scoring of acoustic scene classification will be based on classification accuracy: the number of correctly classified segments among the total number of segments. Each segment is considered an independent test sample. </p>
+<h3 id="results"><a name="user-content-results" href="#results" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Results</h3>
+<h5 id="tut-acoustic-scenes-2016-development-set"><a name="user-content-tut-acoustic-scenes-2016-development-set" href="#tut-acoustic-scenes-2016-development-set" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>TUT Acoustic scenes 2016, development set</h5>
+<p><a href="https://zenodo.org/record/45739">Dataset</a></p>
+<p><em>Evaluation setup</em></p>
+<ul>
+<li>4 cross-validation folds, average classification accuracy over folds</li>
+<li>15 acoustic scene classes</li>
+<li>Classification unit: one file (30 seconds of audio).</li>
+</ul>
+<p><em>System parameters</em></p>
+<ul>
+<li>Frame size: 40 ms (with 50% hop size)</li>
+<li>Number of Gaussians per acoustic scene class model: 16 </li>
+<li>Feature vector: 20 MFCC static coefficients (including 0th) + 20 delta MFCC coefficients + 20 acceleration MFCC coefficients = 60 values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beach</td>
+<td>90.6 %</td>
+</tr>
+<tr>
+<td>Bus</td>
+<td>81.4 %</td>
+</tr>
+<tr>
+<td>Cafe/restaurant</td>
+<td>71.0 %</td>
+</tr>
+<tr>
+<td>Car</td>
+<td>94.1 %</td>
+</tr>
+<tr>
+<td>City center</td>
+<td>76.7 %</td>
+</tr>
+<tr>
+<td>Forest path</td>
+<td>96.4 %</td>
+</tr>
+<tr>
+<td>Grocery store</td>
+<td>87.8 %</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>79.4 %</td>
+</tr>
+<tr>
+<td>Library</td>
+<td>64.9 %</td>
+</tr>
+<tr>
+<td>Metro station</td>
+<td>80.3 %</td>
+</tr>
+<tr>
+<td>Office</td>
+<td>96.5 %</td>
+</tr>
+<tr>
+<td>Park</td>
+<td>40.3 %</td>
+</tr>
+<tr>
+<td>Residential area</td>
+<td>42.2 %</td>
+</tr>
+<tr>
+<td>Train</td>
+<td>63.1 %</td>
+</tr>
+<tr>
+<td>Tram</td>
+<td>63.4 %</td>
+</tr>
+<tr>
+<td><strong>Overall accuracy</strong></td>
+<td><strong>75.2 %</strong></td>
+</tr>
+</tbody>
+</table>
+<h5 id="dcase-2013-scene-classification-development-set"><a name="user-content-dcase-2013-scene-classification-development-set" href="#dcase-2013-scene-classification-development-set" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>DCASE 2013 Scene classification, development set</h5>
+<p><a href="http://c4dm.eecs.qmul.ac.uk/rdr/handle/123456789/29">Dataset</a></p>
+<p><em>Evaluation setup</em></p>
+<p>- 5 fold average<br />
+- 10 acoustic scene classes<br />
+- Classification unit: one file (30 seconds of audio).</p>
+<p><em>System parameters</em></p>
+<ul>
+<li>Frame size: 40 ms (with 50% hop size)</li>
+<li>Number of Gaussians per acoustic scene class model: 16 </li>
+<li>Feature vector: 20 MFCC static coefficients (including 0th) + 20 delta MFCC coefficients + 20 acceleration MFCC coefficients = 60 values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bus</td>
+<td>93.3 %</td>
+</tr>
+<tr>
+<td>Busy street</td>
+<td>80.0 %</td>
+</tr>
+<tr>
+<td>Office</td>
+<td>86.7 %</td>
+</tr>
+<tr>
+<td>Open air market</td>
+<td>73.3 %</td>
+</tr>
+<tr>
+<td>Park</td>
+<td>26.7 %</td>
+</tr>
+<tr>
+<td>Quiet street</td>
+<td>53.3 %</td>
+</tr>
+<tr>
+<td>Restaurant</td>
+<td>40.0 %</td>
+</tr>
+<tr>
+<td>Supermarket</td>
+<td>26.7 %</td>
+</tr>
+<tr>
+<td>Tube</td>
+<td>66.7 %</td>
+</tr>
+<tr>
+<td>Tube station</td>
+<td>53.3 %</td>
+</tr>
+<tr>
+<td><strong>Overall accuracy</strong></td>
+<td><strong>60.0 %</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="task-3-real-life-audio-sound-event-detection"><a name="user-content-task-3-real-life-audio-sound-event-detection" href="#task-3-real-life-audio-sound-event-detection" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Task 3 - Real life audio sound event detection</h2>
+<h3 id="metrics_1"><a name="user-content-metrics_1" href="#metrics_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Metrics</h3>
+<p><strong>Segment-based metrics</strong></p>
+<p>Segment based evaluation is done in a fixed time grid, using segments of one second length to compare the ground truth and the system output. </p>
+<ul>
+<li>
+<p><strong>Total error rate (ER)</strong> is the main metric for this task. Error rate as defined in <a href="https://www.ee.columbia.edu/~dpwe/pubs/PoliE06-piano.pdf">Poliner2007</a> will be evaluated in one-second segments over the entire test set. </p>
+</li>
+<li>
+<p><strong>F-score</strong> is calculated over all test data based on the total number of false positive, false negatives and true positives. </p>
+</li>
+</ul>
+<p><strong>Event-based metrics</strong></p>
+<p>Event-based evaluation considers true positives, false positives and false negatives with respect to event instances. </p>
+<p><strong>Definition</strong>: An event in the system output is considered correctly detected if its temporal position is overlapping with the temporal position of an event with the same label in the ground truth. A tolerance is allowed for the onset and offset (200 ms for onset and 200 ms or half length for offset)</p>
+<ul>
+<li>
+<p><strong>Error rate</strong> calculated as described in <a href="https://www.ee.columbia.edu/~dpwe/pubs/PoliE06-piano.pdf">Poliner2007</a> over all test data based on the total number of insertions, deletions and substitutions.</p>
+</li>
+<li>
+<p><strong>F-score</strong> is calculated over all test data based on the total number of false positive, false negatives and true positives.</p>
+</li>
+</ul>
+<p>Detailed description of metrics can be found from <a href="http://www.cs.tut.fi/sgn/arg/dcase2016/sound-event-detection-metrics">DCASE2016 website</a>.</p>
+<h3 id="results_1"><a name="user-content-results_1" href="#results_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Results</h3>
+<h5 id="tut-sound-events-2016-development-set"><a name="user-content-tut-sound-events-2016-development-set" href="#tut-sound-events-2016-development-set" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>TUT Sound events 2016, development set</h5>
+<p><a href="https://zenodo.org/record/45759">Dataset</a></p>
+<p><em>Evaluation setup</em></p>
+<ul>
+<li>4 cross-validation folds</li>
+</ul>
+<p><em>System parameters</em></p>
+<ul>
+<li>Frame size: 40 ms (with 50% hop size)</li>
+<li>Number of Gaussians per sound event model (positive and negative): 16 </li>
+<li>Feature vector: 20 MFCC static coefficients (excluding 0th) + 20 delta MFCC coefficients + 20 acceleration MFCC coefficients = 60 values</li>
+<li>Decision_threshold: 140</li>
+</ul>
+<p><em>Segment based metrics - overall</em></p>
+<table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>ER</th>
+<th>ER / S</th>
+<th>ER / D</th>
+<th>ER / I</th>
+<th>F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>0.95</td>
+<td>0.09</td>
+<td>0.80</td>
+<td>0.06</td>
+<td>18.1 %</td>
+</tr>
+<tr>
+<td>Residential area</td>
+<td>0.83</td>
+<td>0.07</td>
+<td>0.69</td>
+<td>0.08</td>
+<td>35.2 %</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td><strong>0.89 </strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>26.6 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Segment based metrics - class-wise</em></p>
+<table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>ER</th>
+<th>F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>1.05</td>
+<td>11.6 %</td>
+</tr>
+<tr>
+<td>Residential area</td>
+<td>1.04</td>
+<td>20.2 %</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td><strong>1.05 </strong></td>
+<td><strong>15.9 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Event based metrics - overall</em></p>
+<table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>ER</th>
+<th>F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>1.33</td>
+<td>2.5 %</td>
+</tr>
+<tr>
+<td>Residential area</td>
+<td>1.98</td>
+<td>1.6 %</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td><strong>1.66 </strong></td>
+<td><strong>2.0 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Event based metrics - class-wise</em></p>
+<table>
+<thead>
+<tr>
+<th>Scene</th>
+<th>ER</th>
+<th>F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td>1.31</td>
+<td>2.2 %</td>
+</tr>
+<tr>
+<td>Residential area</td>
+<td>1.99</td>
+<td>0.7 %</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td><strong>1.65 </strong></td>
+<td><strong>1.4 %</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="6-system-parameters"><a name="user-content-6-system-parameters" href="#6-system-parameters" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6. System parameters</h1>
+<p>All the parameters are set in <code>task1_scene_classification.yaml</code>, and <code>task3_sound_event_detection_in_real_life_audio.yaml</code>.</p>
+<p><strong>Controlling the system flow</strong></p>
+<p>The blocks of the system can be controlled through the configuration file. Usually all of them can be kept on. </p>
+<pre><code>flow:
+  initialize: true
+  extract_features: true
+  feature_normalizer: true
+  train_system: true
+  test_system: true
+  evaluate_system: true
+</code></pre>
+<p><strong>General parameters</strong></p>
+<p>The selection of used dataset.</p>
+<pre><code>general:
+  development_dataset: TUTSoundEvents_2016_DevelopmentSet
+  challenge_dataset: TUTSoundEvents_2016_EvaluationSet
+
+  overwrite: false                                          # Overwrite previously stored data
+</code></pre>
+<dl>
+<dt><code>development_dataset: TUTSoundEvents_2016_DevelopmentSet</code></dt>
+<dd>The dataset handler class used while running the system in development mode. If one wants to handle a new dataset, inherit a new class from the Dataset class (<code>src/dataset.py</code>).</dd>
+<dt><code>challenge_dataset: TUTSoundEvents_2016_EvaluationSet</code></dt>
+<dd>The dataset handler class used while running the system in challenge mode. If one wants to handle a new dataset, inherit a new class from the Dataset class (<code>src/dataset.py</code>).</dd>
+</dl>
+<p>Available dataset handler classes:</p>
+<p><strong>DCASE 2016</strong></p>
+<ul>
+<li>TUTAcousticScenes_2016_DevelopmentSet</li>
+<li>TUTAcousticScenes_2016_EvaluationSet</li>
+<li>TUTSoundEvents_2016_DevelopmentSet</li>
+<li>TUTSoundEvents_2016_EvaluationSet</li>
+</ul>
+<p><strong>DCASE 2013</strong></p>
+<ul>
+<li>DCASE2013_Scene_DevelopmentSet</li>
+<li>DCASE2013_Scene_EvaluationSet</li>
+<li>DCASE2013_Event_DevelopmentSet</li>
+<li>DCASE2013_Event_EvaluationSet</li>
+</ul>
+<dl>
+<dt><code>overwrite: false</code></dt>
+<dd>Switch to allow the system always to overwrite existing data on disk. </dd>
+</dl>
+<p><strong>System paths</strong></p>
+<p>This section contains the storage paths.      </p>
+<pre><code>path:
+  data: data/
+
+  base: system/baseline_dcase2016_task1/
+  features: features/
+  feature_normalizers: feature_normalizers/
+  models: acoustic_models/
+  results: evaluation_results/
+
+  challenge_results: challenge_submission/task_1_acoustic_scene_classification/
+</code></pre>
+<p>These parameters defines the folder-structure to store acoustic features, feature normalization data, acoustic models and evaluation results.      </p>
+<dl>
+<dt><code>data: data/</code></dt>
+<dd>Defines the path where the dataset data is downloaded and stored. Path can be relative or absolute. </dd>
+<dt><code>base: system/baseline_dcase2016_task1/</code></dt>
+<dd>Defines the base path where the system stores the data. Other paths are stored under this path. If specified directory does not exist it is created. Path can be relative or absolute. </dd>
+<dt><code>challenge_results: challenge_submission/task_1_acoustic_scene_classification/</code></dt>
+<dd>Defines where the system output is stored while running the system in challenge mode. </dd>
+</dl>
+<p><strong>Feature extraction</strong></p>
+<p>This section contains the feature extraction related parameters. </p>
+<pre><code>features:
+  fs: 44100
+  win_length_seconds: 0.04
+  hop_length_seconds: 0.02
+
+  include_mfcc0: true           #
+  include_delta: true           #
+  include_acceleration: true    #
+
+  mfcc:
+    window: hamming_asymmetric  # [hann_asymmetric, hamming_asymmetric]
+    n_mfcc: 20                  # Number of MFCC coefficients
+    n_mels: 40                  # Number of MEL bands used
+    n_fft: 2048                 # FFT length
+    fmin: 0                     # Minimum frequency when constructing MEL bands
+    fmax: 22050                 # Maximum frequency when constructing MEL band
+    htk: false                  # Switch for HTK-styled MEL-frequency equation
+
+  mfcc_delta:
+    width: 9
+
+  mfcc_acceleration:
+    width: 9
+</code></pre>
+<dl>
+<dt><code>fs: 44100</code></dt>
+<dd>Default sampling frequency. If given dataset does not fulfill this criteria the audio data is resampled.</dd>
+<dt><code>win_length_seconds: 0.04</code></dt>
+<dd>Feature extraction frame length in seconds.</dd>
+<dt><code>hop_length_seconds: 0.02</code></dt>
+<dd>Feature extraction frame hop-length in seconds.</dd>
+<dt><code>include_mfcc0: true</code></dt>
+<dd>Switch to include zeroth coefficient of static MFCC in the feature vector</dd>
+<dt><code>include_delta: true</code></dt>
+<dd>Switch to include delta coefficients to feature vector. Zeroth MFCC is always included in the delta coefficients. The width of delta-window is set in <code>mfcc_delta-&gt;width: 9</code> </dd>
+<dt><code>include_acceleration: true</code></dt>
+<dd>Switch to include acceleration (delta-delta) coefficients to feature vector. Zeroth MFCC is always included in the delta coefficients. The width of acceleration-window is set in <code>mfcc_acceleration-&gt;width: 9</code> </dd>
+<dt><code>mfcc-&gt;n_mfcc: 16</code></dt>
+<dd>Number of MFCC coefficients</dd>
+<dt><code>mfcc-&gt;fmax: 22050</code></dt>
+<dd>Maximum frequency for MEL band. Usually, this is set to a half of the sampling frequency.</dd>
+</dl>
+<p><strong>Classification</strong></p>
+<p>This section contains the frame classification related parameters. </p>
+<pre><code>classifier:
+  method: gmm                   # The system supports only gmm
+  parameters: !!null            # Parameters are copied from classifier_parameters based on defined method
+
+classifier_parameters:
+  gmm:
+    n_components: 16            # Number of Gaussian components
+    covariance_type: diag       # Diagonal or full covariance matrix
+    random_state: 0
+    thresh: !!null
+    tol: 0.001
+    min_covar: 0.001
+    n_iter: 40
+    n_init: 1
+    params: wmc
+    init_params: wmc
+</code></pre>
+<dl>
+<dt><code>classifier_parameters-&gt;gmm-&gt;n_components: 16</code></dt>
+<dd>Number of Gaussians used in the modeling.</dd>
+</dl>
+<p>In order to add new classifiers to the system, add parameters under classifier_parameters with new tag. Set <code>classifier-&gt;method</code> and add appropriate code where <code>classifier_method</code> variable is used system block API (look into <code>do_system_training</code> and <code>do_system_testing</code> methods). In addition to this, one might want to modify filename methods (<code>get_model_filename</code> and <code>get_result_filename</code>) to allow multiple classifier methods co-exist in the system.</p>
+<p><strong>Detector</strong></p>
+<p>This section contains the sound event detection related parameters.</p>
+<pre><code>detector:
+  decision_threshold: 140.0
+  smoothing_window_length: 1.0  # seconds
+  minimum_event_length: 0.1     # seconds
+  minimum_event_gap: 0.1        # seconds
+</code></pre>
+<dl>
+<dt><code>decision_threshold: 140.0</code></dt>
+<dd>Decision threshold used to do final classification. This can be used to control the sensitivity of the system. With log-likelihoods: <code>event_activity = (positive - negative) &gt; decision_threshold</code></dd>
+<dt><code>smoothing_window_length: 1.0</code></dt>
+<dd>Size of sliding accumulation window (in seconds) used before frame-wise classification decision  </dd>
+<dt><code>minimum_event_length: 0.1</code></dt>
+<dd>Minimum length (in seconds) of outputted events. Events with shorter length than given are filtered out from the system output.</dd>
+<dt><code>minimum_event_gap: 0.1</code></dt>
+<dd>Minimum gap (in seconds) between events from same event class in the output. Consecutive events (event with same event label) having shorter gaps between them than set parameter are merged together.</dd>
+</dl>
+<h1 id="7-changelog"><a name="user-content-7-changelog" href="#7-changelog" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>7. Changelog</h1>
+<h4 id="10-2016-02-08"><a name="user-content-10-2016-02-08" href="#10-2016-02-08" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.0 / 2016-02-08</h4>
+<ul>
+<li>Initial commit</li>
+</ul>
+<h1 id="8-license"><a name="user-content-8-license" href="#8-license" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>8. License</h1>
+<p>See file <a href="EULA.pdf">EULA.pdf</a></p></article></body></html>
