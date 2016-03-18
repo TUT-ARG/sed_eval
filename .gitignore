@@ -49,3 +49,5 @@ tests/_dev/*
 docs/generated/
 
 tests/dcase2016/*
+
+.nfs*
