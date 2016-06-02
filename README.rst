@@ -46,6 +46,13 @@ The toolbox is tested with Python 2.7.10.
 
 - numpy >= 1.7.0
 
+Citing
+======
+
+If you use sed_eval in a research project, please cite the following paper:
+
+Annamaria Mesaros, Toni Heittola, and Tuomas Virtanen, "Metrics for polyphonic sound event detection", Applied Sciences, 6(6):162, 2016 [`HTML<http://www.mdpi.com/2076-3417/6/6/162>_`][`PDF<http://www.mdpi.com/2076-3417/6/6/162/pdf>_`]
+
 License
 =======
 
