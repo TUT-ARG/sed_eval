@@ -19,6 +19,13 @@ The toolbox can be used in any of the following ways:
 * By using the included evaluator scripts directly (see :ref:`install` and :ref:`evaluators`). This is suitable if the system to be evaluated is implemented using some other platform than Python.
 * By importing it and calling it from your own Python code (see :ref:`install` and :ref:`sed_eval_quickstart`)
 
+Citing
+------
+
+If you use ``sed_eval`` in a research project, please cite the following paper:
+
+Annamaria Mesaros, Toni Heittola, and Tuomas Virtanen, "Metrics for polyphonic sound event detection", Applied Sciences, 6(6):162, 2016 [`HTML <http://www.mdpi.com/2076-3417/6/6/162>`_][`PDF <http://www.mdpi.com/2076-3417/6/6/162/pdf>`_]
+
 .. _installation:
 
 Getting started
