@@ -16,6 +16,7 @@ Functions for loading annotations from files in various formats.
 
 import util.event_list
 import csv
+import os
 
 
 def isfloat(value):
@@ -80,6 +81,8 @@ def load_event_list(filename):
     else:
         input_file = open(filename, 'rt')
         file_open = True
+        if os.path.getsize(filename) == 0:
+            return util.event_list.EventList(data)
 
     try:
         dialect = csv.Sniffer().sniff(input_file.readline(), [',', ';', '\t'])
