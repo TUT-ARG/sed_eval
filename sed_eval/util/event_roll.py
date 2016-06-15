@@ -36,14 +36,14 @@ def event_list_to_event_roll(event_list, event_label_list=None, time_resolution=
         event_label_list = unique_event_labels(event_list)
 
     # Initialize event roll
-    event_roll = numpy.zeros((math.ceil(max_offset_value * 1 / time_resolution) + 1, len(event_label_list)))
+    event_roll = numpy.zeros((int(math.ceil(max_offset_value * 1 / time_resolution) + 1), len(event_label_list)))
 
     # Fill-in event_roll
     for event in event_list:
         pos = event_label_list.index(event['event_label'])
 
-        onset = math.floor(event['event_onset'] * 1 / time_resolution)
-        offset = math.ceil(event['event_offset'] * 1 / time_resolution) + 1
+        onset = int(math.floor(event['event_onset'] * 1 / time_resolution))
+        offset = int(math.ceil(event['event_offset'] * 1 / time_resolution) + 1)
 
         event_roll[onset:offset, pos] = 1
 
