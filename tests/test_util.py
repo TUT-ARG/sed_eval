@@ -137,26 +137,28 @@ def test_event_list_to_event_roll():
 
     target_event_roll = numpy.array([
        [1.,  0.,  0.],  # 0
-       [1.,  1.,  0.],  # 1
-       [0.,  1.,  0.],  # 2
+       [0.,  1.,  0.],  # 1
+       [0.,  0.,  0.],  # 2
        [0.,  0.,  0.],  # 3
        [0.,  1.,  0.],  # 4
-       [1.,  1.,  0.],  # 5
+       [1.,  0.,  0.],  # 5
        [1.,  0.,  0.],  # 6
        [1.,  0.,  1.],  # 7
        [1.,  0.,  1.],  # 8
        [1.,  0.,  1.],  # 9
        [1.,  0.,  1.],  # 10
        [1.,  0.,  1.],  # 11
-       [1.,  0.,  1.],  # 12
+       [1.,  0.,  0.],  # 12
        [1.,  0.,  0.],  # 13
        [1.,  0.,  0.],  # 14
-       [1.,  0.,  0.]   # 15
     ])
 
     event_roll = sed_eval.util.event_list_to_event_roll(minimal_event_list,
                                                         event_label_list=['A', 'B', 'C'],
                                                         time_resolution=1.0)
+    print target_event_roll.T
+    print ""
+    print event_roll.T
     numpy.testing.assert_array_equal(target_event_roll, event_roll)
     nose.tools.assert_equal(event_roll.shape[0], target_event_roll.shape[0])
     nose.tools.assert_equal(event_roll.shape[1], target_event_roll.shape[1])
