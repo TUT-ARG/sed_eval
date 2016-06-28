@@ -7,7 +7,7 @@ import sed_eval
 
 # add DCASE2016 baseline system
 import sys
-sys.path.insert(0, 'dcase2016/DCASE2016-baseline-system-python-1.0.2/src')
+sys.path.insert(0, 'dcase2016/DCASE2016-baseline-system-python-1.0.6/src')
 from evaluation import DCASE2016_EventDetection_SegmentBasedMetrics, DCASE2016_EventDetection_EventBasedMetrics
 
 file_list = [
