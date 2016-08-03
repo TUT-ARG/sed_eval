@@ -397,27 +397,27 @@ class SoundEventMetrics(object):
 
         if event_wise_f_measure:
             event_wise_f_measure_dict = {
-                                         'f_measure': float(numpy.mean(event_wise_f_measure)),
-                                         'precision': float(numpy.mean(event_wise_precision)),
-                                         'recall': float(numpy.mean(event_wise_recall))
+                                         'f_measure': float(numpy.nanmean(event_wise_f_measure)),
+                                         'precision': float(numpy.nanmean(event_wise_precision)),
+                                         'recall': float(numpy.nanmean(event_wise_recall))
                                         }
         else:
             event_wise_f_measure_dict = {}
 
         if event_wise_error_rate:
             event_wise_error_rate_dict = {
-                                          'error_rate': float(numpy.mean(event_wise_error_rate)),
-                                          'deletion_rate': float(numpy.mean(event_wise_deletion_rate)),
-                                          'insertion_rate': float(numpy.mean(event_wise_insertion_rate))
+                                          'error_rate': float(numpy.nanmean(event_wise_error_rate)),
+                                          'deletion_rate': float(numpy.nanmean(event_wise_deletion_rate)),
+                                          'insertion_rate': float(numpy.nanmean(event_wise_insertion_rate))
                                          }
         else:
             event_wise_error_rate_dict = {}
 
         if event_wise_accuracy:
-            event_wise_accuracy_dict = {'sensitivity': float(numpy.mean(event_wise_sensitivity)),
-                                        'specificity': float(numpy.mean(event_wise_specificity)),
-                                        'balanced_accuracy': float(numpy.mean(event_wise_balanced_accuracy)),
-                                        'accuracy': float(numpy.mean(event_wise_accuracy))}
+            event_wise_accuracy_dict = {'sensitivity': float(numpy.nanmean(event_wise_sensitivity)),
+                                        'specificity': float(numpy.nanmean(event_wise_specificity)),
+                                        'balanced_accuracy': float(numpy.nanmean(event_wise_balanced_accuracy)),
+                                        'accuracy': float(numpy.nanmean(event_wise_accuracy))}
         else:
             event_wise_accuracy_dict = {}
 

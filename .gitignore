@@ -53,3 +53,4 @@ tests/dcase2016/*
 .nfs*
 tests/*.zip
 tests/DCASE2016-baseline-system-python*
+tests/dev/

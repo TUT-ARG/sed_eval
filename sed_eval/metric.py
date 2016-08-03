@@ -24,6 +24,7 @@
 
 import numpy
 
+
 # -- F-measure -- #
 def precision(Ntp, Nsys, eps=numpy.spacing(1)):
     """Precision.
@@ -49,7 +50,16 @@ def precision(Ntp, Nsys, eps=numpy.spacing(1)):
 
     """
 
-    return float(Ntp / (Nsys + eps))
+    if Nsys == 0:
+        # Handle special case when Nsys is zero
+        if Nsys == 0 and Ntp == 0:
+            # If there is no true positives return zero
+            return 0
+        else:
+            # Otherwise return Nan
+            return numpy.nan
+    else:
+        return float(Ntp / Nsys)
 
 
 def recall(Ntp, Nref, eps=numpy.spacing(1)):
@@ -76,7 +86,10 @@ def recall(Ntp, Nref, eps=numpy.spacing(1)):
 
     """
 
-    return float(Ntp / (Nref + eps))
+    if Nref == 0:
+        return numpy.nan
+    else:
+        return float(Ntp / Nref)
 
 
 def f_measure(precision, recall, beta=1.0):
@@ -328,6 +341,7 @@ def deletion_rate(Nref, Ndeletions, eps=numpy.spacing(1)):
         Deletion rate
         
     """
+
     return float(Ndeletions / (Nref + eps))
 
 
