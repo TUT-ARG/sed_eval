@@ -1006,7 +1006,7 @@ class EventBasedMetrics(SoundEventMetrics):
         # Number of correctly detected events
         for j in range(0, len(reference_event_list)):
             for i in range(0, len(estimated_event_list)):
-                if not sys_correct[i]: # skip already matched events
+                if not sys_correct[i]:  # skip already matched events
                     label_condition = reference_event_list[j]['event_label'] == estimated_event_list[i]['event_label']
 
                     if self.evaluate_onset:
@@ -1031,31 +1031,34 @@ class EventBasedMetrics(SoundEventMetrics):
 
         Ntp = numpy.sum(sys_correct)
 
-        sys_leftover = numpy.nonzero(numpy.negative(sys_correct))[0]
         ref_leftover = numpy.nonzero(numpy.negative(ref_correct))[0]
+        sys_leftover = numpy.nonzero(numpy.negative(sys_correct))[0]
 
         # Substitutions
         Nsubs = 0
+        sys_counted = numpy.zeros(Nsys, dtype=bool)
         for j in ref_leftover:
             for i in sys_leftover:
-                if self.evaluate_onset:
-                    onset_condition = self.validate_onset(reference_event=reference_event_list[j],
-                                                          estimated_event=estimated_event_list[i],
-                                                          t_collar=self.t_collar)
-                else:
-                    onset_condition = True
+                if not sys_counted[i]:
+                    if self.evaluate_onset:
+                        onset_condition = self.validate_onset(reference_event=reference_event_list[j],
+                                                              estimated_event=estimated_event_list[i],
+                                                              t_collar=self.t_collar)
+                    else:
+                        onset_condition = True
 
-                if self.evaluate_offset:
-                    offset_condition = self.validate_offset(reference_event=reference_event_list[j],
-                                                            estimated_event=estimated_event_list[i],
-                                                            t_collar=self.t_collar,
-                                                            percentage_of_length=self.percentage_of_length)
-                else:
-                    offset_condition = True
+                    if self.evaluate_offset:
+                        offset_condition = self.validate_offset(reference_event=reference_event_list[j],
+                                                                estimated_event=estimated_event_list[i],
+                                                                t_collar=self.t_collar,
+                                                                percentage_of_length=self.percentage_of_length)
+                    else:
+                        offset_condition = True
 
-                if onset_condition and offset_condition:
-                    Nsubs += 1
-                    break
+                    if onset_condition and offset_condition:
+                        sys_counted[i] = True
+                        Nsubs += 1
+                        break
 
         Nfp = Nsys - Ntp - Nsubs
         Nfn = Nref - Ntp - Nsubs
@@ -1083,27 +1086,30 @@ class EventBasedMetrics(SoundEventMetrics):
                 if estimated_event_list[i]['event_label'] == class_label:
                     Nsys += 1
 
+            sys_counted = numpy.zeros(len(estimated_event_list), dtype=bool)
             for j in range(0, len(reference_event_list)):
-                for i in range(0, len(estimated_event_list)):
-                    if reference_event_list[j]['event_label'] == class_label and estimated_event_list[i]['event_label'] == class_label:
-                        if self.evaluate_onset:
-                            onset_condition = self.validate_onset(reference_event=reference_event_list[j],
-                                                                  estimated_event=estimated_event_list[i],
-                                                                  t_collar=self.t_collar)
-                        else:
-                            onset_condition = True
+                if reference_event_list[j]['event_label'] == class_label:
+                    for i in range(0, len(estimated_event_list)):
+                        if estimated_event_list[i]['event_label'] == class_label and not sys_counted[i]:
+                            if self.evaluate_onset:
+                                onset_condition = self.validate_onset(reference_event=reference_event_list[j],
+                                                                      estimated_event=estimated_event_list[i],
+                                                                      t_collar=self.t_collar)
+                            else:
+                                onset_condition = True
 
-                        if self.evaluate_offset:
-                            offset_condition = self.validate_offset(reference_event=reference_event_list[j],
-                                                                    estimated_event=estimated_event_list[i],
-                                                                    t_collar=self.t_collar,
-                                                                    percentage_of_length=self.percentage_of_length)
-                        else:
-                            offset_condition = True
+                            if self.evaluate_offset:
+                                offset_condition = self.validate_offset(reference_event=reference_event_list[j],
+                                                                        estimated_event=estimated_event_list[i],
+                                                                        t_collar=self.t_collar,
+                                                                        percentage_of_length=self.percentage_of_length)
+                            else:
+                                offset_condition = True
 
-                        if onset_condition and offset_condition:
-                            Ntp += 1
-                            break
+                            if onset_condition and offset_condition:
+                                sys_counted[i] = True
+                                Ntp += 1
+                                break
 
             Nfp = Nsys - Ntp
             Nfn = Nref - Ntp
