@@ -7,7 +7,7 @@ import sed_eval
 
 
 def test_precision():
-    fealmost_equals(sed_eval.metric.precision(100, 100), 1)
+    nose.tools.assert_almost_equals(sed_eval.metric.precision(100, 100), 1)
     nose.tools.assert_almost_equals(sed_eval.metric.precision(10, 100), 0.1)
     nose.tools.assert_almost_equals(sed_eval.metric.precision(0, 100), 0)
 

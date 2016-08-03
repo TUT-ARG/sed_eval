@@ -51,15 +51,9 @@ def precision(Ntp, Nsys, eps=numpy.spacing(1)):
     """
 
     if Nsys == 0:
-        # Handle special case when Nsys is zero
-        if Nsys == 0 and Ntp == 0:
-            # If there is no true positives return zero
-            return 0
-        else:
-            # Otherwise return Nan
-            return numpy.nan
+        return numpy.nan
     else:
-        return float(Ntp / Nsys)
+        return Ntp / float(Nsys)
 
 
 def recall(Ntp, Nref, eps=numpy.spacing(1)):
@@ -89,7 +83,7 @@ def recall(Ntp, Nref, eps=numpy.spacing(1)):
     if Nref == 0:
         return numpy.nan
     else:
-        return float(Ntp / Nref)
+        return Ntp / float(Nref)
 
 
 def f_measure(precision, recall, beta=1.0):
