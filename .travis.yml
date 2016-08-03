@@ -24,6 +24,7 @@ install:
     - "pip install python-coveralls"
     - "pip install coveralls"
     - "pip install nose"
+    - "pip install scikit-learn"
     - "python setup.py develop"
 
 # command to run tests
