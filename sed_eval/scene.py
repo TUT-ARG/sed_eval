@@ -340,6 +340,6 @@ class SceneClassificationMetrics:
         """
 
         if len(self.accuracies_per_class.shape) == 2:
-            return {'accuracy': numpy.mean(self.accuracies_per_class[:, self.scene_label_list.index(scene_label)])}
+            return {'accuracy': float(numpy.mean(self.accuracies_per_class[:, self.scene_label_list.index(scene_label)]))}
         else:
-            return {'accuracy': numpy.mean(self.accuracies_per_class[self.scene_label_list.index(scene_label)])}
+            return {'accuracy': float(numpy.mean(self.accuracies_per_class[self.scene_label_list.index(scene_label)]))}

@@ -195,7 +195,7 @@ def balanced_accuracy(sensitivity, specificity, factor=0.5):
 
     """
 
-    return ((1-factor) * sensitivity) + (factor * specificity)
+    return float(((1-factor) * sensitivity) + (factor * specificity))
 
 
 def accuracy(Ntp, Ntn, Nfp, Nfn, eps=numpy.spacing(1)):
@@ -226,7 +226,7 @@ def accuracy(Ntp, Ntn, Nfp, Nfn, eps=numpy.spacing(1)):
 
     """
 
-    return (Ntp + Ntn) / (Ntp + Ntn + Nfn + Nfp + eps)
+    return float((Ntp + Ntn) / (Ntp + Ntn + Nfn + Nfp + eps))
 
 
 def accuracy_corr(Ncorr, N, eps=numpy.spacing(1)):
@@ -251,7 +251,7 @@ def accuracy_corr(Ncorr, N, eps=numpy.spacing(1)):
 
     """
 
-    return (Ncorr) / (N + eps)
+    return float((Ncorr) / (N + eps))
 
 
 def accuracy2(Ntp, Nfp, Nfn, eps=numpy.spacing(1)):
@@ -286,7 +286,7 @@ def accuracy2(Ntp, Nfp, Nfn, eps=numpy.spacing(1)):
 
     """
 
-    return (Ntp) / (Ntp + Nfn + Nfp + eps)
+    return float((Ntp) / (Ntp + Nfn + Nfp + eps))
 
 
 def substitution_rate(Nref, Nsubstitutions, eps=numpy.spacing(1)):
@@ -388,4 +388,4 @@ def error_rate(substitution_rate_value=0.0, deletion_rate_value=0.0, insertion_r
 
     """
 
-    return substitution_rate_value + deletion_rate_value + insertion_rate_value
+    return float(substitution_rate_value + deletion_rate_value + insertion_rate_value)
