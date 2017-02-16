@@ -2,6 +2,7 @@
 Unit tests for utils
 '''
 
+from __future__ import print_function, absolute_import
 import numpy
 import nose.tools
 import sed_eval
@@ -156,9 +157,9 @@ def test_event_list_to_event_roll():
     event_roll = sed_eval.util.event_list_to_event_roll(minimal_event_list,
                                                         event_label_list=['A', 'B', 'C'],
                                                         time_resolution=1.0)
-    print target_event_roll.T
-    print ""
-    print event_roll.T
+    print(target_event_roll.T)
+    print("")
+    print(event_roll.T)
     numpy.testing.assert_array_equal(target_event_roll, event_roll)
     nose.tools.assert_equal(event_roll.shape[0], target_event_roll.shape[0])
     nose.tools.assert_equal(event_roll.shape[1], target_event_roll.shape[1])

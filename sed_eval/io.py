@@ -14,7 +14,8 @@ Functions for loading annotations from files in various formats.
 
 """
 
-import util.event_list
+from __future__ import absolute_import
+from .util import event_list
 import csv
 import os
 

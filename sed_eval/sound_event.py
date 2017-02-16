@@ -126,10 +126,11 @@ Event based metrics
 
 """
 
+from __future__ import absolute_import
 import numpy
 import math
-import metric
-import util
+from . import metric
+from . import util
 
 
 class SoundEventMetrics(object):
@@ -549,11 +550,11 @@ class SegmentBasedMetrics(SoundEventMetrics):
         """
 
         # Convert event list into frame-based representation
-        reference_event_roll = util.event_list_to_event_roll(event_list=reference_event_list,
+        reference_event_roll = util.event_list_to_event_roll(source_event_list=reference_event_list,
                                                              event_label_list=self.event_label_list,
                                                              time_resolution=self.time_resolution)
 
-        estimated_event_roll = util.event_list_to_event_roll(event_list=estimated_event_list,
+        estimated_event_roll = util.event_list_to_event_roll(source_event_list=estimated_event_list,
                                                              event_label_list=self.event_label_list,
                                                              time_resolution=self.time_resolution)
 

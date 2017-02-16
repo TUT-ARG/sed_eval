@@ -3,18 +3,18 @@
 """Event roll handling
 
 """
-
+from __future__ import absolute_import
 import math
 import numpy
-from event_list import *
+from . import event_list
 
 
-def event_list_to_event_roll(event_list, event_label_list=None, time_resolution=0.01):
+def event_list_to_event_roll(source_event_list, event_label_list=None, time_resolution=0.01):
     """Convert event list into event roll, binary activity matrix
 
     Parameters
     ----------
-    event_list : list, shape=(n,)
+    source_event_list : list, shape=(n,)
         A list containing event dicts
     event_label_list : list, shape=(k,) or None
         A list of containing unique labels in alphabetical order
@@ -30,16 +30,16 @@ def event_list_to_event_roll(event_list, event_label_list=None, time_resolution=
 
     """
 
-    max_offset_value = max_event_offset(event_list)
+    max_offset_value = event_list.max_event_offset(source_event_list)
 
     if event_label_list is None:
-        event_label_list = unique_event_labels(event_list)
+        event_label_list = event_list.unique_event_labels(source_event_list)
 
     # Initialize event roll
     event_roll = numpy.zeros((int(math.ceil(max_offset_value * 1 / time_resolution)), len(event_label_list)))
 
     # Fill-in event_roll
-    for event in event_list:
+    for event in source_event_list:
         pos = event_label_list.index(event['event_label'])
 
         onset = int(math.floor(event['event_onset'] * 1 / time_resolution))

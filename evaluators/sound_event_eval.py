@@ -54,6 +54,7 @@ To get segment-based and event-based metrics saved in YAML-format, run:
 
 """
 
+from __future__ import print_function, absolute_import
 import sys
 import os
 import argparse
@@ -123,8 +124,8 @@ def main(argv):
         with open(parameters['output_file'], 'w') as result_file:
             result_file.write(yaml.dump(results, default_flow_style=False))
     else:
-        print segment_based_metrics
-        print event_based_metrics
+        print(segment_based_metrics)
+        print(event_based_metrics)
 
 if __name__ == "__main__":
     try:

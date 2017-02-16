@@ -70,8 +70,9 @@ Usage example:
 
 """
 
+from __future__ import absolute_import
 import numpy
-import metric
+from . import metric
 
 
 class SceneClassificationMetrics:
