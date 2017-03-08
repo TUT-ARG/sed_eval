@@ -558,7 +558,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
                                                              event_label_list=self.event_label_list,
                                                              time_resolution=self.time_resolution)
 
-        self.evaluated_length += util.max_event_offset(reference_event_list)
+        self.evaluated_length += max(util.max_event_offset(reference_event_list), util.max_event_offset(estimated_event_list))
         self.evaluated_files += 1
 
         reference_event_roll, estimated_event_roll = util.match_event_roll_lengths(reference_event_roll, estimated_event_roll)
