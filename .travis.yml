@@ -7,8 +7,8 @@ python:
 notifications:
   email: false
 
-virtualenv:
-  system_site_packages: true
+#virtualenv:
+#  system_site_packages: true
 
 before_install:
     - "sudo apt-get install -qq python-scipy"
