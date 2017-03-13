@@ -42,7 +42,7 @@ or::
 Dependencies
 ------------
 
-The toolbox is tested with Python 2.7.10. 
+The toolbox is tested to work with Python 2.7 and Python 3.6.
 
 - numpy >= 1.7.0
 
