@@ -88,7 +88,7 @@ def load_event_list(filename):
     try:
         dialect = csv.Sniffer().sniff(input_file.readline(), [',', ';', '\t'])
     except csv.Error:
-        raise ValueError('Unknown delimiter.')
+        raise ValueError('Unknown delimiter in file [{file}].'.format(file=filename))
 
     input_file.seek(0)
 
@@ -96,7 +96,7 @@ def load_event_list(filename):
         if len(row):
             if len(row) == 2:
                 if not isfloat(row[0]) or not isfloat(row[1]):
-                    raise ValueError('Event onset and event offset needs to be float.')
+                    raise ValueError('Event onset and event offset needs to be float in file [{file}].'.format(file=filename))
 
                 data.append(
                     {
@@ -106,7 +106,7 @@ def load_event_list(filename):
                 )
             elif len(row) == 3:
                 if not isfloat(row[0]) or not isfloat(row[1]):
-                    raise ValueError('Event onset and event offset needs to be float.')
+                    raise ValueError('Event onset and event offset needs to be float in file [{file}].'.format(file=filename))
 
                 data.append(
                     {
@@ -117,7 +117,7 @@ def load_event_list(filename):
                 )
             elif len(row) == 4:
                 if not isfloat(row[1]) or not isfloat(row[2]):
-                    raise ValueError('Event onset and event offset needs to be float.')
+                    raise ValueError('Event onset and event offset needs to be float in file [{file}].'.format(file=filename))
 
                 data.append(
                     {
@@ -129,7 +129,7 @@ def load_event_list(filename):
                 )
             elif len(row) == 5:
                 if not isfloat(row[2]) or not isfloat(row[3]):
-                    raise ValueError('Event onset and event offset needs to be float.')
+                    raise ValueError('Event onset and event offset needs to be float in file [{file}].'.format(file=filename))
 
                 data.append(
                     {
@@ -141,7 +141,7 @@ def load_event_list(filename):
                     }
                 )
             else:
-                raise ValueError('Unknown event list format.')
+                raise ValueError('Unknown event list format in file [{file}].'.format(file=filename))
 
     if file_open:
         input_file.close()
@@ -194,7 +194,7 @@ def load_scene_list(filename):
     try:
         dialect = csv.Sniffer().sniff(input_file.readline(), [',', ';', '\t'])
     except csv.Error:
-        raise ValueError('Unknown delimiter.')
+        raise ValueError('Unknown delimiter in file [{file}].'.format(file=filename))
     input_file.seek(0)  
 
     for row in csv.reader(input_file, dialect):
@@ -207,7 +207,7 @@ def load_scene_list(filename):
             )
         elif len(row) == 4:
             if not isfloat(row[1]) or not isfloat(row[2]):
-                raise ValueError('Segment start and segment end needs to be float.')
+                raise ValueError('Segment start and segment end needs to be float in file [{file}].'.format(file=filename))
             data.append(
                 {
                     'file': row[0],
@@ -217,7 +217,7 @@ def load_scene_list(filename):
                 }
             )
         else:
-            raise ValueError('Unknown scene list format.')
+            raise ValueError('Unknown scene list format in file [{file}].'.format(file=filename))
     if file_open:
         input_file.close()
 
@@ -255,11 +255,11 @@ def load_file_pair_list(filename):
     else:
         input_file = open(filename, 'rt')
         file_open = True
-    
+
     try:
         dialect = csv.Sniffer().sniff(input_file.readline(), [',', ';', '\t'])
     except csv.Error:
-        raise ValueError('Unknown delimiter.')
+        raise ValueError('Unknown delimiter in file [{file}].'.format(file=filename))
     input_file.seek(0)  
 
     for row in csv.reader(input_file, dialect):
@@ -271,7 +271,7 @@ def load_file_pair_list(filename):
                 }
             )
         else:
-            raise ValueError('Unknown file pair list format.')
+            raise ValueError('Unknown file pair list format in file [{file}].'.format(file=filename))
     if file_open:
         input_file.close()
     return data
