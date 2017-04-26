@@ -14,6 +14,8 @@ Event list operations
     :toctree: generated/
 
     event_list.unique_event_labels
+    event_list.unique_files
+    event_list.filter_event_list
     event_list.max_event_offset
 
 .. autoclass:: EventList
