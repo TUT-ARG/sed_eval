@@ -9,7 +9,6 @@
 """
 
 import numpy
-import scipy
 
 def mcnemar(reference, estimated_a, estimated_b):
     """McNemar's test
@@ -33,6 +32,7 @@ def mcnemar(reference, estimated_a, estimated_b):
         exact P-value
 
     """
+
     if len(reference) != len(estimated_a) or len(reference) != len(estimated_b):
         raise ValueError('Input arrays needs to be same length.')
 
