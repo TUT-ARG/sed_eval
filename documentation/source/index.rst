@@ -45,6 +45,7 @@ API documentation
     sound_event
     scene
     metric
+    test
     util
     io
 

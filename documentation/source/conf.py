@@ -39,7 +39,9 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.intersphinx',
     'sphinx.ext.doctest',
-    'sphinx.ext.pngmath',
+    #'sphinx.ext.imgmath',
+    'sphinx.ext.mathjax',
+    #'sphinx.ext.pngmath',
     'numpydoc',
     'sphinx.ext.autosummary',
 ]
@@ -85,7 +87,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'sed_eval'
-copyright = u'2016, Toni Heittola et al.'
+copyright = u'2017, Toni Heittola et al.'
 author = u'Toni Heittola, Annamaria Mesaros, Tuomas Virtanen'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -165,11 +167,19 @@ html_theme = 'sphinx_rtd_theme' #'bootstrap' #'default'
 #html_theme_options = {
 #  'cssfiles': ['_static/style.css']
 #}
+
 html_context = {
     'css_files': [
         '_static/theme_overrides.css',  # overrides for wide tables in RTD theme
         ],
     }
+
+html_theme_options = {
+    'collapse_navigation': False,
+    'display_version': False,
+#    'navigation_depth': 3,
+}
+
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
 #html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
@@ -185,6 +195,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #html_logo = None
+html_logo = '_static/sed_eval_logo.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -232,6 +243,7 @@ html_use_modindex = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #html_show_sphinx = True
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True
@@ -327,3 +339,4 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 autodoc_member_order = 'bysource'
+imgmath_image_format = 'svg'
