@@ -54,3 +54,5 @@ tests/dcase2016/*
 tests/*.zip
 tests/DCASE2016-baseline-system-python*
 tests/dev/
+documentation/source/generated/
+documentation/build/
