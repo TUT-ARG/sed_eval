@@ -131,7 +131,7 @@ import numpy
 import math
 from . import metric
 from . import util
-
+from .util.event_list import EventList
 
 class SoundEventMetrics(object):
     """Base class for sound event detection metrics.
@@ -548,6 +548,19 @@ class SegmentBasedMetrics(SoundEventMetrics):
             Nothing
 
         """
+
+        reference_files = EventList(reference_event_list).unique_files
+        if len(reference_files) > 1:
+            raise ValueError(
+                "reference_event_list contains events from multiple files. Evaluate only file by file."
+            )
+
+        estimated_files = EventList(estimated_event_list).unique_files
+        if len(estimated_files) > 1:
+            raise ValueError(
+                "estimated_event_list contains events from multiple files. Evaluate only file by file."
+            )
+
 
         # Convert event list into frame-based representation
         reference_event_roll = util.event_list_to_event_roll(source_event_list=reference_event_list,
@@ -992,6 +1005,19 @@ class EventBasedMetrics(SoundEventMetrics):
             Nothing
 
         """
+
+        reference_files = EventList(reference_event_list).unique_files
+        if len(reference_files) > 1:
+            raise ValueError(
+                "reference_event_list contains events from multiple files. Evaluate only file by file."
+            )
+
+        estimated_files = EventList(estimated_event_list).unique_files
+        if len(estimated_files) > 1:
+            raise ValueError(
+                "estimated_event_list contains events from multiple files. Evaluate only file by file."
+            )
+
         self.evaluated_length += util.max_event_offset(reference_event_list)
         self.evaluated_files += 1
 
