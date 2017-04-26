@@ -24,8 +24,11 @@ class EventList(list):
 
     @property
     def valid_event_list(self):
-        if 'event_label' in self[0] and 'event_onset' in self[0] and 'event_offset' in self[0]:
-            return True
+        if len(self) > 0:
+            if 'event_label' in self[0] and 'event_onset' in self[0] and 'event_offset' in self[0]:
+                return True
+            else:
+                return False
         else:
             return False
 
@@ -67,7 +70,9 @@ class EventList(list):
         """
 
         if self.valid_event_list:
-            return unique_event_labels(self)
+            return unique_event_labels(event_list=self)
+        else:
+            return []
 
     @property
     def unique_files(self):
@@ -81,7 +86,9 @@ class EventList(list):
         """
 
         if self.valid_event_list:
-            return unique_files(self)
+            return unique_files(event_list=self)
+        else:
+            return []
 
     @property
     def max_event_offset(self):
@@ -95,15 +102,26 @@ class EventList(list):
         """
 
         if self.valid_event_list:
-            return max_event_offset(self)
+            return max_event_offset(event_list=self)
 
-    def filter_event_list(self, event_label=None, file=None):
+    def filter(self, scene_label=None, event_label=None, file=None):
+        if self.valid_event_list:
+            return filter_event_list(
+                event_list=self,
+                scene_label=scene_label,
+                event_label=event_label,
+                file=file
+            )
+
+    def filter_event_list(self, scene_label=None, event_label=None, file=None):
         """Filter event list based on given fields
 
         Parameters
         ----------
         event_list : list, shape=(n,)
             A list containing event dicts
+        scene_label : str
+            Scene label
         event_label : str
             Event label
         file : str
@@ -115,16 +133,18 @@ class EventList(list):
             A list containing event dicts
 
         """
-        if self.valid_event_list:
-            return filter_event_list(self, event_label, file)
 
-def filter_event_list(event_list, event_label=None, file=None):
+        self.filter(scene_label=scene_label, event_label=event_label, file=file)
+
+def filter_event_list(event_list, scene_label=None, event_label=None, file=None):
     """Filter event list based on given fields
 
     Parameters
     ----------
     event_list : list, shape=(n,)
         A list containing event dicts
+    scene_label : str
+        Scene label
     event_label : str
         Event label
     file : str
@@ -137,12 +157,14 @@ def filter_event_list(event_list, event_label=None, file=None):
 
     """
 
-    filtered_event_list = []
+    filtered_event_list = EventList()
     for event in event_list:
         matched = False
-        if event_label is not None and event['event_label'] == event_label:
+        if event_label is not None and 'event_label' in event and event['event_label'] == event_label:
             matched = True
-        if file is not None and event['file'] == file:
+        if scene_label is not None and 'scene_label' in event and event['scene_label'] == scene_label:
+            matched = True
+        if file is not None and 'file' in event and event['file'] == file:
             matched = True
         if matched:
             filtered_event_list.append(event)
@@ -165,7 +187,8 @@ def unique_files(event_list):
 
     files = {}
     for event in event_list:
-        files[event['file']] = event['file']
+        if 'file' in event:
+            files[event['file']] = event['file']
 
     files = list(files.keys())
     files.sort()
