@@ -105,15 +105,6 @@ class EventList(list):
             return max_event_offset(event_list=self)
 
     def filter(self, scene_label=None, event_label=None, file=None):
-        if self.valid_event_list:
-            return filter_event_list(
-                event_list=self,
-                scene_label=scene_label,
-                event_label=event_label,
-                file=file
-            )
-
-    def filter_event_list(self, scene_label=None, event_label=None, file=None):
         """Filter event list based on given fields
 
         Parameters
@@ -134,6 +125,15 @@ class EventList(list):
 
         """
 
+        if self.valid_event_list:
+            return filter_event_list(
+                event_list=self,
+                scene_label=scene_label,
+                event_label=event_label,
+                file=file
+            )
+
+    def filter_event_list(self, scene_label=None, event_label=None, file=None):
         self.filter(scene_label=scene_label, event_label=event_label, file=file)
 
 def filter_event_list(event_list, scene_label=None, event_label=None, file=None):
