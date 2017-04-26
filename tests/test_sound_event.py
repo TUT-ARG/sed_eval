@@ -4,13 +4,79 @@ Unit tests for sound event metrics
 
 import nose.tools
 import sed_eval
+import os
+
+def test_dcase_style():
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list = sed_eval.io.load_event_list(estimated)
+
+    evaluated_event_labels = reference_event_list.unique_event_labels
+    evaluated_files = reference_event_list.unique_files
+
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=evaluated_event_labels,
+        time_resolution=1.0
+    )
+
+    for file in evaluated_files:
+        reference_event_list_for_current_file = reference_event_list.filter_event_list(file=file)
+        estimated_event_list_for_current_file = estimated_event_list.filter_event_list(file=file)
+        segment_based_metrics.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+    results = segment_based_metrics.results()
+    nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.84244791666)
+    nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.0616698292220115)
+
+def test_dcase_style2():
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list = sed_eval.io.load_event_list(estimated)
+
+    evaluated_event_labels = reference_event_list.unique_event_labels
+    files={}
+    for event in reference_event_list:
+        files[event['file']] = event['file']
+
+    evaluated_files = sorted(list(files.keys()))
+
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=evaluated_event_labels,
+        time_resolution=1.0
+    )
+
+    for file in evaluated_files:
+        reference_event_list_for_current_file = []
+        for event in reference_event_list:
+            if event['file'] == file:
+                reference_event_list_for_current_file.append(event)
+                estimated_event_list_for_current_file = []
+        for event in estimated_event_list:
+            if event['file'] == file:
+                estimated_event_list_for_current_file.append(event)
+
+        segment_based_metrics.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+
+    results = segment_based_metrics.results()
+    nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.84244791666)
+    nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.0616698292220115)
+
 
 def test_binary():
     file_list = [
-        {'reference_file': 'data/sound_event/binary1.txt',
-         'estimated_file': 'data/sound_event/binary1_detected.txt'},
-        {'reference_file': 'data/sound_event/binary2.txt',
-         'estimated_file': 'data/sound_event/binary2_detected.txt'},
+        {'reference_file': os.path.join('data', 'sound_event', 'binary1.txt'),
+         'estimated_file': os.path.join('data', 'sound_event', 'binary1_detected.txt')},
+        {'reference_file': os.path.join('data', 'sound_event', 'binary2.txt'),
+         'estimated_file': os.path.join('data', 'sound_event', 'binary2_detected.txt')},
     ]
     data = []
     all_data = sed_eval.util.event_list.EventList()
@@ -45,8 +111,8 @@ def test_binary():
 
 def test_audioset():
     file_list = [
-        {'reference_file': 'data/sound_event/audioset1.txt',
-         'estimated_file': 'data/sound_event/audioset1_detected.txt'}
+        {'reference_file': os.path.join('data', 'sound_event', 'audioset1.txt'),
+         'estimated_file': os.path.join('data', 'sound_event', 'audioset1_detected.txt')}
     ]
 
     data = []
@@ -71,3 +137,5 @@ def test_audioset():
     nose.tools.eq_(results['overall']['error_rate']['error_rate'], 0.0)
 
     nose.tools.eq_(results['overall']['f_measure']['f_measure'], 1.0)
+
+test_dcase_style()
