@@ -5,11 +5,13 @@ Unit tests for analysis tools
 import nose.tools
 import sed_eval
 import os
+
 def find(lst, key, value):
     for i, dic in enumerate(lst):
         if dic[key] == value:
             return i
     return -1
+
 def test_mcnemar():
     ref = sed_eval.io.load_scene_list(os.path.join('data','scene','reference.txt'))
     est_a = sed_eval.io.load_scene_list(os.path.join('data', 'scene', 'estimated_a.txt'))
