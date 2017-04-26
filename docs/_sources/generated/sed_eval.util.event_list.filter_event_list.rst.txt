@@ -1,0 +1,6 @@
+sed_eval.util.event_list.filter_event_list
+==========================================
+
+.. currentmodule:: sed_eval.util.event_list
+
+.. autofunction:: filter_event_list

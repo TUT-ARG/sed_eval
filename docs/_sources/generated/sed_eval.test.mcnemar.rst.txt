@@ -1,0 +1,6 @@
+sed_eval.test.mcnemar
+=====================
+
+.. currentmodule:: sed_eval.test
+
+.. autofunction:: mcnemar

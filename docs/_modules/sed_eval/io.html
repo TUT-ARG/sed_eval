@@ -1,0 +1,609 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sed_eval.io &mdash; sed_eval 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="sed_eval 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sed_eval
+          
+
+          
+            
+            <img src="../../_static/sed_eval_logo.png" class="logo" />
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#using-pip">Using pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#sound-event-detection">Sound event detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#quickstart-using-sed-eval-in-python-code">Quickstart: Using <code class="docutils literal"><span class="pre">sed_eval</span></code> in Python code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#id1">Sound event detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#id2">Acoustic scene classification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sound_event.html">Sound Event Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#intermediate-statistics">Intermediate statistics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#segment-based">Segment-based</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#event-based">Event-based</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#averaging">Averaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#cross-validation">Cross-validation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#implemented-metrics">Implemented metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#precision-recall-and-f-score">Precision, Recall and F-score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#sensitivity-and-specificity">Sensitivity and specificity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#accuracy">Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#balanced-accuracy">Balanced accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#error-rate">Error Rate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#module-sed_eval.sound_event">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#segment-based-metrics">Segment based metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.html">sed_eval.sound_event.SegmentBasedMetrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.evaluate.html">sed_eval.sound_event.SegmentBasedMetrics.evaluate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results.html">sed_eval.sound_event.SegmentBasedMetrics.results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_overall.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_overall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#event-based-metrics">Event based metrics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.html">sed_eval.sound_event.EventBasedMetrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.evaluate.html">sed_eval.sound_event.EventBasedMetrics.evaluate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results.html">sed_eval.sound_event.EventBasedMetrics.results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results_overall_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_overall_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics.html">sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_parameters.html">sed_eval.sound_event.EventBasedMetrics.result_report_parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_overall.html">sed_eval.sound_event.EventBasedMetrics.result_report_overall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sound_event.html#rerefences">Rerefences</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../scene.html">Acoustic Scene Classification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scene.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.html">sed_eval.scene.SceneClassificationMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html">sed_eval.scene.SceneClassificationMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results.html">sed_eval.scene.SceneClassificationMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results_overall_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics.html">sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_parameters.html">sed_eval.scene.SceneClassificationMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metric.html">Metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.recall.html">sed_eval.metric.recall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.accuracy.html">sed_eval.metric.accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.accuracy2.html">sed_eval.metric.accuracy2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.balanced_accuracy.html">sed_eval.metric.balanced_accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.sensitivity.html">sed_eval.metric.sensitivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.specificity.html">sed_eval.metric.specificity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.error_rate.html">sed_eval.metric.error_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../test.html">Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.test.mcnemar.html">sed_eval.test.mcnemar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#event-list-operations">Event list operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_list.unique_event_labels.html">sed_eval.util.event_list.unique_event_labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_list.unique_files.html">sed_eval.util.event_list.unique_files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_list.filter_event_list.html">sed_eval.util.event_list.filter_event_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_list.max_event_offset.html">sed_eval.util.event_list.max_event_offset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#event-roll-operations">Event roll operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_roll.event_list_to_event_roll.html">sed_eval.util.event_roll.event_list_to_event_roll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_roll.pad_event_roll.html">sed_eval.util.event_roll.pad_event_roll</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_roll.match_event_roll_lengths.html">sed_eval.util.event_roll.match_event_roll_lengths</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#scene-list-operations">Scene list operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../io.html">I/O</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.io.load_event_list.html">sed_eval.io.load_event_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.io.load_scene_list.html">sed_eval.io.load_scene_list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/sed_eval.io.load_file_pair_list.html">sed_eval.io.load_file_pair_list</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-4">v0.1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-3">v0.1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-2">v0.1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-1">v0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#v0-1-0">v0.1.0</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">sed_eval</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>sed_eval.io</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sed_eval.io</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">I/O</span>
+<span class="sd">==================</span>
+<span class="sd">Functions for loading annotations from files in various formats.</span>
+
+<span class="sd">.. autosummary::</span>
+<span class="sd">    :toctree: generated/</span>
+
+<span class="sd">    load_event_list</span>
+<span class="sd">    load_scene_list</span>
+<span class="sd">    load_file_pair_list</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">util</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">isfloat</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+  <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<div class="viewcode-block" id="load_event_list"><a class="viewcode-back" href="../../generated/sed_eval.io.load_event_list.html#sed_eval.io.load_event_list">[docs]</a><span class="k">def</span> <span class="nf">load_event_list</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load event list from csv formatted text-file</span>
+
+<span class="sd">    Supported formats:</span>
+
+<span class="sd">    - [event onset (float &gt;= 0)][delimiter][event offset (float &gt;= 0)]</span>
+<span class="sd">    - [event onset (float &gt;= 0)][delimiter][event offset (float &gt;= 0)][delimiter][label]</span>
+<span class="sd">    - [filename][delimiter][event onset (float &gt;= 0)][delimiter][event offset (float &gt;= 0)][delimiter][event label]</span>
+<span class="sd">    - [filename][delimiter][scene_label][delimiter][event onset (float &gt;= 0)][delimiter][event offset (float &gt;= 0)][delimiter][event label]</span>
+
+<span class="sd">    Supported delimiters: ``,``, ``;``, ``tab``</span>
+
+<span class="sd">    Example of event list file::</span>
+
+<span class="sd">        21.64715	23.00552	alert</span>
+<span class="sd">        36.91184	38.27021	alert</span>
+<span class="sd">        69.72575	71.09029	alert</span>
+<span class="sd">        63.53990	64.89827	alert</span>
+<span class="sd">        84.25553	84.83920	alert</span>
+<span class="sd">        20.92974	21.82661	clearthroat</span>
+<span class="sd">        28.39992	29.29679	clearthroat</span>
+<span class="sd">        80.47837	81.95937	clearthroat</span>
+<span class="sd">        44.48363	45.96463	clearthroat</span>
+<span class="sd">        78.13073	79.05953	clearthroat</span>
+<span class="sd">        15.17031	16.27235	cough</span>
+<span class="sd">        20.54931	21.65135	cough</span>
+<span class="sd">        27.79964	28.90168	cough</span>
+<span class="sd">        75.45959	76.32490	cough</span>
+<span class="sd">        70.81708	71.91912	cough</span>
+<span class="sd">        21.23203	22.55902	doorslam</span>
+<span class="sd">        7.546220	9.014880	doorslam</span>
+<span class="sd">        34.11303	35.04183	doorslam</span>
+<span class="sd">        45.86001	47.32867	doorslam</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Path to the csv-file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    event_list: list</span>
+<span class="sd">        Event list</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">file_open</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">):</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span>
+        <span class="n">file_open</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">util</span><span class="o">.</span><span class="n">event_list</span><span class="o">.</span><span class="n">EventList</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dialect</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">Sniffer</span><span class="p">()</span><span class="o">.</span><span class="n">sniff</span><span class="p">(</span><span class="n">input_file</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">csv</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown delimiter in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+
+    <span class="n">input_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">dialect</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Event onset and event offset needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                        <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Event onset and event offset needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                        <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                        <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Event onset and event offset needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                        <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                        <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Event onset and event offset needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                        <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+                        <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown event list format in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">file_open</span><span class="p">:</span>
+        <span class="n">input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">util</span><span class="o">.</span><span class="n">event_list</span><span class="o">.</span><span class="n">EventList</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_scene_list"><a class="viewcode-back" href="../../generated/sed_eval.io.load_scene_list.html#sed_eval.io.load_scene_list">[docs]</a><span class="k">def</span> <span class="nf">load_scene_list</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load scene list from csv formatted text-file</span>
+
+<span class="sd">    Supported formats:</span>
+
+<span class="sd">    - [filename][delimiter][scene label]</span>
+<span class="sd">    - [filename][delimiter][segment start (float &gt;= 0)][delimiter][segment stop (float &gt;= 0)][delimiter][scene label]</span>
+
+<span class="sd">    Supported delimiters: ``,``, ``;``, ``tab``</span>
+
+<span class="sd">    Example of scene list file::</span>
+
+<span class="sd">        scenes_stereo/supermarket09.wav	supermarket</span>
+<span class="sd">        scenes_stereo/tubestation10.wav	tubestation</span>
+<span class="sd">        scenes_stereo/quietstreet08.wav	quietstreet</span>
+<span class="sd">        scenes_stereo/restaurant05.wav	restaurant</span>
+<span class="sd">        scenes_stereo/busystreet05.wav	busystreet</span>
+<span class="sd">        scenes_stereo/openairmarket04.wav	openairmarket</span>
+<span class="sd">        scenes_stereo/quietstreet01.wav	quietstreet</span>
+<span class="sd">        scenes_stereo/supermarket05.wav	supermarket</span>
+<span class="sd">        scenes_stereo/openairmarket01.wav	openairmarket</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Path to the csv-file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    scene_list: list</span>
+<span class="sd">        Scene list</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">file_open</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">):</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span>
+        <span class="n">file_open</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dialect</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">Sniffer</span><span class="p">()</span><span class="o">.</span><span class="n">sniff</span><span class="p">(</span><span class="n">input_file</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">csv</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown delimiter in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+    <span class="n">input_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">dialect</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Segment start and segment end needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s1">&#39;segment_start&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                    <span class="s1">&#39;segment_end&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                    <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown scene list format in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">file_open</span><span class="p">:</span>
+        <span class="n">input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">util</span><span class="o">.</span><span class="n">scene_list</span><span class="o">.</span><span class="n">SceneList</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_file_pair_list"><a class="viewcode-back" href="../../generated/sed_eval.io.load_file_pair_list.html#sed_eval.io.load_file_pair_list">[docs]</a><span class="k">def</span> <span class="nf">load_file_pair_list</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load file pair list csv formated text-file</span>
+
+<span class="sd">    Format is [reference_file][delimiter][estimated_file]</span>
+
+<span class="sd">    Supported delimiters: ``,``, ``;``, ``tab``</span>
+
+<span class="sd">    Example of file-list::</span>
+
+<span class="sd">        office_snr0_high_v2.txt	office_snr0_high_v2_detected.txt</span>
+<span class="sd">        office_snr0_med_v2.txt	office_snr0_med_v2_detected.txt</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Path to the csv-file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    file_list: list</span>
+<span class="sd">        File pair dicts in a list</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">file_open</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">):</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">input_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">)</span>
+        <span class="n">file_open</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dialect</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">Sniffer</span><span class="p">()</span><span class="o">.</span><span class="n">sniff</span><span class="p">(</span><span class="n">input_file</span><span class="o">.</span><span class="n">readline</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">csv</span><span class="o">.</span><span class="n">Error</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown delimiter in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+    <span class="n">input_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">input_file</span><span class="p">,</span> <span class="n">dialect</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown file pair list format in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">file_open</span><span class="p">:</span>
+        <span class="n">input_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Toni Heittola et al..
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
