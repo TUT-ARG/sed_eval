@@ -5,6 +5,7 @@
 .. autosummary::
     :toctree: generated/
 
+    mcnemar
 
 """
 
