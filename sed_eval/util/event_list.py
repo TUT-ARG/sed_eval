@@ -70,6 +70,20 @@ class EventList(list):
             return unique_event_labels(self)
 
     @property
+    def unique_files(self):
+        """Get unique files
+
+        Returns
+        -------
+        labels: list, shape=(n,)
+            Unique files in alphabetical order
+
+        """
+
+        if self.valid_event_list:
+            return unique_files(self)
+
+    @property
     def max_event_offset(self):
         """Find the offset (end-time) of last event
 
@@ -82,6 +96,80 @@ class EventList(list):
 
         if self.valid_event_list:
             return max_event_offset(self)
+
+    def filter_event_list(self, event_label=None, file=None):
+        """Filter event list based on given fields
+
+        Parameters
+        ----------
+        event_list : list, shape=(n,)
+            A list containing event dicts
+        event_label : str
+            Event label
+        file : str
+            Filename
+
+        Returns
+        -------
+        event_list: list, shape=(n,)
+            A list containing event dicts
+
+        """
+        if self.valid_event_list:
+            return filter_event_list(self, event_label, file)
+
+def filter_event_list(event_list, event_label=None, file=None):
+    """Filter event list based on given fields
+
+    Parameters
+    ----------
+    event_list : list, shape=(n,)
+        A list containing event dicts
+    event_label : str
+        Event label
+    file : str
+        Filename
+
+    Returns
+    -------
+    event_list: list, shape=(n,)
+        A list containing event dicts
+
+    """
+
+    filtered_event_list = []
+    for event in event_list:
+        matched = False
+        if event_label is not None and event['event_label'] == event_label:
+            matched = True
+        if file is not None and event['file'] == file:
+            matched = True
+        if matched:
+            filtered_event_list.append(event)
+    return filtered_event_list
+
+def unique_files(event_list):
+    """Find the unique files
+
+    Parameters
+    ----------
+    event_list : list, shape=(n,)
+        A list containing event dicts
+
+    Returns
+    -------
+    file_list: list, shape=(n,)
+        Unique filenames in alphabetical order
+
+    """
+
+    files = {}
+    for event in event_list:
+        files[event['file']] = event['file']
+
+    files = list(files.keys())
+    files.sort()
+    return files
 
 
 def unique_event_labels(event_list):
