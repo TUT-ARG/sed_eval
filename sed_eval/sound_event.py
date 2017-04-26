@@ -449,8 +449,7 @@ class SoundEventMetrics(object):
 class SegmentBasedMetrics(SoundEventMetrics):
     def __init__(self,
                  event_label_list,
-                 time_resolution=1.0,
-                 eps=numpy.spacing(1)):
+                 time_resolution=1.0):
         """Constructor
 
         Parameters
@@ -460,9 +459,6 @@ class SegmentBasedMetrics(SoundEventMetrics):
         time_resolution : float (0,]
             Segment size used in the evaluation, in seconds
             (Default value=1.0)
-        eps : float (0,]
-            Eps
-            (Default value=numpy.spacing(1))
 
         Returns
         -------
@@ -472,7 +468,6 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         SoundEventMetrics.__init__(self)
 
-        self.eps = eps
         self.event_label_list = event_label_list
         self.evaluated_length = 0.0
         self.evaluated_files = 0
@@ -833,8 +828,7 @@ class EventBasedMetrics(SoundEventMetrics):
                  evaluate_onset=True,
                  evaluate_offset=True,
                  t_collar=0.200,
-                 percentage_of_length=0.5,
-                 eps=numpy.spacing(1)):
+                 percentage_of_length=0.5):
         """Constructor
 
         Parameters
@@ -858,10 +852,6 @@ class EventBasedMetrics(SoundEventMetrics):
             Second condition, percentage of the length within which the estimated offset has to be in order to be consider valid estimation
             (Default value = 0.5)
 
-        eps : float (0,]
-            Eps
-            (Default value=numpy.spacing(1))
-
         Returns
         -------
             Nothing
@@ -870,7 +860,6 @@ class EventBasedMetrics(SoundEventMetrics):
 
         SoundEventMetrics.__init__(self)
 
-        self.eps = eps
         self.event_label_list = event_label_list
         self.evaluated_length = 0.0
         self.evaluated_files = 0
