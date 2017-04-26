@@ -9,4 +9,4 @@ from . import util
 from . import metric
 from . import test
 
-__version__ = '0.1.3'
+__version__ = '0.1.4'
