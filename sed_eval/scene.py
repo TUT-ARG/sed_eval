@@ -140,7 +140,7 @@ class SceneClassificationMetrics:
         y_true = []
         y_pred = []
         for estimated_item in estimated_scene_list:
-            reference_item_matched = []
+            reference_item_matched = {}
             for reference_item in reference_scene_list:
                 if estimated_item['file'] == reference_item['file']:
                     reference_item_matched = reference_item
