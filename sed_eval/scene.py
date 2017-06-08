@@ -168,6 +168,23 @@ class SceneClassificationMetrics:
         self.overall['Nref'] += y_true.shape[0]
         self.overall['Nsys'] += y_pred.shape[0]
 
+    def reset(self):
+        """Reset internal state
+        """
+        self.overall = {
+            'Ncorr': 0.0,
+            'Nref': 0.0,
+            'Nsys': 0.0,
+        }
+
+        self.scene_wise = {}
+        for label in self.scene_label_list:
+            self.scene_wise[label] = {
+                'Ncorr': 0.0,
+                'Nref': 0.0,
+                'Nsys': 0.0,
+            }
+
     # Reports
     def result_report_parameters(self):
         """Report metric parameters

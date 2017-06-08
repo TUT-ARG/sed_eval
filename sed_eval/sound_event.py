@@ -488,7 +488,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
         }
 
         self.class_wise = {}
-        for class_label in event_label_list:
+        for class_label in self.event_label_list:
             self.class_wise[class_label] = {
                 'Ntp': 0.0,
                 'Ntn': 0.0,
@@ -619,6 +619,34 @@ class SegmentBasedMetrics(SoundEventMetrics):
             self.class_wise[class_label]['Nsys'] += Nsys
 
         return self
+
+    def reset(self):
+        """Reset internal state
+        """
+
+        self.overall = {
+            'Ntp': 0.0,
+            'Ntn': 0.0,
+            'Nfp': 0.0,
+            'Nfn': 0.0,
+            'Nref': 0.0,
+            'Nsys': 0.0,
+            'ER': 0.0,
+            'S': 0.0,
+            'D': 0.0,
+            'I': 0.0,
+        }
+
+        self.class_wise = {}
+        for class_label in self.event_label_list:
+            self.class_wise[class_label] = {
+                'Ntp': 0.0,
+                'Ntn': 0.0,
+                'Nfp': 0.0,
+                'Nfn': 0.0,
+                'Nref': 0.0,
+                'Nsys': 0.0,
+            }
 
     # Reports
     def result_report_parameters(self):
@@ -882,7 +910,31 @@ class EventBasedMetrics(SoundEventMetrics):
         }
         self.class_wise = {}
 
-        for class_label in event_label_list:
+        for class_label in self.event_label_list:
+            self.class_wise[class_label] = {
+                'Nref': 0.0,
+                'Nsys': 0.0,
+                'Ntp': 0.0,
+                'Ntn': 0.0,
+                'Nfp': 0.0,
+                'Nfn': 0.0,
+            }
+
+    def reset(self):
+        """Reset internal state
+        """
+
+        self.overall = {
+            'Nref': 0.0,
+            'Nsys': 0.0,
+            'Nsubs': 0.0,
+            'Ntp': 0.0,
+            'Nfp': 0.0,
+            'Nfn': 0.0,
+        }
+        self.class_wise = {}
+
+        for class_label in self.event_label_list:
             self.class_wise[class_label] = {
                 'Nref': 0.0,
                 'Nsys': 0.0,
