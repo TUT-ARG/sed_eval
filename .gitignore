@@ -46,7 +46,7 @@ tests/cover/*
 tests/_dev/*
 
 # Sphinx
-docs/generated/
+#docs/generated/
 
 tests/dcase2016/*
 
