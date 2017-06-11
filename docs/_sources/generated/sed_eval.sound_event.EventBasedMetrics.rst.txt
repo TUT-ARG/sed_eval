@@ -22,6 +22,7 @@ sed_eval.sound_event.EventBasedMetrics
       ~EventBasedMetrics.overall_accuracy
       ~EventBasedMetrics.overall_error_rate
       ~EventBasedMetrics.overall_f_measure
+      ~EventBasedMetrics.reset
       ~EventBasedMetrics.result_report_class_wise
       ~EventBasedMetrics.result_report_class_wise_average
       ~EventBasedMetrics.result_report_overall

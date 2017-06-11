@@ -132,6 +132,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_overall.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_overall</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.SegmentBasedMetrics.reset.html">sed_eval.sound_event.SegmentBasedMetrics.reset</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../sound_event.html#event-based-metrics">Event based metrics</a><ul>
@@ -145,6 +146,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_overall.html">sed_eval.sound_event.EventBasedMetrics.result_report_overall</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average.html">sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../generated/sed_eval.sound_event.EventBasedMetrics.reset.html">sed_eval.sound_event.EventBasedMetrics.reset</a></li>
 </ul>
 </li>
 </ul>
@@ -163,6 +165,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_parameters.html">sed_eval.scene.SceneClassificationMetrics.result_report_parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average.html">sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.scene.SceneClassificationMetrics.reset.html">sed_eval.scene.SceneClassificationMetrics.reset</a></li>
 </ul>
 </li>
 </ul>
@@ -368,6 +371,7 @@
 <span class="sd">    SegmentBasedMetrics.result_report_overall</span>
 <span class="sd">    SegmentBasedMetrics.result_report_class_wise</span>
 <span class="sd">    SegmentBasedMetrics.result_report_class_wise_average</span>
+<span class="sd">    SegmentBasedMetrics.reset</span>
 
 <span class="sd">.. autoclass:: SegmentBasedMetrics</span>
 <span class="sd">   :members:</span>
@@ -388,6 +392,7 @@
 <span class="sd">    EventBasedMetrics.result_report_overall</span>
 <span class="sd">    EventBasedMetrics.result_report_class_wise</span>
 <span class="sd">    EventBasedMetrics.result_report_class_wise_average</span>
+<span class="sd">    EventBasedMetrics.reset</span>
 
 <span class="sd">.. autoclass:: EventBasedMetrics</span>
 <span class="sd">   :members:</span>
@@ -758,7 +763,7 @@
         <span class="p">}</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="n">event_label_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
                 <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
@@ -889,6 +894,34 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Nsys</span>
 
         <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="SegmentBasedMetrics.reset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset internal state</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;ER&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="p">}</span></div>
 
     <span class="c1"># Reports</span>
 <div class="viewcode-block" id="SegmentBasedMetrics.result_report_parameters"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">result_report_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1152,7 +1185,31 @@
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="n">event_label_list</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Ntn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="p">}</span></div>
+
+<div class="viewcode-block" id="EventBasedMetrics.reset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.reset">[docs]</a>    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset internal state</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">overall</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nsubs&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Ntp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfp&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;Nfn&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">class_label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">class_label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
                 <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>

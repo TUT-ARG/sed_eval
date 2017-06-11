@@ -98,6 +98,7 @@ Segment based metrics
     SegmentBasedMetrics.result_report_overall
     SegmentBasedMetrics.result_report_class_wise
     SegmentBasedMetrics.result_report_class_wise_average
+    SegmentBasedMetrics.reset
 
 .. autoclass:: SegmentBasedMetrics
    :members:
@@ -118,6 +119,7 @@ Event based metrics
     EventBasedMetrics.result_report_overall
     EventBasedMetrics.result_report_class_wise
     EventBasedMetrics.result_report_class_wise_average
+    EventBasedMetrics.reset
 
 .. autoclass:: EventBasedMetrics
    :members:

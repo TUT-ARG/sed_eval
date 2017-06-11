@@ -67,6 +67,7 @@ Usage example:
     SceneClassificationMetrics.result_report_parameters
     SceneClassificationMetrics.result_report_class_wise
     SceneClassificationMetrics.result_report_class_wise_average
+    SceneClassificationMetrics.reset
 
 """
 
