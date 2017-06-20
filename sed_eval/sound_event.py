@@ -135,6 +135,7 @@ from . import metric
 from . import util
 from .util.event_list import EventList
 
+
 class SoundEventMetrics(object):
     """Base class for sound event detection metrics.
 
@@ -546,6 +547,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         """
 
+        # Check that input event list have event only from one file
         reference_files = EventList(reference_event_list).unique_files
         if len(reference_files) > 1:
             raise ValueError(
@@ -557,6 +559,19 @@ class SegmentBasedMetrics(SoundEventMetrics):
             raise ValueError(
                 "estimated_event_list contains events from multiple files. Evaluate only file by file."
             )
+
+        # Evaluate only valid events
+        valid_reference_event_list = EventList()
+        for item in reference_event_list:
+            if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
+                valid_reference_event_list.append(item)
+        reference_event_list = valid_reference_event_list
+
+        valid_estimated_event_list = EventList()
+        for item in estimated_event_list:
+            if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
+                valid_estimated_event_list.append(item)
+        estimated_event_list = valid_estimated_event_list
 
 
         # Convert event list into frame-based representation
@@ -1049,6 +1064,7 @@ class EventBasedMetrics(SoundEventMetrics):
 
         """
 
+        # Check that input event list have event only from one file
         reference_files = EventList(reference_event_list).unique_files
         if len(reference_files) > 1:
             raise ValueError(
@@ -1060,6 +1076,19 @@ class EventBasedMetrics(SoundEventMetrics):
             raise ValueError(
                 "estimated_event_list contains events from multiple files. Evaluate only file by file."
             )
+
+        # Evaluate only valid events
+        valid_reference_event_list = EventList()
+        for item in reference_event_list:
+            if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
+                valid_reference_event_list.append(item)
+        reference_event_list = valid_reference_event_list
+
+        valid_estimated_event_list = EventList()
+        for item in estimated_event_list:
+            if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
+                valid_estimated_event_list.append(item)
+        estimated_event_list = valid_estimated_event_list
 
         self.evaluated_length += util.max_event_offset(reference_event_list)
         self.evaluated_files += 1
