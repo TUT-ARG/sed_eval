@@ -6,6 +6,7 @@ import nose.tools
 import sed_eval
 import os
 
+
 def test_dcase_style():
     reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
     estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
@@ -31,6 +32,7 @@ def test_dcase_style():
     results = segment_based_metrics.results()
     nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.84244791666)
     nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.0616698292220115)
+
 
 def test_dcase_style2():
     reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
@@ -116,6 +118,37 @@ def test_binary():
 
     nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 0.9999999999999999)
     nose.tools.assert_almost_equals(results['overall']['f_measure']['f_measure'], 0.6666666666666666666)
+
+    file_list = [
+        {'reference_file': os.path.join('data', 'sound_event', 'binary5.txt'),
+         'estimated_file': os.path.join('data', 'sound_event', 'binary5_detected.txt')},
+    ]
+    data = []
+    all_data = sed_eval.util.event_list.EventList()
+    for file_pair in file_list:
+        reference_event_list = sed_eval.io.load_event_list(file_pair['reference_file'])
+        estimated_event_list = sed_eval.io.load_event_list(file_pair['estimated_file'])
+        data.append({'reference_event_list': reference_event_list, 'estimated_event_list': estimated_event_list})
+        all_data += reference_event_list
+    event_labels = all_data.unique_event_labels
+
+    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=event_labels
+    )
+
+    for file_pair in data:
+        if len(file_pair['reference_event_list'].unique_files) > 1:
+            for file in file_pair['reference_event_list'].unique_files:
+                reference_event_list = file_pair['reference_event_list'].filter(file=file)
+                estimated_event_list = file_pair['estimated_event_list'].filter(file=file)
+
+                event_based_metrics.evaluate(reference_event_list, estimated_event_list)
+
+    results = event_based_metrics.results()
+
+    nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.5)
+    nose.tools.assert_almost_equals(results['overall']['f_measure']['f_measure'], 0.0)
+
 
 def test_audioset():
     file_list = [
