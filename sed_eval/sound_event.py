@@ -1130,8 +1130,8 @@ class EventBasedMetrics(SoundEventMetrics):
 
         Ntp = numpy.sum(sys_correct)
 
-        ref_leftover = numpy.nonzero(numpy.negative(ref_correct))[0]
-        sys_leftover = numpy.nonzero(numpy.negative(sys_correct))[0]
+        ref_leftover = numpy.nonzero(numpy.logical_not(ref_correct))[0]
+        sys_leftover = numpy.nonzero(numpy.logical_not(sys_correct))[0]
 
         # Substitutions
         Nsubs = 0
