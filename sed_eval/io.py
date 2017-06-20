@@ -37,6 +37,7 @@ def load_event_list(filename):
     - [event onset (float >= 0)][delimiter][event offset (float >= 0)][delimiter][label]
     - [filename][delimiter][event onset (float >= 0)][delimiter][event offset (float >= 0)][delimiter][event label]
     - [filename][delimiter][scene_label][delimiter][event onset (float >= 0)][delimiter][event offset (float >= 0)][delimiter][event label]
+    - [filename]
 
     Supported delimiters: ``,``, ``;``, ``tab``
 
@@ -104,6 +105,7 @@ def load_event_list(filename):
                         'event_offset': float(row[1])
                     }
                 )
+
             elif len(row) == 3:
                 if not isfloat(row[0]) or not isfloat(row[1]):
                     raise ValueError('Event onset and event offset needs to be float in file [{file}].'.format(file=filename))
@@ -115,6 +117,7 @@ def load_event_list(filename):
                         'event_label': row[2]
                     }
                 )
+
             elif len(row) == 4:
                 if not isfloat(row[1]) or not isfloat(row[2]):
                     raise ValueError('Event onset and event offset needs to be float in file [{file}].'.format(file=filename))
@@ -127,6 +130,7 @@ def load_event_list(filename):
                         'event_label': row[3]
                     }
                 )
+
             elif len(row) == 5:
                 if not isfloat(row[2]) or not isfloat(row[3]):
                     raise ValueError('Event onset and event offset needs to be float in file [{file}].'.format(file=filename))
@@ -140,6 +144,14 @@ def load_event_list(filename):
                         'event_label': row[4]
                     }
                 )
+
+            elif len(row) == 1 and not isfloat(row[0]):
+                data.append(
+                    {
+                        'file': row[0]
+                    }
+                )
+
             else:
                 raise ValueError('Unknown event list format in file [{file}].'.format(file=filename))
 
