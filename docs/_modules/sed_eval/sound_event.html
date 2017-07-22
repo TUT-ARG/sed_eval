@@ -294,7 +294,7 @@
 <span class="sd">take as a parameter event lists, use :func:`sed_eval.io.load_event_list` to read them from a file.</span>
 
 
-<span class="sd">Usage example:</span>
+<span class="sd">Usage example when reading event lists from disk:</span>
 
 <span class="sd">.. code-block:: python</span>
 <span class="sd">    :linenos:</span>
@@ -354,6 +354,83 @@
 <span class="sd">    # Or print all metrics as reports</span>
 <span class="sd">    print segment_based_metrics</span>
 <span class="sd">    print event_based_metrics</span>
+
+<span class="sd">Usage example:</span>
+
+<span class="sd">.. code-block:: python</span>
+<span class="sd">    :linenos:</span>
+
+<span class="sd">    import sed_eval</span>
+
+<span class="sd">    reference_event_list = sed_eval.util.EventList(</span>
+<span class="sd">        [</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
+<span class="sd">                &#39;event_onset&#39;: 0.0,</span>
+<span class="sd">                &#39;event_offset&#39;: 2.5,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
+<span class="sd">            },</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
+<span class="sd">                &#39;event_onset&#39;: 2.8,</span>
+<span class="sd">                &#39;event_offset&#39;: 4.5,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
+<span class="sd">            },</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
+<span class="sd">                &#39;event_onset&#39;: 6.0,</span>
+<span class="sd">                &#39;event_offset&#39;: 10.0,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
+<span class="sd">            }</span>
+<span class="sd">        ]</span>
+<span class="sd">    )</span>
+
+<span class="sd">    estimated_event_list = sed_eval.util.EventList(</span>
+<span class="sd">        [</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
+<span class="sd">                &#39;event_onset&#39;: 1.0,</span>
+<span class="sd">                &#39;event_offset&#39;: 3.5,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
+<span class="sd">            },</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
+<span class="sd">                &#39;event_onset&#39;: 7.0,</span>
+<span class="sd">                &#39;event_offset&#39;: 8.0,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
+<span class="sd">            }</span>
+<span class="sd">        ]</span>
+<span class="sd">    )</span>
+
+<span class="sd">    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(</span>
+<span class="sd">        event_label_list=reference_event_list.unique_event_labels,</span>
+<span class="sd">        time_resolution=1.0</span>
+<span class="sd">    )</span>
+
+<span class="sd">    # Go through files</span>
+<span class="sd">    for file in reference_event_list.unique_files:</span>
+<span class="sd">        # Get reference event list for file by filtering reference_event_list</span>
+<span class="sd">        reference_event_list_for_current_file = reference_event_list.filter(file=file)</span>
+
+<span class="sd">        # Get estimated event list for file by filtering estimated_event_list</span>
+<span class="sd">        estimated_event_list_for_current_file = estimated_event_list.filter(file=file)</span>
+
+<span class="sd">        segment_based_metrics.evaluate(</span>
+<span class="sd">            reference_event_list=reference_event_list_for_current_file,</span>
+<span class="sd">            estimated_event_list=estimated_event_list_for_current_file</span>
+<span class="sd">        )</span>
+
+<span class="sd">    # Get only certain metrics</span>
+<span class="sd">    overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()</span>
+<span class="sd">    print &quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;]</span>
+
+<span class="sd">    # Or print all metrics as reports</span>
+<span class="sd">    print segment_based_metrics</span>
 
 <span class="sd">Segment based metrics</span>
 <span class="sd">^^^^^^^^^^^^^^^^^^^^^</span>
