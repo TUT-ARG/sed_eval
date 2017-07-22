@@ -419,6 +419,12 @@
                 <span class="k">if</span> <span class="n">estimated_item</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">reference_item</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]:</span>
                     <span class="n">reference_item_matched</span> <span class="o">=</span> <span class="n">reference_item</span>
                     <span class="k">break</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">reference_item_matched</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot find reference_item for estimated item [</span><span class="si">{item}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">estimated_item</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">])</span>
+                <span class="p">)</span>
+
             <span class="n">y_true</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reference_item_matched</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">])</span>
             <span class="n">y_pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">estimated_item</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">])</span>
 

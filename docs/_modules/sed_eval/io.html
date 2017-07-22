@@ -310,6 +310,7 @@
 <span class="sd">    - [event onset (float &gt;= 0)][delimiter][event offset (float &gt;= 0)][delimiter][label]</span>
 <span class="sd">    - [filename][delimiter][event onset (float &gt;= 0)][delimiter][event offset (float &gt;= 0)][delimiter][event label]</span>
 <span class="sd">    - [filename][delimiter][scene_label][delimiter][event onset (float &gt;= 0)][delimiter][event offset (float &gt;= 0)][delimiter][event label]</span>
+<span class="sd">    - [filename]</span>
 
 <span class="sd">    Supported delimiters: ``,``, ``;``, ``tab``</span>
 
@@ -377,6 +378,7 @@
                         <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
                     <span class="p">}</span>
                 <span class="p">)</span>
+
             <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Event onset and event offset needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
@@ -388,6 +390,7 @@
                         <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
                     <span class="p">}</span>
                 <span class="p">)</span>
+
             <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Event onset and event offset needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
@@ -400,6 +403,7 @@
                         <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
                     <span class="p">}</span>
                 <span class="p">)</span>
+
             <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Event onset and event offset needs to be float in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
@@ -413,6 +417,14 @@
                         <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
                     <span class="p">}</span>
                 <span class="p">)</span>
+
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">isfloat</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown event list format in file [</span><span class="si">{file}</span><span class="s1">].&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">filename</span><span class="p">))</span>
 

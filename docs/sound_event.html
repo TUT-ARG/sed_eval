@@ -570,7 +570,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event_label_list</strong> : list</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event_label_list</strong> : list, numpy.array</p>
 <blockquote>
 <div><p>List of unique event labels</p>
 </div></blockquote>
@@ -1055,6 +1055,11 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </dd></dl>
 
 <dl class="method">
+<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_accuracy">
+<code class="descname">class_wise_accuracy</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_accuracy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_f_measure">
 <code class="descname">class_wise_f_measure</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.class_wise_f_measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_f_measure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class-wise f-measure metrics (f_measure, precision, and recall)</p>
@@ -1074,32 +1079,6 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="method">
-<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate">
-<code class="descname">class_wise_error_rate</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.class_wise_error_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
-<blockquote class="last">
-<div><p>results in a dictionary format</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_accuracy">
-<code class="descname">class_wise_accuracy</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_accuracy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="sed_eval.sound_event.EventBasedMetrics.overall_accuracy">
@@ -1236,6 +1215,27 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <dt id="sed_eval.sound_event.EventBasedMetrics.results_overall_metrics">
 <code class="descname">results_overall_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.results_overall_metrics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Overall metrics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<blockquote class="last">
+<div><p>results in a dictionary format</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate">
+<code class="descname">class_wise_error_rate</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.class_wise_error_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
