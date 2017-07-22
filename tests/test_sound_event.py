@@ -5,6 +5,75 @@ Unit tests for sound event metrics
 import nose.tools
 import sed_eval
 import os
+import numpy
+
+
+@nose.tools.raises(ValueError)
+def test_parameters_1():
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list = sed_eval.io.load_event_list(estimated)
+
+    evaluated_event_labels = reference_event_list.unique_event_labels
+    evaluated_files = reference_event_list.unique_files
+
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=numpy.array(evaluated_event_labels),
+        time_resolution=['test']
+    )
+
+
+@nose.tools.raises(ValueError)
+def test_parameters_2():
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list = sed_eval.io.load_event_list(estimated)
+
+    evaluated_event_labels = reference_event_list.unique_event_labels
+    evaluated_files = reference_event_list.unique_files
+
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=numpy.array(evaluated_event_labels),
+        time_resolution=['test']
+    )
+
+@nose.tools.raises(ValueError)
+def test_parameters_3():
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list = sed_eval.io.load_event_list(estimated)
+
+    evaluated_event_labels = reference_event_list.unique_event_labels
+    evaluated_files = reference_event_list.unique_files
+
+    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=evaluated_event_labels,
+        t_collar=[2]
+    )
+
+
+@nose.tools.raises(ValueError)
+def test_parameters_4():
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list = sed_eval.io.load_event_list(estimated)
+
+    evaluated_event_labels = reference_event_list.unique_event_labels
+    evaluated_files = reference_event_list.unique_files
+
+    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=evaluated_event_labels,
+        t_collar=0.2,
+        percentage_of_length='test',
+    )
 
 
 def test_dcase_style():

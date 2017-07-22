@@ -457,7 +457,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         Parameters
         ----------
-        event_label_list : list
+        event_label_list : list, numpy.array
             List of unique event labels
         time_resolution : float (0,]
             Segment size used in the evaluation, in seconds
@@ -470,6 +470,20 @@ class SegmentBasedMetrics(SoundEventMetrics):
         """
 
         SoundEventMetrics.__init__(self)
+
+        if isinstance(event_label_list, numpy.ndarray) and len(event_label_list.shape) == 1:
+            # We have numpy array, convert it to list
+            event_label_list = event_label_list.tolist()
+
+        if not isinstance(event_label_list, list):
+            raise ValueError(
+                "event_label_list needs to be list or numpy.array"
+            )
+
+        if not isinstance(time_resolution, float) or time_resolution <= 0.0:
+            raise ValueError(
+                "time_resolution needs to be float > 0"
+            )
 
         self.event_label_list = event_label_list
         self.evaluated_length = 0.0
@@ -904,6 +918,25 @@ class EventBasedMetrics(SoundEventMetrics):
         """
 
         SoundEventMetrics.__init__(self)
+
+        if isinstance(event_label_list, numpy.ndarray) and len(event_label_list.shape) == 1:
+            # We have numpy array, convert it to list
+            event_label_list = event_label_list.tolist()
+
+        if not isinstance(event_label_list, list):
+            raise ValueError(
+                "event_label_list needs to be list or numpy.array"
+            )
+
+        if not isinstance(t_collar, float) or t_collar <= 0.0:
+            raise ValueError(
+                "t_collar needs to be float > 0"
+            )
+
+        if not isinstance(percentage_of_length, float) or percentage_of_length < 0.0 or percentage_of_length > 1.0:
+            raise ValueError(
+                "t_collar percentage_of_length to be float in [0, 1]"
+            )
 
         self.event_label_list = event_label_list
         self.evaluated_length = 0.0
