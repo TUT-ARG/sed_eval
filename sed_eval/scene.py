@@ -146,6 +146,12 @@ class SceneClassificationMetrics:
                 if estimated_item['file'] == reference_item['file']:
                     reference_item_matched = reference_item
                     break
+
+            if not reference_item_matched:
+                raise ValueError(
+                    "Cannot find reference_item for estimated item [{item}]".format(item=estimated_item['file'])
+                )
+
             y_true.append(reference_item_matched['scene_label'])
             y_pred.append(estimated_item['scene_label'])
 
