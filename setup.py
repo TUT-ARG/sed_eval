@@ -4,7 +4,7 @@ long_description = open('README.rst').read()
 
 setup(
     name='sed_eval',
-    version='0.1.8',
+    version='0.1.9',
     description='Evaluation toolbox for Sound Event Detection',
     author='Toni Heittola',
     author_email='toni.heittola@gmail.com',
