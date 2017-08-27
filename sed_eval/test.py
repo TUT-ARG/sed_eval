@@ -11,6 +11,7 @@
 
 import numpy
 
+
 def mcnemar(reference, estimated_a, estimated_b):
     """McNemar's test
 
