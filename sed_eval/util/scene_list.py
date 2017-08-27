@@ -6,6 +6,7 @@
 __all__ = ['SceneList',
            'unique_scene_labels']
 
+
 class SceneList(list):
     def __init__(self, *args):
         """Constructor
