@@ -664,15 +664,18 @@ class SegmentBasedMetrics(SoundEventMetrics):
                 valid_estimated_event_list.append(item)
         estimated_event_list = valid_estimated_event_list
 
-
         # Convert event list into frame-based representation
-        reference_event_roll = util.event_list_to_event_roll(source_event_list=reference_event_list,
-                                                             event_label_list=self.event_label_list,
-                                                             time_resolution=self.time_resolution)
+        reference_event_roll = util.event_list_to_event_roll(
+            source_event_list=reference_event_list,
+            event_label_list=self.event_label_list,
+            time_resolution=self.time_resolution
+        )
 
-        estimated_event_roll = util.event_list_to_event_roll(source_event_list=estimated_event_list,
-                                                             event_label_list=self.event_label_list,
-                                                             time_resolution=self.time_resolution)
+        estimated_event_roll = util.event_list_to_event_roll(
+            source_event_list=estimated_event_list,
+            event_label_list=self.event_label_list,
+            time_resolution=self.time_resolution
+        )
 
         self.evaluated_length += max(util.max_event_offset(reference_event_list), util.max_event_offset(estimated_event_list))
         self.evaluated_files += 1
@@ -798,8 +801,8 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         """
 
-        precision = metric.precision(self.overall['Ntp'], self.overall['Nsys'])
-        recall = metric.recall(self.overall['Ntp'], self.overall['Nref'])
+        precision = metric.precision(Ntp=self.overall['Ntp'], Nsys=self.overall['Nsys'])
+        recall = metric.recall(Ntp=self.overall['Ntp'], Nref=self.overall['Nref'])
         f_measure = metric.f_measure(precision=precision, recall=recall)
         return {'f_measure': f_measure,
                 'precision': precision,
@@ -894,8 +897,8 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         """
 
-        precision = metric.precision(self.class_wise[event_label]['Ntp'], self.class_wise[event_label]['Nsys'])
-        recall = metric.recall(self.class_wise[event_label]['Ntp'], self.class_wise[event_label]['Nref'])
+        precision = metric.precision(Ntp=self.class_wise[event_label]['Ntp'], Nsys=self.class_wise[event_label]['Nsys'])
+        recall = metric.recall(Ntp=self.class_wise[event_label]['Ntp'], Nref=self.class_wise[event_label]['Nref'])
         f_measure = metric.f_measure(precision=precision, recall=recall)
         return {'f_measure': f_measure,
                 'precision': precision,
@@ -1373,8 +1376,8 @@ class EventBasedMetrics(SoundEventMetrics):
         results : dict
             results in a dictionary format
         """
-        precision = metric.precision(self.overall['Ntp'], self.overall['Nsys'])
-        recall = metric.recall(self.overall['Ntp'], self.overall['Nref'])
+        precision = metric.precision(Ntp=self.overall['Ntp'], Nsys=self.overall['Nsys'])
+        recall = metric.recall(Ntp=self.overall['Ntp'], Nref=self.overall['Nref'])
         f_measure = metric.f_measure(precision=precision, recall=recall)
         return {'f_measure': f_measure,
                 'precision': precision,
@@ -1440,8 +1443,8 @@ class EventBasedMetrics(SoundEventMetrics):
 
         """
 
-        precision = metric.precision(self.class_wise[event_label]['Ntp'], self.class_wise[event_label]['Nsys'])
-        recall = metric.recall(self.class_wise[event_label]['Ntp'], self.class_wise[event_label]['Nref'])
+        precision = metric.precision(Ntp=self.class_wise[event_label]['Ntp'], Nsys=self.class_wise[event_label]['Nsys'])
+        recall = metric.recall(Ntp=self.class_wise[event_label]['Ntp'], Nref=self.class_wise[event_label]['Nref'])
         f_measure = metric.f_measure(precision=precision, recall=recall)
         return {'f_measure': f_measure,
                 'precision': precision,
