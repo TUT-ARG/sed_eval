@@ -36,6 +36,7 @@ ehthumbs.db
 Thumbs.db
 *~
 
+
 # Vim
 
 # PyCharm
@@ -44,6 +45,8 @@ Thumbs.db
 # cover
 tests/cover/*
 tests/_dev/*
+.coverage
+.coverage.*
 
 # Sphinx
 #docs/generated/
