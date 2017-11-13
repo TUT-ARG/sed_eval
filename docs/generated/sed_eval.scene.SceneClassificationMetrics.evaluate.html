@@ -172,6 +172,22 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_tag.html">Audio Tagging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../audio_tag.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.html">sed_eval.audio_tag.AudioTaggingMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html">sed_eval.audio_tag.AudioTaggingMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.results.html">sed_eval.audio_tag.AudioTaggingMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.reset.html">sed_eval.audio_tag.AudioTaggingMetrics.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -185,6 +201,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.equal_error_rate.html">sed_eval.metric.equal_error_rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Tests</a><ul>
@@ -221,6 +238,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-2">v0.1.2</a></li>
@@ -278,23 +296,23 @@
 <h1>sed_eval.scene.SceneClassificationMetrics.evaluate<a class="headerlink" href="#sed-eval-scene-sceneclassificationmetrics-evaluate" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="sed_eval.scene.SceneClassificationMetrics.evaluate">
-<code class="descclassname">SceneClassificationMetrics.</code><code class="descname">evaluate</code><span class="sig-paren">(</span><em>reference_scene_list</em>, <em>estimated_scene_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sed_eval/scene.html#SceneClassificationMetrics.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.scene.SceneClassificationMetrics.evaluate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">SceneClassificationMetrics.</code><code class="descname">evaluate</code><span class="sig-paren">(</span><em>reference_scene_list</em>, <em>estimated_scene_list=None</em>, <em>estimated_scene_probabilities=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sed_eval/scene.html#SceneClassificationMetrics.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.scene.SceneClassificationMetrics.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate file pair (reference and estimated)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_scene_list</strong> : scene list</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_scene_list</strong> : list of dict or dcase_util.containers.MetaDataContainer</p>
 <blockquote>
 <div><p>Reference scene list</p>
 </div></blockquote>
-<p><strong>estimated_scene_list</strong> : scene list</p>
+<p><strong>estimated_scene_list</strong> : list of dict or dcase_util.containers.MetaDataContainer</p>
 <blockquote>
 <div><p>Estimated scene list</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Nothing</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
 </td>
 </tr>
 </tbody>

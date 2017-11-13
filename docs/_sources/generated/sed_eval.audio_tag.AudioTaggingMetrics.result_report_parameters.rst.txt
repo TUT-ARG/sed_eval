@@ -1,0 +1,6 @@
+sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters
+===============================================================
+
+.. currentmodule:: sed_eval.audio_tag
+
+.. automethod:: AudioTaggingMetrics.result_report_parameters

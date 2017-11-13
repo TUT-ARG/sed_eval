@@ -170,6 +170,22 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../audio_tag.html">Audio Tagging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../audio_tag.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.html">sed_eval.audio_tag.AudioTaggingMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html">sed_eval.audio_tag.AudioTaggingMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results.html">sed_eval.audio_tag.AudioTaggingMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.reset.html">sed_eval.audio_tag.AudioTaggingMetrics.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -183,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.equal_error_rate.html">sed_eval.metric.equal_error_rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../test.html">Tests</a><ul>
@@ -219,6 +236,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-2">v0.1.2</a></li>
@@ -276,68 +294,9 @@
 <span class="sd">&quot;&quot;&quot;Scene list handling</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SceneList&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;unique_scene_labels&#39;</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
 
-<div class="viewcode-block" id="SceneList"><a class="viewcode-back" href="../../../util.html#sed_eval.util.scene_list.SceneList">[docs]</a><span class="k">class</span> <span class="nc">SceneList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructor</span>
-
-<span class="sd">        This class is inherited from list class.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            Nothing</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">list</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">valid_scene_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="s1">&#39;scene_label&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">scene_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get number of scene segments</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        scene_count: integer &gt; 0</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_scene_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">scene_label_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get number of unique scene labels</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        scene_label_count: float &gt; 0</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_scene_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unique_scene_labels</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">unique_scene_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get unique scene labels</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        labels: list, shape=(n,)</span>
-<span class="sd">            Unique labels in alphabetical order</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_scene_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">unique_scene_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unique_scene_labels&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="unique_scene_labels"><a class="viewcode-back" href="../../../generated/sed_eval.util.scene_list.unique_scene_labels.html#sed_eval.util.scene_list.unique_scene_labels">[docs]</a><span class="k">def</span> <span class="nf">unique_scene_labels</span><span class="p">(</span><span class="n">scene_list</span><span class="p">):</span>
@@ -354,14 +313,17 @@
 <span class="sd">        Unique labels in alphabetical order</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scene_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">scene_list</span><span class="o">.</span><span class="n">unique_scene_labels</span>
 
-    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">scene_list</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s1">&#39;scene_label&#39;</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">scene_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;scene_label&#39;</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+                <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">])</span>
 
-    <span class="n">labels</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">labels</span></div>
+        <span class="n">labels</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">labels</span></div>
 
 </pre></div>
 

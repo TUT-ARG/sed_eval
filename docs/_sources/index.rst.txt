@@ -44,6 +44,7 @@ API documentation
 
     sound_event
     scene
+    audio_tag
     metric
     test
     util

@@ -172,6 +172,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../audio_tag.html">Audio Tagging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -185,6 +186,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed_eval.metric.equal_error_rate.html">sed_eval.metric.equal_error_rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../test.html">Tests</a><ul>
@@ -221,6 +223,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-1-2">v0.1.2</a></li>
@@ -278,7 +281,7 @@
 <h1>sed_eval.util.event_list.filter_event_list<a class="headerlink" href="#sed-eval-util-event-list-filter-event-list" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sed_eval.util.event_list.filter_event_list">
-<code class="descclassname">sed_eval.util.event_list.</code><code class="descname">filter_event_list</code><span class="sig-paren">(</span><em>event_list</em>, <em>scene_label=None</em>, <em>event_label=None</em>, <em>file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sed_eval/util/event_list.html#filter_event_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.util.event_list.filter_event_list" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">sed_eval.util.event_list.</code><code class="descname">filter_event_list</code><span class="sig-paren">(</span><em>event_list</em>, <em>scene_label=None</em>, <em>event_label=None</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sed_eval/util/event_list.html#filter_event_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.util.event_list.filter_event_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter event list based on given fields</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -296,7 +299,7 @@
 <blockquote>
 <div><p>Event label</p>
 </div></blockquote>
-<p><strong>file</strong> : str</p>
+<p><strong>filename</strong> : str</p>
 <blockquote>
 <div><p>Filename</p>
 </div></blockquote>

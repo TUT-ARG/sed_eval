@@ -1,6 +1,13 @@
 Changes
 =======
 
+v0.2.0
+------
+
+- Audio tagging evaluator class added
+- Equal error rate metric added
+- Meta data reading is using `dcase_util` library now
+
 v0.1.4
 ------
 

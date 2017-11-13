@@ -171,6 +171,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="audio_tag.html">Audio Tagging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -184,6 +185,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.equal_error_rate.html">sed_eval.metric.equal_error_rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a><ul>
@@ -220,6 +222,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-2">v0.1.2</a></li>
@@ -719,13 +722,10 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <div><p>List of unique event labels</p>
 </div></blockquote>
 <p><strong>time_resolution</strong> : float (0,]</p>
-<blockquote>
+<blockquote class="last">
 <div><p>Segment size used in the evaluation, in seconds
 (Default value=1.0)</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Nothing</p>
 </td>
 </tr>
 </tbody>
@@ -738,17 +738,17 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_event_list</strong> : event list</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_event_list</strong> : list of dict or dcase_util.containers.MetaDataContainer</p>
 <blockquote>
 <div><p>Reference event list</p>
 </div></blockquote>
-<p><strong>estimated_event_list</strong> : event list</p>
+<p><strong>estimated_event_list</strong> : list of dict or dcase_util.containers.MetaDataContainer</p>
 <blockquote>
 <div><p>Estimated event list</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Nothing</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
 </td>
 </tr>
 </tbody>
@@ -762,27 +762,6 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </dd></dl>
 
 <dl class="method">
-<dt id="sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters">
-<code class="descname">result_report_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#SegmentBasedMetrics.result_report_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report metric parameters</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>report</strong> : str</p>
-<blockquote class="last">
-<div><p>result report in string format</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="sed_eval.sound_event.SegmentBasedMetrics.overall_f_measure">
 <code class="descname">overall_f_measure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#SegmentBasedMetrics.overall_f_measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.SegmentBasedMetrics.overall_f_measure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Overall f-measure metrics (f_measure, precision, and recall)</p>
@@ -790,10 +769,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -811,10 +787,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -839,7 +812,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -857,10 +830,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -878,10 +848,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -899,10 +866,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -920,12 +884,27 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters">
+<code class="descname">result_report_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#SegmentBasedMetrics.result_report_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report metric parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">str</p>
+<blockquote class="last">
+<div><p>result report in string format</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1007,17 +986,40 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 (Default value=0.2)</p>
 </div></blockquote>
 <p><strong>percentage_of_length</strong> : float in [0, 1]</p>
-<blockquote>
-<div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be consider valid estimation
+<blockquote class="last">
+<div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be
+consider valid estimation
 (Default value = 0.5)</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Nothing</p>
+</tbody>
+</table>
+<dl class="method">
+<dt id="sed_eval.sound_event.EventBasedMetrics.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>reference_event_list</em>, <em>estimated_event_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate file pair (reference and estimated)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_event_list</strong> : event list</p>
+<blockquote>
+<div><p>Reference event list</p>
+</div></blockquote>
+<p><strong>estimated_event_list</strong> : event list</p>
+<blockquote>
+<div><p>Estimated event list</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
 </td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
 <dl class="method">
 <dt id="sed_eval.sound_event.EventBasedMetrics.reset">
 <code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.reset" title="Permalink to this definition">¶</a></dt>
@@ -1047,7 +1049,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">validity: bool</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
 </td>
 </tr>
 </tbody>
@@ -1077,58 +1079,13 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </div></blockquote>
 <p><strong>percentage_of_length</strong> : float in [0, 1]</p>
 <blockquote>
-<div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be consider valid estimation
+<div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be
+consider valid estimation
 (Default value = 0.5)</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>validity</strong> : bool</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sed_eval.sound_event.EventBasedMetrics.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>reference_event_list</em>, <em>estimated_event_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Evaluate file pair (reference and estimated)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_event_list</strong> : event list</p>
-<blockquote>
-<div><p>Reference event list</p>
-</div></blockquote>
-<p><strong>estimated_event_list</strong> : event list</p>
-<blockquote>
-<div><p>Estimated event list</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Nothing</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sed_eval.sound_event.EventBasedMetrics.result_report_parameters">
-<code class="descname">result_report_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.result_report_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.result_report_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Report metric parameters</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>report</strong> : str</p>
-<blockquote class="last">
-<div><p>result report in string format</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
 </td>
 </tr>
 </tbody>
@@ -1143,10 +1100,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1164,10 +1118,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1185,10 +1136,25 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
+<blockquote class="last">
+<div><p>results in a dictionary format</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_f_measure">
+<code class="descname">class_wise_f_measure</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.class_wise_f_measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_f_measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class-wise f-measure metrics (f_measure, precision, and recall)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1204,17 +1170,14 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_f_measure">
-<code class="descname">class_wise_f_measure</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.class_wise_f_measure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_f_measure" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class-wise f-measure metrics (f_measure, precision, and recall)</p>
+<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate">
+<code class="descname">class_wise_error_rate</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.class_wise_error_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1237,10 +1200,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>report</strong> : str</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">str</p>
 <blockquote class="last">
 <div><p>result report in string format</p>
 </div></blockquote>
@@ -1258,10 +1218,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>report</strong> : str</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">str</p>
 <blockquote class="last">
 <div><p>result report in string format</p>
 </div></blockquote>
@@ -1279,10 +1236,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>report</strong> : str</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">str</p>
 <blockquote class="last">
 <div><p>result report in string format</p>
 </div></blockquote>
@@ -1300,10 +1254,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1321,10 +1272,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1342,10 +1290,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1363,10 +1308,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
 <blockquote class="last">
 <div><p>results in a dictionary format</p>
 </div></blockquote>
@@ -1377,19 +1319,16 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </dd></dl>
 
 <dl class="method">
-<dt id="sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate">
-<code class="descname">class_wise_error_rate</code><span class="sig-paren">(</span><em>event_label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.class_wise_error_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.class_wise_error_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)</p>
+<dt id="sed_eval.sound_event.EventBasedMetrics.result_report_parameters">
+<code class="descname">result_report_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics.result_report_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics.result_report_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report metric parameters</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Nothing</strong></p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> : dict</p>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">str</p>
 <blockquote class="last">
-<div><p>results in a dictionary format</p>
+<div><p>result report in string format</p>
 </div></blockquote>
 </td>
 </tr>

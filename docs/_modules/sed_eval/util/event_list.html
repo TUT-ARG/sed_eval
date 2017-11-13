@@ -170,6 +170,22 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../../audio_tag.html">Audio Tagging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../audio_tag.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.html">sed_eval.audio_tag.AudioTaggingMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html">sed_eval.audio_tag.AudioTaggingMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results.html">sed_eval.audio_tag.AudioTaggingMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.audio_tag.AudioTaggingMetrics.reset.html">sed_eval.audio_tag.AudioTaggingMetrics.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -183,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../generated/sed_eval.metric.equal_error_rate.html">sed_eval.metric.equal_error_rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../test.html">Tests</a><ul>
@@ -219,6 +236,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#v0-1-2">v0.1.2</a></li>
@@ -277,150 +295,29 @@
 <span class="sd">Event list handling</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;EventList&#39;</span><span class="p">,</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;filter_event_list&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;unique_files&#39;</span><span class="p">,</span>
            <span class="s1">&#39;unique_event_labels&#39;</span><span class="p">,</span>
            <span class="s1">&#39;max_event_offset&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="EventList"><a class="viewcode-back" href="../../../util.html#sed_eval.util.event_list.EventList">[docs]</a><span class="k">class</span> <span class="nc">EventList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Constructor</span>
-
-<span class="sd">        This class is inherited from list class.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">            Nothing</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">list</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">valid_event_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s1">&#39;event_label&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;event_onset&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;event_offset&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="k">return</span> <span class="kc">True</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">event_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get number of events</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        event_count: integer &gt; 0</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_event_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">event_label_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get number of unique event labels</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        event_label_count: float &gt; 0</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_event_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">)</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">unique_event_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get unique event labels</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        labels: list, shape=(n,)</span>
-<span class="sd">            Unique labels in alphabetical order</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_event_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">unique_event_labels</span><span class="p">(</span><span class="n">event_list</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">unique_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get unique files</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        labels: list, shape=(n,)</span>
-<span class="sd">            Unique files in alphabetical order</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_event_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">unique_files</span><span class="p">(</span><span class="n">event_list</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">max_event_offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Find the offset (end-time) of last event</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        max_offset: float &gt; 0</span>
-<span class="sd">            maximum offset</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_event_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">max_event_offset</span><span class="p">(</span><span class="n">event_list</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
-
-<div class="viewcode-block" id="EventList.filter"><a class="viewcode-back" href="../../../util.html#sed_eval.util.event_list.EventList.filter">[docs]</a>    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scene_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">event_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Filter event list based on given fields</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        event_list : list, shape=(n,)</span>
-<span class="sd">            A list containing event dicts</span>
-<span class="sd">        scene_label : str</span>
-<span class="sd">            Scene label</span>
-<span class="sd">        event_label : str</span>
-<span class="sd">            Event label</span>
-<span class="sd">        file : str</span>
-<span class="sd">            Filename</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        event_list: list, shape=(n,)</span>
-<span class="sd">            A list containing event dicts</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">valid_event_list</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">filter_event_list</span><span class="p">(</span>
-                <span class="n">event_list</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-                <span class="n">scene_label</span><span class="o">=</span><span class="n">scene_label</span><span class="p">,</span>
-                <span class="n">event_label</span><span class="o">=</span><span class="n">event_label</span><span class="p">,</span>
-                <span class="n">file</span><span class="o">=</span><span class="n">file</span>
-            <span class="p">)</span></div>
-
-    <span class="k">def</span> <span class="nf">filter_event_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scene_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">event_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">scene_label</span><span class="o">=</span><span class="n">scene_label</span><span class="p">,</span> <span class="n">event_label</span><span class="o">=</span><span class="n">event_label</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="filter_event_list"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_list.filter_event_list.html#sed_eval.util.event_list.filter_event_list">[docs]</a><span class="k">def</span> <span class="nf">filter_event_list</span><span class="p">(</span><span class="n">event_list</span><span class="p">,</span> <span class="n">scene_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">event_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="filter_event_list"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_list.filter_event_list.html#sed_eval.util.event_list.filter_event_list">[docs]</a><span class="k">def</span> <span class="nf">filter_event_list</span><span class="p">(</span><span class="n">event_list</span><span class="p">,</span> <span class="n">scene_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">event_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Filter event list based on given fields</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    event_list : list, shape=(n,)</span>
 <span class="sd">        A list containing event dicts</span>
+
 <span class="sd">    scene_label : str</span>
 <span class="sd">        Scene label</span>
+
 <span class="sd">    event_label : str</span>
 <span class="sd">        Event label</span>
-<span class="sd">    file : str</span>
+
+<span class="sd">    filename : str</span>
 <span class="sd">        Filename</span>
 
 <span class="sd">    Returns</span>
@@ -430,42 +327,43 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">filtered_event_list</span> <span class="o">=</span> <span class="n">EventList</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
-        <span class="n">matched</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="n">event_label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s1">&#39;event_label&#39;</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">event_label</span><span class="p">:</span>
-            <span class="n">matched</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="n">scene_label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s1">&#39;scene_label&#39;</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">scene_label</span><span class="p">:</span>
-            <span class="n">matched</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="n">file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s1">&#39;file&#39;</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">matched</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">if</span> <span class="n">matched</span><span class="p">:</span>
-            <span class="n">filtered_event_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">filtered_event_list</span></div>
+    <span class="k">return</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">(</span><span class="n">event_list</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+        <span class="n">scene_label</span><span class="o">=</span><span class="n">scene_label</span><span class="p">,</span>
+        <span class="n">event_label</span><span class="o">=</span><span class="n">event_list</span>
+    <span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="unique_files"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_list.unique_files.html#sed_eval.util.event_list.unique_files">[docs]</a><span class="k">def</span> <span class="nf">unique_files</span><span class="p">(</span><span class="n">event_list</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Find the unique files</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    event_list : list, shape=(n,)</span>
+<span class="sd">    event_list : list or dcase_util.containers.MetaDataContainer</span>
 <span class="sd">        A list containing event dicts</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    file_list: list, shape=(n,)</span>
+<span class="sd">    list</span>
 <span class="sd">        Unique filenames in alphabetical order</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">files</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s1">&#39;file&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
-            <span class="n">files</span><span class="p">[</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">event_list</span><span class="o">.</span><span class="n">unique_files</span>
 
-    <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">files</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="n">files</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">files</span></div>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;file&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+                <span class="n">files</span><span class="p">[</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+
+            <span class="k">elif</span> <span class="s1">&#39;filename&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+                <span class="n">files</span><span class="p">[</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span>
+
+        <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">files</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">files</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">files</span></div>
 
 
 <div class="viewcode-block" id="unique_event_labels"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_list.unique_event_labels.html#sed_eval.util.event_list.unique_event_labels">[docs]</a><span class="k">def</span> <span class="nf">unique_event_labels</span><span class="p">(</span><span class="n">event_list</span><span class="p">):</span>
@@ -473,23 +371,27 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    event_list : list, shape=(n,)</span>
+<span class="sd">    event_list : list or dcase_util.containers.MetaDataContainer</span>
 <span class="sd">        A list containing event dicts</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    labels: list, shape=(n,)</span>
+<span class="sd">    list</span>
 <span class="sd">        Unique labels in alphabetical order</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s1">&#39;event_label&#39;</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-            <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_label&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">event_list</span><span class="o">.</span><span class="n">unique_event_labels</span>
 
-    <span class="n">labels</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">labels</span></div>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;event_label&#39;</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">and</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+                <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_label&#39;</span><span class="p">])</span>
+
+        <span class="n">labels</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">labels</span></div>
 
 
 <div class="viewcode-block" id="max_event_offset"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_list.max_event_offset.html#sed_eval.util.event_list.max_event_offset">[docs]</a><span class="k">def</span> <span class="nf">max_event_offset</span><span class="p">(</span><span class="n">event_list</span><span class="p">):</span>
@@ -497,21 +399,31 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    event_list : list, shape=(n,)</span>
+<span class="sd">    event_list : list or dcase_util.containers.MetaDataContainer</span>
 <span class="sd">        A list containing event dicts</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    max_offset: float &gt; 0</span>
+<span class="sd">    float &gt; 0</span>
 <span class="sd">        maximum offset</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">max_offset</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_offset</span><span class="p">:</span>
-            <span class="n">max_offset</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">max_offset</span></div>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">event_list</span><span class="o">.</span><span class="n">max_offset</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">max_offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">event_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;event_offset&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_offset</span><span class="p">:</span>
+                    <span class="n">max_offset</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span>
+
+            <span class="k">elif</span> <span class="s1">&#39;offset&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_offset</span><span class="p">:</span>
+                    <span class="n">max_offset</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">max_offset</span></div>
 </pre></div>
 
            </div>

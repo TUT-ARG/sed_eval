@@ -1,0 +1,6 @@
+sed_eval.audio_tag.AudioTaggingMetrics.reset
+============================================
+
+.. currentmodule:: sed_eval.audio_tag
+
+.. automethod:: AudioTaggingMetrics.reset

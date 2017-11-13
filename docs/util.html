@@ -171,6 +171,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="audio_tag.html">Audio Tagging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -184,6 +185,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.equal_error_rate.html">sed_eval.metric.equal_error_rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a><ul>
@@ -220,6 +222,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-2">v0.1.2</a></li>
@@ -297,139 +300,6 @@ and scene lists.</p>
 </tr>
 </tbody>
 </table>
-<dl class="class">
-<dt id="sed_eval.util.EventList">
-<em class="property">class </em><code class="descclassname">sed_eval.util.</code><code class="descname">EventList</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/util/event_list.html#EventList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.util.EventList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor</p>
-<p>This class is inherited from list class.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Nothing</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="sed_eval.util.EventList.event_count">
-<code class="descname">event_count</code><a class="headerlink" href="#sed_eval.util.EventList.event_count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get number of events</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">event_count: integer &gt; 0</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="sed_eval.util.EventList.event_label_count">
-<code class="descname">event_label_count</code><a class="headerlink" href="#sed_eval.util.EventList.event_label_count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get number of unique event labels</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">event_label_count: float &gt; 0</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="sed_eval.util.EventList.unique_event_labels">
-<code class="descname">unique_event_labels</code><a class="headerlink" href="#sed_eval.util.EventList.unique_event_labels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get unique event labels</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">labels: list, shape=(n,)</p>
-<blockquote class="last">
-<div><p>Unique labels in alphabetical order</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="sed_eval.util.EventList.unique_files">
-<code class="descname">unique_files</code><a class="headerlink" href="#sed_eval.util.EventList.unique_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get unique files</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">labels: list, shape=(n,)</p>
-<blockquote class="last">
-<div><p>Unique files in alphabetical order</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="sed_eval.util.EventList.max_event_offset">
-<code class="descname">max_event_offset</code><a class="headerlink" href="#sed_eval.util.EventList.max_event_offset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the offset (end-time) of last event</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">max_offset: float &gt; 0</p>
-<blockquote class="last">
-<div><p>maximum offset</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="sed_eval.util.EventList.filter">
-<code class="descname">filter</code><span class="sig-paren">(</span><em>scene_label=None</em>, <em>event_label=None</em>, <em>file=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/util/event_list.html#EventList.filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.util.EventList.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Filter event list based on given fields</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>event_list</strong> : list, shape=(n,)</p>
-<blockquote>
-<div><p>A list containing event dicts</p>
-</div></blockquote>
-<p><strong>scene_label</strong> : str</p>
-<blockquote>
-<div><p>Scene label</p>
-</div></blockquote>
-<p><strong>event_label</strong> : str</p>
-<blockquote>
-<div><p>Event label</p>
-</div></blockquote>
-<p><strong>file</strong> : str</p>
-<blockquote>
-<div><p>Filename</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">event_list: list, shape=(n,)</p>
-<blockquote class="last">
-<div><p>A list containing event dicts</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 <div class="section" id="event-roll-operations">
 <h2>Event roll operations<a class="headerlink" href="#event-roll-operations" title="Permalink to this headline">¶</a></h2>
@@ -464,67 +334,6 @@ and scene lists.</p>
 </tr>
 </tbody>
 </table>
-<dl class="class">
-<dt id="sed_eval.util.SceneList">
-<em class="property">class </em><code class="descclassname">sed_eval.util.</code><code class="descname">SceneList</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/util/scene_list.html#SceneList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.util.SceneList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor</p>
-<p>This class is inherited from list class.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Nothing</td>
-</tr>
-</tbody>
-</table>
-<dl class="attribute">
-<dt id="sed_eval.util.SceneList.scene_count">
-<code class="descname">scene_count</code><a class="headerlink" href="#sed_eval.util.SceneList.scene_count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get number of scene segments</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">scene_count: integer &gt; 0</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="sed_eval.util.SceneList.scene_label_count">
-<code class="descname">scene_label_count</code><a class="headerlink" href="#sed_eval.util.SceneList.scene_label_count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get number of unique scene labels</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">scene_label_count: float &gt; 0</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="sed_eval.util.SceneList.unique_scene_labels">
-<code class="descname">unique_scene_labels</code><a class="headerlink" href="#sed_eval.util.SceneList.unique_scene_labels" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get unique scene labels</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">labels: list, shape=(n,)</p>
-<blockquote class="last">
-<div><p>Unique labels in alphabetical order</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 </div>
 

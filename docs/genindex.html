@@ -170,6 +170,22 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="audio_tag.html">Audio Tagging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="audio_tag.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.html">sed_eval.audio_tag.AudioTaggingMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html">sed_eval.audio_tag.AudioTaggingMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results.html">sed_eval.audio_tag.AudioTaggingMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.reset.html">sed_eval.audio_tag.AudioTaggingMetrics.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -183,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.substitution_rate.html">sed_eval.metric.substitution_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.deletion_rate.html">sed_eval.metric.deletion_rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.insertion_rate.html">sed_eval.metric.insertion_rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.equal_error_rate.html">sed_eval.metric.equal_error_rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="test.html">Tests</a><ul>
@@ -219,6 +236,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-1-2">v0.1.2</a></li>
@@ -293,9 +311,11 @@
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.html#sed_eval.scene.SceneClassificationMetrics.__init__">__init__() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.html#sed_eval.audio_tag.AudioTaggingMetrics.__init__">__init__() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.html#sed_eval.scene.SceneClassificationMetrics.__init__">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.html#sed_eval.sound_event.EventBasedMetrics.__init__">(sed_eval.sound_event.EventBasedMetrics method)</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.html#sed_eval.sound_event.SegmentBasedMetrics.__init__">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
@@ -309,11 +329,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/sed_eval.metric.accuracy.html#sed_eval.metric.accuracy">accuracy() (in module sed_eval.metric)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/sed_eval.metric.accuracy2.html#sed_eval.metric.accuracy2">accuracy2() (in module sed_eval.metric)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-acoustic-scene"><strong>acoustic scene</strong></a>
+</li>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.html#sed_eval.audio_tag.AudioTaggingMetrics">AudioTaggingMetrics (class in sed_eval.audio_tag)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -369,33 +391,31 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/sed_eval.metric.equal_error_rate.html#sed_eval.metric.equal_error_rate">equal_error_rate() (in module sed_eval.metric)</a>
+</li>
       <li><a href="generated/sed_eval.metric.error_rate.html#sed_eval.metric.error_rate">error_rate() (in module sed_eval.metric)</a>
 </li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate">evaluate() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html#sed_eval.audio_tag.AudioTaggingMetrics.evaluate">evaluate() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.evaluate.html#sed_eval.sound_event.EventBasedMetrics.evaluate">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.evaluate">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.evaluate.html#sed_eval.sound_event.SegmentBasedMetrics.evaluate">(sed_eval.sound_event.SegmentBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.evaluate">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-event-label"><strong>event label</strong></a>
 </li>
       <li><a href="glossary.html#term-event-offset"><strong>event offset</strong></a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-event-onset"><strong>event onset</strong></a>
-</li>
-      <li><a href="util.html#sed_eval.util.EventList.event_count">event_count (sed_eval.util.EventList attribute)</a>
-</li>
-      <li><a href="util.html#sed_eval.util.EventList.event_label_count">event_label_count (sed_eval.util.EventList attribute)</a>
 </li>
       <li><a href="generated/sed_eval.util.event_roll.event_list_to_event_roll.html#sed_eval.util.event_roll.event_list_to_event_roll">event_list_to_event_roll() (in module sed_eval.util.event_roll)</a>
 </li>
       <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.html#sed_eval.sound_event.EventBasedMetrics">EventBasedMetrics (class in sed_eval.sound_event)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics">[1]</a>
-</li>
-      <li><a href="util.html#sed_eval.util.EventList">EventList (class in sed_eval.util)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -407,8 +427,6 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="util.html#sed_eval.util.EventList.filter">filter() (sed_eval.util.EventList method)</a>
-</li>
       <li><a href="generated/sed_eval.util.event_list.filter_event_list.html#sed_eval.util.event_list.filter_event_list">filter_event_list() (in module sed_eval.util.event_list)</a>
 </li>
   </ul></td>
@@ -442,8 +460,6 @@
       <li><a href="glossary.html#term-macro-average"><strong>macro-average</strong></a>
 </li>
       <li><a href="generated/sed_eval.util.event_roll.match_event_roll_lengths.html#sed_eval.util.event_roll.match_event_roll_lengths">match_event_roll_lengths() (in module sed_eval.util.event_roll)</a>
-</li>
-      <li><a href="util.html#sed_eval.util.EventList.max_event_offset">max_event_offset (sed_eval.util.EventList attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -499,25 +515,31 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/sed_eval.metric.recall.html#sed_eval.metric.recall">recall() (in module sed_eval.metric)</a>
 </li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.reset.html#sed_eval.scene.SceneClassificationMetrics.reset">reset() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.reset.html#sed_eval.audio_tag.AudioTaggingMetrics.reset">reset() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.reset.html#sed_eval.scene.SceneClassificationMetrics.reset">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.reset.html#sed_eval.sound_event.EventBasedMetrics.reset">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.reset">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.reset.html#sed_eval.sound_event.SegmentBasedMetrics.reset">(sed_eval.sound_event.SegmentBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.reset">[1]</a>
 </li>
       </ul></li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise.html#sed_eval.scene.SceneClassificationMetrics.result_report_class_wise">result_report_class_wise() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise.html#sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise">result_report_class_wise() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise.html#sed_eval.scene.SceneClassificationMetrics.result_report_class_wise">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise.html#sed_eval.sound_event.EventBasedMetrics.result_report_class_wise">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.result_report_class_wise">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average.html#sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average">result_report_class_wise_average() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average.html#sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average">result_report_class_wise_average() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average.html#sed_eval.scene.SceneClassificationMetrics.result_report_class_wise_average">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average.html#sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.result_report_class_wise_average">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
@@ -529,9 +551,11 @@
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_overall.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_overall">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_parameters.html#sed_eval.scene.SceneClassificationMetrics.result_report_parameters">result_report_parameters() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters.html#sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters">result_report_parameters() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.result_report_parameters.html#sed_eval.scene.SceneClassificationMetrics.result_report_parameters">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.result_report_parameters.html#sed_eval.sound_event.EventBasedMetrics.result_report_parameters">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.result_report_parameters">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters">(sed_eval.sound_event.SegmentBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters">[1]</a>
@@ -539,33 +563,41 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results.html#sed_eval.scene.SceneClassificationMetrics.results">results() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results.html#sed_eval.audio_tag.AudioTaggingMetrics.results">results() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results.html#sed_eval.scene.SceneClassificationMetrics.results">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.results.html#sed_eval.sound_event.EventBasedMetrics.results">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.results">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.results.html#sed_eval.sound_event.SegmentBasedMetrics.results">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics">results_class_wise_average_metrics() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics.html#sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics">results_class_wise_average_metrics() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics.html#sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.results_class_wise_average_metrics">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics">results_class_wise_metrics() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics.html#sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics">results_class_wise_metrics() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics.html#sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.results_class_wise_metrics">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
 </li>
       </ul></li>
-      <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results_overall_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_overall_metrics">results_overall_metrics() (sed_eval.scene.SceneClassificationMetrics method)</a>
+      <li><a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics.html#sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics">results_overall_metrics() (sed_eval.audio_tag.AudioTaggingMetrics method)</a>
 
       <ul>
+        <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.results_overall_metrics.html#sed_eval.scene.SceneClassificationMetrics.results_overall_metrics">(sed_eval.scene.SceneClassificationMetrics method)</a>
+</li>
         <li><a href="generated/sed_eval.sound_event.EventBasedMetrics.results_overall_metrics.html#sed_eval.sound_event.EventBasedMetrics.results_overall_metrics">(sed_eval.sound_event.EventBasedMetrics method)</a>, <a href="sound_event.html#sed_eval.sound_event.EventBasedMetrics.results_overall_metrics">[1]</a>
 </li>
         <li><a href="generated/sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics">(sed_eval.sound_event.SegmentBasedMetrics method)</a>
@@ -579,13 +611,9 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-scene-label"><strong>scene label</strong></a>
 </li>
-      <li><a href="util.html#sed_eval.util.SceneList.scene_count">scene_count (sed_eval.util.SceneList attribute)</a>
-</li>
-      <li><a href="util.html#sed_eval.util.SceneList.scene_label_count">scene_label_count (sed_eval.util.SceneList attribute)</a>
-</li>
       <li><a href="generated/sed_eval.scene.SceneClassificationMetrics.html#sed_eval.scene.SceneClassificationMetrics">SceneClassificationMetrics (class in sed_eval.scene)</a>
 </li>
-      <li><a href="util.html#sed_eval.util.SceneList">SceneList (class in sed_eval.util)</a>
+      <li><a href="audio_tag.html#module-sed_eval.audio_tag">sed_eval.audio_tag (module)</a>
 </li>
       <li><a href="io.html#module-sed_eval.io">sed_eval.io (module)</a>
 </li>
@@ -593,10 +621,10 @@
 </li>
       <li><a href="scene.html#module-sed_eval.scene">sed_eval.scene (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="sound_event.html#module-sed_eval.sound_event">sed_eval.sound_event (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="test.html#module-sed_eval.test">sed_eval.test (module)</a>
 </li>
       <li><a href="util.html#module-sed_eval.util">sed_eval.util (module)</a>
@@ -617,17 +645,11 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="util.html#sed_eval.util.EventList.unique_event_labels">unique_event_labels (sed_eval.util.EventList attribute)</a>
-</li>
       <li><a href="generated/sed_eval.util.event_list.unique_event_labels.html#sed_eval.util.event_list.unique_event_labels">unique_event_labels() (in module sed_eval.util.event_list)</a>
-</li>
-      <li><a href="util.html#sed_eval.util.EventList.unique_files">unique_files (sed_eval.util.EventList attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/sed_eval.util.event_list.unique_files.html#sed_eval.util.event_list.unique_files">unique_files() (in module sed_eval.util.event_list)</a>
-</li>
-      <li><a href="util.html#sed_eval.util.SceneList.unique_scene_labels">unique_scene_labels (sed_eval.util.SceneList attribute)</a>
 </li>
       <li><a href="generated/sed_eval.util.scene_list.unique_scene_labels.html#sed_eval.util.scene_list.unique_scene_labels">unique_scene_labels() (in module sed_eval.util.scene_list)</a>
 </li>
