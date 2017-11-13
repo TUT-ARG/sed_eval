@@ -20,6 +20,8 @@
     deletion_rate
     insertion_rate
 
+    equal_error_rate
+
 """
 
 import numpy
@@ -389,3 +391,59 @@ def error_rate(substitution_rate_value=0.0, deletion_rate_value=0.0, insertion_r
     """
 
     return float(substitution_rate_value + deletion_rate_value + insertion_rate_value)
+
+
+def equal_error_rate(y_true, y_score, eps=numpy.spacing(1)):
+    """Equal error rate (EER)
+
+    EER is calculated from the curve of the false negative rate versus the false positive rate.
+    Implementation is based on https://github.com/pafoster/dcase2016_task4/blob/master/evaluation_scripts/eer.py
+
+    Parameters
+    ----------
+    y_true : numpy.array or list
+        True binary labels in range {0, 1} or {-1, 1}.
+
+    y_score : numpy.array or list
+        Target scores, can either be probability estimates of the positive
+        class or confidence values.
+
+    eps : float
+        Minimum difference considered equal
+
+    Returns
+    -------
+    float
+
+    """
+
+    from sklearn import metrics
+
+    if numpy.any(y_true):
+        false_positive_rate, true_positive_rate, thresholds = metrics.roc_curve(
+            y_true=y_true,
+            y_score=y_score,
+            drop_intermediate=True
+        )
+
+        points = [(0, 0)] + zip(false_positive_rate, true_positive_rate)
+        for i, point in enumerate(points):
+            if point[0] + eps >= 1 - point[1]:
+                break
+
+        point1 = points[i - 1]
+        point2 = points[i]
+
+        # Interpolate between point1 and point2
+        if abs(point2[0] - point1[0]) < eps:
+            eer = point1[0]
+
+        else:
+            m = (point2[1] - point1[1]) / (point2[0] - point1[0])
+            o = point1[1] - m * point1[0]
+            eer = (1 - o) / (1 + m)
+
+    else:
+        eer = numpy.nan
+
+    return eer
