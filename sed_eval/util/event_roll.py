@@ -7,6 +7,7 @@ from __future__ import absolute_import
 import math
 import numpy
 from . import event_list
+import dcase_util
 
 
 def event_list_to_event_roll(source_event_list, event_label_list=None, time_resolution=0.01):
@@ -16,6 +17,7 @@ def event_list_to_event_roll(source_event_list, event_label_list=None, time_reso
     ----------
     source_event_list : list, shape=(n,)
         A list containing event dicts
+
     event_label_list : list, shape=(k,) or None
         A list of containing unique labels in alphabetical order
         (Default value = None)
@@ -30,10 +32,20 @@ def event_list_to_event_roll(source_event_list, event_label_list=None, time_reso
 
     """
 
-    max_offset_value = event_list.max_event_offset(source_event_list)
+    if isinstance(source_event_list, dcase_util.containers.MetaDataContainer):
+        max_offset_value = source_event_list.max_offset
 
-    if event_label_list is None:
-        event_label_list = event_list.unique_event_labels(source_event_list)
+        if event_label_list is None:
+            event_label_list = source_event_list.unique_event_labels
+
+    elif isinstance(source_event_list, list):
+        max_offset_value = event_list.max_event_offset(source_event_list)
+
+        if event_label_list is None:
+            event_label_list = event_list.unique_event_labels(source_event_list)
+
+    else:
+        raise ValueError('Unknown source_event_list type.')
 
     # Initialize event roll
     event_roll = numpy.zeros((int(math.ceil(max_offset_value * 1 / time_resolution)), len(event_label_list)))
@@ -42,8 +54,16 @@ def event_list_to_event_roll(source_event_list, event_label_list=None, time_reso
     for event in source_event_list:
         pos = event_label_list.index(event['event_label'])
 
-        onset = int(math.floor(event['event_onset'] * 1 / time_resolution))
-        offset = int(math.ceil(event['event_offset'] * 1 / time_resolution))
+        if 'event_onset' in event and 'event_offset' in event:
+            event_onset = event['event_onset']
+            event_offset = event['event_offset']
+
+        elif 'onset' in event and 'offset' in event:
+            event_onset = event['onset']
+            event_offset = event['offset']
+
+        onset = int(math.floor(event_onset * 1 / float(time_resolution)))
+        offset = int(math.ceil(event_offset * 1 / float(time_resolution)))
 
         event_roll[onset:offset, pos] = 1
 
@@ -57,6 +77,7 @@ def pad_event_roll(event_roll, length):
     ----------
     event_roll: np.ndarray, shape=(m,k)
         Event roll
+
     length : int
         Length to be padded
 
@@ -81,6 +102,7 @@ def match_event_roll_lengths(event_roll_a, event_roll_b):
     ----------
     event_roll_a: np.ndarray, shape=(m1,k)
         Event roll A
+
     event_roll_b: np.ndarray, shape=(m2,k)
         Event roll B
 
