@@ -210,7 +210,7 @@ import numpy
 import math
 from . import metric
 from . import util
-from .util.event_list import EventList
+import dcase_util
 
 
 class SoundEventMetrics(object):
@@ -219,92 +219,109 @@ class SoundEventMetrics(object):
     """
     def __init__(self):
         self.event_label_list = []
+        self.ui = dcase_util.ui.FancyStringifier()
 
     # Reports
     def result_report_overall(self):
         """Report overall results
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        report : str
+        str
             result report in string format
 
         """
 
         results = self.results_overall_metrics()
-        output = "  Overall metrics (micro-average)\n"
-        output += "  ===============\n"
+
+        output = self.ui.section_header('Overall metrics (micro-average)', indent=2) + '\n'
+
         if results['f_measure']:
-            output += "  F-measure\n"
-            output += "    {:17s} : {:5.1f} %\n".format('F-measure (F)', float(results['f_measure']['f_measure'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Precision', float(results['f_measure']['precision'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Recall', float(results['f_measure']['recall'])*100)
+            output += self.ui.line('F-measure', indent=2) + '\n'
+            output += self.ui.data(field='F-measure (F1)', value=float(results['f_measure']['f_measure']) * 100,
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Precision', value=float(results['f_measure']['precision']) * 100,
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Recall', value=float(results['f_measure']['recall']) * 100,
+                                   unit='%', indent=4) + '\n'
+
         if results['error_rate']:
-            output += "  Error rate\n"
-            output += "    {:17s} :  {:3.2f}\n".format('Error rate (ER)', float(results['error_rate']['error_rate']))
-            output += "    {:17s} :  {:3.2f}\n".format('Substitution rate', float(results['error_rate']['substitution_rate']))
-            output += "    {:17s} :  {:3.2f}\n".format('Deletion rate', float(results['error_rate']['deletion_rate']))
-            output += "    {:17s} :  {:3.2f}\n".format('Insertion rate', float(results['error_rate']['insertion_rate']))
+            output += self.ui.line('Error rate', indent=2) + '\n'
+            output += self.ui.data(field='Error rate (ER)', value=float(results['error_rate']['error_rate']),
+                                   indent=4) + '\n'
+            output += self.ui.data(field='Substitution rate', value=float(results['error_rate']['substitution_rate']),
+                                   indent=4) + '\n'
+            output += self.ui.data(field='Deletion rate', value=float(results['error_rate']['deletion_rate']),
+                                   indent=4) + '\n'
+            output += self.ui.data(field='Insertion rate', value=float(results['error_rate']['insertion_rate']),
+                                   indent=4) + '\n'
+
         if results['accuracy']:
-            output += "  Accuracy\n"
-            output += "    {:17s} : {:5.1f} %\n".format('Sensitivity', float(results['accuracy']['sensitivity'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Specificity', float(results['accuracy']['specificity'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Balanced accuracy', float(results['accuracy']['balanced_accuracy'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Accuracy', float(results['accuracy']['accuracy'])*100)
-        output += "  \n"
+            output += self.ui.line('Accuracy', indent=2) + '\n'
+            output += self.ui.data(field='Sensitivity', value=float(results['accuracy']['sensitivity']*100),
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Specificity', value=float(results['accuracy']['specificity'] * 100),
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Balanced accuracy', value=float(results['accuracy']['balanced_accuracy'] * 100),
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Accuracy', value=float(results['accuracy']['accuracy'] * 100),
+                                   unit='%', indent=4) + '\n'
+
         return output
 
     def result_report_class_wise_average(self):
         """Report class-wise averages
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        report : str
+        str
             result report in string format
 
         """
 
         results = self.results_class_wise_average_metrics()
-        output = "  Class-wise average metrics (macro-average)\n"
-        output += "  ===============\n"
+
+        output = self.ui.section_header('Class-wise average metrics (macro-average)', indent=2) + '\n'
+
         if results['f_measure']:
-            output += "  F-measure\n"
-            output += "    {:17s} : {:5.1f} %\n".format('F-measure (F)', float(results['f_measure']['f_measure'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Precision', float(results['f_measure']['precision'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Recall', float(results['f_measure']['recall'])*100)
+            output += self.ui.line('F-measure', indent=2) + '\n'
+            output += self.ui.data(field='F-measure (F1)', value=float(results['f_measure']['f_measure']) * 100,
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Precision', value=float(results['f_measure']['precision']) * 100,
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Recall', value=float(results['f_measure']['recall']) * 100,
+                                   unit='%', indent=4) + '\n'
+
         if results['error_rate']:
-            output += "  Error rate\n"
-            output += "    {:17s} :  {:3.2f}\n".format('Error rate (ER)', float(results['error_rate']['error_rate']))
-            output += "    {:17s} :  {:3.2f}\n".format('Deletion rate', float(results['error_rate']['deletion_rate']))
-            output += "    {:17s} :  {:3.2f}\n".format('Insertion rate', float(results['error_rate']['insertion_rate']))
+            output += self.ui.line('Error rate', indent=2) + '\n'
+            output += self.ui.data(field='Error rate (ER)', value=float(results['error_rate']['error_rate']),
+                                   indent=4) + '\n'
+            output += self.ui.data(field='Deletion rate', value=float(results['error_rate']['deletion_rate']),
+                                   indent=4) + '\n'
+            output += self.ui.data(field='Insertion rate', value=float(results['error_rate']['insertion_rate']),
+                                   indent=4) + '\n'
+
         if results['accuracy']:
-            output += "  Accuracy\n"
-            output += "    {:17s} : {:5.1f} %\n".format('Sensitivity', float(results['accuracy']['sensitivity'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Specificity', float(results['accuracy']['specificity'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Balanced accuracy', float(results['accuracy']['balanced_accuracy'])*100)
-            output += "    {:17s} : {:5.1f} %\n".format('Accuracy', float(results['accuracy']['accuracy'])*100)
+            output += self.ui.line('Accuracy', indent=2) + '\n'
+            output += self.ui.data(field='Sensitivity', value=float(results['accuracy']['sensitivity']*100),
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Specificity', value=float(results['accuracy']['specificity'] * 100),
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Balanced accuracy', value=float(results['accuracy']['balanced_accuracy'] * 100),
+                                   unit='%', indent=4) + '\n'
+            output += self.ui.data(field='Accuracy', value=float(results['accuracy']['accuracy'] * 100),
+                                   unit='%', indent=4) + '\n'
 
         output += "  \n"
+
         return output
 
     def result_report_class_wise(self):
         """Report class-wise results
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        report : str
+        str
             result report in string format
 
         """
@@ -316,44 +333,62 @@ class SoundEventMetrics(object):
             if 'accuracy' not in results[event_label]['accuracy']:
                 accuracy_present = False
 
-        output = "  Class-wise metrics\n"
-        output += "  ===============\n"
+        output = self.ui.section_header('Class-wise metrics', indent=2) + '\n'
 
-        output += "    {:17s} | {:^4s} | {:^4s} | {:^7s} : {:^7s} : {:^7s} | {:^5s} : {:^5s} : {:^5s} |".format('Event label',
-                                                                                                                  'Nref',
-                                                                                                                  'Nsys',
-                                                                                                                  'F',
-                                                                                                                  'Pre',
-                                                                                                                  'Rec',
-                                                                                                                  'ER',
-                                                                                                                  'Del',
-                                                                                                                  'Ins')
+        headers = ['Event label', 'Nref', 'Nsys', 'F', 'Pre', 'Rec', 'ER', 'Del', 'Ins']
+        sep = ['-', '-', '-', '-', '-', '-', '-', '-', '-']
+        widths = [15, 8, 8, 9, 9, 9, 9, 9, 9]
+        separators = [True, False, True, False, False, True, False, False, True]
         if accuracy_present:
-            output += " {:^7s} : {:^7s} : {:^7s} | {:^7s} |".format('Sens', 'Spec', 'Bacc', 'Acc')
-        output += "\n"
+            headers += ['Sens', 'Spec', 'Bacc', 'Acc']
+            sep += ['-', '-', '-', '-']
+            widths += [9, 9, 9, 9]
+            separators += [False, False, False, False]
 
-        output += "    ------------------+------+------+---------+---------+---------+-------+-------+-------+"
-        if accuracy_present:
-            output += "---------+---------+---------+---------+"
-        output += "\n"
-
+        output += self.ui.row(*headers, widths=widths, indent=4, separators=separators) + '\n'
+        output += self.ui.row(*sep) + '\n'
         for event_label in self.event_label_list:
-            output += "    {:17s} | {:4.0f} | {:4.0f} | {:5.1f} %   {:5.1f} %   {:5.1f} % |  {:3.2f}    {:3.2f}    {:3.2f} |".format(event_label,
-                                                                    results[event_label]['count']['Nref'],
-                                                                    results[event_label]['count']['Nsys'],
-                                                                    results[event_label]['f_measure']['f_measure']*100,
-                                                                    results[event_label]['f_measure']['precision']*100,
-                                                                    results[event_label]['f_measure']['recall']*100,
-                                                                    results[event_label]['error_rate']['error_rate'],
-                                                                    results[event_label]['error_rate']['deletion_rate'],
-                                                                    results[event_label]['error_rate']['insertion_rate'])
+            data = [
+                event_label,
+                results[event_label]['count']['Nref'],
+                results[event_label]['count']['Nsys'],
+                results[event_label]['f_measure']['f_measure'] * 100,
+                results[event_label]['f_measure']['precision'] * 100,
+                results[event_label]['f_measure']['recall'] * 100,
+                results[event_label]['error_rate']['error_rate'],
+                results[event_label]['error_rate']['deletion_rate'],
+                results[event_label]['error_rate']['insertion_rate']
+            ]
+
+            types = [
+                'str15',
+                'int',
+                'int',
+                'float1_percentage',
+                'float1_percentage',
+                'float1_percentage',
+                'float2',
+                'float2',
+                'float2',
+            ]
+
             if accuracy_present:
-                output += " {:5.1f} %   {:5.1f} %   {:5.1f} % | {:5.1f} % |".format(results[event_label]['accuracy']['sensitivity']*100,
-                                                                                    results[event_label]['accuracy']['specificity']*100,
-                                                                                    results[event_label]['accuracy']['balanced_accuracy']*100,
-                                                                                    results[event_label]['accuracy']['accuracy']*100)
-            output += "\n"
-        output += "  \n"
+                data += [
+                    results[event_label]['accuracy']['sensitivity'] * 100,
+                    results[event_label]['accuracy']['specificity'] * 100,
+                    results[event_label]['accuracy']['balanced_accuracy'] * 100,
+                    results[event_label]['accuracy']['accuracy'] * 100
+                ]
+
+                types += [
+                    'float1_percentage',
+                    'float1_percentage',
+                    'float1_percentage',
+                    'float1_percentage',
+                ]
+
+            output += self.ui.row(*data, types=types) + '\n'
+
         return output
 
     # Metrics / overall
@@ -383,31 +418,25 @@ class SoundEventMetrics(object):
     def results_overall_metrics(self):
         """Overall metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        return {'f_measure': self.overall_f_measure(),
-                'error_rate': self.overall_error_rate(),
-                'accuracy': self.overall_accuracy()}
+        return {
+            'f_measure': self.overall_f_measure(),
+            'error_rate': self.overall_error_rate(),
+            'accuracy': self.overall_accuracy()
+        }
 
     def results_class_wise_metrics(self):
         """Class-wise metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
@@ -421,18 +450,15 @@ class SoundEventMetrics(object):
             results[event_label]['accuracy'] = self.class_wise_accuracy(event_label)
             results[event_label]['error_rate'] = self.class_wise_error_rate(event_label)
             results[event_label]['count'] = self.class_wise_count(event_label)
+
         return results
 
     def results_class_wise_average_metrics(self):
         """Class-wise averaged metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
@@ -478,52 +504,56 @@ class SoundEventMetrics(object):
 
         if event_wise_f_measure:
             event_wise_f_measure_dict = {
-                                         'f_measure': float(numpy.nanmean(event_wise_f_measure)),
-                                         'precision': float(numpy.nanmean(event_wise_precision)),
-                                         'recall': float(numpy.nanmean(event_wise_recall))
-                                        }
+                'f_measure': float(numpy.nanmean(event_wise_f_measure)),
+                'precision': float(numpy.nanmean(event_wise_precision)),
+                'recall': float(numpy.nanmean(event_wise_recall))
+            }
+
         else:
             event_wise_f_measure_dict = {}
 
         if event_wise_error_rate:
             event_wise_error_rate_dict = {
-                                          'error_rate': float(numpy.nanmean(event_wise_error_rate)),
-                                          'deletion_rate': float(numpy.nanmean(event_wise_deletion_rate)),
-                                          'insertion_rate': float(numpy.nanmean(event_wise_insertion_rate))
-                                         }
+                'error_rate': float(numpy.nanmean(event_wise_error_rate)),
+                'deletion_rate': float(numpy.nanmean(event_wise_deletion_rate)),
+                'insertion_rate': float(numpy.nanmean(event_wise_insertion_rate))
+            }
+
         else:
             event_wise_error_rate_dict = {}
 
         if event_wise_accuracy:
-            event_wise_accuracy_dict = {'sensitivity': float(numpy.nanmean(event_wise_sensitivity)),
-                                        'specificity': float(numpy.nanmean(event_wise_specificity)),
-                                        'balanced_accuracy': float(numpy.nanmean(event_wise_balanced_accuracy)),
-                                        'accuracy': float(numpy.nanmean(event_wise_accuracy))}
+            event_wise_accuracy_dict = {
+                'sensitivity': float(numpy.nanmean(event_wise_sensitivity)),
+                'specificity': float(numpy.nanmean(event_wise_specificity)),
+                'balanced_accuracy': float(numpy.nanmean(event_wise_balanced_accuracy)),
+                'accuracy': float(numpy.nanmean(event_wise_accuracy))
+            }
+
         else:
             event_wise_accuracy_dict = {}
 
-        return {'f_measure': event_wise_f_measure_dict,
-                'error_rate': event_wise_error_rate_dict,
-                'accuracy':event_wise_accuracy_dict
-                }
+        return {
+            'f_measure': event_wise_f_measure_dict,
+            'error_rate': event_wise_error_rate_dict,
+            'accuracy': event_wise_accuracy_dict
+        }
 
     def results(self):
         """All metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        return {'overall': self.results_overall_metrics(),
-                'class_wise': self.results_class_wise_metrics(),
-                'class_wise_average': self.results_class_wise_average_metrics()}
+        return {
+            'overall': self.results_overall_metrics(),
+            'class_wise': self.results_class_wise_metrics(),
+            'class_wise_average': self.results_class_wise_average_metrics()
+        }
 
 
 class SegmentBasedMetrics(SoundEventMetrics):
@@ -536,13 +566,10 @@ class SegmentBasedMetrics(SoundEventMetrics):
         ----------
         event_label_list : list, numpy.array
             List of unique event labels
+
         time_resolution : float (0,]
             Segment size used in the evaluation, in seconds
             (Default value=1.0)
-
-        Returns
-        -------
-        Nothing
 
         """
 
@@ -599,25 +626,14 @@ class SegmentBasedMetrics(SoundEventMetrics):
         return self.results()
 
     def __str__(self):
-        """Print result reports
+        """Print result reports"""
 
-        Parameters
-        ----------
-            Nothing
+        output = self.ui.section_header('Segment based metrics') + '\n'
+        output += self.result_report_parameters() + '\n'
+        output += self.result_report_overall() + '\n'
+        output += self.result_report_class_wise_average() + '\n'
+        output += self.result_report_class_wise() + '\n'
 
-        Returns
-        -------
-        report : str
-            result report in string format
-
-        """
-
-        output = "\nSegment based metrics \n"
-        output += "----------------------------------------------------------------------\n"
-        output += self.result_report_parameters()
-        output += self.result_report_overall()
-        output += self.result_report_class_wise_average()
-        output += self.result_report_class_wise()
         return output
 
     def evaluate(self, reference_event_list, estimated_event_list):
@@ -626,42 +642,57 @@ class SegmentBasedMetrics(SoundEventMetrics):
         Parameters
         ----------
 
-        reference_event_list : event list
+        reference_event_list : list of dict or dcase_util.containers.MetaDataContainer
             Reference event list
 
-        estimated_event_list : event list
+        estimated_event_list : list of dict or dcase_util.containers.MetaDataContainer
             Estimated event list
 
         Returns
         -------
-            Nothing
+        self
 
         """
 
+        # Make sure input is dcase_util.containers.MetaDataContainer
+        if not isinstance(reference_event_list, dcase_util.containers.MetaDataContainer):
+            reference_event_list = dcase_util.containers.MetaDataContainer(reference_event_list)
+
+        if not isinstance(estimated_event_list, dcase_util.containers.MetaDataContainer):
+            estimated_event_list = dcase_util.containers.MetaDataContainer(estimated_event_list)
+
         # Check that input event list have event only from one file
-        reference_files = EventList(reference_event_list).unique_files
+        reference_files = reference_event_list.unique_files
         if len(reference_files) > 1:
             raise ValueError(
                 "reference_event_list contains events from multiple files. Evaluate only file by file."
             )
 
-        estimated_files = EventList(estimated_event_list).unique_files
+        estimated_files = estimated_event_list.unique_files
         if len(estimated_files) > 1:
             raise ValueError(
                 "estimated_event_list contains events from multiple files. Evaluate only file by file."
             )
 
         # Evaluate only valid events
-        valid_reference_event_list = EventList()
+        valid_reference_event_list = dcase_util.containers.MetaDataContainer()
         for item in reference_event_list:
             if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
                 valid_reference_event_list.append(item)
+
+            elif 'onset' in item and 'offset' in item and 'event_label' in item:
+                valid_reference_event_list.append(item)
+
         reference_event_list = valid_reference_event_list
 
-        valid_estimated_event_list = EventList()
+        valid_estimated_event_list = dcase_util.containers.MetaDataContainer()
         for item in estimated_event_list:
             if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
                 valid_estimated_event_list.append(item)
+
+            elif 'onset' in item and 'offset' in item and 'event_label' in item:
+                valid_estimated_event_list.append(item)
+
         estimated_event_list = valid_estimated_event_list
 
         # Convert event list into frame-based representation
@@ -677,10 +708,13 @@ class SegmentBasedMetrics(SoundEventMetrics):
             time_resolution=self.time_resolution
         )
 
-        self.evaluated_length += max(util.max_event_offset(reference_event_list), util.max_event_offset(estimated_event_list))
+        self.evaluated_length += max(reference_event_list.max_offset, estimated_event_list.max_offset)
         self.evaluated_files += 1
 
-        reference_event_roll, estimated_event_roll = util.match_event_roll_lengths(reference_event_roll, estimated_event_roll)
+        reference_event_roll, estimated_event_roll = util.match_event_roll_lengths(
+            reference_event_roll,
+            estimated_event_roll
+        )
 
         # Compute segment-based overall metrics
         for segment_id in range(0, reference_event_roll.shape[0]):
@@ -732,8 +766,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
         return self
 
     def reset(self):
-        """Reset internal state
-        """
+        """Reset internal state"""
 
         self.overall = {
             'Ntp': 0.0,
@@ -759,83 +792,77 @@ class SegmentBasedMetrics(SoundEventMetrics):
                 'Nsys': 0.0,
             }
 
-    # Reports
-    def result_report_parameters(self):
-        """Report metric parameters
-
-        Parameters
-        ----------
-            Nothing
-
-        Returns
-        -------
-        report : str
-            result report in string format
-        
-        """
-
-        output = ''
-        output += "    {:17s} : {:<5.1f} sec\n".format('Evaluated length', self.evaluated_length)
-        output += "    {:17s} : {:<5d} files\n".format('Evaluated files', self.evaluated_files)
-
-        if self.time_resolution < 1:
-            output += "    {:17s} : {:<5.0f} ms\n".format('Segment length', self.time_resolution*1000)
-        else:
-            output += "    {:17s} : {:<5.2f} sec\n".format('Segment length', self.time_resolution)
-
-        output += "  \n"
-        return output
+        return self
 
     # Metrics
     def overall_f_measure(self):
         """Overall f-measure metrics (f_measure, precision, and recall)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        precision = metric.precision(Ntp=self.overall['Ntp'], Nsys=self.overall['Nsys'])
-        recall = metric.recall(Ntp=self.overall['Ntp'], Nref=self.overall['Nref'])
-        f_measure = metric.f_measure(precision=precision, recall=recall)
-        return {'f_measure': f_measure,
-                'precision': precision,
-                'recall': recall}
+        precision = metric.precision(
+            Ntp=self.overall['Ntp'],
+            Nsys=self.overall['Nsys']
+        )
+
+        recall = metric.recall(
+            Ntp=self.overall['Ntp'],
+            Nref=self.overall['Nref']
+        )
+
+        f_measure = metric.f_measure(
+            precision=precision,
+            recall=recall
+        )
+
+        return {
+            'f_measure': f_measure,
+            'precision': precision,
+            'recall': recall
+        }
 
     def overall_error_rate(self):
         """Overall error rate metrics (error_rate, substitution_rate, deletion_rate, and insertion_rate)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        substitution_rate = metric.substitution_rate(Nref=self.overall['Nref'],
-                                                     Nsubstitutions=self.overall['S'])
-        deletion_rate = metric.deletion_rate(Nref=self.overall['Nref'],
-                                             Ndeletions=self.overall['D'])
-        insertion_rate = metric.insertion_rate(Nref=self.overall['Nref'],
-                                               Ninsertions=self.overall['I'])
-        error_rate = metric.error_rate(substitution_rate_value=substitution_rate,
-                                       deletion_rate_value=deletion_rate,
-                                       insertion_rate_value=insertion_rate)
+        substitution_rate = metric.substitution_rate(
+            Nref=self.overall['Nref'],
+            Nsubstitutions=self.overall['S']
+        )
 
-        return {'error_rate': error_rate,
-                'substitution_rate': substitution_rate,
-                'deletion_rate': deletion_rate,
-                'insertion_rate': insertion_rate}
+        deletion_rate = metric.deletion_rate(
+            Nref=self.overall['Nref'],
+            Ndeletions=self.overall['D']
+        )
+
+        insertion_rate = metric.insertion_rate(
+            Nref=self.overall['Nref'],
+            Ninsertions=self.overall['I']
+        )
+
+        error_rate = metric.error_rate(
+            substitution_rate_value=substitution_rate,
+            deletion_rate_value=deletion_rate,
+            insertion_rate_value=insertion_rate
+        )
+
+        return {
+            'error_rate': error_rate,
+            'substitution_rate': substitution_rate,
+            'deletion_rate': deletion_rate,
+            'insertion_rate': insertion_rate
+        }
 
     def overall_accuracy(self, factor=0.5):
         """Overall accuracy metrics (sensitivity, specificity, accuracy, and balanced_accuracy)
@@ -848,117 +875,179 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        sensitivity = metric.sensitivity(Ntp=self.overall['Ntp'], Nfn=self.overall['Nfn'])
-        specificity = metric.specificity(Ntn=self.overall['Ntn'], Nfp=self.overall['Nfp'])
-        balanced_accuracy = metric.balanced_accuracy(sensitivity=sensitivity,
-                                                     specificity=specificity,
-                                                     factor=factor)
-        accuracy = metric.accuracy(Ntp=self.overall['Ntp'], Ntn=self.overall['Ntn'], Nfp=self.overall['Nfp'], Nfn=self.overall['Nfn'])
+        sensitivity = metric.sensitivity(
+            Ntp=self.overall['Ntp'],
+            Nfn=self.overall['Nfn']
+        )
+
+        specificity = metric.specificity(
+            Ntn=self.overall['Ntn'],
+            Nfp=self.overall['Nfp']
+        )
+
+        balanced_accuracy = metric.balanced_accuracy(
+            sensitivity=sensitivity,
+            specificity=specificity,
+            factor=factor
+        )
+
+        accuracy = metric.accuracy(
+            Ntp=self.overall['Ntp'],
+            Ntn=self.overall['Ntn'],
+            Nfp=self.overall['Nfp'],
+            Nfn=self.overall['Nfn']
+        )
+
         return {
-                'accuracy': accuracy,
-                'balanced_accuracy': balanced_accuracy,            
-                'sensitivity': sensitivity,
-                'specificity': specificity
-                }
+            'accuracy': accuracy,
+            'balanced_accuracy': balanced_accuracy,
+            'sensitivity': sensitivity,
+            'specificity': specificity
+        }
 
     def class_wise_count(self, event_label):
         """Class-wise counts (Nref and Nsys)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        return {'Nref': float(self.class_wise[event_label]['Nref']),
-                'Nsys': float(self.class_wise[event_label]['Nsys'])}
+        return {
+            'Nref': float(self.class_wise[event_label]['Nref']),
+            'Nsys': float(self.class_wise[event_label]['Nsys'])
+        }
 
     def class_wise_f_measure(self, event_label):
         """Class-wise f-measure metrics (f_measure, precision, and recall)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        precision = metric.precision(Ntp=self.class_wise[event_label]['Ntp'], Nsys=self.class_wise[event_label]['Nsys'])
-        recall = metric.recall(Ntp=self.class_wise[event_label]['Ntp'], Nref=self.class_wise[event_label]['Nref'])
-        f_measure = metric.f_measure(precision=precision, recall=recall)
-        return {'f_measure': f_measure,
-                'precision': precision,
-                'recall': recall}
+        precision = metric.precision(
+            Ntp=self.class_wise[event_label]['Ntp'],
+            Nsys=self.class_wise[event_label]['Nsys']
+        )
+
+        recall = metric.recall(
+            Ntp=self.class_wise[event_label]['Ntp'],
+            Nref=self.class_wise[event_label]['Nref']
+        )
+
+        f_measure = metric.f_measure(
+            precision=precision,
+            recall=recall
+        )
+
+        return {
+            'f_measure': f_measure,
+            'precision': precision,
+            'recall': recall
+        }
 
     def class_wise_error_rate(self, event_label):
         """Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        deletion_rate = metric.deletion_rate(Nref=self.class_wise[event_label]['Nref'],
-                                             Ndeletions=self.class_wise[event_label]['Nfn'])
-        insertion_rate = metric.insertion_rate(Nref=self.class_wise[event_label]['Nref'],
-                                               Ninsertions=self.class_wise[event_label]['Nfp'])
-        error_rate = metric.error_rate(deletion_rate_value=deletion_rate,
-                                       insertion_rate_value=insertion_rate)
-        return {'error_rate': error_rate,
-                'deletion_rate': deletion_rate,
-                'insertion_rate': insertion_rate}
+        deletion_rate = metric.deletion_rate(
+            Nref=self.class_wise[event_label]['Nref'],
+            Ndeletions=self.class_wise[event_label]['Nfn']
+        )
+
+        insertion_rate = metric.insertion_rate(
+            Nref=self.class_wise[event_label]['Nref'],
+            Ninsertions=self.class_wise[event_label]['Nfp']
+        )
+
+        error_rate = metric.error_rate(
+            deletion_rate_value=deletion_rate,
+            insertion_rate_value=insertion_rate
+        )
+
+        return {
+            'error_rate': error_rate,
+            'deletion_rate': deletion_rate,
+            'insertion_rate': insertion_rate
+        }
 
     def class_wise_accuracy(self, event_label, factor=0.5):
         """Class-wise accuracy metrics (sensitivity, specificity, accuracy, and balanced_accuracy)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        sensitivity = metric.sensitivity(Ntp=self.class_wise[event_label]['Ntp'], Nfn=self.class_wise[event_label]['Nfn'])
-        specificity = metric.specificity(Ntn=self.class_wise[event_label]['Ntn'], Nfp=self.class_wise[event_label]['Nfp'])
-        balanced_accuracy = metric.balanced_accuracy(sensitivity=sensitivity,
-                                                     specificity=specificity,
-                                                     factor=factor)
+        sensitivity = metric.sensitivity(
+            Ntp=self.class_wise[event_label]['Ntp'],
+            Nfn=self.class_wise[event_label]['Nfn']
+        )
 
-        accuracy = metric.accuracy(Ntp=self.class_wise[event_label]['Ntp'],
-                                   Ntn=self.class_wise[event_label]['Ntn'],
-                                   Nfp=self.class_wise[event_label]['Nfp'],
-                                   Nfn=self.class_wise[event_label]['Nfn'])
+        specificity = metric.specificity(
+            Ntn=self.class_wise[event_label]['Ntn'],
+            Nfp=self.class_wise[event_label]['Nfp']
+        )
+
+        balanced_accuracy = metric.balanced_accuracy(
+            sensitivity=sensitivity,
+            specificity=specificity,
+            factor=factor
+        )
+
+        accuracy = metric.accuracy(
+            Ntp=self.class_wise[event_label]['Ntp'],
+            Ntn=self.class_wise[event_label]['Ntn'],
+            Nfp=self.class_wise[event_label]['Nfp'],
+            Nfn=self.class_wise[event_label]['Nfn']
+        )
 
         return {
-                'accuracy': accuracy,
-                'balanced_accuracy': balanced_accuracy,
-                'sensitivity': sensitivity,
-                'specificity': specificity
-                }
+            'accuracy': accuracy,
+            'balanced_accuracy': balanced_accuracy,
+            'sensitivity': sensitivity,
+            'specificity': specificity
+        }
+
+    # Reports
+    def result_report_parameters(self):
+        """Report metric parameters
+
+        Returns
+        -------
+        str
+            result report in string format
+
+        """
+
+        output = self.ui.data(field='Evaluated length', value=self.evaluated_length, unit='sec') + '\n'
+        output += self.ui.data(field='Evaluated files', value=self.evaluated_files) + '\n'
+
+        if self.time_resolution < 1:
+            output += self.ui.data(field='Segment length', value=self.time_resolution * 1000, unit='ms') + '\n'
+
+        else:
+            output += self.ui.data(field='Segment length', value=self.time_resolution, unit='sec') + '\n'
+
+        return output
 
 
 class EventBasedMetrics(SoundEventMetrics):
@@ -988,12 +1077,9 @@ class EventBasedMetrics(SoundEventMetrics):
             (Default value=0.2)
 
         percentage_of_length : float in [0, 1]
-            Second condition, percentage of the length within which the estimated offset has to be in order to be consider valid estimation
+            Second condition, percentage of the length within which the estimated offset has to be in order to be
+            consider valid estimation
             (Default value = 0.5)
-
-        Returns
-        -------
-            Nothing
 
         """
 
@@ -1050,81 +1136,6 @@ class EventBasedMetrics(SoundEventMetrics):
                 'Nfn': 0.0,
             }
 
-    def reset(self):
-        """Reset internal state
-        """
-
-        self.overall = {
-            'Nref': 0.0,
-            'Nsys': 0.0,
-            'Nsubs': 0.0,
-            'Ntp': 0.0,
-            'Nfp': 0.0,
-            'Nfn': 0.0,
-        }
-        self.class_wise = {}
-
-        for class_label in self.event_label_list:
-            self.class_wise[class_label] = {
-                'Nref': 0.0,
-                'Nsys': 0.0,
-                'Ntp': 0.0,
-                'Ntn': 0.0,
-                'Nfp': 0.0,
-                'Nfn': 0.0,
-            }
-
-    @staticmethod
-    def validate_onset(reference_event, estimated_event, t_collar=0.200):
-        """Validate estimated event based on event onset
-
-        Parameters
-        ----------
-        reference_event : dict
-            Reference event
-        estimated_event: dict
-            Estimated event
-        t_collar : float > 0, seconds
-            Time collar with which the estimated onset has to be in order to be consider valid estimation
-            (Default value = 0.2)
-
-        Returns
-        -------
-        validity: bool
-
-        """
-
-        return math.fabs(reference_event['event_onset'] - estimated_event['event_onset']) <= t_collar
-
-    @staticmethod
-    def validate_offset(reference_event, estimated_event, t_collar=0.200, percentage_of_length=0.5):
-        """Validate estimated event based on event offset
-
-        Parameters
-        ----------
-        reference_event : dict
-            Reference event
-
-        estimated_event : dict
-            Estimated event
-
-        t_collar : float > 0, seconds
-            First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation
-            (Default value = 0.2)
-
-        percentage_of_length : float in [0, 1]
-            Second condition, percentage of the length within which the estimated offset has to be in order to be consider valid estimation
-            (Default value = 0.5)
-
-        Returns
-        -------
-        validity : bool
-
-        """
-
-        annotated_length = reference_event['event_offset'] - reference_event['event_onset']
-        return math.fabs(reference_event['event_offset'] - estimated_event['event_offset']) <= max(t_collar, percentage_of_length * annotated_length)
-
     def __enter__(self):
         return self
 
@@ -1132,31 +1143,27 @@ class EventBasedMetrics(SoundEventMetrics):
         return self.results()
 
     def __str__(self):
-        """Print result reports
+        """Print result reports"""
 
-        Parameters
-        ----------
-            Nothing
-
-        Returns
-        -------
-        report: str
-            result report in string format
-        """
         if self.evaluate_onset and self.evaluate_offset:
-            output = "\nEvent based metrics (onset-offset)\n"
-        elif self.evaluate_onset and not self.evaluate_offset:
-            output = "\nEvent based metrics (onset only)\n"
-        elif not self.evaluate_onset and self.evaluate_offset:
-            output = "\nEvent based metrics (offset only)\n"
-        else:
-            output = "\nEvent based metrics\n"
+            title = "Event based metrics (onset-offset)"
 
-        output += "----------------------------------------------------------------------\n"
-        output += self.result_report_parameters()
-        output += self.result_report_overall()
-        output += self.result_report_class_wise_average()
-        output += self.result_report_class_wise()
+        elif self.evaluate_onset and not self.evaluate_offset:
+            title = "Event based metrics (onset only)"
+
+        elif not self.evaluate_onset and self.evaluate_offset:
+            title = "Event based metrics (offset only)"
+
+        else:
+            title = "Event based metrics"
+
+        output = self.ui.section_header(title) + '\n'
+
+        output += self.result_report_parameters() + '\n'
+        output += self.result_report_overall() + '\n'
+        output += self.result_report_class_wise_average() + '\n'
+        output += self.result_report_class_wise() + '\n'
+
         return output
 
     def evaluate(self, reference_event_list, estimated_event_list):
@@ -1173,37 +1180,52 @@ class EventBasedMetrics(SoundEventMetrics):
 
         Returns
         -------
-            Nothing
+        self
 
         """
 
+        # Make sure input is dcase_util.containers.MetaDataContainer
+        if not isinstance(reference_event_list, dcase_util.containers.MetaDataContainer):
+            reference_event_list = dcase_util.containers.MetaDataContainer(reference_event_list)
+
+        if not isinstance(estimated_event_list, dcase_util.containers.MetaDataContainer):
+            estimated_event_list = dcase_util.containers.MetaDataContainer(estimated_event_list)
+
         # Check that input event list have event only from one file
-        reference_files = EventList(reference_event_list).unique_files
+        reference_files = reference_event_list.unique_files
         if len(reference_files) > 1:
             raise ValueError(
                 "reference_event_list contains events from multiple files. Evaluate only file by file."
             )
 
-        estimated_files = EventList(estimated_event_list).unique_files
+        estimated_files = estimated_event_list.unique_files
         if len(estimated_files) > 1:
             raise ValueError(
                 "estimated_event_list contains events from multiple files. Evaluate only file by file."
             )
 
         # Evaluate only valid events
-        valid_reference_event_list = EventList()
+        valid_reference_event_list = dcase_util.containers.MetaDataContainer()
         for item in reference_event_list:
             if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
                 valid_reference_event_list.append(item)
+
+            elif 'onset' in item and 'offset' in item and 'event_label' in item:
+                valid_reference_event_list.append(item)
+
         reference_event_list = valid_reference_event_list
 
-        valid_estimated_event_list = EventList()
+        valid_estimated_event_list = dcase_util.containers.MetaDataContainer()
         for item in estimated_event_list:
             if 'event_onset' in item and 'event_offset' in item and 'event_label' in item:
                 valid_estimated_event_list.append(item)
+
+            elif 'onset' in item and 'offset' in item and 'event_label' in item:
+                valid_estimated_event_list.append(item)
+
         estimated_event_list = valid_estimated_event_list
 
-        self.evaluated_length += util.max_event_offset(reference_event_list)
+        self.evaluated_length += reference_event_list.max_offset
         self.evaluated_files += 1
 
         # Overall metrics
@@ -1222,17 +1244,23 @@ class EventBasedMetrics(SoundEventMetrics):
                     label_condition = reference_event_list[j]['event_label'] == estimated_event_list[i]['event_label']
 
                     if self.evaluate_onset:
-                        onset_condition = self.validate_onset(reference_event=reference_event_list[j],
-                                                              estimated_event=estimated_event_list[i],
-                                                              t_collar=self.t_collar)
+                        onset_condition = self.validate_onset(
+                            reference_event=reference_event_list[j],
+                            estimated_event=estimated_event_list[i],
+                            t_collar=self.t_collar
+                        )
+
                     else:
                         onset_condition = True
 
                     if self.evaluate_offset:
-                        offset_condition = self.validate_offset(reference_event=reference_event_list[j],
-                                                                estimated_event=estimated_event_list[i],
-                                                                t_collar=self.t_collar,
-                                                                percentage_of_length=self.percentage_of_length)
+                        offset_condition = self.validate_offset(
+                            reference_event=reference_event_list[j],
+                            estimated_event=estimated_event_list[i],
+                            t_collar=self.t_collar,
+                            percentage_of_length=self.percentage_of_length
+                        )
+
                     else:
                         offset_condition = True
 
@@ -1253,17 +1281,23 @@ class EventBasedMetrics(SoundEventMetrics):
             for i in sys_leftover:
                 if not sys_counted[i]:
                     if self.evaluate_onset:
-                        onset_condition = self.validate_onset(reference_event=reference_event_list[j],
-                                                              estimated_event=estimated_event_list[i],
-                                                              t_collar=self.t_collar)
+                        onset_condition = self.validate_onset(
+                            reference_event=reference_event_list[j],
+                            estimated_event=estimated_event_list[i],
+                            t_collar=self.t_collar
+                        )
+
                     else:
                         onset_condition = True
 
                     if self.evaluate_offset:
-                        offset_condition = self.validate_offset(reference_event=reference_event_list[j],
-                                                                estimated_event=estimated_event_list[i],
-                                                                t_collar=self.t_collar,
-                                                                percentage_of_length=self.percentage_of_length)
+                        offset_condition = self.validate_offset(
+                            reference_event=reference_event_list[j],
+                            estimated_event=estimated_event_list[i],
+                            t_collar=self.t_collar,
+                            percentage_of_length=self.percentage_of_length
+                        )
+
                     else:
                         offset_condition = True
 
@@ -1304,17 +1338,23 @@ class EventBasedMetrics(SoundEventMetrics):
                     for i in range(0, len(estimated_event_list)):
                         if estimated_event_list[i]['event_label'] == class_label and not sys_counted[i]:
                             if self.evaluate_onset:
-                                onset_condition = self.validate_onset(reference_event=reference_event_list[j],
-                                                                      estimated_event=estimated_event_list[i],
-                                                                      t_collar=self.t_collar)
+                                onset_condition = self.validate_onset(
+                                    reference_event=reference_event_list[j],
+                                    estimated_event=estimated_event_list[i],
+                                    t_collar=self.t_collar
+                                )
+
                             else:
                                 onset_condition = True
 
                             if self.evaluate_offset:
-                                offset_condition = self.validate_offset(reference_event=reference_event_list[j],
-                                                                        estimated_event=estimated_event_list[i],
-                                                                        t_collar=self.t_collar,
-                                                                        percentage_of_length=self.percentage_of_length)
+                                offset_condition = self.validate_offset(
+                                    reference_event=reference_event_list[j],
+                                    estimated_event=estimated_event_list[i],
+                                    t_collar=self.t_collar,
+                                    percentage_of_length=self.percentage_of_length
+                                )
+
                             else:
                                 offset_condition = True
 
@@ -1333,143 +1373,268 @@ class EventBasedMetrics(SoundEventMetrics):
             self.class_wise[class_label]['Nfp'] += Nfp
             self.class_wise[class_label]['Nfn'] += Nfn
 
-    # Reports
-    def result_report_parameters(self):
-        """Report metric parameters
+        return self
+
+    def reset(self):
+        """Reset internal state
+        """
+
+        self.overall = {
+            'Nref': 0.0,
+            'Nsys': 0.0,
+            'Nsubs': 0.0,
+            'Ntp': 0.0,
+            'Nfp': 0.0,
+            'Nfn': 0.0,
+        }
+        self.class_wise = {}
+
+        for class_label in self.event_label_list:
+            self.class_wise[class_label] = {
+                'Nref': 0.0,
+                'Nsys': 0.0,
+                'Ntp': 0.0,
+                'Ntn': 0.0,
+                'Nfp': 0.0,
+                'Nfn': 0.0,
+            }
+
+        return self
+
+    @staticmethod
+    def validate_onset(reference_event, estimated_event, t_collar=0.200):
+        """Validate estimated event based on event onset
 
         Parameters
         ----------
-        Nothing
+        reference_event : dict
+            Reference event
+        estimated_event: dict
+            Estimated event
+        t_collar : float > 0, seconds
+            Time collar with which the estimated onset has to be in order to be consider valid estimation
+            (Default value = 0.2)
 
         Returns
         -------
-        report : str
-            result report in string format
+        bool
 
         """
 
-        output = ''
-        output += "    {:17s} : {:5.1f} sec\n".format('Evaluated length', self.evaluated_length)
-        output += "    {:17s} : {:<5d} files\n".format('Evaluated files', self.evaluated_files)
+        # Detect field naming style used and validate onset
+        if 'event_onset' in reference_event and 'event_onset' in estimated_event:
+            return math.fabs(reference_event['event_onset'] - estimated_event['event_onset']) <= t_collar
 
-        output += "    {:17s} : {} \n".format('Evaluate onset', self.evaluate_onset)
-        output += "    {:17s} : {} \n".format('Evaluate offset', self.evaluate_offset)
-        if self.t_collar < 1:
-            output += "    {:17s} : {:<5.0f} ms\n".format('T collar', self.t_collar*1000)
-        else:
-            output += "    {:17s} : {:<5.1f} sec\n".format('T collar', self.t_collar)
+        elif 'onset' in reference_event and 'onset' in estimated_event:
+            return math.fabs(reference_event['onset'] - estimated_event['onset']) <= t_collar
 
-        output += "    {:17s} : {:<5.0f} %\n".format('Offset (length)', self.percentage_of_length*100)
-        output += "  \n"
-        return output
+    @staticmethod
+    def validate_offset(reference_event, estimated_event, t_collar=0.200, percentage_of_length=0.5):
+        """Validate estimated event based on event offset
+
+        Parameters
+        ----------
+        reference_event : dict
+            Reference event
+
+        estimated_event : dict
+            Estimated event
+
+        t_collar : float > 0, seconds
+            First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation
+            (Default value = 0.2)
+
+        percentage_of_length : float in [0, 1]
+            Second condition, percentage of the length within which the estimated offset has to be in order to be
+            consider valid estimation
+            (Default value = 0.5)
+
+        Returns
+        -------
+        bool
+
+        """
+
+        # Detect field naming style used and validate onset
+        if 'event_offset' in reference_event and 'event_offset' in estimated_event:
+            annotated_length = reference_event['event_offset'] - reference_event['event_onset']
+
+            return math.fabs(reference_event['event_offset'] - estimated_event['event_offset']) <= max(t_collar, percentage_of_length * annotated_length)
+
+        elif 'offset' in reference_event and 'offset' in estimated_event:
+            annotated_length = reference_event['offset'] - reference_event['onset']
+
+            return math.fabs(reference_event['offset'] - estimated_event['offset']) <= max(t_collar, percentage_of_length * annotated_length)
 
     # Metrics
     def overall_f_measure(self):
         """Overall f-measure metrics (f_measure, precision, and recall)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
         """
-        precision = metric.precision(Ntp=self.overall['Ntp'], Nsys=self.overall['Nsys'])
-        recall = metric.recall(Ntp=self.overall['Ntp'], Nref=self.overall['Nref'])
-        f_measure = metric.f_measure(precision=precision, recall=recall)
-        return {'f_measure': f_measure,
-                'precision': precision,
-                'recall': recall}
+
+        precision = metric.precision(
+            Ntp=self.overall['Ntp'],
+            Nsys=self.overall['Nsys']
+        )
+
+        recall = metric.recall(
+            Ntp=self.overall['Ntp'],
+            Nref=self.overall['Nref']
+        )
+
+        f_measure = metric.f_measure(
+            precision=precision,
+            recall=recall
+        )
+
+        return {
+            'f_measure': f_measure,
+            'precision': precision,
+            'recall': recall
+        }
 
     def overall_error_rate(self):
         """Overall error rate metrics (error_rate, substitution_rate, deletion_rate, and insertion_rate)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        substitution_rate = metric.substitution_rate(Nref=self.overall['Nref'],
-                                                     Nsubstitutions=self.overall['Nsubs'])
-        deletion_rate = metric.deletion_rate(Nref=self.overall['Nref'],
-                                             Ndeletions=self.overall['Nfn'])
-        insertion_rate = metric.insertion_rate(Nref=self.overall['Nref'],
-                                               Ninsertions=self.overall['Nfp'])
-        error_rate = metric.error_rate(substitution_rate_value=substitution_rate,
-                                       deletion_rate_value=deletion_rate,
-                                       insertion_rate_value=insertion_rate)
+        substitution_rate = metric.substitution_rate(
+            Nref=self.overall['Nref'],
+            Nsubstitutions=self.overall['Nsubs']
+        )
 
-        return {'error_rate': error_rate,
-                'substitution_rate': substitution_rate,
-                'deletion_rate': deletion_rate,
-                'insertion_rate': insertion_rate}
+        deletion_rate = metric.deletion_rate(
+            Nref=self.overall['Nref'],
+            Ndeletions=self.overall['Nfn']
+        )
+
+        insertion_rate = metric.insertion_rate(
+            Nref=self.overall['Nref'],
+            Ninsertions=self.overall['Nfp']
+        )
+
+        error_rate = metric.error_rate(
+            substitution_rate_value=substitution_rate,
+            deletion_rate_value=deletion_rate,
+            insertion_rate_value=insertion_rate
+        )
+
+        return {
+            'error_rate': error_rate,
+            'substitution_rate': substitution_rate,
+            'deletion_rate': deletion_rate,
+            'insertion_rate': insertion_rate
+        }
 
     def class_wise_count(self, event_label):
         """Class-wise counts (Nref and Nsys)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        return {'Nref': self.class_wise[event_label]['Nref'],
-                'Nsys': self.class_wise[event_label]['Nsys']}
+        return {
+            'Nref': self.class_wise[event_label]['Nref'],
+            'Nsys': self.class_wise[event_label]['Nsys']
+        }
 
     def class_wise_f_measure(self, event_label):
         """Class-wise f-measure metrics (f_measure, precision, and recall)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        precision = metric.precision(Ntp=self.class_wise[event_label]['Ntp'], Nsys=self.class_wise[event_label]['Nsys'])
-        recall = metric.recall(Ntp=self.class_wise[event_label]['Ntp'], Nref=self.class_wise[event_label]['Nref'])
-        f_measure = metric.f_measure(precision=precision, recall=recall)
-        return {'f_measure': f_measure,
-                'precision': precision,
-                'recall': recall}
+        precision = metric.precision(
+            Ntp=self.class_wise[event_label]['Ntp'],
+            Nsys=self.class_wise[event_label]['Nsys']
+        )
+
+        recall = metric.recall(
+            Ntp=self.class_wise[event_label]['Ntp'],
+            Nref=self.class_wise[event_label]['Nref']
+        )
+
+        f_measure = metric.f_measure(
+            precision=precision,
+            recall=recall
+        )
+
+        return {
+            'f_measure': f_measure,
+            'precision': precision,
+            'recall': recall
+        }
 
     def class_wise_error_rate(self, event_label):
         """Class-wise error rate metrics (error_rate, deletion_rate, and insertion_rate)
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results : dict
+        dict
             results in a dictionary format
 
         """
 
-        deletion_rate = metric.deletion_rate(Nref=self.class_wise[event_label]['Nref'],
-                                             Ndeletions=self.class_wise[event_label]['Nfn'])
-        insertion_rate = metric.insertion_rate(Nref=self.class_wise[event_label]['Nref'],
-                                               Ninsertions=self.class_wise[event_label]['Nfp'])
-        error_rate = metric.error_rate(deletion_rate_value=deletion_rate,
-                                       insertion_rate_value=insertion_rate)
-        return {'error_rate': error_rate,
-                'deletion_rate': deletion_rate,
-                'insertion_rate': insertion_rate}
+        deletion_rate = metric.deletion_rate(
+            Nref=self.class_wise[event_label]['Nref'],
+            Ndeletions=self.class_wise[event_label]['Nfn']
+        )
+
+        insertion_rate = metric.insertion_rate(
+            Nref=self.class_wise[event_label]['Nref'],
+            Ninsertions=self.class_wise[event_label]['Nfp']
+        )
+
+        error_rate = metric.error_rate(
+            deletion_rate_value=deletion_rate,
+            insertion_rate_value=insertion_rate
+        )
+
+        return {
+            'error_rate': error_rate,
+            'deletion_rate': deletion_rate,
+            'insertion_rate': insertion_rate
+        }
+
+    # Reports
+    def result_report_parameters(self):
+        """Report metric parameters
+
+        Returns
+        -------
+        str
+            result report in string format
+
+        """
+
+        output = self.ui.data(field='Evaluated length', value=self.evaluated_length, unit='sec') + '\n'
+        output += self.ui.data(field='Evaluated files', value=self.evaluated_files) + '\n'
+
+        output += self.ui.data(field='Evaluate onset', value=self.evaluate_onset) + '\n'
+        output += self.ui.data(field='Evaluate offset', value=self.evaluate_offset) + '\n'
+
+        if self.t_collar < 1:
+            output += self.ui.data(field='T collar', value=self.t_collar*1000, unit='ms') + '\n'
+
+        else:
+            output += self.ui.data(field='T collar', value=self.t_collar, unit='sec') + '\n'
+
+        output += self.ui.data(field='Offset (length)', value=self.percentage_of_length*100, unit='%') + '\n'
+
+        return output

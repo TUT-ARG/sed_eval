@@ -4,7 +4,7 @@
 Metrics
 -------
 
-Segment-based metrics, main functions:
+Main functions:
 
 * :func:`sed_eval.scene.SceneClassificationMetrics.evaluate`: Calculate intermediate values for evaluation and accumulate them.
 * :func:`sed_eval.scene.SceneClassificationMetrics.results`: Calculate and return all metrics.
@@ -12,7 +12,8 @@ Segment-based metrics, main functions:
 * :func:`sed_eval.scene.SceneClassificationMetrics.results_class_wise_metrics`: Calculate and return class-wise metrics.
 * :func:`sed_eval.scene.SceneClassificationMetrics.results_class_wise_average_metrics`: Calculate and return class-wise average metrics (macro-averaged).
 
-Function :func:`sed_eval.scene.SceneClassificationMetrics.evaluate` takes as a parameter scene lists, use :func:`sed_eval.io.load_scene_list` to read them from a file.
+Function :func:`sed_eval.scene.SceneClassificationMetrics.evaluate` takes as a parameter scene lists,
+use :func:`sed_eval.io.load_scene_list` to read them from a file.
 
 Usage example:
 
@@ -50,10 +51,10 @@ Usage example:
 
     # Get only certain metrics
     overall_metrics_results = scene_metrics.results_overall_metrics()
-    print "Accuracy:", overall_metrics_results['accuracy']
+    print("Accuracy:", overall_metrics_results['accuracy'])
 
     # Or print all metrics as reports
-    print scene_metrics
+    print(scene_metrics)
 
 .. autosummary::
     :toctree: generated/
@@ -74,6 +75,7 @@ Usage example:
 from __future__ import absolute_import
 import numpy
 from . import metric
+import dcase_util
 
 
 class SceneClassificationMetrics:
@@ -84,7 +86,7 @@ class SceneClassificationMetrics:
         self.overall = {
             'Ncorr': 0.0,
             'Nref': 0.0,
-            'Nsys': 0.0,
+            'Nsys': 0.0
         }
 
         self.scene_wise = {}
@@ -92,8 +94,10 @@ class SceneClassificationMetrics:
             self.scene_wise[label] = {
                 'Ncorr': 0.0,
                 'Nref': 0.0,
-                'Nsys': 0.0,
+                'Nsys': 0.0
             }
+
+        self.ui = dcase_util.ui.FancyStringifier()
 
     def __enter__(self):
         return self
@@ -102,44 +106,52 @@ class SceneClassificationMetrics:
         return self.results()
 
     def __str__(self):
-        """Print result reports
+        """Print result reports"""
 
-        Parameters
-        ----------
-            Nothing
+        output = self.ui.section_header('Scene classification metrics') + '\n'
+        output += self.result_report_parameters() + '\n'
+        output += self.result_report_class_wise_average() + '\n'
+        output += self.result_report_class_wise() + '\n'
 
-        Returns
-        -------
-        report: str
-            result report in string format
-        """
-        output = "\nScene classification metrics \n"
-        output += "----------------------------------------------------------------------\n"
-        output += self.result_report_parameters()
-        output += self.result_report_class_wise_average()
-        output += self.result_report_class_wise()
         return output
 
-    def evaluate(self, reference_scene_list, estimated_scene_list):
+    def evaluate(self, reference_scene_list, estimated_scene_list=None, estimated_scene_probabilities=None):
         """Evaluate file pair (reference and estimated)
 
         Parameters
         ----------
 
-        reference_scene_list : scene list
+        reference_scene_list : list of dict or dcase_util.containers.MetaDataContainer
             Reference scene list
 
-        estimated_scene_list : scene list
+        estimated_scene_list : list of dict or dcase_util.containers.MetaDataContainer
             Estimated scene list
 
         Returns
         -------
-            Nothing
+        self
 
         """
 
+        if estimated_scene_list is None and estimated_scene_probabilities is None:
+            raise ValueError("Nothing to evaluate, give at least estimated_scene_list or estimated_scene_probabilities")
+
+        # Make sure reference_scene_list is dcase_util.containers.MetaDataContainer
+        if not isinstance(reference_scene_list, dcase_util.containers.MetaDataContainer):
+            reference_scene_list = dcase_util.containers.MetaDataContainer(reference_scene_list)
+
+        # Make sure estimated_scene_list is dcase_util.containers.MetaDataContainer
+        if not isinstance(estimated_scene_list, dcase_util.containers.MetaDataContainer):
+            estimated_scene_list = dcase_util.containers.MetaDataContainer(estimated_scene_list)
+
+        # Make sure estimated_tag_probabilities is dcase_util.containers.ProbabilityContainer
+        if estimated_scene_probabilities is not None:
+            if not isinstance(estimated_scene_probabilities, dcase_util.containers.ProbabilityContainer):
+                estimated_scene_probabilities = dcase_util.containers.ProbabilityContainer(estimated_scene_probabilities)
+
         y_true = []
         y_pred = []
+
         for estimated_item in estimated_scene_list:
             reference_item_matched = {}
             for reference_item in reference_scene_list:
@@ -157,6 +169,7 @@ class SceneClassificationMetrics:
 
         y_true = numpy.array(y_true)
         y_pred = numpy.array(y_pred)
+
         Ncorr_overall = 0
         for scene_id, scene_label in enumerate(self.scene_label_list):
             true_id = numpy.where(y_true == scene_label)[0]
@@ -166,6 +179,7 @@ class SceneClassificationMetrics:
             for id in true_id:
                 if id in pred_id:
                     Ncorr += 1
+
             Ncorr_overall += Ncorr
             self.scene_wise[scene_label]['Ncorr'] += Ncorr
             self.scene_wise[scene_label]['Nref'] += true_id.shape[0]
@@ -175,13 +189,15 @@ class SceneClassificationMetrics:
         self.overall['Nref'] += y_true.shape[0]
         self.overall['Nsys'] += y_pred.shape[0]
 
+        return self
+
     def reset(self):
         """Reset internal state
         """
         self.overall = {
             'Ncorr': 0.0,
             'Nref': 0.0,
-            'Nsys': 0.0,
+            'Nsys': 0.0
         }
 
         self.scene_wise = {}
@@ -189,95 +205,94 @@ class SceneClassificationMetrics:
             self.scene_wise[label] = {
                 'Ncorr': 0.0,
                 'Nref': 0.0,
-                'Nsys': 0.0,
+                'Nsys': 0.0
             }
 
     # Reports
     def result_report_parameters(self):
         """Report metric parameters
 
-        Parameters
-        ----------
-            Nothing
-
         Returns
         -------
-        report: str
+        str
             result report in string format
+
         """
 
-        output = "    {:17s} : {:5.0f}\n".format('Scene labels', len(self.scene_label_list))
-        output += "    {:17s} : {:5.0f}\n".format('Evaluated units', self.overall['Nref'])
-        output += "  \n"
+        output = self.ui.data(field='Scene labels', value=len(self.scene_label_list)) + '\n'
+        output += self.ui.data(field='Evaluated units', value=int(self.overall['Nref'])) + '\n'
+
         return output
 
     def result_report_class_wise(self):
         """Report class-wise results
 
-        Parameters
-        ----------
-            Nothing
-
         Returns
         -------
-        report: str
+        str
             result report in string format
+
         """
 
         results = self.results_class_wise_metrics()
-        output = "  Class-wise metrics\n"
-        output += "  ===============\n"
-        output += "    {:17s} | {:^4s} | {:^4s} | {:^8s} |\n".format('Scene label', 'Ncorr', 'Nref', 'Accuracy')
 
-        output += "    ------------------+-------+------+----------+\n"
+        output = self.ui.section_header('Class-wise metrics', indent=2) + '\n'
+
+        output += self.ui.row(
+            'Scene label', 'Ncorr', 'Nref', 'Accuracy',
+            widths=[20, 12, 12, 12],
+            separators=[True, False, True, False],
+            indent=4
+        ) + '\n'
+
+        output += self.ui.row('-', '-', '-', '-') + '\n'
+
         for scene_label in self.scene_label_list:
-            output += "    {:17s} |  {:4.0f} | {:4.0f} | {:5.1f} %  | \n".format(scene_label,
-                                                                                results[scene_label]['count']['Ncorr'],
-                                                                                results[scene_label]['count']['Nref'],
-                                                                                results[scene_label]['accuracy']['accuracy']*100)
-        output += "  \n"
+            output += self.ui.row(
+                scene_label,
+                results[scene_label]['count']['Ncorr'],
+                results[scene_label]['count']['Nref'],
+                results[scene_label]['accuracy']['accuracy'] * 100,
+                types=['str', 'int', 'int', 'float1_percentage']
+            ) + '\n'
+
         return output
 
     def result_report_class_wise_average(self):
         """Report class-wise averages
 
-        Parameters
-        ----------
-            Nothing
-
         Returns
         -------
-        report: str
+        str
             result report in string format
+
         """
 
         results = self.results_class_wise_average_metrics()
-        output = "  Class-wise average metrics (macro-average)\n"
-        output += "  ===============\n"
 
-        output += "  Accuracy\n"
-        output += "    {:17s} : {:5.1f} %\n".format('Accuracy', results['accuracy']['accuracy']*100)
+        output = self.ui.section_header('Class-wise average metrics (macro-average)', indent=2) + '\n'
 
-        output += "  \n"
+        output += self.ui.line('Accuracy', indent=2) + '\n'
+        output += self.ui.data(field='Accuracy',
+                               value=float(results['accuracy']['accuracy']) * 100, unit='%', indent=4) + '\n'
+
         return output
 
     # Results
     def results(self):
         """All metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results: dict
+        dict
             results in a dictionary format
+
         """
+
         results = {
             'overall': self.results_overall_metrics(),
             'class_wise': self.results_class_wise_metrics(),
-            'class_wise_average': self.results_class_wise_average_metrics(),
+            'class_wise_average': self.results_class_wise_average_metrics()
         }
 
         return results
@@ -285,32 +300,31 @@ class SceneClassificationMetrics:
     def results_overall_metrics(self):
         """Overall metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results: dict
+        dict
             results in a dictionary format
+
         """
 
+        if self.overall['Nsys'] != 0:
+            accuracy = self.overall['Ncorr'] / float(self.overall['Nsys'])
+        else:
+            accuracy = None
+
         return {
-                'count': self.overall,
-                'accuracy': self.overall['Ncorr']/self.overall['Nsys'],
-               }
+            'count': self.overall,
+            'accuracy': accuracy
+        }
 
     def results_class_wise_metrics(self):
         """Class-wise metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results: dict
+        dict
             results in a dictionary format
+
         """
 
         results = {}
@@ -322,22 +336,23 @@ class SceneClassificationMetrics:
             results[scene_label]['count']['Ncorr'] = self.scene_wise[scene_label]['Ncorr']
             results[scene_label]['count']['Nref'] = self.scene_wise[scene_label]['Nref']
             results[scene_label]['count']['Nsys'] = self.scene_wise[scene_label]['Nsys']
-            results[scene_label]['accuracy'] = {}
-            results[scene_label]['accuracy']['accuracy'] = metric.accuracy_corr(Ncorr=self.scene_wise[scene_label]['Ncorr'],
-                                                                                N=self.scene_wise[scene_label]['Nref'])
+            results[scene_label]['accuracy'] = {
+                'accuracy': metric.accuracy_corr(
+                    Ncorr=self.scene_wise[scene_label]['Ncorr'],
+                    N=self.scene_wise[scene_label]['Nref']
+                )
+            }
+
         return results
 
     def results_class_wise_average_metrics(self):
         """Class-wise averaged metrics
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results: dict
+        dict
             results in a dictionary format
+
         """
 
         scene_wise_results = self.results_class_wise_metrics()
@@ -346,25 +361,29 @@ class SceneClassificationMetrics:
         for scene_label in scene_wise_results:
             scene_wise_accuracy.append(scene_wise_results[scene_label]['accuracy']['accuracy'])
 
-        return {'accuracy': {
-                    'accuracy': float(numpy.mean(scene_wise_accuracy))
-               }}
+        return {
+            'accuracy': {
+                'accuracy': float(numpy.mean(scene_wise_accuracy))
+            }
+        }
 
     # Metrics
     def class_wise_accuracy(self, scene_label):
         """Class-wise accuracy
 
-        Parameters
-        ----------
-        Nothing
-
         Returns
         -------
-        results: dict
+        dict
             results in a dictionary format
+
         """
 
         if len(self.accuracies_per_class.shape) == 2:
-            return {'accuracy': float(numpy.mean(self.accuracies_per_class[:, self.scene_label_list.index(scene_label)]))}
+            return {
+                'accuracy': float(numpy.mean(self.accuracies_per_class[:, self.scene_label_list.index(scene_label)]))
+            }
+
         else:
-            return {'accuracy': float(numpy.mean(self.accuracies_per_class[self.scene_label_list.index(scene_label)]))}
+            return {
+                'accuracy': float(numpy.mean(self.accuracies_per_class[self.scene_label_list.index(scene_label)]))
+            }
