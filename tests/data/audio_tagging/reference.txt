@@ -1,0 +1,816 @@
+CR_lounge_200110_1601.s0_chunk0.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk1.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk11.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk12.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk13.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk14.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk15.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk17.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk18.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk2.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk20.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk21.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk22.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk25.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk26.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk29.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk3.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk30.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk31.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk32.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk33.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk35.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk37.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk41.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk5.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk52.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk56.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk57.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk58.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk59.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk6.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk60.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk63.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk64.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk67.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk68.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk7.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk71.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk72.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk8.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s0_chunk9.16kHz.wav	home	other;video game/tv;	CR_lounge_200110_1601.s0
+CR_lounge_200110_1601.s1500_chunk0.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk1.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk10.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk11.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk13.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk14.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk16.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk19.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk2.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk20.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk21.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk24.16kHz.wav	home	child speech;other;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk30.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk31.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk32.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk33.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk35.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk36.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk37.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk38.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk39.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk40.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk41.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk42.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk43.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk44.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk45.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk46.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk47.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk48.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk49.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk5.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk50.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk51.16kHz.wav	home	adult female speech;child speech;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk6.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk67.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk7.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk8.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1500_chunk9.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s1500
+CR_lounge_200110_1601.s1800_chunk14.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk15.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk17.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk19.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk2.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk20.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk21.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk22.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk23.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk24.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk25.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk26.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk27.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk29.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk30.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk31.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk32.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk33.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk34.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk35.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk36.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk37.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk38.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk39.16kHz.wav	home	other;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk40.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk41.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk42.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk43.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk44.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk45.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk47.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk48.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk49.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk50.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk51.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk52.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk53.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk54.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk55.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk56.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk57.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk58.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk59.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk60.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk61.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk62.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk63.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk64.16kHz.wav	home	other;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk67.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk68.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk74.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk8.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s1800_chunk9.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s1800
+CR_lounge_200110_1601.s2400_chunk0.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk12.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk13.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk14.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk15.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk16.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk17.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk18.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk19.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk20.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk21.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk22.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk23.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk24.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk26.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk28.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk29.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk30.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk31.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk33.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk34.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk35.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk36.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk37.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk38.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk4.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk40.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk41.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk42.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk43.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk44.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk46.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk48.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk5.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk50.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk51.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk52.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk53.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk54.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk55.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk56.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk57.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk58.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk59.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk6.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk60.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk61.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk62.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk63.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk64.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk65.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk66.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk68.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk69.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk7.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk70.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk72.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk73.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk74.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s2400_chunk8.16kHz.wav	home	video game/tv;	CR_lounge_200110_1601.s2400
+CR_lounge_200110_1601.s3600_chunk0.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk1.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk10.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk11.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk12.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk15.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk17.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk18.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk20.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk22.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk23.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk25.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk26.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk3.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk32.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk33.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk34.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk36.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk37.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk38.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk39.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk4.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk40.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk41.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk43.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk44.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk46.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk49.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk5.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk52.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk53.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk54.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk55.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk56.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk57.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk58.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk59.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk6.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk60.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk62.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk64.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk67.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk68.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk69.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk7.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk70.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk71.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk73.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1601.s3600_chunk9.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1601.s3600
+CR_lounge_200110_1711.s1200_chunk0.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk12.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk22.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk24.16kHz.wav	home	child speech;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk25.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk26.16kHz.wav	home	adult female speech;percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk27.16kHz.wav	home	adult female speech;percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk29.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk33.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk35.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk39.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk45.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk46.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk47.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk51.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk54.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk57.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk62.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk65.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1200_chunk68.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1200
+CR_lounge_200110_1711.s1500_chunk31.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk37.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk38.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk40.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk48.16kHz.wav	home	;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk53.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk57.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk59.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk60.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk63.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk64.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk65.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk66.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk68.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk72.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s1500_chunk73.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s1500
+CR_lounge_200110_1711.s900_chunk14.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk19.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk20.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk21.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk23.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk29.16kHz.wav	home	percussive sound;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk35.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk45.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk46.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk48.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk56.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk6.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk66.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk67.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk68.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk70.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk72.16kHz.wav	home	video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk73.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_200110_1711.s900_chunk8.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_200110_1711.s900
+CR_lounge_210110_0739.s2400_chunk11.16kHz.wav	home	adult female speech;adult male speech;other;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk14.16kHz.wav	home	child speech;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk16.16kHz.wav	home	adult female speech;adult male speech;child speech;other;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk21.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk22.16kHz.wav	home	adult female speech;adult male speech;child speech;other;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk24.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk26.16kHz.wav	home	adult female speech;adult male speech;child speech;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk30.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk32.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk33.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk34.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk36.16kHz.wav	home	adult female speech;adult male speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk37.16kHz.wav	home	adult female speech;adult male speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk4.16kHz.wav	home	adult female speech;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk42.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk43.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk46.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk48.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk5.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk55.16kHz.wav	home	adult male speech;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk64.16kHz.wav	home	adult female speech;adult male speech;other;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_210110_0739.s2400_chunk8.16kHz.wav	home	adult female speech;adult male speech;child speech;percussive sound;	CR_lounge_210110_0739.s2400
+CR_lounge_220110_0731.s1800_chunk0.16kHz.wav	home	child speech;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk10.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk13.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk14.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk16.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk17.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk19.16kHz.wav	home	other;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk2.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk20.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk24.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk25.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk27.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk29.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk3.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk30.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk4.16kHz.wav	home	child speech;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk40.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk43.16kHz.wav	home	adult female speech;other;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk45.16kHz.wav	home	adult female speech;child speech;other;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk48.16kHz.wav	home	percussive sound;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk60.16kHz.wav	home	other;percussive sound;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk63.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk7.16kHz.wav	home	video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk70.16kHz.wav	home	adult female speech;percussive sound;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s1800_chunk8.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_220110_0731.s1800
+CR_lounge_220110_0731.s2700_chunk10.16kHz.wav	home	adult male speech;child speech;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk12.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk13.16kHz.wav	home	adult male speech;other;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk17.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk19.16kHz.wav	home	adult male speech;child speech;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk20.16kHz.wav	home	adult male speech;child speech;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk3.16kHz.wav	home	adult male speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk30.16kHz.wav	home	child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk33.16kHz.wav	home	adult male speech;child speech;other;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk35.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk36.16kHz.wav	home	adult male speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk38.16kHz.wav	home	adult female speech;adult male speech;child speech;other;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk4.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk40.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk41.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk48.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk50.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk52.16kHz.wav	home	adult male speech;child speech;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk53.16kHz.wav	home	adult female speech;adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk58.16kHz.wav	home	child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk59.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk64.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk66.16kHz.wav	home	child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_220110_0731.s2700_chunk72.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_220110_0731.s2700
+CR_lounge_230110_1036.s1500_chunk0.16kHz.wav	home	adult male speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk1.16kHz.wav	home	adult male speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk10.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk11.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk12.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk13.16kHz.wav	home	adult male speech;child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk14.16kHz.wav	home	video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk15.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk17.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk18.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk19.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk2.16kHz.wav	home	adult male speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk20.16kHz.wav	home	video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk22.16kHz.wav	home	adult male speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk23.16kHz.wav	home	adult male speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk24.16kHz.wav	home	adult male speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk26.16kHz.wav	home	adult male speech;child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk27.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk28.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk29.16kHz.wav	home	video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk31.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk33.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk35.16kHz.wav	home	adult male speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk36.16kHz.wav	home	video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk39.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk4.16kHz.wav	home	adult male speech;child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk40.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk41.16kHz.wav	home	adult male speech;child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk42.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk43.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk46.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk47.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk5.16kHz.wav	home	adult male speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk51.16kHz.wav	home	adult male speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk56.16kHz.wav	home	adult male speech;child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk58.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk6.16kHz.wav	home	adult male speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk60.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk61.16kHz.wav	home	adult male speech;child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk63.16kHz.wav	home	video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk64.16kHz.wav	home	adult male speech;child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk66.16kHz.wav	home	adult male speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk67.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk68.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk69.16kHz.wav	home	child speech;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk7.16kHz.wav	home	video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk71.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s1500_chunk72.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_230110_1036.s1500
+CR_lounge_230110_1036.s2400_chunk0.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk10.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk11.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk12.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk15.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk16.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk17.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk18.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk2.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk22.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk23.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk24.16kHz.wav	home	adult female speech;other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk29.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk3.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk33.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk38.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk4.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk41.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk42.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk43.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk44.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk48.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk5.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk51.16kHz.wav	home	adult female speech;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk52.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk55.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk59.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk60.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk61.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk62.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk63.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk64.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk65.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk66.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk67.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk68.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk69.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk7.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk71.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk74.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk8.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s2400_chunk9.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1036.s2400
+CR_lounge_230110_1036.s3000_chunk10.16kHz.wav	home	broadband noise;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk12.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk13.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk14.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk15.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk16.16kHz.wav	home	adult female speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk17.16kHz.wav	home	adult female speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk2.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk20.16kHz.wav	home	adult female speech;child speech;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk23.16kHz.wav	home	adult female speech;child speech;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk25.16kHz.wav	home	adult female speech;child speech;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk26.16kHz.wav	home	adult female speech;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk29.16kHz.wav	home	other;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk3.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk30.16kHz.wav	home	adult female speech;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk35.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk39.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk4.16kHz.wav	home	broadband noise;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk41.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk43.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk44.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk46.16kHz.wav	home	adult female speech;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk47.16kHz.wav	home	;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk48.16kHz.wav	home	adult female speech;child speech;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk5.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk51.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk52.16kHz.wav	home	adult female speech;other;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk53.16kHz.wav	home	adult female speech;child speech;other;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk54.16kHz.wav	home	adult female speech;child speech;other;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk58.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk59.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk6.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk60.16kHz.wav	home	adult female speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk61.16kHz.wav	home	adult female speech;other;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk63.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk64.16kHz.wav	home	percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk67.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk68.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk69.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk7.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk70.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk71.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk74.16kHz.wav	home	percussive sound;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk8.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3000_chunk9.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3000
+CR_lounge_230110_1036.s3300_chunk0.16kHz.wav	home	percussive sound;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk1.16kHz.wav	home	adult female speech;percussive sound;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk11.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk15.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk16.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk17.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk19.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk24.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk27.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk28.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk30.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk31.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk32.16kHz.wav	home	broadband noise;percussive sound;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk33.16kHz.wav	home	adult female speech;broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk36.16kHz.wav	home	broadband noise;percussive sound;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk38.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk39.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk4.16kHz.wav	home	percussive sound;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk40.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk41.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk42.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk44.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk45.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk46.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk49.16kHz.wav	home	percussive sound;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk50.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1036.s3300_chunk9.16kHz.wav	home	broadband noise;	CR_lounge_230110_1036.s3300
+CR_lounge_230110_1501.s0_chunk1.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk11.16kHz.wav	home	adult male speech;child speech;other;video game/tv;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk12.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk17.16kHz.wav	home	adult male speech;child speech;other;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk29.16kHz.wav	home	adult male speech;child speech;other;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk3.16kHz.wav	home	adult male speech;child speech;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk33.16kHz.wav	home	adult male speech;child speech;other;video game/tv;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk40.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk46.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk48.16kHz.wav	home	adult female speech;adult male speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk49.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk67.16kHz.wav	home	adult male speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk68.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk70.16kHz.wav	home	adult male speech;child speech;other;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk71.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk72.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk73.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk74.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s0_chunk8.16kHz.wav	home	adult male speech;child speech;percussive sound;	CR_lounge_230110_1501.s0
+CR_lounge_230110_1501.s1500_chunk13.16kHz.wav	home	child speech;other;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk18.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk20.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk22.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk23.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk24.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk28.16kHz.wav	home	child speech;other;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk3.16kHz.wav	home	adult female speech;adult male speech;other;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk31.16kHz.wav	home	child speech;other;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk32.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk33.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk37.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk38.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk40.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk41.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk43.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk45.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk49.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk51.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk52.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk55.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk56.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk58.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk6.16kHz.wav	home	other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk60.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk63.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk67.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk68.16kHz.wav	home	adult female speech;adult male speech;child speech;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk69.16kHz.wav	home	adult female speech;child speech;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk7.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk8.16kHz.wav	home	adult male speech;child speech;other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s1500_chunk9.16kHz.wav	home	adult male speech;child speech;other;percussive sound;	CR_lounge_230110_1501.s1500
+CR_lounge_230110_1501.s3900_chunk12.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk16.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk18.16kHz.wav	home	adult female speech;adult male speech;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk19.16kHz.wav	home	adult male speech;child speech;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk23.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk24.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk27.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk33.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk36.16kHz.wav	home	other;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk38.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk39.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk40.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk43.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk44.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk45.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk46.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk49.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk5.16kHz.wav	home	child speech;other;percussive sound;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk54.16kHz.wav	home	percussive sound;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk57.16kHz.wav	home	;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk59.16kHz.wav	home	percussive sound;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk60.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s3900_chunk7.16kHz.wav	home	adult female speech;adult male speech;	CR_lounge_230110_1501.s3900
+CR_lounge_230110_1501.s600_chunk18.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk21.16kHz.wav	home	child speech;percussive sound;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk24.16kHz.wav	home	child speech;other;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk29.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk30.16kHz.wav	home	child speech;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk36.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk43.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk47.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk53.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk63.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk67.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk68.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_230110_1501.s600_chunk73.16kHz.wav	home	child speech;other;percussive sound;video game/tv;	CR_lounge_230110_1501.s600
+CR_lounge_270110_1632.s1800_chunk12.16kHz.wav	home	adult female speech;child speech;other;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk13.16kHz.wav	home	adult female speech;child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk16.16kHz.wav	home	child speech;other;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk19.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk2.16kHz.wav	home	child speech;other;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk27.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk3.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk33.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk34.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk35.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk38.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk39.16kHz.wav	home	child speech;other;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk4.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk42.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk43.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk44.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk45.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk48.16kHz.wav	home	child speech;other;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk49.16kHz.wav	home	child speech;other;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk50.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk51.16kHz.wav	home	child speech;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk54.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk63.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk64.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk65.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk66.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk68.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk72.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s1800_chunk8.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s1800
+CR_lounge_270110_1632.s2400_chunk24.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk28.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk32.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk35.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk36.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk41.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk44.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk48.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk49.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk5.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk58.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk59.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk61.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk67.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk68.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk7.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk71.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2400_chunk74.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2400
+CR_lounge_270110_1632.s2700_chunk10.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk11.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk13.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk14.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk15.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk16.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk17.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk2.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk20.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk21.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk25.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk27.16kHz.wav	home	other;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk28.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk29.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk36.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk39.16kHz.wav	home	other;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk41.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk42.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk44.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk45.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk46.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk49.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk51.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk52.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk53.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk54.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk55.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk57.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk59.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk60.16kHz.wav	home	other;percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk61.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk64.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk65.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk72.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk73.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk8.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s2700_chunk9.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s2700
+CR_lounge_270110_1632.s300_chunk0.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk1.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk10.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk11.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk12.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk13.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk14.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk15.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk17.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk18.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk19.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk20.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk21.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk24.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk25.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk31.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk32.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk33.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk34.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk35.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk37.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk38.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk39.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk4.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk40.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk41.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk42.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk43.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk44.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk45.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk46.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk47.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk48.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk49.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk5.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk50.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk51.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk52.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk53.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk54.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk55.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk56.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk57.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk58.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk59.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk6.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk60.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk61.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk62.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk63.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk64.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk65.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk66.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk67.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk68.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk70.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk71.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk72.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk73.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk74.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s300_chunk9.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s300
+CR_lounge_270110_1632.s4200_chunk1.16kHz.wav	home	adult female speech;child speech;percussive sound;	CR_lounge_270110_1632.s4200
+CR_lounge_270110_1632.s600_chunk0.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk1.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk10.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk11.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk12.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk13.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk15.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk16.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk17.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk19.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk2.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk20.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk21.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk22.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk23.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk24.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk25.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk27.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk28.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk29.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk3.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk30.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk33.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk34.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk35.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk36.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk38.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk39.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk4.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk40.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk41.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk42.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk43.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk44.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk45.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk46.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk47.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk48.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk49.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk5.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk50.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk53.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk54.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk55.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk56.16kHz.wav	home	adult female speech;child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk57.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk63.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk65.16kHz.wav	home	percussive sound;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk68.16kHz.wav	home	child speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk71.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk73.16kHz.wav	home	adult female speech;video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk8.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
+CR_lounge_270110_1632.s600_chunk9.16kHz.wav	home	video game/tv;	CR_lounge_270110_1632.s600
