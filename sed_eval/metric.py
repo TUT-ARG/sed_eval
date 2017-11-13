@@ -426,7 +426,7 @@ def equal_error_rate(y_true, y_score, eps=numpy.spacing(1)):
             drop_intermediate=True
         )
 
-        points = [(0, 0)] + zip(false_positive_rate, true_positive_rate)
+        points = [(0, 0)] + list(zip(false_positive_rate, true_positive_rate))
         for i, point in enumerate(points):
             if point[0] + eps >= 1 - point[1]:
                 break
