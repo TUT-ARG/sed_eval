@@ -108,23 +108,8 @@ def test_max_event_offset():
     nose.tools.assert_equal(sed_eval.util.max_event_offset(event_list), 85.67182)
 
 
-def test_event_list():
-    el = sed_eval.util.EventList(event_list)
-    nose.tools.assert_list_equal(el.unique_event_labels, event_labels)
-    nose.tools.assert_equal(el.event_count, len(event_list))
-    nose.tools.assert_equal(el.event_label_count, len(event_labels))
-    nose.tools.assert_equal(el.max_event_offset, 85.67182)
-
-
 def test_unique_scene_labels():
     nose.tools.assert_list_equal(sed_eval.util.unique_scene_labels(scene_list), scene_labels)
-
-
-def test_scene_list():
-    el = sed_eval.util.SceneList(scene_list)
-    nose.tools.assert_list_equal(el.unique_scene_labels, scene_labels)
-    nose.tools.assert_equal(el.scene_count, len(scene_list))
-    nose.tools.assert_equal(el.scene_label_count, len(scene_labels))
 
 
 def test_event_list_to_event_roll():

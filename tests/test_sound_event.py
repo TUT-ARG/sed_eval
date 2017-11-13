@@ -6,7 +6,7 @@ import nose.tools
 import sed_eval
 import os
 import numpy
-
+import dcase_util
 
 @nose.tools.raises(ValueError)
 def test_parameters_1():
@@ -92,8 +92,8 @@ def test_dcase_style():
     )
 
     for file in evaluated_files:
-        reference_event_list_for_current_file = reference_event_list.filter(file=file)
-        estimated_event_list_for_current_file = estimated_event_list.filter(file=file)
+        reference_event_list_for_current_file = reference_event_list.filter(filename=file)
+        estimated_event_list_for_current_file = estimated_event_list.filter(filename=file)
         segment_based_metrics.evaluate(
             reference_event_list=reference_event_list_for_current_file,
             estimated_event_list=estimated_event_list_for_current_file
@@ -113,7 +113,7 @@ def test_dcase_style2():
     evaluated_event_labels = reference_event_list.unique_event_labels
     files={}
     for event in reference_event_list:
-        files[event['file']] = event['file']
+        files[event['filename']] = event['filename']
 
     evaluated_files = sorted(list(files.keys()))
 
@@ -125,11 +125,11 @@ def test_dcase_style2():
     for file in evaluated_files:
         reference_event_list_for_current_file = []
         for event in reference_event_list:
-            if event['file'] == file:
+            if event['filename'] == file:
                 reference_event_list_for_current_file.append(event)
                 estimated_event_list_for_current_file = []
         for event in estimated_event_list:
-            if event['file'] == file:
+            if event['filename'] == file:
                 estimated_event_list_for_current_file.append(event)
 
         segment_based_metrics.evaluate(
@@ -150,7 +150,7 @@ def test_binary():
          'estimated_file': os.path.join('data', 'sound_event', 'binary2_detected.txt')},
     ]
     data = []
-    all_data = sed_eval.util.event_list.EventList()
+    all_data = dcase_util.containers.MetaDataContainer()
     for file_pair in file_list:
         reference_event_list = sed_eval.io.load_event_list(file_pair['reference_file'])
         estimated_event_list = sed_eval.io.load_event_list(file_pair['estimated_file'])
@@ -192,13 +192,15 @@ def test_binary():
         {'reference_file': os.path.join('data', 'sound_event', 'binary5.txt'),
          'estimated_file': os.path.join('data', 'sound_event', 'binary5_detected.txt')},
     ]
+
     data = []
-    all_data = sed_eval.util.event_list.EventList()
+    all_data = dcase_util.containers.MetaDataContainer()
     for file_pair in file_list:
         reference_event_list = sed_eval.io.load_event_list(file_pair['reference_file'])
         estimated_event_list = sed_eval.io.load_event_list(file_pair['estimated_file'])
         data.append({'reference_event_list': reference_event_list, 'estimated_event_list': estimated_event_list})
         all_data += reference_event_list
+
     event_labels = all_data.unique_event_labels
 
     event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
@@ -207,9 +209,9 @@ def test_binary():
 
     for file_pair in data:
         if len(file_pair['reference_event_list'].unique_files) > 1:
-            for file in file_pair['reference_event_list'].unique_files:
-                reference_event_list = file_pair['reference_event_list'].filter(file=file)
-                estimated_event_list = file_pair['estimated_event_list'].filter(file=file)
+            for filename in file_pair['reference_event_list'].unique_files:
+                reference_event_list = file_pair['reference_event_list'].filter(filename=filename)
+                estimated_event_list = file_pair['estimated_event_list'].filter(filename=filename)
 
                 event_based_metrics.evaluate(reference_event_list, estimated_event_list)
 
@@ -228,7 +230,7 @@ def test_audioset():
     ]
 
     data = []
-    all_data = sed_eval.util.event_list.EventList()
+    all_data = dcase_util.containers.MetaDataContainer()
     for file_pair in file_list:
         reference_event_list = sed_eval.io.load_event_list(file_pair['reference_file'])
         estimated_event_list = sed_eval.io.load_event_list(file_pair['estimated_file'])
@@ -251,8 +253,8 @@ def test_audioset():
         evaluated_files = file_pair_event_lists['reference_event_list'].unique_files
         for file in evaluated_files:
             segment_based_metrics.evaluate(
-                file_pair_event_lists['reference_event_list'].filter(file=file),
-                file_pair_event_lists['estimated_event_list'].filter(file=file)
+                file_pair_event_lists['reference_event_list'].filter(filename=file),
+                file_pair_event_lists['estimated_event_list'].filter(filename=file)
             )
 
     results = segment_based_metrics.results()
@@ -268,7 +270,7 @@ def test_audioset():
 
 
 def test_direct_use_segment():
-    reference_event_list = sed_eval.util.EventList(
+    reference_event_list = dcase_util.containers.MetaDataContainer(
         [
             {
                 'event_label': 'car',
@@ -294,7 +296,7 @@ def test_direct_use_segment():
         ]
     )
 
-    estimated_event_list = sed_eval.util.EventList(
+    estimated_event_list = dcase_util.containers.MetaDataContainer(
         [
             {
                 'event_label': 'car',
@@ -318,20 +320,29 @@ def test_direct_use_segment():
         time_resolution=1.0
     )
 
-    for file in reference_event_list.unique_files:
-        reference_event_list_for_current_file = reference_event_list.filter(file=file)
-        estimated_event_list_for_current_file = estimated_event_list.filter(file=file)
+    for filename in reference_event_list.unique_files:
+        reference_event_list_for_current_file = reference_event_list.filter(
+            filename=filename
+        )
+
+        estimated_event_list_for_current_file = estimated_event_list.filter(
+            filename=filename
+        )
+
         segment_based_metrics.evaluate(
             reference_event_list=reference_event_list_for_current_file,
             estimated_event_list=estimated_event_list_for_current_file
         )
+
     results = segment_based_metrics.results()
     nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.5)
     nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 0.555555555555)
 
+    print(segment_based_metrics)
+
 
 def test_direct_use_event():
-    reference_event_list = sed_eval.util.EventList(
+    reference_event_list = dcase_util.containers.MetaDataContainer(
         [
             {
                 'event_label': 'car',
@@ -357,7 +368,7 @@ def test_direct_use_event():
         ]
     )
 
-    estimated_event_list = sed_eval.util.EventList(
+    estimated_event_list = dcase_util.containers.MetaDataContainer(
         [
             {
                 'event_label': 'car',
@@ -380,13 +391,22 @@ def test_direct_use_event():
         t_collar=0.20
     )
 
-    for file in reference_event_list.unique_files:
-        reference_event_list_for_current_file = reference_event_list.filter(file=file)
-        estimated_event_list_for_current_file = estimated_event_list.filter(file=file)
+    for filename in reference_event_list.unique_files:
+        reference_event_list_for_current_file = reference_event_list.filter(
+            filename=filename
+        )
+
+        estimated_event_list_for_current_file = estimated_event_list.filter(
+            filename=filename
+        )
+
         event_based_metrics.evaluate(
             reference_event_list=reference_event_list_for_current_file,
             estimated_event_list=estimated_event_list_for_current_file
         )
+
     results = event_based_metrics.results()
     nose.tools.assert_almost_equals(results['overall']['f_measure']['f_measure'], 0.8)
     nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 0.3333333333333)
+
+    print(event_based_metrics)
