@@ -45,6 +45,7 @@ Dependencies
 The toolbox is tested to work with Python 2.7 and Python 3.6.
 
 - numpy >= 1.7.0
+- dcase_util >= 0.1.6
 
 Citing
 ======
