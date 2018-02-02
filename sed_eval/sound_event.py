@@ -590,7 +590,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
             )
 
         self.event_label_list = event_label_list
-        self.evaluated_length = 0.0
+        self.evaluated_length_seconds = 0.0
         self.evaluated_files = 0
 
         self.time_resolution = time_resolution
@@ -636,7 +636,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         return output
 
-    def evaluate(self, reference_event_list, estimated_event_list):
+    def evaluate(self, reference_event_list, estimated_event_list, evaluated_length_seconds=None):
         """Evaluate file pair (reference and estimated)
 
         Parameters
@@ -647,6 +647,9 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         estimated_event_list : list of dict or dcase_util.containers.MetaDataContainer
             Estimated event list
+
+        evaluated_length_seconds : float, optional
+            Evaluated length
 
         Returns
         -------
@@ -708,12 +711,20 @@ class SegmentBasedMetrics(SoundEventMetrics):
             time_resolution=self.time_resolution
         )
 
-        self.evaluated_length += max(reference_event_list.max_offset, estimated_event_list.max_offset)
+        if evaluated_length_seconds is None:
+            evaluated_length_seconds = max(reference_event_list.max_offset, estimated_event_list.max_offset)
+            evaluated_length_segments = int(math.ceil(evaluated_length_seconds * 1 / float(self.time_resolution)))
+
+        else:
+            evaluated_length_segments = int(math.ceil(evaluated_length_seconds * 1 / float(self.time_resolution)))
+
+        self.evaluated_length_seconds += evaluated_length_seconds
         self.evaluated_files += 1
 
         reference_event_roll, estimated_event_roll = util.match_event_roll_lengths(
             reference_event_roll,
-            estimated_event_roll
+            estimated_event_roll,
+            evaluated_length_segments
         )
 
         # Compute segment-based overall metrics
@@ -1038,7 +1049,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         """
 
-        output = self.ui.data(field='Evaluated length', value=self.evaluated_length, unit='sec') + '\n'
+        output = self.ui.data(field='Evaluated length', value=self.evaluated_length_seconds, unit='sec') + '\n'
         output += self.ui.data(field='Evaluated files', value=self.evaluated_files) + '\n'
 
         if self.time_resolution < 1:

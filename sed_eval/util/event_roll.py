@@ -27,6 +27,7 @@ def event_list_to_event_roll(source_event_list, event_label_list=None, time_reso
 
     Returns
     -------
+
     event_roll: np.ndarray, shape=(m,k)
         Event roll
 
@@ -95,7 +96,7 @@ def pad_event_roll(event_roll, length):
     return event_roll
 
 
-def match_event_roll_lengths(event_roll_a, event_roll_b):
+def match_event_roll_lengths(event_roll_a, event_roll_b, length=None):
     """Fix the length of two event rolls
 
     Parameters
@@ -106,18 +107,43 @@ def match_event_roll_lengths(event_roll_a, event_roll_b):
     event_roll_b: np.ndarray, shape=(m2,k)
         Event roll B
 
+    length: int, optional
+        Length of the event roll, if none given, shorter event roll is padded to match longer one.
+
     Returns
     -------
     event_roll_a: np.ndarray, shape=(max(m1,m2),k)
         Padded event roll A
+
     event_roll_b: np.ndarray, shape=(max(m1,m2),k)
         Padded event roll B
 
     """
 
     # Fix durations of both event_rolls to be equal
-    event_roll_a = pad_event_roll(event_roll=event_roll_a, length=event_roll_b.shape[0])
-    event_roll_b = pad_event_roll(event_roll=event_roll_b, length=event_roll_a.shape[0])
+    if length is None:
+        length = max(event_roll_b.shape[0], event_roll_a.shape[0])
+
+    else:
+        length = int(length)
+
+    if length < event_roll_a.shape[0]:
+        event_roll_a = event_roll_a[0:length, :]
+
+    else:
+        event_roll_a = pad_event_roll(
+            event_roll=event_roll_a,
+            length=length
+        )
+
+    if length < event_roll_b.shape[0]:
+        event_roll_b = event_roll_b[0:length, :]
+
+    else:
+        event_roll_b = pad_event_roll(
+            event_roll=event_roll_b,
+            length=length
+        )
 
     return event_roll_a, event_roll_b
 

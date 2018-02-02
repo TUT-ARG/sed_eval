@@ -98,8 +98,29 @@ def test_dcase_style():
             reference_event_list=reference_event_list_for_current_file,
             estimated_event_list=estimated_event_list_for_current_file
         )
+
     results = segment_based_metrics.results()
     nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.84244791666)
+    nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.0616698292220115)
+
+    # With specified evaluation length
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=evaluated_event_labels,
+        time_resolution=1.0
+    )
+
+    for file in evaluated_files:
+        reference_event_list_for_current_file = reference_event_list.filter(filename=file)
+        estimated_event_list_for_current_file = estimated_event_list.filter(filename=file)
+        segment_based_metrics.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file,
+            evaluated_length_seconds=1200.0
+        )
+
+    results = segment_based_metrics.results()
+
+    nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.9719907407407408)
     nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.0616698292220115)
 
 
