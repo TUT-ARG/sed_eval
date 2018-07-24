@@ -55,7 +55,7 @@ def precision(Ntp, Nsys, eps=numpy.spacing(1)):
     if Nsys == 0:
         return numpy.nan
     else:
-        return Ntp / float(Nsys)
+        return float(Ntp / float(Nsys))
 
 
 def recall(Ntp, Nref, eps=numpy.spacing(1)):
@@ -85,7 +85,7 @@ def recall(Ntp, Nref, eps=numpy.spacing(1)):
     if Nref == 0:
         return numpy.nan
     else:
-        return Ntp / float(Nref)
+        return float(Ntp / float(Nref))
 
 
 def f_measure(precision, recall, beta=1.0):
@@ -115,7 +115,7 @@ def f_measure(precision, recall, beta=1.0):
     if precision == 0 and recall == 0:
         return 0.0
 
-    return (1 + beta**2)*precision*recall/((beta**2)*precision + recall)
+    return float((1 + beta**2)*precision*recall/((beta**2)*precision + recall))
 
 
 # -- Accuracy -- #
