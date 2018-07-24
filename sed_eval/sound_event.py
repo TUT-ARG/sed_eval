@@ -594,7 +594,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
             List of unique event labels
 
         time_resolution : float (0,]
-            Segment size used in the evaluation, in seconds
+            Segment size used in the evaluation, in seconds.
             Default value 1.0
 
         """
@@ -669,10 +669,10 @@ class SegmentBasedMetrics(SoundEventMetrics):
         ----------
 
         reference_event_list : list of dict or dcase_util.containers.MetaDataContainer
-            Reference event list
+            Reference event list.
 
         estimated_event_list : list of dict or dcase_util.containers.MetaDataContainer
-            Estimated event list
+            Estimated event list.
 
         evaluated_length_seconds : float, optional
             Evaluated length. If none given, maximum offset is used.
@@ -911,7 +911,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
         Parameters
         ----------
         factor : float [0-1]
-            balance factor
+            Balance factor.
             Default value 0.5
 
         Returns
@@ -1111,20 +1111,20 @@ class EventBasedMetrics(SoundEventMetrics):
             List of unique event labels
 
         evaluate_onset : bool
-            Evaluate onset
+            Evaluate onset.
             Default value True
 
         evaluate_offset : bool
-            Evaluate offset
+            Evaluate offset.
             Default value True
 
         t_collar : float (0,]
-            Time collar used when evaluating validity of the onset and offset, in seconds
+            Time collar used when evaluating validity of the onset and offset, in seconds.
             Default value 0.2
 
         percentage_of_length : float in [0, 1]
             Second condition, percentage of the length within which the estimated offset has to be in order to be
-            consider valid estimation
+            consider valid estimation.
             Default value 0.5
 
         event_matching_type : str
@@ -1547,13 +1547,13 @@ class EventBasedMetrics(SoundEventMetrics):
         Parameters
         ----------
         reference_event : dict
-            Reference event
+            Reference event.
 
         estimated_event: dict
-            Estimated event
+            Estimated event.
 
         t_collar : float > 0, seconds
-            Time collar with which the estimated onset has to be in order to be consider valid estimation
+            Time collar with which the estimated onset has to be in order to be consider valid estimation.
             Default value 0.2
 
         Returns
@@ -1576,18 +1576,18 @@ class EventBasedMetrics(SoundEventMetrics):
         Parameters
         ----------
         reference_event : dict
-            Reference event
+            Reference event.
 
         estimated_event : dict
-            Estimated event
+            Estimated event.
 
         t_collar : float > 0, seconds
-            First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation
+            First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation.
             Default value 0.2
 
         percentage_of_length : float in [0, 1]
             Second condition, percentage of the length within which the estimated offset has to be in order to be
-            consider valid estimation
+            consider valid estimation.
             Default value 0.5
 
         Returns

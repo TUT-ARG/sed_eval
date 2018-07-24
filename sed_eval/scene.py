@@ -143,11 +143,11 @@ class SceneClassificationMetrics:
         ----------
 
         reference_scene_list : list of dict or dcase_util.containers.MetaDataContainer
-            Reference scene list
+            Reference scene list.
             Default value None
 
         estimated_scene_list : list of dict or dcase_util.containers.MetaDataContainer
-            Estimated scene list
+            Estimated scene list.
             Default value None
 
         estimated_scene_probabilities : dcase_util.containers.ProbabilityContainer
