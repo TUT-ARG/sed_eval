@@ -19,7 +19,7 @@ import csv
 import dcase_util
 
 
-def load_event_list(filename):
+def load_event_list(filename, **kwargs):
     """Load event list from csv formatted text-file
 
     Supported formats (see more `dcase_util.containers.MetaDataContainer.load()` method):
@@ -67,10 +67,10 @@ def load_event_list(filename):
 
     """
 
-    return dcase_util.containers.MetaDataContainer().load(filename=filename)
+    return dcase_util.containers.MetaDataContainer().load(filename=filename, **kwargs)
 
 
-def load_scene_list(filename):
+def load_scene_list(filename, **kwargs):
     """Load scene list from csv formatted text-file
 
     Supported formats (see more `dcase_util.containers.MetaDataContainer.load()` method):
@@ -104,7 +104,7 @@ def load_scene_list(filename):
 
     """
 
-    return dcase_util.containers.MetaDataContainer().load(filename=filename)
+    return dcase_util.containers.MetaDataContainer().load(filename=filename, **kwargs)
 
 
 def load_file_pair_list(filename):
