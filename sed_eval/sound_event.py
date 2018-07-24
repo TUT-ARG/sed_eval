@@ -219,9 +219,9 @@ Event based metrics
 from __future__ import absolute_import
 import numpy
 import math
+import dcase_util
 from . import metric
 from . import util
-import dcase_util
 
 
 class SoundEventMetrics(object):

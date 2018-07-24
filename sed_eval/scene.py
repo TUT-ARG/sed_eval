@@ -95,8 +95,8 @@ Usage example:
 
 from __future__ import absolute_import
 import numpy
-from . import metric
 import dcase_util
+from . import metric
 
 
 class SceneClassificationMetrics:
