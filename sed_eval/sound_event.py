@@ -1129,6 +1129,9 @@ class EventBasedMetrics(SoundEventMetrics):
 
         event_matching_type : str
             Event matching type. Set 'optimal' for graph-based matching, or 'greedy' for always select first found match.
+            Greedy type of event matching is kept for backward compatibility. Both event matching types produce
+            very similar results, however, greedy matching can be sensitive to the order of reference events.
+            Use default 'optimal' event matching, if you do not intend to compare your results to old results.
             Default value 'optimal'
 
         """
@@ -1295,7 +1298,7 @@ class EventBasedMetrics(SoundEventMetrics):
                 onset_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
                 for j in range(0, len(reference_event_list)):
                     for i in range(0, len(estimated_event_list)):
-                        onset_hit_matrix[j,i] = self.validate_onset(
+                        onset_hit_matrix[j, i] = self.validate_onset(
                             reference_event=reference_event_list[j],
                             estimated_event=estimated_event_list[i],
                             t_collar=self.t_collar
@@ -1368,11 +1371,7 @@ class EventBasedMetrics(SoundEventMetrics):
                             Nsubs += 1
                             break
 
-        elif self.event_matching_type=='greedy':
-            # This type of event matching is kept for backward compatibility. Both event matching types produce
-            # very similar results. Use 'optimal' event matching if you do not intend to compare your results to old
-            # results.
-
+        elif self.event_matching_type == 'greedy':
             sys_correct = numpy.zeros(Nsys, dtype=bool)
             ref_correct = numpy.zeros(Nref, dtype=bool)
 
@@ -1471,36 +1470,86 @@ class EventBasedMetrics(SoundEventMetrics):
                 if estimated_event_list[i]['event_label'] == class_label:
                     Nsys += 1
 
-            sys_counted = numpy.zeros(len(estimated_event_list), dtype=bool)
-            for j in range(0, len(reference_event_list)):
-                if reference_event_list[j]['event_label'] == class_label:
-                    for i in range(0, len(estimated_event_list)):
-                        if estimated_event_list[i]['event_label'] == class_label and not sys_counted[i]:
-                            if self.evaluate_onset:
-                                onset_condition = self.validate_onset(
-                                    reference_event=reference_event_list[j],
-                                    estimated_event=estimated_event_list[i],
-                                    t_collar=self.t_collar
-                                )
+            if self.event_matching_type == 'optimal':
+                class_reference_event_list = reference_event_list.filter(event_label=class_label)
+                class_estimated_event_list = estimated_event_list.filter(event_label=class_label)
 
-                            else:
-                                onset_condition = True
+                hit_matrix = numpy.ones((len(class_reference_event_list), len(class_estimated_event_list)), dtype=bool)
+                if self.evaluate_onset:
+                    onset_hit_matrix = numpy.zeros((len(class_reference_event_list), len(class_estimated_event_list)), dtype=bool)
+                    for j in range(0, len(class_reference_event_list)):
+                        for i in range(0, len(class_estimated_event_list)):
+                            onset_hit_matrix[j, i] = self.validate_onset(
+                                reference_event=class_reference_event_list[j],
+                                estimated_event=class_estimated_event_list[i],
+                                t_collar=self.t_collar
+                            )
 
-                            if self.evaluate_offset:
-                                offset_condition = self.validate_offset(
-                                    reference_event=reference_event_list[j],
-                                    estimated_event=estimated_event_list[i],
-                                    t_collar=self.t_collar,
-                                    percentage_of_length=self.percentage_of_length
-                                )
+                    hit_matrix *= onset_hit_matrix
 
-                            else:
-                                offset_condition = True
+                if self.evaluate_offset:
+                    offset_hit_matrix = numpy.zeros((len(class_reference_event_list), len(class_estimated_event_list)), dtype=bool)
+                    for j in range(0, len(class_reference_event_list)):
+                        for i in range(0, len(class_estimated_event_list)):
+                            offset_hit_matrix[j, i] = self.validate_offset(
+                                reference_event=class_reference_event_list[j],
+                                estimated_event=class_estimated_event_list[i],
+                                t_collar=self.t_collar,
+                                percentage_of_length=self.percentage_of_length
+                            )
 
-                            if onset_condition and offset_condition:
-                                sys_counted[i] = True
-                                Ntp += 1
-                                break
+                    hit_matrix *= offset_hit_matrix
+
+                hits = numpy.where(hit_matrix)
+                G = {}
+                for ref_i, est_i in zip(*hits):
+                    if est_i not in G:
+                        G[est_i] = []
+
+                    G[est_i].append(ref_i)
+
+                matching = sorted(util.bipartite_match(G).items())
+
+                ref_correct = numpy.zeros(int(Nref), dtype=bool)
+                sys_correct = numpy.zeros(int(Nsys), dtype=bool)
+
+                for item in matching:
+                    ref_correct[item[0]] = True
+                    sys_correct[item[1]] = True
+
+                Ntp = len(matching)
+
+            elif self.event_matching_type == 'greedy':
+                sys_counted = numpy.zeros(len(estimated_event_list), dtype=bool)
+                for j in range(0, len(reference_event_list)):
+                    if reference_event_list[j]['event_label'] == class_label:
+                        for i in range(0, len(estimated_event_list)):
+                            if estimated_event_list[i]['event_label'] == class_label and not sys_counted[i]:
+                                if self.evaluate_onset:
+                                    onset_condition = self.validate_onset(
+                                        reference_event=reference_event_list[j],
+                                        estimated_event=estimated_event_list[i],
+                                        t_collar=self.t_collar
+                                    )
+
+                                else:
+                                    onset_condition = True
+
+                                if self.evaluate_offset:
+                                    offset_condition = self.validate_offset(
+                                        reference_event=reference_event_list[j],
+                                        estimated_event=estimated_event_list[i],
+                                        t_collar=self.t_collar,
+                                        percentage_of_length=self.percentage_of_length
+                                    )
+
+                                else:
+                                    offset_condition = True
+
+                                if onset_condition and offset_condition:
+                                    sys_counted[i] = True
+                                    Ntp += 1
+                                    break
 
             Nfp = Nsys - Ntp
             Nfn = Nref - Ntp
