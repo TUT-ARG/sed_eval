@@ -43,8 +43,8 @@ def precision(Ntp, Nsys, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
-    
+        Default value numpy.spacing(1)
+
     Returns
     -------
     precision: float
@@ -73,7 +73,7 @@ def recall(Ntp, Nref, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -103,7 +103,7 @@ def f_measure(precision, recall, beta=1.0):
 
     beta : float > 0
         Weighting factor for f-measure
-        (Default value = 1.0)
+        Default value 1.0
 
     Returns
     -------
@@ -134,7 +134,7 @@ def sensitivity(Ntp, Nfn, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -161,7 +161,7 @@ def specificity(Ntn, Nfp, eps=numpy.spacing(1)):
     
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -188,7 +188,7 @@ def balanced_accuracy(sensitivity, specificity, factor=0.5):
 
     factor : float in [0, 1]
         Balancing factor multiplying true positive rate (sensitivity)
-        (Default value = 0.5)
+        Default value 0.5
 
     Returns
     -------
@@ -219,7 +219,7 @@ def accuracy(Ntp, Ntn, Nfp, Nfn, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -244,7 +244,7 @@ def accuracy_corr(Ncorr, N, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -279,7 +279,7 @@ def accuracy2(Ntp, Nfp, Nfn, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -304,7 +304,7 @@ def substitution_rate(Nref, Nsubstitutions, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -329,7 +329,7 @@ def deletion_rate(Nref, Ndeletions, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -354,7 +354,7 @@ def insertion_rate(Nref, Ninsertions, eps=numpy.spacing(1)):
 
     eps : float
         eps
-        (Default value=numpy.spacing(1))
+        Default value numpy.spacing(1)
 
     Returns
     -------
@@ -373,15 +373,15 @@ def error_rate(substitution_rate_value=0.0, deletion_rate_value=0.0, insertion_r
     ----------
     substitution_rate_value : float >=0
         Substitution rate
-        (Default value = 0)
+        Default value 0
 
     deletion_rate_value : float >=0
         Deletion rate
-        (Default value = 0)
+        Default value 0
 
     insertion_rate_value : float >=0
         Insertion rate
-        (Default value = 0)
+        Default value 0
 
     Returns
     -------
@@ -410,6 +410,7 @@ def equal_error_rate(y_true, y_score, eps=numpy.spacing(1)):
 
     eps : float
         Minimum difference considered equal
+        Default value numpy.spacing(1)
 
     Returns
     -------
