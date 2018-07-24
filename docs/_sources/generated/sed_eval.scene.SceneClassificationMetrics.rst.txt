@@ -16,6 +16,7 @@ sed_eval.scene.SceneClassificationMetrics
       ~SceneClassificationMetrics.__init__
       ~SceneClassificationMetrics.class_wise_accuracy
       ~SceneClassificationMetrics.evaluate
+      ~SceneClassificationMetrics.reset
       ~SceneClassificationMetrics.result_report_class_wise
       ~SceneClassificationMetrics.result_report_class_wise_average
       ~SceneClassificationMetrics.result_report_parameters

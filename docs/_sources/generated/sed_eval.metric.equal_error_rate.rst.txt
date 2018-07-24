@@ -1,5 +1,5 @@
-sed\_eval\.metric\.equal\_error\_rate
-=====================================
+sed_eval.metric.equal_error_rate
+================================
 
 .. currentmodule:: sed_eval.metric
 

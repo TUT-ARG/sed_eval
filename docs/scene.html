@@ -96,7 +96,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -321,7 +321,7 @@
   <div class="section" id="acoustic-scene-classification">
 <span id="scene"></span><h1>Acoustic Scene Classification<a class="headerlink" href="#acoustic-scene-classification" title="Permalink to this headline">¶</a></h1>
 <p>The goal of acoustic scene classification is to classify a test recording into one of predefined classes that
-characterizes the environment in which it was recorded — for example “outdoor market”, “busy street”, “office”.</p>
+characterizes the environment in which it was recorded — for example &#8220;outdoor market&#8221;, &#8220;busy street&#8221;, &#8220;office&#8221;.</p>
 <p>Classification performance is measured using accuracy: the number of correctly classified segments
 among the total number of test segments.</p>
 <span class="target" id="module-sed_eval.scene"></span><div class="section" id="metrics">
@@ -336,7 +336,8 @@ among the total number of test segments.</p>
 </ul>
 <p>Function <a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate" title="sed_eval.scene.SceneClassificationMetrics.evaluate"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.scene.SceneClassificationMetrics.evaluate</span></code></a> takes as a parameter scene lists,
 use <a class="reference internal" href="generated/sed_eval.io.load_scene_list.html#sed_eval.io.load_scene_list" title="sed_eval.io.load_scene_list"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.io.load_scene_list</span></code></a> to read them from a file.</p>
-<p>Usage example:</p>
+<p>Usage example to evaluate files:</p>
+<p>Usage example to evaluate results stored in variables:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -392,62 +393,66 @@ use <a class="reference internal" href="generated/sed_eval.io.load_scene_list.ht
 53
 54
 55
-56</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+56
+57
+58</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
 <span class="kn">import</span> <span class="nn">dcase_util</span>
 
-<span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold2_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold2_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold3_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold3_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold4_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold4_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold5_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold5_estimated.txt&#39;</span><span class="p">},</span>
-<span class="p">]</span>
+<span class="n">reference</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket09.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;tubestation&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;tubestation10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet08.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;office&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;office10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;bus01.wav&#39;</span>
+    <span class="p">},</span>
+<span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">estimated</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket09.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;tubestation10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet08.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;park&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;office10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;bus01.wav&#39;</span>
+    <span class="p">},</span>
+<span class="p">])</span>
 
-<span class="c1"># Get used scene labels and load data in</span>
-<span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">file_pair</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
-    <span class="n">reference_scene_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_scene_list</span><span class="p">(</span>
-        <span class="n">filename</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_file&#39;</span><span class="p">],</span>
-        <span class="n">csv_header</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-        <span class="n">file_format</span><span class="o">=</span><span class="n">dcase_util</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">FileFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">,</span>
-        <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;scene_label&#39;</span><span class="p">]</span>
-    <span class="p">)</span>
-    <span class="n">estimated_scene_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_scene_list</span><span class="p">(</span>
-        <span class="n">filename</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_file&#39;</span><span class="p">],</span>
-        <span class="n">csv_header</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-        <span class="n">file_format</span><span class="o">=</span><span class="n">dcase_util</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">FileFormat</span><span class="o">.</span><span class="n">CSV</span><span class="p">,</span>
-        <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">,</span> <span class="s1">&#39;onset&#39;</span><span class="p">,</span> <span class="s1">&#39;offset&#39;</span><span class="p">,</span> <span class="s1">&#39;scene_label&#39;</span><span class="p">]</span>
-    <span class="p">)</span>
+<span class="n">scene_labels</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">unique_scene_labels</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
 
-    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-        <span class="p">{</span>
-            <span class="s1">&#39;reference_scene_list&#39;</span><span class="p">:</span> <span class="n">reference_scene_list</span><span class="p">,</span>
-            <span class="s1">&#39;estimated_scene_list&#39;</span><span class="p">:</span> <span class="n">estimated_scene_list</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-
-    <span class="n">all_data</span> <span class="o">+=</span> <span class="n">reference_scene_list</span>
-
-<span class="n">scene_labels</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">unique_scene_labels</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
-
-<span class="c1"># Create metrics class</span>
-<span class="n">scene_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneClassificationMetrics</span><span class="p">(</span>
-    <span class="n">scene_labels</span><span class="o">=</span><span class="n">scene_labels</span>
+<span class="n">scene_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneClassificationMetrics</span><span class="p">(</span><span class="n">scene_labels</span><span class="p">)</span>
+<span class="n">scene_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+    <span class="n">reference_scene_list</span><span class="o">=</span><span class="n">reference</span><span class="p">,</span>
+    <span class="n">estimated_scene_list</span><span class="o">=</span><span class="n">estimated</span>
 <span class="p">)</span>
-<span class="k">for</span> <span class="n">file_pair</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">scene_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-        <span class="n">reference_scene_list</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_scene_list&#39;</span><span class="p">],</span>
-        <span class="n">estimated_scene_list</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_scene_list&#39;</span><span class="p">]</span>
-    <span class="p">)</span>
 
-<span class="c1"># Get only certain metrics</span>
-<span class="n">overall_metrics_results</span> <span class="o">=</span> <span class="n">scene_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
-<span class="k">print</span> <span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_metrics_results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
-
-<span class="c1"># Or print all metrics as reports</span>
-<span class="k">print</span> <span class="n">scene_metrics</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scene_metrics</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <table border="1" class="longtable docutils">
@@ -459,7 +464,7 @@ use <a class="reference internal" href="generated/sed_eval.io.load_scene_list.ht
 <tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.html#sed_eval.scene.SceneClassificationMetrics" title="sed_eval.scene.SceneClassificationMetrics"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics</span></code></a>([scene_labels])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate" title="sed_eval.scene.SceneClassificationMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.evaluate</span></code></a>(…[,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.evaluate.html#sed_eval.scene.SceneClassificationMetrics.evaluate" title="sed_eval.scene.SceneClassificationMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.evaluate</span></code></a>(...[,&nbsp;...])</td>
 <td>Evaluate file pair (reference and estimated)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.scene.SceneClassificationMetrics.results.html#sed_eval.scene.SceneClassificationMetrics.results" title="sed_eval.scene.SceneClassificationMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">SceneClassificationMetrics.results</span></code></a>()</td>
@@ -544,7 +549,7 @@ use <a class="reference internal" href="generated/sed_eval.io.load_scene_list.ht
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
