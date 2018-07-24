@@ -21,58 +21,68 @@ Functions :func:`sed_eval.sound_event.SegmentBasedMetrics.evaluate` and :func:`s
 take as a parameter event lists, use :func:`sed_eval.io.load_event_list` to read them from a file.
 
 
-Usage example when reading event lists from disk:
+Usage example when reading event lists from disk (you can run example in path ``tests/data/sound_event``):
 
 .. code-block:: python
     :linenos:
 
     import sed_eval
+    import dcase_util
 
     file_list = [
         {
          'reference_file': 'office_snr0_high_v2.txt',
-         'estimated_file': 'office_snr0_high_out.txt'
-        },
-        {
-         'reference_file': 'office_snr0_low_v2.txt',
-         'estimated_file': 'office_snr0_low_out.txt'
+         'estimated_file': 'office_snr0_high_v2_detected.txt'
         },
         {
          'reference_file': 'office_snr0_med_v2.txt',
-         'estimated_file': 'office_snr0_med_out.txt'
-        },
-        {
-         'reference_file': 'office_snr-6_high_v2.txt',
-         'estimated_file': 'office_snr-6_high_out.txt'
+         'estimated_file': 'office_snr0_med_v2_detected.txt'
         }
     ]
 
     data = []
 
     # Get used event labels
-    all_data = sed_eval.util.event_list.EventList()
+    all_data = dcase_util.containers.MetaDataContainer()
     for file_pair in file_list:
-        reference_event_list = sed_eval.io.load_event_list(file_pair['reference_file'])
-        estimated_event_list = sed_eval.io.load_event_list(file_pair['estimated_file'])
+        reference_event_list = sed_eval.io.load_event_list(
+            filename=file_pair['reference_file']
+        )
+        estimated_event_list = sed_eval.io.load_event_list(
+            filename=file_pair['estimated_file']
+        )
+
         data.append({'reference_event_list': reference_event_list,
                      'estimated_event_list': estimated_event_list})
+
         all_data += reference_event_list
+
     event_labels = all_data.unique_event_labels
 
     # Start evaluating
 
     # Create metrics classes, define parameters
-    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(event_label_list=event_labels,
-                                                                     time_resolution=1)
-    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(event_label_list=event_labels,
-                                                                 t_collar=0.250)
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=event_labels,
+        time_resolution=1.0
+    )
+
+    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=event_labels,
+        t_collar=0.250
+    )
 
     # Go through files
     for file_pair in data:
-        segment_based_metrics.evaluate(file_pair['reference_event_list'],
-                                       file_pair['estimated_event_list'])
-        event_based_metrics.evaluate(file_pair['reference_event_list'],
-                                     file_pair['estimated_event_list'])
+        segment_based_metrics.evaluate(
+            reference_event_list=file_pair['reference_event_list'],
+            estimated_event_list=file_pair['estimated_event_list']
+        )
+
+        event_based_metrics.evaluate(
+            reference_event_list=file_pair['reference_event_list'],
+            estimated_event_list=file_pair['estimated_event_list']
+        )
 
     # Get only certain metrics
     overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()
@@ -88,47 +98,48 @@ Usage example:
     :linenos:
 
     import sed_eval
+    import dcase_util
 
-    reference_event_list = sed_eval.util.EventList(
+    reference_event_list = dcase_util.containers.MetaDataContainer(
         [
             {
                 'event_label': 'car',
                 'event_onset': 0.0,
                 'event_offset': 2.5,
-                'file': 'audio/street/b099.wav',
+                'filename': 'audio/street/b099.wav',
                 'scene_label': 'street'
             },
             {
                 'event_label': 'car',
                 'event_onset': 2.8,
                 'event_offset': 4.5,
-                'file': 'audio/street/b099.wav',
+                'filename': 'audio/street/b099.wav',
                 'scene_label': 'street'
             },
             {
                 'event_label': 'car',
                 'event_onset': 6.0,
                 'event_offset': 10.0,
-                'file': 'audio/street/b099.wav',
+                'filename': 'audio/street/b099.wav',
                 'scene_label': 'street'
             }
         ]
     )
 
-    estimated_event_list = sed_eval.util.EventList(
+    estimated_event_list = dcase_util.containers.MetaDataContainer(
         [
             {
                 'event_label': 'car',
                 'event_onset': 1.0,
                 'event_offset': 3.5,
-                'file': 'audio/street/b099.wav',
+                'filename': 'audio/street/b099.wav',
                 'scene_label': 'street'
             },
             {
                 'event_label': 'car',
                 'event_onset': 7.0,
                 'event_offset': 8.0,
-                'file': 'audio/street/b099.wav',
+                'filename': 'audio/street/b099.wav',
                 'scene_label': 'street'
             }
         ]
@@ -140,12 +151,12 @@ Usage example:
     )
 
     # Go through files
-    for file in reference_event_list.unique_files:
+    for filename in reference_event_list.unique_files:
         # Get reference event list for file by filtering reference_event_list
-        reference_event_list_for_current_file = reference_event_list.filter(file=file)
+        reference_event_list_for_current_file = reference_event_list.filter(file=filename)
 
         # Get estimated event list for file by filtering estimated_event_list
-        estimated_event_list_for_current_file = estimated_event_list.filter(file=file)
+        estimated_event_list_for_current_file = estimated_event_list.filter(file=filename)
 
         segment_based_metrics.evaluate(
             reference_event_list=reference_event_list_for_current_file,
@@ -217,9 +228,24 @@ class SoundEventMetrics(object):
     """Base class for sound event detection metrics.
 
     """
-    def __init__(self):
+    def __init__(self,
+                 empty_system_output_handling=None):
+        """Constructor
+
+        Parameters
+        ----------
+
+        empty_system_output_handling : str
+            Controls how empty system output is handled, i.e. when Nsys = 0. Default behaviour is to show NaN when e.g.
+            computing precision (Ntp / Nsys).
+            Use 'zero_score' to force these score to zero.
+            Default value None
+
+        """
+
         self.event_label_list = []
         self.ui = dcase_util.ui.FancyStringifier()
+        self.empty_system_output_handling = empty_system_output_handling
 
     # Reports
     def result_report_overall(self):
@@ -569,7 +595,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         time_resolution : float (0,]
             Segment size used in the evaluation, in seconds
-            (Default value=1.0)
+            Default value 1.0
 
         """
 
@@ -815,11 +841,14 @@ class SegmentBasedMetrics(SoundEventMetrics):
             results in a dictionary format
 
         """
+        if self.overall['Nsys'] == 0 and self.empty_system_output_handling == 'zero_score':
+            precision = 0
 
-        precision = metric.precision(
-            Ntp=self.overall['Ntp'],
-            Nsys=self.overall['Nsys']
-        )
+        else:
+            precision = metric.precision(
+                Ntp=self.overall['Ntp'],
+                Nsys=self.overall['Nsys']
+            )
 
         recall = metric.recall(
             Ntp=self.overall['Ntp'],
@@ -882,7 +911,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
         ----------
         factor : float [0-1]
             balance factor
-            (Default value=0.5)
+            Default value 0.5
 
         Returns
         -------
@@ -945,11 +974,14 @@ class SegmentBasedMetrics(SoundEventMetrics):
             results in a dictionary format
 
         """
+        if self.class_wise[event_label]['Nsys'] == 0 and self.empty_system_output_handling == 'zero_score':
+            precision = 0
 
-        precision = metric.precision(
-            Ntp=self.class_wise[event_label]['Ntp'],
-            Nsys=self.class_wise[event_label]['Nsys']
-        )
+        else:
+            precision = metric.precision(
+                Ntp=self.class_wise[event_label]['Ntp'],
+                Nsys=self.class_wise[event_label]['Nsys']
+            )
 
         recall = metric.recall(
             Ntp=self.class_wise[event_label]['Ntp'],
@@ -1067,7 +1099,9 @@ class EventBasedMetrics(SoundEventMetrics):
                  evaluate_onset=True,
                  evaluate_offset=True,
                  t_collar=0.200,
-                 percentage_of_length=0.5):
+                 percentage_of_length=0.5,
+                 event_matching_type='optimal',
+                 **kwargs):
         """Constructor
 
         Parameters
@@ -1077,24 +1111,28 @@ class EventBasedMetrics(SoundEventMetrics):
 
         evaluate_onset : bool
             Evaluate onset
-            (Default value=True)
+            Default value True
 
         evaluate_offset : bool
             Evaluate offset
-            (Default value=True)
+            Default value True
 
         t_collar : float (0,]
-            Time collar used when evaluating validty of the onset and offset, in seconds
-            (Default value=0.2)
+            Time collar used when evaluating validity of the onset and offset, in seconds
+            Default value 0.2
 
         percentage_of_length : float in [0, 1]
             Second condition, percentage of the length within which the estimated offset has to be in order to be
             consider valid estimation
-            (Default value = 0.5)
+            Default value 0.5
+
+        event_matching_type : str
+            Event matching type. Set 'optimal' for graph-based matching, or 'greedy' for always select first found match.
+            Default value 'optimal'
 
         """
 
-        SoundEventMetrics.__init__(self)
+        SoundEventMetrics.__init__(self, **kwargs)
 
         if isinstance(event_label_list, numpy.ndarray) and len(event_label_list.shape) == 1:
             # We have numpy array, convert it to list
@@ -1126,7 +1164,7 @@ class EventBasedMetrics(SoundEventMetrics):
 
         self.t_collar = t_collar
         self.percentage_of_length = percentage_of_length
-
+        self.event_matching_type = event_matching_type
         self.overall = {
             'Nref': 0.0,
             'Nsys': 0.0,
@@ -1245,77 +1283,166 @@ class EventBasedMetrics(SoundEventMetrics):
         Nsys = len(estimated_event_list)
         Nref = len(reference_event_list)
 
-        sys_correct = numpy.zeros(Nsys, dtype=bool)
-        ref_correct = numpy.zeros(Nref, dtype=bool)
+        if self.event_matching_type == 'optimal':
+            label_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
+            for j in range(0, len(reference_event_list)):
+                for i in range(0, len(estimated_event_list)):
+                    label_hit_matrix[j, i] = reference_event_list[j]['event_label'] == estimated_event_list[i]['event_label']
 
-        # Number of correctly detected events
-        for j in range(0, len(reference_event_list)):
-            for i in range(0, len(estimated_event_list)):
-                if not sys_correct[i]:  # skip already matched events
-                    label_condition = reference_event_list[j]['event_label'] == estimated_event_list[i]['event_label']
-
-                    if self.evaluate_onset:
-                        onset_condition = self.validate_onset(
+            hit_matrix = label_hit_matrix
+            if self.evaluate_onset:
+                onset_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
+                for j in range(0, len(reference_event_list)):
+                    for i in range(0, len(estimated_event_list)):
+                        onset_hit_matrix[j,i] = self.validate_onset(
                             reference_event=reference_event_list[j],
                             estimated_event=estimated_event_list[i],
                             t_collar=self.t_collar
                         )
 
-                    else:
-                        onset_condition = True
+                hit_matrix *= onset_hit_matrix
 
-                    if self.evaluate_offset:
-                        offset_condition = self.validate_offset(
+            if self.evaluate_offset:
+                offset_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
+                for j in range(0, len(reference_event_list)):
+                    for i in range(0, len(estimated_event_list)):
+                        offset_hit_matrix[j, i] = self.validate_offset(
                             reference_event=reference_event_list[j],
                             estimated_event=estimated_event_list[i],
                             t_collar=self.t_collar,
                             percentage_of_length=self.percentage_of_length
                         )
 
-                    else:
-                        offset_condition = True
+                hit_matrix *= offset_hit_matrix
 
-                    if label_condition and onset_condition and offset_condition:
-                        ref_correct[j] = True
-                        sys_correct[i] = True
-                        break
+            hits = numpy.where(hit_matrix)
+            G = {}
+            for ref_i, est_i in zip(*hits):
+                if est_i not in G:
+                    G[est_i] = []
 
-        Ntp = numpy.sum(sys_correct)
+                G[est_i].append(ref_i)
 
-        ref_leftover = numpy.nonzero(numpy.logical_not(ref_correct))[0]
-        sys_leftover = numpy.nonzero(numpy.logical_not(sys_correct))[0]
+            matching = sorted(util.bipartite_match(G).items())
 
-        # Substitutions
-        Nsubs = 0
-        sys_counted = numpy.zeros(Nsys, dtype=bool)
-        for j in ref_leftover:
-            for i in sys_leftover:
-                if not sys_counted[i]:
-                    if self.evaluate_onset:
-                        onset_condition = self.validate_onset(
-                            reference_event=reference_event_list[j],
-                            estimated_event=estimated_event_list[i],
-                            t_collar=self.t_collar
-                        )
+            ref_correct = numpy.zeros(Nref, dtype=bool)
+            sys_correct = numpy.zeros(Nsys, dtype=bool)
+            for item in matching:
+                ref_correct[item[0]] = True
+                sys_correct[item[1]] = True
 
-                    else:
-                        onset_condition = True
+            Ntp = len(matching)
+            # Substitutions
+            Nsubs = 0
 
-                    if self.evaluate_offset:
-                        offset_condition = self.validate_offset(
-                            reference_event=reference_event_list[j],
-                            estimated_event=estimated_event_list[i],
-                            t_collar=self.t_collar,
-                            percentage_of_length=self.percentage_of_length
-                        )
+            ref_leftover = numpy.nonzero(numpy.logical_not(ref_correct))[0]
+            sys_leftover = numpy.nonzero(numpy.logical_not(sys_correct))[0]
+            sys_counted = numpy.zeros(Nsys, dtype=bool)
+            for j in ref_leftover:
+                for i in sys_leftover:
+                    if not sys_counted[i]:
+                        if self.evaluate_onset:
+                            onset_condition = self.validate_onset(
+                                reference_event=reference_event_list[j],
+                                estimated_event=estimated_event_list[i],
+                                t_collar=self.t_collar
+                            )
 
-                    else:
-                        offset_condition = True
+                        else:
+                            onset_condition = True
 
-                    if onset_condition and offset_condition:
-                        sys_counted[i] = True
-                        Nsubs += 1
-                        break
+                        if self.evaluate_offset:
+                            offset_condition = self.validate_offset(
+                                reference_event=reference_event_list[j],
+                                estimated_event=estimated_event_list[i],
+                                t_collar=self.t_collar,
+                                percentage_of_length=self.percentage_of_length
+                            )
+
+                        else:
+                            offset_condition = True
+
+                        if onset_condition and offset_condition:
+                            sys_counted[i] = True
+                            Nsubs += 1
+                            break
+
+        elif self.event_matching_type=='greedy':
+            # This type of event matching is kept for backward compatibility. Both event matching types produce
+            # very similar results. Use 'optimal' event matching if you do not intend to compare your results to old
+            # results.
+
+            sys_correct = numpy.zeros(Nsys, dtype=bool)
+            ref_correct = numpy.zeros(Nref, dtype=bool)
+
+            # Number of correctly detected events
+            for j in range(0, len(reference_event_list)):
+                for i in range(0, len(estimated_event_list)):
+                    if not sys_correct[i]:  # skip already matched events
+                        label_condition = reference_event_list[j]['event_label'] == estimated_event_list[i]['event_label']
+
+                        if self.evaluate_onset:
+                            onset_condition = self.validate_onset(
+                                reference_event=reference_event_list[j],
+                                estimated_event=estimated_event_list[i],
+                                t_collar=self.t_collar
+                            )
+
+                        else:
+                            onset_condition = True
+
+                        if self.evaluate_offset:
+                            offset_condition = self.validate_offset(
+                                reference_event=reference_event_list[j],
+                                estimated_event=estimated_event_list[i],
+                                t_collar=self.t_collar,
+                                percentage_of_length=self.percentage_of_length
+                            )
+
+                        else:
+                            offset_condition = True
+
+                        if label_condition and onset_condition and offset_condition:
+                            ref_correct[j] = True
+                            sys_correct[i] = True
+                            break
+
+            Ntp = numpy.sum(sys_correct)
+
+            ref_leftover = numpy.nonzero(numpy.logical_not(ref_correct))[0]
+            sys_leftover = numpy.nonzero(numpy.logical_not(sys_correct))[0]
+
+            # Substitutions
+            Nsubs = 0
+            sys_counted = numpy.zeros(Nsys, dtype=bool)
+            for j in ref_leftover:
+                for i in sys_leftover:
+                    if not sys_counted[i]:
+                        if self.evaluate_onset:
+                            onset_condition = self.validate_onset(
+                                reference_event=reference_event_list[j],
+                                estimated_event=estimated_event_list[i],
+                                t_collar=self.t_collar
+                            )
+
+                        else:
+                            onset_condition = True
+
+                        if self.evaluate_offset:
+                            offset_condition = self.validate_offset(
+                                reference_event=reference_event_list[j],
+                                estimated_event=estimated_event_list[i],
+                                t_collar=self.t_collar,
+                                percentage_of_length=self.percentage_of_length
+                            )
+
+                        else:
+                            offset_condition = True
+
+                        if onset_condition and offset_condition:
+                            sys_counted[i] = True
+                            Nsubs += 1
+                            break
 
         Nfp = Nsys - Ntp - Nsubs
         Nfn = Nref - Ntp - Nsubs
@@ -1420,11 +1547,13 @@ class EventBasedMetrics(SoundEventMetrics):
         ----------
         reference_event : dict
             Reference event
+
         estimated_event: dict
             Estimated event
+
         t_collar : float > 0, seconds
             Time collar with which the estimated onset has to be in order to be consider valid estimation
-            (Default value = 0.2)
+            Default value 0.2
 
         Returns
         -------
@@ -1453,12 +1582,12 @@ class EventBasedMetrics(SoundEventMetrics):
 
         t_collar : float > 0, seconds
             First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation
-            (Default value = 0.2)
+            Default value 0.2
 
         percentage_of_length : float in [0, 1]
             Second condition, percentage of the length within which the estimated offset has to be in order to be
             consider valid estimation
-            (Default value = 0.5)
+            Default value 0.5
 
         Returns
         -------
@@ -1487,10 +1616,14 @@ class EventBasedMetrics(SoundEventMetrics):
             results in a dictionary format
         """
 
-        precision = metric.precision(
-            Ntp=self.overall['Ntp'],
-            Nsys=self.overall['Nsys']
-        )
+        if self.overall['Nsys'] == 0 and self.empty_system_output_handling == 'zero_score':
+            precision = 0
+
+        else:
+            precision = metric.precision(
+                Ntp=self.overall['Ntp'],
+                Nsys=self.overall['Nsys']
+            )
 
         recall = metric.recall(
             Ntp=self.overall['Ntp'],
@@ -1570,11 +1703,14 @@ class EventBasedMetrics(SoundEventMetrics):
             results in a dictionary format
 
         """
+        if self.class_wise[event_label]['Nsys'] == 0 and self.empty_system_output_handling == 'zero_score':
+            precision = 0
 
-        precision = metric.precision(
-            Ntp=self.class_wise[event_label]['Ntp'],
-            Nsys=self.class_wise[event_label]['Nsys']
-        )
+        else:
+            precision = metric.precision(
+                Ntp=self.class_wise[event_label]['Ntp'],
+                Nsys=self.class_wise[event_label]['Nsys']
+            )
 
         recall = metric.recall(
             Ntp=self.class_wise[event_label]['Ntp'],
