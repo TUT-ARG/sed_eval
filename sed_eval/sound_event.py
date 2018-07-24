@@ -86,13 +86,13 @@ Usage example when reading event lists from disk (you can run example in path ``
 
     # Get only certain metrics
     overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()
-    print "Accuracy:", overall_segment_based_metrics['accuracy']['accuracy']
+    print("Accuracy:", overall_segment_based_metrics['accuracy']['accuracy'])
 
     # Or print all metrics as reports
-    print segment_based_metrics
-    print event_based_metrics
+    print(segment_based_metrics)
+    print(event_based_metrics)
 
-Usage example:
+Usage example to evaluate results stored in variables:
 
 .. code-block:: python
     :linenos:
@@ -106,21 +106,21 @@ Usage example:
                 'event_label': 'car',
                 'event_onset': 0.0,
                 'event_offset': 2.5,
-                'filename': 'audio/street/b099.wav',
+                'file': 'audio/street/b099.wav',
                 'scene_label': 'street'
             },
             {
                 'event_label': 'car',
                 'event_onset': 2.8,
                 'event_offset': 4.5,
-                'filename': 'audio/street/b099.wav',
+                'file': 'audio/street/b099.wav',
                 'scene_label': 'street'
             },
             {
                 'event_label': 'car',
                 'event_onset': 6.0,
                 'event_offset': 10.0,
-                'filename': 'audio/street/b099.wav',
+                'file': 'audio/street/b099.wav',
                 'scene_label': 'street'
             }
         ]
@@ -132,14 +132,14 @@ Usage example:
                 'event_label': 'car',
                 'event_onset': 1.0,
                 'event_offset': 3.5,
-                'filename': 'audio/street/b099.wav',
+                'file': 'audio/street/b099.wav',
                 'scene_label': 'street'
             },
             {
                 'event_label': 'car',
                 'event_onset': 7.0,
                 'event_offset': 8.0,
-                'filename': 'audio/street/b099.wav',
+                'file': 'audio/street/b099.wav',
                 'scene_label': 'street'
             }
         ]
@@ -149,26 +149,37 @@ Usage example:
         event_label_list=reference_event_list.unique_event_labels,
         time_resolution=1.0
     )
+    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.250
+    )
 
-    # Go through files
     for filename in reference_event_list.unique_files:
-        # Get reference event list for file by filtering reference_event_list
-        reference_event_list_for_current_file = reference_event_list.filter(file=filename)
+        reference_event_list_for_current_file = reference_event_list.filter(
+            filename=filename
+        )
 
-        # Get estimated event list for file by filtering estimated_event_list
-        estimated_event_list_for_current_file = estimated_event_list.filter(file=filename)
+        estimated_event_list_for_current_file = estimated_event_list.filter(
+            filename=filename
+        )
 
         segment_based_metrics.evaluate(
             reference_event_list=reference_event_list_for_current_file,
             estimated_event_list=estimated_event_list_for_current_file
         )
 
+        event_based_metrics.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+
     # Get only certain metrics
     overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()
-    print "Accuracy:", overall_segment_based_metrics['accuracy']['accuracy']
+    print("Accuracy:", overall_segment_based_metrics['accuracy']['accuracy'])
 
     # Or print all metrics as reports
-    print segment_based_metrics
+    print(segment_based_metrics)
+    print(event_based_metrics)
 
 Segment based metrics
 ^^^^^^^^^^^^^^^^^^^^^
