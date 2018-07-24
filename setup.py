@@ -23,6 +23,6 @@ setup(
     license='MIT',
     install_requires=[
         'numpy >= 1.7.0',
-        'dcase_util >= 0.1.6'
+        'dcase_util >= 0.2.4'
     ],
 )
