@@ -1,0 +1,6 @@
+sed_eval.metric.equal_error_rate
+================================
+
+.. currentmodule:: sed_eval.metric
+
+.. autofunction:: equal_error_rate

@@ -4,84 +4,75 @@
 Event list handling
 """
 
-__all__ = ['EventList',
+import dcase_util
+
+__all__ = ['filter_event_list',
+           'unique_files',
            'unique_event_labels',
            'max_event_offset']
 
 
-class EventList(list):
-    def __init__(self, *args):
-        """Constructor
+def filter_event_list(event_list, scene_label=None, event_label=None, filename=None):
+    """Filter event list based on given fields
 
-        This class is inherited from list class.
+    Parameters
+    ----------
+    event_list : list, shape=(n,)
+        A list containing event dicts
 
-        Returns
-        -------
-            Nothing
+    scene_label : str
+        Scene label
 
-        """
-        list.__init__(self, *args)
+    event_label : str
+        Event label
 
-    @property
-    def valid_event_list(self):
-        if 'event_label' in self[0] and 'event_onset' in self[0] and 'event_offset' in self[0]:
-            return True
-        else:
-            return False
+    filename : str
+        Filename
 
-    @property
-    def event_count(self):
-        """Get number of events
+    Returns
+    -------
+    event_list: list, shape=(n,)
+        A list containing event dicts
 
-        Returns
-        -------
-        event_count: integer > 0
+    """
 
-        """
+    return dcase_util.containers.MetaDataContainer(event_list).filter(
+        filename=filename,
+        scene_label=scene_label,
+        event_label=event_list
+    )
 
-        if self.valid_event_list:
-            return len(self)
 
-    @property
-    def event_label_count(self):
-        """Get number of unique event labels
+def unique_files(event_list):
+    """Find the unique files
 
-        Returns
-        -------
-        event_label_count: float > 0
+    Parameters
+    ----------
+    event_list : list or dcase_util.containers.MetaDataContainer
+        A list containing event dicts
 
-        """
+    Returns
+    -------
+    list
+        Unique filenames in alphabetical order
 
-        if self.valid_event_list:
-            return len(self.unique_event_labels)
+    """
 
-    @property
-    def unique_event_labels(self):
-        """Get unique event labels
+    if isinstance(event_list, dcase_util.containers.MetaDataContainer):
+        return event_list.unique_files
 
-        Returns
-        -------
-        labels: list, shape=(n,)
-            Unique labels in alphabetical order
+    else:
+        files = {}
+        for event in event_list:
+            if 'file' in event:
+                files[event['file']] = event['file']
 
-        """
+            elif 'filename' in event:
+                files[event['filename']] = event['filename']
 
-        if self.valid_event_list:
-            return unique_event_labels(self)
-
-    @property
-    def max_event_offset(self):
-        """Find the offset (end-time) of last event
-
-        Returns
-        -------
-        max_offset: float > 0
-            maximum offset
-
-        """
-
-        if self.valid_event_list:
-            return max_event_offset(self)
+        files = list(files.keys())
+        files.sort()
+        return files
 
 
 def unique_event_labels(event_list):
@@ -89,23 +80,27 @@ def unique_event_labels(event_list):
 
     Parameters
     ----------
-    event_list : list, shape=(n,)
+    event_list : list or dcase_util.containers.MetaDataContainer
         A list containing event dicts
 
     Returns
     -------
-    labels: list, shape=(n,)
+    list
         Unique labels in alphabetical order
 
     """
 
-    labels = []
-    for event in event_list:
-        if 'event_label' in event and event['event_label'] not in labels:
-            labels.append(event['event_label'])
+    if isinstance(event_list, dcase_util.containers.MetaDataContainer):
+        return event_list.unique_event_labels
 
-    labels.sort()
-    return labels
+    else:
+        labels = []
+        for event in event_list:
+            if 'event_label' in event and event['event_label'] not in labels:
+                labels.append(event['event_label'])
+
+        labels.sort()
+        return labels
 
 
 def max_event_offset(event_list):
@@ -113,18 +108,28 @@ def max_event_offset(event_list):
 
     Parameters
     ----------
-    event_list : list, shape=(n,)
+    event_list : list or dcase_util.containers.MetaDataContainer
         A list containing event dicts
 
     Returns
     -------
-    max_offset: float > 0
+    float > 0
         maximum offset
 
     """
 
-    max_offset = 0
-    for event in event_list:
-        if event['event_offset'] > max_offset:
-            max_offset = event['event_offset']
-    return max_offset
+    if isinstance(event_list, dcase_util.containers.MetaDataContainer):
+        return event_list.max_offset
+
+    else:
+        max_offset = 0
+        for event in event_list:
+            if 'event_offset' in event:
+                if event['event_offset'] > max_offset:
+                    max_offset = event['event_offset']
+
+            elif 'offset' in event:
+                if event['offset'] > max_offset:
+                    max_offset = event['offset']
+
+        return max_offset

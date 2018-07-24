@@ -3,68 +3,9 @@
 """Scene list handling
 """
 
-__all__ = ['SceneList',
-           'unique_scene_labels']
+import dcase_util
 
-class SceneList(list):
-    def __init__(self, *args):
-        """Constructor
-
-        This class is inherited from list class.
-
-        Returns
-        -------
-            Nothing
-
-        """
-        list.__init__(self, *args)
-
-    @property
-    def valid_scene_list(self):
-        if 'scene_label' in self[0]:
-            return True
-        else:
-            return False
-
-    @property
-    def scene_count(self):
-        """Get number of scene segments
-
-        Returns
-        -------
-        scene_count: integer > 0
-
-        """
-
-        if self.valid_scene_list:
-            return len(self)
-
-    @property
-    def scene_label_count(self):
-        """Get number of unique scene labels
-
-        Returns
-        -------
-        scene_label_count: float > 0
-
-        """
-
-        if self.valid_scene_list:
-            return len(self.unique_scene_labels)
-
-    @property
-    def unique_scene_labels(self):
-        """Get unique scene labels
-
-        Returns
-        -------
-        labels: list, shape=(n,)
-            Unique labels in alphabetical order
-
-        """
-
-        if self.valid_scene_list:
-            return unique_scene_labels(self)
+__all__ = ['unique_scene_labels']
 
 
 def unique_scene_labels(scene_list):
@@ -81,12 +22,15 @@ def unique_scene_labels(scene_list):
         Unique labels in alphabetical order
 
     """
+    if isinstance(scene_list, dcase_util.containers.MetaDataContainer):
+        return scene_list.unique_scene_labels
 
-    labels = []
-    for item in scene_list:
-        if 'scene_label' in item and item['scene_label'] not in labels:
-            labels.append(item['scene_label'])
+    else:
+        labels = []
+        for item in scene_list:
+            if 'scene_label' in item and item['scene_label'] not in labels:
+                labels.append(item['scene_label'])
 
-    labels.sort()
-    return labels
+        labels.sort()
+        return labels
 

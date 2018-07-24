@@ -14,10 +14,9 @@ Event list operations
     :toctree: generated/
 
     event_list.unique_event_labels
+    event_list.unique_files
+    event_list.filter_event_list
     event_list.max_event_offset
-
-.. autoclass:: EventList
-    :members:
 
 Event roll operations
 ---------------------
@@ -36,9 +35,6 @@ Scene list operations
     :toctree: generated/
 
     scene_list.unique_scene_labels
-
-.. autoclass:: SceneList
-    :members:
 
 """
 

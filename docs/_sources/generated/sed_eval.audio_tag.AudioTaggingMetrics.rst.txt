@@ -1,0 +1,32 @@
+sed_eval.audio_tag.AudioTaggingMetrics
+======================================
+
+.. currentmodule:: sed_eval.audio_tag
+
+.. autoclass:: AudioTaggingMetrics
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~AudioTaggingMetrics.__init__
+      ~AudioTaggingMetrics.evaluate
+      ~AudioTaggingMetrics.reset
+      ~AudioTaggingMetrics.result_report_class_wise
+      ~AudioTaggingMetrics.result_report_class_wise_average
+      ~AudioTaggingMetrics.result_report_overall
+      ~AudioTaggingMetrics.result_report_parameters
+      ~AudioTaggingMetrics.results
+      ~AudioTaggingMetrics.results_class_wise_average_metrics
+      ~AudioTaggingMetrics.results_class_wise_metrics
+      ~AudioTaggingMetrics.results_overall_metrics
+   
+   
+
+   
+   
+   

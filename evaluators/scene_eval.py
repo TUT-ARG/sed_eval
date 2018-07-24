@@ -47,13 +47,14 @@ To get metrics saved in YAML-format, run:
 ./scene_eval.py file_list.txt -o results.yaml
 
 """
-
+from __future__ import print_function, absolute_import
 import sys
 import os
 import argparse
 import textwrap
 import yaml
 import sed_eval
+import dcase_util
 
 __version_info__ = ('0', '1', '0')
 __version__ = '.'.join(__version_info__)
@@ -93,7 +94,7 @@ def main(argv):
     path = os.path.dirname(parameters['file_list'])
 
     data = []
-    all_data = sed_eval.util.SceneList([])
+    all_data = dcase_util.containers.MetaDataContainer()
     for file_pair in file_list:
         reference_scene_list = sed_eval.io.load_scene_list(os.path.abspath(os.path.join(path, file_pair['reference_file'])))
         estimated_scene_list = sed_eval.io.load_scene_list(os.path.abspath(os.path.join(path, file_pair['estimated_file'])))
@@ -113,7 +114,7 @@ def main(argv):
         with open(parameters['output_file'], 'w') as result_file:
             result_file.write(yaml.dump(results, default_flow_style=False))
     else:
-        print metrics
+        print(metrics)
 
 
 if __name__ == "__main__":

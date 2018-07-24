@@ -3,19 +3,21 @@
 """Event roll handling
 
 """
-
+from __future__ import absolute_import
 import math
 import numpy
-from event_list import *
+from . import event_list
+import dcase_util
 
 
-def event_list_to_event_roll(event_list, event_label_list=None, time_resolution=0.01):
+def event_list_to_event_roll(source_event_list, event_label_list=None, time_resolution=0.01):
     """Convert event list into event roll, binary activity matrix
 
     Parameters
     ----------
-    event_list : list, shape=(n,)
+    source_event_list : list, shape=(n,)
         A list containing event dicts
+
     event_label_list : list, shape=(k,) or None
         A list of containing unique labels in alphabetical order
         (Default value = None)
@@ -25,25 +27,44 @@ def event_list_to_event_roll(event_list, event_label_list=None, time_resolution=
 
     Returns
     -------
+
     event_roll: np.ndarray, shape=(m,k)
         Event roll
 
     """
 
-    max_offset_value = max_event_offset(event_list)
+    if isinstance(source_event_list, dcase_util.containers.MetaDataContainer):
+        max_offset_value = source_event_list.max_offset
 
-    if event_label_list is None:
-        event_label_list = unique_event_labels(event_list)
+        if event_label_list is None:
+            event_label_list = source_event_list.unique_event_labels
+
+    elif isinstance(source_event_list, list):
+        max_offset_value = event_list.max_event_offset(source_event_list)
+
+        if event_label_list is None:
+            event_label_list = event_list.unique_event_labels(source_event_list)
+
+    else:
+        raise ValueError('Unknown source_event_list type.')
 
     # Initialize event roll
     event_roll = numpy.zeros((int(math.ceil(max_offset_value * 1 / time_resolution)), len(event_label_list)))
 
     # Fill-in event_roll
-    for event in event_list:
+    for event in source_event_list:
         pos = event_label_list.index(event['event_label'])
 
-        onset = int(math.floor(event['event_onset'] * 1 / time_resolution))
-        offset = int(math.ceil(event['event_offset'] * 1 / time_resolution))
+        if 'event_onset' in event and 'event_offset' in event:
+            event_onset = event['event_onset']
+            event_offset = event['event_offset']
+
+        elif 'onset' in event and 'offset' in event:
+            event_onset = event['onset']
+            event_offset = event['offset']
+
+        onset = int(math.floor(event_onset * 1 / float(time_resolution)))
+        offset = int(math.ceil(event_offset * 1 / float(time_resolution)))
 
         event_roll[onset:offset, pos] = 1
 
@@ -57,6 +78,7 @@ def pad_event_roll(event_roll, length):
     ----------
     event_roll: np.ndarray, shape=(m,k)
         Event roll
+
     length : int
         Length to be padded
 
@@ -74,28 +96,54 @@ def pad_event_roll(event_roll, length):
     return event_roll
 
 
-def match_event_roll_lengths(event_roll_a, event_roll_b):
+def match_event_roll_lengths(event_roll_a, event_roll_b, length=None):
     """Fix the length of two event rolls
 
     Parameters
     ----------
     event_roll_a: np.ndarray, shape=(m1,k)
         Event roll A
+
     event_roll_b: np.ndarray, shape=(m2,k)
         Event roll B
+
+    length: int, optional
+        Length of the event roll, if none given, shorter event roll is padded to match longer one.
 
     Returns
     -------
     event_roll_a: np.ndarray, shape=(max(m1,m2),k)
         Padded event roll A
+
     event_roll_b: np.ndarray, shape=(max(m1,m2),k)
         Padded event roll B
 
     """
 
     # Fix durations of both event_rolls to be equal
-    event_roll_a = pad_event_roll(event_roll=event_roll_a, length=event_roll_b.shape[0])
-    event_roll_b = pad_event_roll(event_roll=event_roll_b, length=event_roll_a.shape[0])
+    if length is None:
+        length = max(event_roll_b.shape[0], event_roll_a.shape[0])
+
+    else:
+        length = int(length)
+
+    if length < event_roll_a.shape[0]:
+        event_roll_a = event_roll_a[0:length, :]
+
+    else:
+        event_roll_a = pad_event_roll(
+            event_roll=event_roll_a,
+            length=length
+        )
+
+    if length < event_roll_b.shape[0]:
+        event_roll_b = event_roll_b[0:length, :]
+
+    else:
+        event_roll_b = pad_event_roll(
+            event_roll=event_roll_b,
+            length=length
+        )
 
     return event_roll_a, event_roll_b
 

@@ -1,0 +1,4 @@
+binary1.txt	binary1_detected.txt
+binary2.txt	binary2_detected.txt
+binary3.txt	binary3_detected.txt
+binary4.txt	binary4_detected.txt

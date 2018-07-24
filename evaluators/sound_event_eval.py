@@ -54,20 +54,19 @@ To get segment-based and event-based metrics saved in YAML-format, run:
 
 """
 
+from __future__ import print_function, absolute_import
 import sys
 import os
 import argparse
 import textwrap
-import yaml
 import sed_eval
-
+import dcase_util
 
 __version_info__ = ('0', '1', '0')
 __version__ = '.'.join(__version_info__)
 
 
 def process_arguments(argv):
-
     # Argparse function to get the program parameters
     parser = argparse.ArgumentParser(
         prefix_chars='-+',
@@ -93,41 +92,61 @@ def process_arguments(argv):
 
 
 def main(argv):
+    """Main
     """
-    """
+
     parameters = process_arguments(argv)
     file_list = sed_eval.io.load_file_pair_list(parameters['file_list'])
     path = os.path.dirname(parameters['file_list'])
 
     data = []
-    all_data = sed_eval.util.EventList([])
+    all_data = dcase_util.containers.MetaDataContainer()
     for file_pair in file_list:
-        reference_event_list = sed_eval.io.load_event_list(os.path.abspath(os.path.join(path, file_pair['reference_file'])))
-        estimated_event_list = sed_eval.io.load_event_list(os.path.abspath(os.path.join(path, file_pair['estimated_file'])))
-        data.append({'reference_event_list': reference_event_list, 'estimated_event_list': estimated_event_list})
+        reference_event_list = sed_eval.io.load_event_list(
+            os.path.abspath(os.path.join(path, file_pair['reference_file']))
+        )
+
+        estimated_event_list = sed_eval.io.load_event_list(
+            os.path.abspath(os.path.join(path, file_pair['estimated_file']))
+        )
+
+        data.append({
+            'reference_event_list': reference_event_list,
+            'estimated_event_list': estimated_event_list
+        })
+
         all_data += reference_event_list
+
     event_labels = all_data.unique_event_labels
 
     segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(event_labels)
     event_based_metrics = sed_eval.sound_event.EventBasedMetrics(event_labels)
+
     for file_pair in data:
-        segment_based_metrics.evaluate(file_pair['reference_event_list'], file_pair['estimated_event_list'])
-        event_based_metrics.evaluate(file_pair['reference_event_list'], file_pair['estimated_event_list'])
+        segment_based_metrics.evaluate(
+            file_pair['reference_event_list'],
+            file_pair['estimated_event_list']
+        )
+
+        event_based_metrics.evaluate(
+            file_pair['reference_event_list'],
+            file_pair['estimated_event_list']
+        )
 
     if parameters['output_file']:
-        results = {
+        results = dcase_util.containers.DictContainer({
             'segment_based_metrics': segment_based_metrics.results(),
             'event_based_metrics': event_based_metrics.results()
-        }
+        }).save(parameters['output_file'])
 
-        with open(parameters['output_file'], 'w') as result_file:
-            result_file.write(yaml.dump(results, default_flow_style=False))
     else:
-        print segment_based_metrics
-        print event_based_metrics
+        print(segment_based_metrics)
+        print(event_based_metrics)
+
 
 if __name__ == "__main__":
     try:
         sys.exit(main(sys.argv))
+
     except (ValueError, IOError) as e:
         sys.exit(e)

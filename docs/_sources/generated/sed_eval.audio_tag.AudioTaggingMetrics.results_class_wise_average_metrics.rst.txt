@@ -1,0 +1,6 @@
+sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics
+=========================================================================
+
+.. currentmodule:: sed_eval.audio_tag
+
+.. automethod:: AudioTaggingMetrics.results_class_wise_average_metrics

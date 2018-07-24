@@ -14,28 +14,21 @@ Functions for loading annotations from files in various formats.
 
 """
 
-import util.event_list
+from __future__ import absolute_import
 import csv
-import os
-
-
-def isfloat(value):
-  try:
-    float(value)
-    return True
-  except ValueError:
-    return False
+import dcase_util
 
 
 def load_event_list(filename):
     """Load event list from csv formatted text-file
 
-    Supported formats:
+    Supported formats (see more `dcase_util.containers.MetaDataContainer.load()` method):
 
     - [event onset (float >= 0)][delimiter][event offset (float >= 0)]
     - [event onset (float >= 0)][delimiter][event offset (float >= 0)][delimiter][label]
     - [filename][delimiter][event onset (float >= 0)][delimiter][event offset (float >= 0)][delimiter][event label]
     - [filename][delimiter][scene_label][delimiter][event onset (float >= 0)][delimiter][event offset (float >= 0)][delimiter][event label]
+    - [filename]
 
     Supported delimiters: ``,``, ``;``, ``tab``
 
@@ -69,89 +62,18 @@ def load_event_list(filename):
 
     Returns
     -------
-    event_list: list
+    list of dict
         Event list
 
     """
 
-    data = []
-    file_open = False
-    if hasattr(filename, 'read'):
-        input_file = filename
-    else:
-        input_file = open(filename, 'rt')
-        file_open = True
-        if os.path.getsize(filename) == 0:
-            return util.event_list.EventList(data)
-
-    try:
-        dialect = csv.Sniffer().sniff(input_file.readline(), [',', ';', '\t'])
-    except csv.Error:
-        raise ValueError('Unknown delimiter.')
-
-    input_file.seek(0)
-
-    for row in csv.reader(input_file, dialect):
-        if len(row):
-            if len(row) == 2:
-                if not isfloat(row[0]) or not isfloat(row[1]):
-                    raise ValueError('Event onset and event offset needs to be float.')
-
-                data.append(
-                    {
-                        'event_onset': float(row[0]),
-                        'event_offset': float(row[1])
-                    }
-                )
-            elif len(row) == 3:
-                if not isfloat(row[0]) or not isfloat(row[1]):
-                    raise ValueError('Event onset and event offset needs to be float.')
-
-                data.append(
-                    {
-                        'event_onset': float(row[0]),
-                        'event_offset': float(row[1]),
-                        'event_label': row[2]
-                    }
-                )
-            elif len(row) == 4:
-                if not isfloat(row[1]) or not isfloat(row[2]):
-                    raise ValueError('Event onset and event offset needs to be float.')
-
-                data.append(
-                    {
-                        'file': row[0],
-                        'event_onset': float(row[1]),
-                        'event_offset': float(row[2]),
-                        'event_label': row[3]
-                    }
-                )
-            elif len(row) == 5:
-                if not isfloat(row[2]) or not isfloat(row[3]):
-                    raise ValueError('Event onset and event offset needs to be float.')
-
-                data.append(
-                    {
-                        'file': row[0],
-                        'scene_label': row[1],
-                        'event_onset': float(row[2]),
-                        'event_offset': float(row[3]),
-                        'event_label': row[4]
-                    }
-                )
-            else:
-                raise ValueError('Unknown event list format.')
-
-    if file_open:
-        input_file.close()
-
-    return util.event_list.EventList(data)
+    return dcase_util.containers.MetaDataContainer().load(filename=filename)
 
 
 def load_scene_list(filename):
     """Load scene list from csv formatted text-file
 
-    Supported formats:
+    Supported formats (see more `dcase_util.containers.MetaDataContainer.load()` method):
 
     - [filename][delimiter][scene label]
     - [filename][delimiter][segment start (float >= 0)][delimiter][segment stop (float >= 0)][delimiter][scene label]
@@ -177,54 +99,16 @@ def load_scene_list(filename):
 
     Returns
     -------
-    scene_list: list
+    list of dict
         Scene list
 
     """
 
-    data = []
-    file_open = False
-    if hasattr(filename, 'read'):
-        input_file = filename
-    else:
-        input_file = open(filename, 'rt')
-        file_open = True
-
-    try:
-        dialect = csv.Sniffer().sniff(input_file.readline(), [',', ';', '\t'])
-    except csv.Error:
-        raise ValueError('Unknown delimiter.')
-    input_file.seek(0)  
-
-    for row in csv.reader(input_file, dialect):
-        if len(row) == 2:
-            data.append(
-                {
-                    'file': row[0],
-                    'scene_label': row[1],
-                }
-            )
-        elif len(row) == 4:
-            if not isfloat(row[1]) or not isfloat(row[2]):
-                raise ValueError('Segment start and segment end needs to be float.')
-            data.append(
-                {
-                    'file': row[0],
-                    'segment_start': float(row[1]),
-                    'segment_end': float(row[2]),
-                    'scene_label': row[3]
-                }
-            )
-        else:
-            raise ValueError('Unknown scene list format.')
-    if file_open:
-        input_file.close()
-
-    return util.scene_list.SceneList(data)
+    return dcase_util.containers.MetaDataContainer().load(filename=filename)
 
 
 def load_file_pair_list(filename):
-    """Load file pair list csv formated text-file
+    """Load file pair list csv formatted text-file
 
     Format is [reference_file][delimiter][estimated_file]
 
@@ -248,17 +132,15 @@ def load_file_pair_list(filename):
     """
 
     data = []
-    file_open = False
-    if hasattr(filename, 'read'):
-        input_file = filename
-    else:
-        input_file = open(filename, 'rt')
-        file_open = True
-    
+
+    input_file = open(filename, 'rt')
+
     try:
         dialect = csv.Sniffer().sniff(input_file.readline(), [',', ';', '\t'])
+
     except csv.Error:
-        raise ValueError('Unknown delimiter.')
+        raise ValueError('Unknown delimiter in file [{file}].'.format(file=filename))
+
     input_file.seek(0)  
 
     for row in csv.reader(input_file, dialect):
@@ -269,9 +151,11 @@ def load_file_pair_list(filename):
                     'estimated_file': row[1]
                 }
             )
+
         else:
-            raise ValueError('Unknown file pair list format.')
-    if file_open:
-        input_file.close()
+            raise ValueError('Unknown file pair list format in file [{file}].'.format(file=filename))
+
+    input_file.close()
+
     return data
 

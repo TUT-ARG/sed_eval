@@ -36,6 +36,7 @@ ehthumbs.db
 Thumbs.db
 *~
 
+
 # Vim
 
 # PyCharm
@@ -44,10 +45,17 @@ Thumbs.db
 # cover
 tests/cover/*
 tests/_dev/*
+.coverage
+.coverage.*
 
 # Sphinx
-docs/generated/
+#docs/generated/
 
 tests/dcase2016/*
 
 .nfs*
+tests/*.zip
+tests/DCASE2016-baseline-system-python*
+tests/dev/
+documentation/source/generated/
+documentation/build/
