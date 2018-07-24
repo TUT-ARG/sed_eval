@@ -472,17 +472,21 @@ def test_event_matching():
     results_optimal = event_based_metrics_optimal.results()
     results_greedy = event_based_metrics_greedy.results()
 
-    nose.tools.assert_almost_equals(
+    nose.tools.eq_(
         results_optimal['overall']['f_measure']['f_measure'],
         results_greedy['overall']['f_measure']['f_measure']
     )
-    nose.tools.assert_almost_equals(
+    nose.tools.eq_(
         results_optimal['overall']['error_rate']['error_rate'],
         results_greedy['overall']['error_rate']['error_rate']
     )
-    nose.tools.assert_almost_equals(
+    nose.tools.eq_(
         results_optimal['class_wise_average']['error_rate']['error_rate'],
         results_greedy['class_wise_average']['error_rate']['error_rate']
+    )
+    nose.tools.eq_(
+        results_optimal['class_wise_average']['f_measure']['f_measure'],
+        results_greedy['class_wise_average']['f_measure']['f_measure']
     )
 
     reference = os.path.join('data', 'sound_event', 'mini_reference.txt')
@@ -542,21 +546,21 @@ def test_event_matching():
     results_greedy_a = event_based_metrics_greedy_a.results()
     results_greedy_b = event_based_metrics_greedy_b.results()
 
-    nose.tools.assert_almost_equals(
+    nose.tools.eq_(
         results_optimal_a['overall']['f_measure']['f_measure'],
         results_optimal_b['overall']['f_measure']['f_measure']
     )
 
-    nose.tools.assert_almost_equals(
+    nose.tools.eq_(
         results_greedy_a['overall']['f_measure']['f_measure'],
         results_greedy_b['overall']['f_measure']['f_measure']
     )
 
-    nose.tools.assert_almost_equals(
+    nose.tools.eq_(
         results_optimal_a['overall']['error_rate']['error_rate'],
         results_optimal_b['overall']['error_rate']['error_rate']
     )
-    nose.tools.assert_almost_equals(
+    nose.tools.eq_(
         results_optimal_a['class_wise_average']['error_rate']['error_rate'],
         results_optimal_b['class_wise_average']['error_rate']['error_rate']
     )
@@ -755,6 +759,24 @@ def test_event_matching():
         0.5
     )
 
+    nose.tools.eq_(
+        event_based_metrics_optimal_AA.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_greedy_AA.results()['overall']['f_measure']['f_measure'],
+    )
+    nose.tools.eq_(
+        event_based_metrics_optimal_BB.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_greedy_BB.results()['overall']['f_measure']['f_measure'],
+    )
+
+    nose.tools.eq_(
+        event_based_metrics_optimal_AA.results()['class_wise_average']['error_rate']['error_rate'],
+        event_based_metrics_greedy_AA.results()['class_wise_average']['error_rate']['error_rate']
+    )
+
+    nose.tools.eq_(
+        event_based_metrics_optimal_BB.results()['class_wise_average']['error_rate']['error_rate'],
+        event_based_metrics_greedy_BB.results()['class_wise_average']['error_rate']['error_rate']
+    )
 
 def test_empty_system_output_handling():
     reference = [
@@ -821,6 +843,3 @@ def test_empty_system_output_handling():
         results_zero['class_wise_average']['f_measure']['f_measure'],
         0.5
     )
-
-
-test_event_matching()
