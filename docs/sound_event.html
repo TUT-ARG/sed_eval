@@ -789,7 +789,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </div></blockquote>
 <p><strong>time_resolution</strong> : float (0,]</p>
 <blockquote class="last">
-<div><p>Segment size used in the evaluation, in seconds
+<div><p>Segment size used in the evaluation, in seconds.
 Default value 1.0</p>
 </div></blockquote>
 </td>
@@ -806,11 +806,11 @@ Default value 1.0</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_event_list</strong> : list of dict or dcase_util.containers.MetaDataContainer</p>
 <blockquote>
-<div><p>Reference event list</p>
+<div><p>Reference event list.</p>
 </div></blockquote>
 <p><strong>estimated_event_list</strong> : list of dict or dcase_util.containers.MetaDataContainer</p>
 <blockquote>
-<div><p>Estimated event list</p>
+<div><p>Estimated event list.</p>
 </div></blockquote>
 <p><strong>evaluated_length_seconds</strong> : float, optional</p>
 <blockquote>
@@ -878,7 +878,7 @@ Default value None</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>factor</strong> : float [0-1]</p>
 <blockquote>
-<div><p>balance factor
+<div><p>Balance factor.
 Default value 0.5</p>
 </div></blockquote>
 </td>
@@ -1043,23 +1043,23 @@ Default value 0.5</p>
 </div></blockquote>
 <p><strong>evaluate_onset</strong> : bool</p>
 <blockquote>
-<div><p>Evaluate onset
+<div><p>Evaluate onset.
 Default value True</p>
 </div></blockquote>
 <p><strong>evaluate_offset</strong> : bool</p>
 <blockquote>
-<div><p>Evaluate offset
+<div><p>Evaluate offset.
 Default value True</p>
 </div></blockquote>
 <p><strong>t_collar</strong> : float (0,]</p>
 <blockquote>
-<div><p>Time collar used when evaluating validity of the onset and offset, in seconds
+<div><p>Time collar used when evaluating validity of the onset and offset, in seconds.
 Default value 0.2</p>
 </div></blockquote>
 <p><strong>percentage_of_length</strong> : float in [0, 1]</p>
 <blockquote>
 <div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be
-consider valid estimation
+consider valid estimation.
 Default value 0.5</p>
 </div></blockquote>
 <p><strong>event_matching_type</strong> : str</p>
@@ -1112,15 +1112,15 @@ Default value ‘optimal’</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_event</strong> : dict</p>
 <blockquote>
-<div><p>Reference event</p>
+<div><p>Reference event.</p>
 </div></blockquote>
 <p><strong>estimated_event: dict</strong></p>
 <blockquote>
-<div><p>Estimated event</p>
+<div><p>Estimated event.</p>
 </div></blockquote>
 <p><strong>t_collar</strong> : float &gt; 0, seconds</p>
 <blockquote>
-<div><p>Time collar with which the estimated onset has to be in order to be consider valid estimation
+<div><p>Time collar with which the estimated onset has to be in order to be consider valid estimation.
 Default value 0.2</p>
 </div></blockquote>
 </td>
@@ -1142,21 +1142,21 @@ Default value 0.2</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>reference_event</strong> : dict</p>
 <blockquote>
-<div><p>Reference event</p>
+<div><p>Reference event.</p>
 </div></blockquote>
 <p><strong>estimated_event</strong> : dict</p>
 <blockquote>
-<div><p>Estimated event</p>
+<div><p>Estimated event.</p>
 </div></blockquote>
 <p><strong>t_collar</strong> : float &gt; 0, seconds</p>
 <blockquote>
-<div><p>First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation
+<div><p>First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation.
 Default value 0.2</p>
 </div></blockquote>
 <p><strong>percentage_of_length</strong> : float in [0, 1]</p>
 <blockquote>
 <div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be
-consider valid estimation
+consider valid estimation.
 Default value 0.5</p>
 </div></blockquote>
 </td>
