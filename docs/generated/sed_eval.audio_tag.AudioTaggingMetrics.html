@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -47,6 +49,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -83,7 +86,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -91,7 +97,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -226,6 +232,10 @@
 <li class="toctree-l3"><a class="reference internal" href="sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../util.html#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../io.html">I/O</a><ul>
@@ -258,8 +268,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sed_eval</a>
+        
       </nav>
 
 
@@ -268,25 +280,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../audio_tag.html">Audio Tagging</a> &raquo;</li>
-      
-    <li>sed_eval.audio_tag.AudioTaggingMetrics</li>
+        
+      <li>sed_eval.audio_tag.AudioTaggingMetrics</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/generated/sed_eval.audio_tag.AudioTaggingMetrics.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -312,7 +341,7 @@
 <tr class="row-odd"><td><a class="reference internal" href="#sed_eval.audio_tag.AudioTaggingMetrics.__init__" title="sed_eval.audio_tag.AudioTaggingMetrics.__init__"><code class="xref py py-obj docutils literal"><span class="pre">__init__</span></code></a>([tags])</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html#sed_eval.audio_tag.AudioTaggingMetrics.evaluate" title="sed_eval.audio_tag.AudioTaggingMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">evaluate</span></code></a>(reference_tag_list[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html#sed_eval.audio_tag.AudioTaggingMetrics.evaluate" title="sed_eval.audio_tag.AudioTaggingMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">evaluate</span></code></a>(reference_tag_list[,&nbsp;…])</td>
 <td>Evaluate estimated against reference</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="sed_eval.audio_tag.AudioTaggingMetrics.reset.html#sed_eval.audio_tag.AudioTaggingMetrics.reset" title="sed_eval.audio_tag.AudioTaggingMetrics.reset"><code class="xref py py-obj docutils literal"><span class="pre">reset</span></code></a>()</td>
@@ -350,15 +379,18 @@
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html" class="btn btn-neutral float-right" title="sed_eval.audio_tag.AudioTaggingMetrics.evaluate" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html" class="btn btn-neutral float-right" title="sed_eval.audio_tag.AudioTaggingMetrics.evaluate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../audio_tag.html" class="btn btn-neutral" title="Audio Tagging" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../audio_tag.html" class="btn btn-neutral" title="Audio Tagging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -391,13 +423,14 @@
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

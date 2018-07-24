@@ -1,5 +1,5 @@
-sed_eval.scene.SceneClassificationMetrics.reset
-===============================================
+sed\_eval\.scene\.SceneClassificationMetrics\.reset
+===================================================
 
 .. currentmodule:: sed_eval.scene
 

@@ -1,5 +1,5 @@
-sed_eval.audio_tag.AudioTaggingMetrics.reset
-============================================
+sed\_eval\.audio\_tag\.AudioTaggingMetrics\.reset
+=================================================
 
 .. currentmodule:: sed_eval.audio_tag
 

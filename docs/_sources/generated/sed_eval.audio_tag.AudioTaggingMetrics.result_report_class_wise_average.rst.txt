@@ -1,5 +1,5 @@
-sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average
-=======================================================================
+sed\_eval\.audio\_tag\.AudioTaggingMetrics\.result\_report\_class\_wise\_average
+================================================================================
 
 .. currentmodule:: sed_eval.audio_tag
 

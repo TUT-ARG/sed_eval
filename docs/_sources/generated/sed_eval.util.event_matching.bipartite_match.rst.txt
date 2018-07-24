@@ -1,0 +1,6 @@
+sed\_eval\.util\.event\_matching\.bipartite\_match
+==================================================
+
+.. currentmodule:: sed_eval.util.event_matching
+
+.. autofunction:: bipartite_match

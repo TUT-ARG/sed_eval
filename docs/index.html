@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +84,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -89,7 +95,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -224,6 +230,10 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">I/O</a><ul>
@@ -256,8 +266,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">sed_eval</a>
+        
       </nav>
 
 
@@ -266,23 +278,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
-      
-    <li><code class="docutils literal"><span class="pre">sed_eval</span></code> - Evaluation toolbox for Sound Event Detection</li>
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li><code class="docutils literal"><span class="pre">sed_eval</span></code> - Evaluation toolbox for Sound Event Detection</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -308,7 +337,7 @@ scene classification systems, as the fields are closely related (see <a class="r
 <div class="section" id="citing">
 <h2>Citing<a class="headerlink" href="#citing" title="Permalink to this headline">¶</a></h2>
 <p>If you use <code class="docutils literal"><span class="pre">sed_eval</span></code> in a research project, please cite the following paper:</p>
-<p>Annamaria Mesaros, Toni Heittola, and Tuomas Virtanen, &#8220;Metrics for polyphonic sound event detection&#8221;, Applied Sciences, 6(6):162, 2016 [<a class="reference external" href="http://www.mdpi.com/2076-3417/6/6/162">HTML</a>][<a class="reference external" href="http://www.mdpi.com/2076-3417/6/6/162/pdf">PDF</a>]</p>
+<p>Annamaria Mesaros, Toni Heittola, and Tuomas Virtanen, “Metrics for polyphonic sound event detection”, Applied Sciences, 6(6):162, 2016 [<a class="reference external" href="http://www.mdpi.com/2076-3417/6/6/162">HTML</a>][<a class="reference external" href="http://www.mdpi.com/2076-3417/6/6/162/pdf">PDF</a>]</p>
 </div>
 <div class="section" id="getting-started">
 <span id="installation"></span><h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
@@ -349,12 +378,15 @@ scene classification systems, as the fields are closely related (see <a class="r
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Installation instructions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -388,13 +420,14 @@ scene classification systems, as the fields are closely related (see <a class="r
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

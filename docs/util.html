@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -46,6 +48,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -82,7 +85,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -90,7 +96,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -171,7 +177,22 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="audio_tag.html">Audio Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio_tag.html">Audio Tagging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="audio_tag.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.html">sed_eval.audio_tag.AudioTaggingMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html">sed_eval.audio_tag.AudioTaggingMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results.html">sed_eval.audio_tag.AudioTaggingMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.reset.html">sed_eval.audio_tag.AudioTaggingMetrics.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -210,6 +231,10 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">I/O</a><ul>
@@ -242,8 +267,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sed_eval</a>
+        
       </nav>
 
 
@@ -252,23 +279,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Utilities</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Utilities</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/util.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -292,7 +336,7 @@ and scene lists.</p>
 <tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.util.event_list.unique_files.html#sed_eval.util.event_list.unique_files" title="sed_eval.util.event_list.unique_files"><code class="xref py py-obj docutils literal"><span class="pre">event_list.unique_files</span></code></a>(event_list)</td>
 <td>Find the unique files</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.util.event_list.filter_event_list.html#sed_eval.util.event_list.filter_event_list" title="sed_eval.util.event_list.filter_event_list"><code class="xref py py-obj docutils literal"><span class="pre">event_list.filter_event_list</span></code></a>(event_list[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.util.event_list.filter_event_list.html#sed_eval.util.event_list.filter_event_list" title="sed_eval.util.event_list.filter_event_list"><code class="xref py py-obj docutils literal"><span class="pre">event_list.filter_event_list</span></code></a>(event_list[,&nbsp;…])</td>
 <td>Filter event list based on given fields</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.util.event_list.max_event_offset.html#sed_eval.util.event_list.max_event_offset" title="sed_eval.util.event_list.max_event_offset"><code class="xref py py-obj docutils literal"><span class="pre">event_list.max_event_offset</span></code></a>(event_list)</td>
@@ -309,13 +353,13 @@ and scene lists.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.util.event_roll.event_list_to_event_roll.html#sed_eval.util.event_roll.event_list_to_event_roll" title="sed_eval.util.event_roll.event_list_to_event_roll"><code class="xref py py-obj docutils literal"><span class="pre">event_roll.event_list_to_event_roll</span></code></a>(...[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.util.event_roll.event_list_to_event_roll.html#sed_eval.util.event_roll.event_list_to_event_roll" title="sed_eval.util.event_roll.event_list_to_event_roll"><code class="xref py py-obj docutils literal"><span class="pre">event_roll.event_list_to_event_roll</span></code></a>(…[,&nbsp;…])</td>
 <td>Convert event list into event roll, binary activity matrix</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/sed_eval.util.event_roll.pad_event_roll.html#sed_eval.util.event_roll.pad_event_roll" title="sed_eval.util.event_roll.pad_event_roll"><code class="xref py py-obj docutils literal"><span class="pre">event_roll.pad_event_roll</span></code></a>(event_roll,&nbsp;length)</td>
-<td>Pad event roll&#8217;s length to given length</td>
+<td>Pad event roll’s length to given length</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.util.event_roll.match_event_roll_lengths.html#sed_eval.util.event_roll.match_event_roll_lengths" title="sed_eval.util.event_roll.match_event_roll_lengths"><code class="xref py py-obj docutils literal"><span class="pre">event_roll.match_event_roll_lengths</span></code></a>(...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.util.event_roll.match_event_roll_lengths.html#sed_eval.util.event_roll.match_event_roll_lengths" title="sed_eval.util.event_roll.match_event_roll_lengths"><code class="xref py py-obj docutils literal"><span class="pre">event_roll.match_event_roll_lengths</span></code></a>(…[,&nbsp;…])</td>
 <td>Fix the length of two event rolls</td>
 </tr>
 </tbody>
@@ -335,19 +379,36 @@ and scene lists.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="event-matching-operations">
+<h2>Event matching operations<a class="headerlink" href="#event-matching-operations" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.util.event_matching.bipartite_match.html#sed_eval.util.event_matching.bipartite_match" title="sed_eval.util.event_matching.bipartite_match"><code class="xref py py-obj docutils literal"><span class="pre">event_matching.bipartite_match</span></code></a>(graph)</td>
+<td>Find maximum cardinality matching of a bipartite graph (U,V,E).</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="generated/sed_eval.util.event_list.unique_event_labels.html" class="btn btn-neutral float-right" title="sed_eval.util.event_list.unique_event_labels" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="generated/sed_eval.util.event_list.unique_event_labels.html" class="btn btn-neutral float-right" title="sed_eval.util.event_list.unique_event_labels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="generated/sed_eval.test.mcnemar.html" class="btn btn-neutral" title="sed_eval.test.mcnemar" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="generated/sed_eval.test.mcnemar.html" class="btn btn-neutral" title="sed_eval.test.mcnemar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -380,13 +441,14 @@ and scene lists.</p>
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

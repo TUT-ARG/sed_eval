@@ -1,5 +1,5 @@
-sed_eval.audio_tag.AudioTaggingMetrics.evaluate
-===============================================
+sed\_eval\.audio\_tag\.AudioTaggingMetrics\.evaluate
+====================================================
 
 .. currentmodule:: sed_eval.audio_tag
 

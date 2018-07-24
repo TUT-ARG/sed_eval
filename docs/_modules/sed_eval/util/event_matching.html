@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sed_eval.util.scene_list &mdash; sed_eval 0.1 documentation</title>
+  <title>sed_eval.util.event_matching &mdash; sed_eval 0.1 documentation</title>
   
 
   
@@ -300,7 +300,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>sed_eval.util.scene_list</li>
+      <li>sed_eval.util.event_matching</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -317,43 +317,119 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for sed_eval.util.scene_list</h1><div class="highlight"><pre>
+  <h1>Source code for sed_eval.util.event_matching</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Scene list handling</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Event matching</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">dcase_util</span>
+<div class="viewcode-block" id="bipartite_match"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_matching.bipartite_match.html#sed_eval.util.event_matching.bipartite_match">[docs]</a><span class="k">def</span> <span class="nf">bipartite_match</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find maximum cardinality matching of a bipartite graph (U,V,E).</span>
+<span class="sd">    Function is borrowed from mir_eval toolbox (https://github.com/craffel/mir_eval).</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unique_scene_labels&#39;</span><span class="p">]</span>
-
-
-<div class="viewcode-block" id="unique_scene_labels"><a class="viewcode-back" href="../../../generated/sed_eval.util.scene_list.unique_scene_labels.html#sed_eval.util.scene_list.unique_scene_labels">[docs]</a><span class="k">def</span> <span class="nf">unique_scene_labels</span><span class="p">(</span><span class="n">scene_list</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Find the unique scene labels</span>
+<span class="sd">    The input format is a dictionary mapping members of U to a list of their neighbors in V.</span>
+<span class="sd">    The output is a dict M mapping members of V to their matches in U.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    scene_list : list, shape=(n,)</span>
-<span class="sd">        A list containing scene dicts</span>
+<span class="sd">    graph : dictionary : left-vertex -&gt; list of right vertices</span>
+<span class="sd">        The input bipartite graph.  Each edge need only be specified once.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    labels: list, shape=(n,)</span>
-<span class="sd">        Unique labels in alphabetical order</span>
+<span class="sd">    matching : dictionary : right-vertex -&gt; left vertex</span>
+<span class="sd">        A maximal bipartite matching.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">scene_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">scene_list</span><span class="o">.</span><span class="n">unique_scene_labels</span>
+    <span class="c1"># Implementation is after _bipartite_match function in mir_eval toolbox:</span>
+    <span class="c1"># Colin Raffel, Brian McFee, Eric J. Humphrey, Justin Salamon, Oriol Nieto, Dawen Liang,</span>
+    <span class="c1"># and Daniel P. W. Ellis, &quot;mir_eval: A Transparent Implementation of Common MIR Metrics&quot;,</span>
+    <span class="c1"># Proceedings of the 15th International Conference on Music Information Retrieval, 2014.</span>
+    <span class="c1">#</span>
+    <span class="c1"># _bipartite_match function:</span>
+    <span class="c1"># https://github.com/craffel/mir_eval/blob/master/mir_eval/util.py#L547</span>
+    <span class="c1">#</span>
+    <span class="c1"># Function is originally adapted from:</span>
+    <span class="c1">#</span>
+    <span class="c1"># Hopcroft-Karp bipartite max-cardinality matching and max independent set</span>
+    <span class="c1"># David Eppstein, UC Irvine, 27 Apr 2002</span>
 
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">scene_list</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s1">&#39;scene_label&#39;</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-                <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;scene_label&#39;</span><span class="p">])</span>
+    <span class="c1"># initialize greedy matching (redundant, but faster than full search)</span>
+    <span class="n">matching</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+                <span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+                <span class="k">break</span>
 
-        <span class="n">labels</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">labels</span></div>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># structure residual graph into layers</span>
+        <span class="c1"># pred[u] gives the neighbor in the previous layer for u in U</span>
+        <span class="c1"># preds[v] gives a list of neighbors in the previous layer for v in V</span>
+        <span class="c1"># unmatched gives a list of unmatched vertices in final layer of V,</span>
+        <span class="c1"># and is also used as a flag value for pred[u] when u is in the first</span>
+        <span class="c1"># layer</span>
 
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">unmatched</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">u</span><span class="p">,</span> <span class="n">unmatched</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">pred</span><span class="p">[</span><span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]]</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+
+        <span class="c1"># repeatedly extend layering structure by another pair of layers</span>
+        <span class="k">while</span> <span class="n">layer</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">unmatched</span><span class="p">:</span>
+            <span class="n">new_layer</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+                        <span class="n">new_layer</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+            <span class="n">layer</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">new_layer</span><span class="p">:</span>
+                <span class="n">preds</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_layer</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+                    <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+                    <span class="n">pred</span><span class="p">[</span><span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]]</span> <span class="o">=</span> <span class="n">v</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">unmatched</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+        <span class="c1"># did we finish layering without finding any alternating paths?</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">unmatched</span><span class="p">:</span>
+            <span class="n">unlayered</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+                        <span class="n">unlayered</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">return</span> <span class="n">matching</span>
+
+        <span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Recursively search backward through layers to find alternating</span>
+<span class="sd">            paths.  recursion returns true if found path, false otherwise</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+                <span class="n">L</span> <span class="o">=</span> <span class="n">preds</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                <span class="k">del</span> <span class="n">preds</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">:</span>
+                        <span class="n">pu</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+                        <span class="k">del</span> <span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">pu</span> <span class="ow">is</span> <span class="n">unmatched</span> <span class="ow">or</span> <span class="n">recurse</span><span class="p">(</span><span class="n">pu</span><span class="p">):</span>
+                            <span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+                            <span class="k">return</span> <span class="kc">True</span>
+
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">unmatched</span><span class="p">:</span>
+            <span class="n">recurse</span><span class="p">(</span><span class="n">v</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +84,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -89,7 +95,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -224,6 +230,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../util.html#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../generated/sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../io.html">I/O</a><ul>
@@ -256,8 +266,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">sed_eval</a>
+        
       </nav>
 
 
@@ -270,19 +282,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-      
-    <li>sed_eval.util.event_roll</li>
+        
+      <li>sed_eval.util.event_roll</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -318,6 +347,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
+
 <span class="sd">    event_roll: np.ndarray, shape=(m,k)</span>
 <span class="sd">        Event roll</span>
 
@@ -386,7 +416,7 @@
     <span class="k">return</span> <span class="n">event_roll</span></div>
 
 
-<div class="viewcode-block" id="match_event_roll_lengths"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_roll.match_event_roll_lengths.html#sed_eval.util.event_roll.match_event_roll_lengths">[docs]</a><span class="k">def</span> <span class="nf">match_event_roll_lengths</span><span class="p">(</span><span class="n">event_roll_a</span><span class="p">,</span> <span class="n">event_roll_b</span><span class="p">):</span>
+<div class="viewcode-block" id="match_event_roll_lengths"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_roll.match_event_roll_lengths.html#sed_eval.util.event_roll.match_event_roll_lengths">[docs]</a><span class="k">def</span> <span class="nf">match_event_roll_lengths</span><span class="p">(</span><span class="n">event_roll_a</span><span class="p">,</span> <span class="n">event_roll_b</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fix the length of two event rolls</span>
 
 <span class="sd">    Parameters</span>
@@ -397,23 +427,51 @@
 <span class="sd">    event_roll_b: np.ndarray, shape=(m2,k)</span>
 <span class="sd">        Event roll B</span>
 
+<span class="sd">    length: int, optional</span>
+<span class="sd">        Length of the event roll, if none given, shorter event roll is padded to match longer one.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    event_roll_a: np.ndarray, shape=(max(m1,m2),k)</span>
 <span class="sd">        Padded event roll A</span>
+
 <span class="sd">    event_roll_b: np.ndarray, shape=(max(m1,m2),k)</span>
 <span class="sd">        Padded event roll B</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Fix durations of both event_rolls to be equal</span>
-    <span class="n">event_roll_a</span> <span class="o">=</span> <span class="n">pad_event_roll</span><span class="p">(</span><span class="n">event_roll</span><span class="o">=</span><span class="n">event_roll_a</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">event_roll_b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">event_roll_b</span> <span class="o">=</span> <span class="n">pad_event_roll</span><span class="p">(</span><span class="n">event_roll</span><span class="o">=</span><span class="n">event_roll_b</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="n">event_roll_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">event_roll_b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">event_roll_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="n">event_roll_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">event_roll_a</span> <span class="o">=</span> <span class="n">event_roll_a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">event_roll_a</span> <span class="o">=</span> <span class="n">pad_event_roll</span><span class="p">(</span>
+            <span class="n">event_roll</span><span class="o">=</span><span class="n">event_roll_a</span><span class="p">,</span>
+            <span class="n">length</span><span class="o">=</span><span class="n">length</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="n">event_roll_b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">event_roll_b</span> <span class="o">=</span> <span class="n">event_roll_b</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">event_roll_b</span> <span class="o">=</span> <span class="n">pad_event_roll</span><span class="p">(</span>
+            <span class="n">event_roll</span><span class="o">=</span><span class="n">event_roll_b</span><span class="p">,</span>
+            <span class="n">length</span><span class="o">=</span><span class="n">length</span>
+        <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">event_roll_a</span><span class="p">,</span> <span class="n">event_roll_b</span></div>
 
 </pre></div>
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
@@ -447,13 +505,14 @@
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -1,5 +1,5 @@
-sed_eval.sound_event.SegmentBasedMetrics.reset
-==============================================
+sed\_eval\.sound\_event\.SegmentBasedMetrics\.reset
+===================================================
 
 .. currentmodule:: sed_eval.sound_event
 

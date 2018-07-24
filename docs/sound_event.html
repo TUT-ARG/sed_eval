@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -46,6 +48,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -82,7 +85,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -90,7 +96,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -171,7 +177,22 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="audio_tag.html">Audio Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio_tag.html">Audio Tagging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="audio_tag.html#metrics">Metrics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.html">sed_eval.audio_tag.AudioTaggingMetrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.evaluate.html">sed_eval.audio_tag.AudioTaggingMetrics.evaluate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results.html">sed_eval.audio_tag.AudioTaggingMetrics.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_overall_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics.html">sed_eval.audio_tag.AudioTaggingMetrics.results_class_wise_average_metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average.html">sed_eval.audio_tag.AudioTaggingMetrics.result_report_class_wise_average</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.audio_tag.AudioTaggingMetrics.reset.html">sed_eval.audio_tag.AudioTaggingMetrics.reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="metric.html">Metrics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.f_measure.html">sed_eval.metric.f_measure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sed_eval.metric.precision.html">sed_eval.metric.precision</a></li>
@@ -210,6 +231,10 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">I/O</a><ul>
@@ -242,8 +267,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sed_eval</a>
+        
       </nav>
 
 
@@ -252,23 +279,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Sound Event Detection</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Sound Event Detection</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/sound_event.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -410,7 +454,7 @@ substituted</p>
 </ul>
 <p>Functions <a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.sound_event.SegmentBasedMetrics.evaluate</span></code></a> and <a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics.evaluate" title="sed_eval.sound_event.EventBasedMetrics.evaluate"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.sound_event.EventBasedMetrics.evaluate</span></code></a>
 take as a parameter event lists, use <a class="reference internal" href="generated/sed_eval.io.load_event_list.html#sed_eval.io.load_event_list" title="sed_eval.io.load_event_list"><code class="xref py py-func docutils literal"><span class="pre">sed_eval.io.load_event_list</span></code></a> to read them from a file.</p>
-<p>Usage example when reading event lists from disk:</p>
+<p>Usage example when reading event lists from disk (you can run example in path <code class="docutils literal"><span class="pre">tests/data/sound_event</span></code>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -465,53 +509,73 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 52
 53
 54
-55</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
 
 <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
      <span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_high_v2.txt&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_high_out.txt&#39;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-     <span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_low_v2.txt&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_low_out.txt&#39;</span>
+     <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_high_v2_detected.txt&#39;</span>
     <span class="p">},</span>
     <span class="p">{</span>
      <span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_med_v2.txt&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_med_out.txt&#39;</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-     <span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr-6_high_v2.txt&#39;</span><span class="p">,</span>
-     <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr-6_high_out.txt&#39;</span>
+     <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;office_snr0_med_v2_detected.txt&#39;</span>
     <span class="p">}</span>
 <span class="p">]</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Get used event labels</span>
-<span class="n">all_data</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">event_list</span><span class="o">.</span><span class="n">EventList</span><span class="p">()</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">file_pair</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
-    <span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_event_list</span><span class="p">(</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_file&#39;</span><span class="p">])</span>
-    <span class="n">estimated_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_event_list</span><span class="p">(</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_file&#39;</span><span class="p">])</span>
+    <span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_event_list</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_file&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">estimated_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">load_event_list</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_file&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+
     <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;reference_event_list&#39;</span><span class="p">:</span> <span class="n">reference_event_list</span><span class="p">,</span>
                  <span class="s1">&#39;estimated_event_list&#39;</span><span class="p">:</span> <span class="n">estimated_event_list</span><span class="p">})</span>
+
     <span class="n">all_data</span> <span class="o">+=</span> <span class="n">reference_event_list</span>
+
 <span class="n">event_labels</span> <span class="o">=</span> <span class="n">all_data</span><span class="o">.</span><span class="n">unique_event_labels</span>
 
 <span class="c1"># Start evaluating</span>
 
 <span class="c1"># Create metrics classes, define parameters</span>
-<span class="n">segment_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">SegmentBasedMetrics</span><span class="p">(</span><span class="n">event_label_list</span><span class="o">=</span><span class="n">event_labels</span><span class="p">,</span>
-                                                                 <span class="n">time_resolution</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">event_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">EventBasedMetrics</span><span class="p">(</span><span class="n">event_label_list</span><span class="o">=</span><span class="n">event_labels</span><span class="p">,</span>
-                                                             <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.250</span><span class="p">)</span>
+<span class="n">segment_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">SegmentBasedMetrics</span><span class="p">(</span>
+    <span class="n">event_label_list</span><span class="o">=</span><span class="n">event_labels</span><span class="p">,</span>
+    <span class="n">time_resolution</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+
+<span class="n">event_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">EventBasedMetrics</span><span class="p">(</span>
+    <span class="n">event_label_list</span><span class="o">=</span><span class="n">event_labels</span><span class="p">,</span>
+    <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.250</span>
+<span class="p">)</span>
 
 <span class="c1"># Go through files</span>
 <span class="k">for</span> <span class="n">file_pair</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_event_list&#39;</span><span class="p">],</span>
-                                   <span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_event_list&#39;</span><span class="p">])</span>
-    <span class="n">event_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_event_list&#39;</span><span class="p">],</span>
-                                 <span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_event_list&#39;</span><span class="p">])</span>
+    <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">reference_event_list</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_event_list&#39;</span><span class="p">],</span>
+        <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_event_list&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="n">event_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">reference_event_list</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;reference_event_list&#39;</span><span class="p">],</span>
+        <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">file_pair</span><span class="p">[</span><span class="s1">&#39;estimated_event_list&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
 
 <span class="c1"># Get only certain metrics</span>
 <span class="n">overall_segment_based_metrics</span> <span class="o">=</span> <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
@@ -593,48 +657,50 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 68
 69
 70
-71</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+71
+72</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
 
-<span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">EventList</span><span class="p">(</span>
+<span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
-            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
-            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
-            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">)</span>
 
-<span class="n">estimated_event_list</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">EventList</span><span class="p">(</span>
+<span class="n">estimated_event_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span>
-            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
-            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">}</span>
     <span class="p">]</span>
@@ -646,12 +712,12 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <span class="p">)</span>
 
 <span class="c1"># Go through files</span>
-<span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_files</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_files</span><span class="p">:</span>
     <span class="c1"># Get reference event list for file by filtering reference_event_list</span>
-    <span class="n">reference_event_list_for_current_file</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+    <span class="n">reference_event_list_for_current_file</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
 
     <span class="c1"># Get estimated event list for file by filtering estimated_event_list</span>
-    <span class="n">estimated_event_list_for_current_file</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">)</span>
+    <span class="n">estimated_event_list_for_current_file</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
 
     <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
         <span class="n">reference_event_list</span><span class="o">=</span><span class="n">reference_event_list_for_current_file</span><span class="p">,</span>
@@ -674,10 +740,10 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics" title="sed_eval.sound_event.SegmentBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics</span></code></a>(event_label_list[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics" title="sed_eval.sound_event.SegmentBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics</span></code></a>(event_label_list[,&nbsp;…])</td>
 <td>Constructor</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics.evaluate</span></code></a>(...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics.evaluate</span></code></a>(…[,&nbsp;…])</td>
 <td>Evaluate file pair (reference and estimated)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.results.html#sed_eval.sound_event.SegmentBasedMetrics.results" title="sed_eval.sound_event.SegmentBasedMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics.results</span></code></a>()</td>
@@ -724,7 +790,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <p><strong>time_resolution</strong> : float (0,]</p>
 <blockquote class="last">
 <div><p>Segment size used in the evaluation, in seconds
-(Default value=1.0)</p>
+Default value 1.0</p>
 </div></blockquote>
 </td>
 </tr>
@@ -732,7 +798,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </table>
 <dl class="method">
 <dt id="sed_eval.sound_event.SegmentBasedMetrics.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><em>reference_event_list</em>, <em>estimated_event_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#SegmentBasedMetrics.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>reference_event_list</em>, <em>estimated_event_list</em>, <em>evaluated_length_seconds=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#SegmentBasedMetrics.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate file pair (reference and estimated)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -745,6 +811,11 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <p><strong>estimated_event_list</strong> : list of dict or dcase_util.containers.MetaDataContainer</p>
 <blockquote>
 <div><p>Estimated event list</p>
+</div></blockquote>
+<p><strong>evaluated_length_seconds</strong> : float, optional</p>
+<blockquote>
+<div><p>Evaluated length. If none given, maximum offset is used.
+Default value None</p>
 </div></blockquote>
 </td>
 </tr>
@@ -808,7 +879,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>factor</strong> : float [0-1]</p>
 <blockquote>
 <div><p>balance factor
-(Default value=0.5)</p>
+Default value 0.5</p>
 </div></blockquote>
 </td>
 </tr>
@@ -923,10 +994,10 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics" title="sed_eval.sound_event.EventBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics</span></code></a>(event_label_list[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics" title="sed_eval.sound_event.EventBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics</span></code></a>(event_label_list[,&nbsp;…])</td>
 <td>Constructor</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics.evaluate" title="sed_eval.sound_event.EventBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics.evaluate</span></code></a>(...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics.evaluate" title="sed_eval.sound_event.EventBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics.evaluate</span></code></a>(…)</td>
 <td>Evaluate file pair (reference and estimated)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics.results" title="sed_eval.sound_event.EventBasedMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics.results</span></code></a>()</td>
@@ -960,7 +1031,7 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 </table>
 <dl class="class">
 <dt id="sed_eval.sound_event.EventBasedMetrics">
-<em class="property">class </em><code class="descclassname">sed_eval.sound_event.</code><code class="descname">EventBasedMetrics</code><span class="sig-paren">(</span><em>event_label_list</em>, <em>evaluate_onset=True</em>, <em>evaluate_offset=True</em>, <em>t_collar=0.2</em>, <em>percentage_of_length=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">sed_eval.sound_event.</code><code class="descname">EventBasedMetrics</code><span class="sig-paren">(</span><em>event_label_list</em>, <em>evaluate_onset=True</em>, <em>evaluate_offset=True</em>, <em>t_collar=0.2</em>, <em>percentage_of_length=0.5</em>, <em>event_matching_type='optimal'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sed_eval/sound_event.html#EventBasedMetrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.sound_event.EventBasedMetrics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -973,23 +1044,28 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <p><strong>evaluate_onset</strong> : bool</p>
 <blockquote>
 <div><p>Evaluate onset
-(Default value=True)</p>
+Default value True</p>
 </div></blockquote>
 <p><strong>evaluate_offset</strong> : bool</p>
 <blockquote>
 <div><p>Evaluate offset
-(Default value=True)</p>
+Default value True</p>
 </div></blockquote>
 <p><strong>t_collar</strong> : float (0,]</p>
 <blockquote>
-<div><p>Time collar used when evaluating validty of the onset and offset, in seconds
-(Default value=0.2)</p>
+<div><p>Time collar used when evaluating validity of the onset and offset, in seconds
+Default value 0.2</p>
 </div></blockquote>
 <p><strong>percentage_of_length</strong> : float in [0, 1]</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be
 consider valid estimation
-(Default value = 0.5)</p>
+Default value 0.5</p>
+</div></blockquote>
+<p><strong>event_matching_type</strong> : str</p>
+<blockquote class="last">
+<div><p>Event matching type. Set ‘optimal’ for graph-based matching, or ‘greedy’ for always select first found match.
+Default value ‘optimal’</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1045,7 +1121,7 @@ consider valid estimation
 <p><strong>t_collar</strong> : float &gt; 0, seconds</p>
 <blockquote>
 <div><p>Time collar with which the estimated onset has to be in order to be consider valid estimation
-(Default value = 0.2)</p>
+Default value 0.2</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1075,13 +1151,13 @@ consider valid estimation
 <p><strong>t_collar</strong> : float &gt; 0, seconds</p>
 <blockquote>
 <div><p>First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation
-(Default value = 0.2)</p>
+Default value 0.2</p>
 </div></blockquote>
 <p><strong>percentage_of_length</strong> : float in [0, 1]</p>
 <blockquote>
 <div><p>Second condition, percentage of the length within which the estimated offset has to be in order to be
 consider valid estimation
-(Default value = 0.5)</p>
+Default value 0.5</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1346,7 +1422,7 @@ consider valid estimation
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Forman, G. and Scholz, M.
-&#8220;Apples-to-Apples in Cross-Validation Studies: Pitfalls in Classifier Performance Measurement&#8221;.
+“Apples-to-Apples in Cross-Validation Studies: Pitfalls in Classifier Performance Measurement”.
 SIGKDD Explor. Newsl. 12, 1, November 2010, pp. 49-57.
 <a class="reference external" href="http://kdd.org/exploration_files/v12-1-p49-forman-sigkdd.pdf">http://kdd.org/exploration_files/v12-1-p49-forman-sigkdd.pdf</a></td></tr>
 </tbody>
@@ -1356,15 +1432,18 @@ SIGKDD Explor. Newsl. 12, 1, November 2010, pp. 49-57.
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="generated/sed_eval.sound_event.SegmentBasedMetrics.html" class="btn btn-neutral float-right" title="sed_eval.sound_event.SegmentBasedMetrics" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="generated/sed_eval.sound_event.SegmentBasedMetrics.html" class="btn btn-neutral float-right" title="sed_eval.sound_event.SegmentBasedMetrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tutorial.html" class="btn btn-neutral" title="Tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1397,13 +1476,14 @@ SIGKDD Explor. Newsl. 12, 1, November 2010, pp. 49-57.
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +84,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -89,7 +95,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -224,6 +230,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../io.html">I/O</a><ul>
@@ -256,8 +266,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sed_eval</a>
+        
       </nav>
 
 
@@ -270,19 +282,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      
-    <li>sed_eval.scene</li>
+        
+      <li>sed_eval.scene</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -312,6 +341,7 @@
 <span class="sd">    :linenos:</span>
 
 <span class="sd">    import sed_eval</span>
+<span class="sd">    import dcase_util</span>
 
 <span class="sd">    file_list = [</span>
 <span class="sd">        {&#39;reference_file&#39;: &#39;fold1_reference.txt&#39;, &#39;estimated_file&#39;: &#39;fold1_estimated.txt&#39;},</span>
@@ -323,29 +353,49 @@
 
 <span class="sd">    data = []</span>
 
-<span class="sd">    # Get used scene labels</span>
+<span class="sd">    # Get used scene labels and load data in</span>
 <span class="sd">    all_data = []</span>
 <span class="sd">    for file_pair in file_list:</span>
-<span class="sd">        reference_scene_list = sed_eval.io.load_scene_list(file_pair[&#39;reference_file&#39;])</span>
-<span class="sd">        estimated_scene_list = sed_eval.io.load_scene_list(file_pair[&#39;estimated_file&#39;])</span>
-<span class="sd">        data.append({&#39;reference_scene_list&#39;: reference_scene_list,</span>
-<span class="sd">                     &#39;estimated_scene_list&#39;: estimated_scene_list})</span>
+<span class="sd">        reference_scene_list = sed_eval.io.load_scene_list(</span>
+<span class="sd">            filename=file_pair[&#39;reference_file&#39;],</span>
+<span class="sd">            csv_header=False,</span>
+<span class="sd">            file_format=dcase_util.utils.FileFormat.CSV,</span>
+<span class="sd">            fields=[&#39;filename&#39;, &#39;scene_label&#39;]</span>
+<span class="sd">        )</span>
+<span class="sd">        estimated_scene_list = sed_eval.io.load_scene_list(</span>
+<span class="sd">            filename=file_pair[&#39;estimated_file&#39;],</span>
+<span class="sd">            csv_header=False,</span>
+<span class="sd">            file_format=dcase_util.utils.FileFormat.CSV,</span>
+<span class="sd">            fields=[&#39;filename&#39;, &#39;onset&#39;, &#39;offset&#39;, &#39;scene_label&#39;]</span>
+<span class="sd">        )</span>
+
+<span class="sd">        data.append(</span>
+<span class="sd">            {</span>
+<span class="sd">                &#39;reference_scene_list&#39;: reference_scene_list,</span>
+<span class="sd">                &#39;estimated_scene_list&#39;: estimated_scene_list</span>
+<span class="sd">            }</span>
+<span class="sd">        )</span>
+
 <span class="sd">        all_data += reference_scene_list</span>
 
 <span class="sd">    scene_labels = sed_eval.sound_event.util.unique_scene_labels(all_data)</span>
 
 <span class="sd">    # Create metrics class</span>
-<span class="sd">    scene_metrics = sed_eval.scene.SceneClassificationMetrics(scene_labels)</span>
+<span class="sd">    scene_metrics = sed_eval.scene.SceneClassificationMetrics(</span>
+<span class="sd">        scene_labels=scene_labels</span>
+<span class="sd">    )</span>
 <span class="sd">    for file_pair in data:</span>
-<span class="sd">        scene_metrics.evaluate(file_pair[&#39;reference_scene_list&#39;],</span>
-<span class="sd">                               file_pair[&#39;estimated_scene_list&#39;])</span>
+<span class="sd">        scene_metrics.evaluate(</span>
+<span class="sd">            reference_scene_list=file_pair[&#39;reference_scene_list&#39;],</span>
+<span class="sd">            estimated_scene_list=file_pair[&#39;estimated_scene_list&#39;]</span>
+<span class="sd">        )</span>
 
 <span class="sd">    # Get only certain metrics</span>
 <span class="sd">    overall_metrics_results = scene_metrics.results_overall_metrics()</span>
-<span class="sd">    print(&quot;Accuracy:&quot;, overall_metrics_results[&#39;accuracy&#39;])</span>
+<span class="sd">    print &quot;Accuracy:&quot;, overall_metrics_results[&#39;accuracy&#39;]</span>
 
 <span class="sd">    # Or print all metrics as reports</span>
-<span class="sd">    print(scene_metrics)</span>
+<span class="sd">    print scene_metrics</span>
 
 <span class="sd">.. autosummary::</span>
 <span class="sd">    :toctree: generated/</span>
@@ -414,9 +464,15 @@
 
 <span class="sd">        reference_scene_list : list of dict or dcase_util.containers.MetaDataContainer</span>
 <span class="sd">            Reference scene list</span>
+<span class="sd">            Default value None</span>
 
 <span class="sd">        estimated_scene_list : list of dict or dcase_util.containers.MetaDataContainer</span>
 <span class="sd">            Estimated scene list</span>
+<span class="sd">            Default value None</span>
+
+<span class="sd">        estimated_scene_probabilities : dcase_util.containers.ProbabilityContainer</span>
+<span class="sd">            Estimated scene probabilities. Currently not used.</span>
+<span class="sd">            Default value None</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -428,7 +484,7 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Nothing to evaluate, give at least estimated_scene_list or estimated_scene_probabilities&quot;</span><span class="p">)</span>
 
         <span class="c1"># Make sure reference_scene_list is dcase_util.containers.MetaDataContainer</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reference_scene_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">estimated_scene_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
             <span class="n">reference_scene_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">(</span><span class="n">reference_scene_list</span><span class="p">)</span>
 
         <span class="c1"># Make sure estimated_scene_list is dcase_util.containers.MetaDataContainer</span>
@@ -440,13 +496,22 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">estimated_scene_probabilities</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">ProbabilityContainer</span><span class="p">):</span>
                 <span class="n">estimated_scene_probabilities</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">ProbabilityContainer</span><span class="p">(</span><span class="n">estimated_scene_probabilities</span><span class="p">)</span>
 
+        <span class="c1"># Translate &quot;file&quot; field to &quot;filename&quot;</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">reference_scene_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;filename&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="s1">&#39;file&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                <span class="n">item</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">estimated_scene_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;filename&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">item</span> <span class="ow">and</span> <span class="s1">&#39;file&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                <span class="n">item</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+
         <span class="n">y_true</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">y_pred</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">for</span> <span class="n">estimated_item</span> <span class="ow">in</span> <span class="n">estimated_scene_list</span><span class="p">:</span>
             <span class="n">reference_item_matched</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">for</span> <span class="n">reference_item</span> <span class="ow">in</span> <span class="n">reference_scene_list</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">estimated_item</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">reference_item</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">estimated_item</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">reference_item</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]:</span>
                     <span class="n">reference_item_matched</span> <span class="o">=</span> <span class="n">reference_item</span>
                     <span class="k">break</span>
 
@@ -681,6 +746,9 @@
 </pre></div>
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -713,13 +781,14 @@
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
