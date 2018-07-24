@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,7 +84,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -224,6 +230,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../util.html#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../generated/sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../io.html">I/O</a><ul>
@@ -256,8 +266,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../index.html">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sed_eval</a>
+        
       </nav>
 
 
@@ -270,19 +282,36 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      
-    <li>sed_eval.sound_event</li>
+        
+      <li>sed_eval.sound_event</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -312,75 +341,86 @@
 <span class="sd">take as a parameter event lists, use :func:`sed_eval.io.load_event_list` to read them from a file.</span>
 
 
-<span class="sd">Usage example when reading event lists from disk:</span>
+<span class="sd">Usage example when reading event lists from disk (you can run example in path ``tests/data/sound_event``):</span>
 
 <span class="sd">.. code-block:: python</span>
 <span class="sd">    :linenos:</span>
 
 <span class="sd">    import sed_eval</span>
+<span class="sd">    import dcase_util</span>
 
 <span class="sd">    file_list = [</span>
 <span class="sd">        {</span>
 <span class="sd">         &#39;reference_file&#39;: &#39;office_snr0_high_v2.txt&#39;,</span>
-<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_high_out.txt&#39;</span>
-<span class="sd">        },</span>
-<span class="sd">        {</span>
-<span class="sd">         &#39;reference_file&#39;: &#39;office_snr0_low_v2.txt&#39;,</span>
-<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_low_out.txt&#39;</span>
+<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_high_v2_detected.txt&#39;</span>
 <span class="sd">        },</span>
 <span class="sd">        {</span>
 <span class="sd">         &#39;reference_file&#39;: &#39;office_snr0_med_v2.txt&#39;,</span>
-<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_med_out.txt&#39;</span>
-<span class="sd">        },</span>
-<span class="sd">        {</span>
-<span class="sd">         &#39;reference_file&#39;: &#39;office_snr-6_high_v2.txt&#39;,</span>
-<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr-6_high_out.txt&#39;</span>
+<span class="sd">         &#39;estimated_file&#39;: &#39;office_snr0_med_v2_detected.txt&#39;</span>
 <span class="sd">        }</span>
 <span class="sd">    ]</span>
 
 <span class="sd">    data = []</span>
 
 <span class="sd">    # Get used event labels</span>
-<span class="sd">    all_data = sed_eval.util.event_list.EventList()</span>
+<span class="sd">    all_data = dcase_util.containers.MetaDataContainer()</span>
 <span class="sd">    for file_pair in file_list:</span>
-<span class="sd">        reference_event_list = sed_eval.io.load_event_list(file_pair[&#39;reference_file&#39;])</span>
-<span class="sd">        estimated_event_list = sed_eval.io.load_event_list(file_pair[&#39;estimated_file&#39;])</span>
+<span class="sd">        reference_event_list = sed_eval.io.load_event_list(</span>
+<span class="sd">            filename=file_pair[&#39;reference_file&#39;]</span>
+<span class="sd">        )</span>
+<span class="sd">        estimated_event_list = sed_eval.io.load_event_list(</span>
+<span class="sd">            filename=file_pair[&#39;estimated_file&#39;]</span>
+<span class="sd">        )</span>
+
 <span class="sd">        data.append({&#39;reference_event_list&#39;: reference_event_list,</span>
 <span class="sd">                     &#39;estimated_event_list&#39;: estimated_event_list})</span>
+
 <span class="sd">        all_data += reference_event_list</span>
+
 <span class="sd">    event_labels = all_data.unique_event_labels</span>
 
 <span class="sd">    # Start evaluating</span>
 
 <span class="sd">    # Create metrics classes, define parameters</span>
-<span class="sd">    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(event_label_list=event_labels,</span>
-<span class="sd">                                                                     time_resolution=1)</span>
-<span class="sd">    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(event_label_list=event_labels,</span>
-<span class="sd">                                                                 t_collar=0.250)</span>
+<span class="sd">    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(</span>
+<span class="sd">        event_label_list=event_labels,</span>
+<span class="sd">        time_resolution=1.0</span>
+<span class="sd">    )</span>
+
+<span class="sd">    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(</span>
+<span class="sd">        event_label_list=event_labels,</span>
+<span class="sd">        t_collar=0.250</span>
+<span class="sd">    )</span>
 
 <span class="sd">    # Go through files</span>
 <span class="sd">    for file_pair in data:</span>
-<span class="sd">        segment_based_metrics.evaluate(file_pair[&#39;reference_event_list&#39;],</span>
-<span class="sd">                                       file_pair[&#39;estimated_event_list&#39;])</span>
-<span class="sd">        event_based_metrics.evaluate(file_pair[&#39;reference_event_list&#39;],</span>
-<span class="sd">                                     file_pair[&#39;estimated_event_list&#39;])</span>
+<span class="sd">        segment_based_metrics.evaluate(</span>
+<span class="sd">            reference_event_list=file_pair[&#39;reference_event_list&#39;],</span>
+<span class="sd">            estimated_event_list=file_pair[&#39;estimated_event_list&#39;]</span>
+<span class="sd">        )</span>
+
+<span class="sd">        event_based_metrics.evaluate(</span>
+<span class="sd">            reference_event_list=file_pair[&#39;reference_event_list&#39;],</span>
+<span class="sd">            estimated_event_list=file_pair[&#39;estimated_event_list&#39;]</span>
+<span class="sd">        )</span>
 
 <span class="sd">    # Get only certain metrics</span>
 <span class="sd">    overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()</span>
-<span class="sd">    print &quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;]</span>
+<span class="sd">    print(&quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;])</span>
 
 <span class="sd">    # Or print all metrics as reports</span>
-<span class="sd">    print segment_based_metrics</span>
-<span class="sd">    print event_based_metrics</span>
+<span class="sd">    print(segment_based_metrics)</span>
+<span class="sd">    print(event_based_metrics)</span>
 
-<span class="sd">Usage example:</span>
+<span class="sd">Usage example to evaluate results stored in variables:</span>
 
 <span class="sd">.. code-block:: python</span>
 <span class="sd">    :linenos:</span>
 
 <span class="sd">    import sed_eval</span>
+<span class="sd">    import dcase_util</span>
 
-<span class="sd">    reference_event_list = sed_eval.util.EventList(</span>
+<span class="sd">    reference_event_list = dcase_util.containers.MetaDataContainer(</span>
 <span class="sd">        [</span>
 <span class="sd">            {</span>
 <span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
@@ -406,7 +446,7 @@
 <span class="sd">        ]</span>
 <span class="sd">    )</span>
 
-<span class="sd">    estimated_event_list = sed_eval.util.EventList(</span>
+<span class="sd">    estimated_event_list = dcase_util.containers.MetaDataContainer(</span>
 <span class="sd">        [</span>
 <span class="sd">            {</span>
 <span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
@@ -429,26 +469,37 @@
 <span class="sd">        event_label_list=reference_event_list.unique_event_labels,</span>
 <span class="sd">        time_resolution=1.0</span>
 <span class="sd">    )</span>
+<span class="sd">    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(</span>
+<span class="sd">        event_label_list=reference_event_list.unique_event_labels,</span>
+<span class="sd">        t_collar=0.250</span>
+<span class="sd">    )</span>
 
-<span class="sd">    # Go through files</span>
-<span class="sd">    for file in reference_event_list.unique_files:</span>
-<span class="sd">        # Get reference event list for file by filtering reference_event_list</span>
-<span class="sd">        reference_event_list_for_current_file = reference_event_list.filter(file=file)</span>
+<span class="sd">    for filename in reference_event_list.unique_files:</span>
+<span class="sd">        reference_event_list_for_current_file = reference_event_list.filter(</span>
+<span class="sd">            filename=filename</span>
+<span class="sd">        )</span>
 
-<span class="sd">        # Get estimated event list for file by filtering estimated_event_list</span>
-<span class="sd">        estimated_event_list_for_current_file = estimated_event_list.filter(file=file)</span>
+<span class="sd">        estimated_event_list_for_current_file = estimated_event_list.filter(</span>
+<span class="sd">            filename=filename</span>
+<span class="sd">        )</span>
 
 <span class="sd">        segment_based_metrics.evaluate(</span>
 <span class="sd">            reference_event_list=reference_event_list_for_current_file,</span>
 <span class="sd">            estimated_event_list=estimated_event_list_for_current_file</span>
 <span class="sd">        )</span>
 
+<span class="sd">        event_based_metrics.evaluate(</span>
+<span class="sd">            reference_event_list=reference_event_list_for_current_file,</span>
+<span class="sd">            estimated_event_list=estimated_event_list_for_current_file</span>
+<span class="sd">        )</span>
+
 <span class="sd">    # Get only certain metrics</span>
 <span class="sd">    overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()</span>
-<span class="sd">    print &quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;]</span>
+<span class="sd">    print(&quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;])</span>
 
 <span class="sd">    # Or print all metrics as reports</span>
-<span class="sd">    print segment_based_metrics</span>
+<span class="sd">    print(segment_based_metrics)</span>
+<span class="sd">    print(event_based_metrics)</span>
 
 <span class="sd">Segment based metrics</span>
 <span class="sd">^^^^^^^^^^^^^^^^^^^^^</span>
@@ -499,18 +550,33 @@
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">metric</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">util</span>
-<span class="kn">import</span> <span class="nn">dcase_util</span>
 
 
 <span class="k">class</span> <span class="nc">SoundEventMetrics</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base class for sound event detection metrics.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">empty_system_output_handling</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        empty_system_output_handling : str</span>
+<span class="sd">            Controls how empty system output is handled, i.e. when Nsys = 0. Default behaviour is to show NaN when e.g.</span>
+<span class="sd">            computing precision (Ntp / Nsys).</span>
+<span class="sd">            Use &#39;zero_score&#39; to force these score to zero.</span>
+<span class="sd">            Default value None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ui</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">FancyStringifier</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">empty_system_output_handling</span> <span class="o">=</span> <span class="n">empty_system_output_handling</span>
 
     <span class="c1"># Reports</span>
     <span class="k">def</span> <span class="nf">result_report_overall</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -859,8 +925,8 @@
 <span class="sd">            List of unique event labels</span>
 
 <span class="sd">        time_resolution : float (0,]</span>
-<span class="sd">            Segment size used in the evaluation, in seconds</span>
-<span class="sd">            (Default value=1.0)</span>
+<span class="sd">            Segment size used in the evaluation, in seconds.</span>
+<span class="sd">            Default value 1.0</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -881,7 +947,7 @@
             <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">event_label_list</span> <span class="o">=</span> <span class="n">event_label_list</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length_seconds</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span> <span class="o">=</span> <span class="n">time_resolution</span>
@@ -927,17 +993,21 @@
 
         <span class="k">return</span> <span class="n">output</span>
 
-<div class="viewcode-block" id="SegmentBasedMetrics.evaluate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_event_list</span><span class="p">,</span> <span class="n">estimated_event_list</span><span class="p">):</span>
+<div class="viewcode-block" id="SegmentBasedMetrics.evaluate"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference_event_list</span><span class="p">,</span> <span class="n">estimated_event_list</span><span class="p">,</span> <span class="n">evaluated_length_seconds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Evaluate file pair (reference and estimated)</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 
 <span class="sd">        reference_event_list : list of dict or dcase_util.containers.MetaDataContainer</span>
-<span class="sd">            Reference event list</span>
+<span class="sd">            Reference event list.</span>
 
 <span class="sd">        estimated_event_list : list of dict or dcase_util.containers.MetaDataContainer</span>
-<span class="sd">            Estimated event list</span>
+<span class="sd">            Estimated event list.</span>
+
+<span class="sd">        evaluated_length_seconds : float, optional</span>
+<span class="sd">            Evaluated length. If none given, maximum offset is used.</span>
+<span class="sd">            Default value None</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -999,12 +1069,20 @@
             <span class="n">time_resolution</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">max_offset</span><span class="p">,</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">max_offset</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">evaluated_length_seconds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">evaluated_length_seconds</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">max_offset</span><span class="p">,</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">max_offset</span><span class="p">)</span>
+            <span class="n">evaluated_length_segments</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">evaluated_length_seconds</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span><span class="p">)))</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">evaluated_length_segments</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">evaluated_length_seconds</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span><span class="p">)))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length_seconds</span> <span class="o">+=</span> <span class="n">evaluated_length_seconds</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span> <span class="o">+=</span> <span class="mi">1</span>
 
         <span class="n">reference_event_roll</span><span class="p">,</span> <span class="n">estimated_event_roll</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">match_event_roll_lengths</span><span class="p">(</span>
             <span class="n">reference_event_roll</span><span class="p">,</span>
-            <span class="n">estimated_event_roll</span>
+            <span class="n">estimated_event_roll</span><span class="p">,</span>
+            <span class="n">evaluated_length_segments</span>
         <span class="p">)</span>
 
         <span class="c1"># Compute segment-based overall metrics</span>
@@ -1095,11 +1173,14 @@
 <span class="sd">            results in a dictionary format</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_system_output_handling</span> <span class="o">==</span> <span class="s1">&#39;zero_score&#39;</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
-            <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
-            <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
+                <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
+                <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
 
         <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span>
             <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
@@ -1161,8 +1242,8 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        factor : float [0-1]</span>
-<span class="sd">            balance factor</span>
-<span class="sd">            (Default value=0.5)</span>
+<span class="sd">            Balance factor.</span>
+<span class="sd">            Default value 0.5</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1225,11 +1306,14 @@
 <span class="sd">            results in a dictionary format</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_system_output_handling</span> <span class="o">==</span> <span class="s1">&#39;zero_score&#39;</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
-            <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
-            <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
+                <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
+                <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
 
         <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span>
             <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
@@ -1329,7 +1413,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s1">&#39;Evaluated length&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;sec&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s1">&#39;Evaluated length&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">evaluated_length_seconds</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;sec&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
         <span class="n">output</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s1">&#39;Evaluated files&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">evaluated_files</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_resolution</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -1347,7 +1431,9 @@
                  <span class="n">evaluate_onset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">evaluate_offset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">,</span>
-                 <span class="n">percentage_of_length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+                 <span class="n">percentage_of_length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">event_matching_type</span><span class="o">=</span><span class="s1">&#39;optimal&#39;</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Constructor</span>
 
 <span class="sd">        Parameters</span>
@@ -1356,25 +1442,32 @@
 <span class="sd">            List of unique event labels</span>
 
 <span class="sd">        evaluate_onset : bool</span>
-<span class="sd">            Evaluate onset</span>
-<span class="sd">            (Default value=True)</span>
+<span class="sd">            Evaluate onset.</span>
+<span class="sd">            Default value True</span>
 
 <span class="sd">        evaluate_offset : bool</span>
-<span class="sd">            Evaluate offset</span>
-<span class="sd">            (Default value=True)</span>
+<span class="sd">            Evaluate offset.</span>
+<span class="sd">            Default value True</span>
 
 <span class="sd">        t_collar : float (0,]</span>
-<span class="sd">            Time collar used when evaluating validty of the onset and offset, in seconds</span>
-<span class="sd">            (Default value=0.2)</span>
+<span class="sd">            Time collar used when evaluating validity of the onset and offset, in seconds.</span>
+<span class="sd">            Default value 0.2</span>
 
 <span class="sd">        percentage_of_length : float in [0, 1]</span>
 <span class="sd">            Second condition, percentage of the length within which the estimated offset has to be in order to be</span>
-<span class="sd">            consider valid estimation</span>
-<span class="sd">            (Default value = 0.5)</span>
+<span class="sd">            consider valid estimation.</span>
+<span class="sd">            Default value 0.5</span>
+
+<span class="sd">        event_matching_type : str</span>
+<span class="sd">            Event matching type. Set &#39;optimal&#39; for graph-based matching, or &#39;greedy&#39; for always select first found match.</span>
+<span class="sd">            Greedy type of event matching is kept for backward compatibility. Both event matching types produce</span>
+<span class="sd">            very similar results, however, greedy matching can be sensitive to the order of reference events.</span>
+<span class="sd">            Use default &#39;optimal&#39; event matching, if you do not intend to compare your results to old results.</span>
+<span class="sd">            Default value &#39;optimal&#39;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">SoundEventMetrics</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">SoundEventMetrics</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event_label_list</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">event_label_list</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="c1"># We have numpy array, convert it to list</span>
@@ -1406,7 +1499,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span> <span class="o">=</span> <span class="n">t_collar</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span> <span class="o">=</span> <span class="n">percentage_of_length</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">=</span> <span class="n">event_matching_type</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">overall</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;Nref&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
             <span class="s1">&#39;Nsys&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
@@ -1525,77 +1618,162 @@
         <span class="n">Nsys</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)</span>
         <span class="n">Nref</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)</span>
 
-        <span class="n">sys_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-        <span class="n">ref_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nref</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">==</span> <span class="s1">&#39;optimal&#39;</span><span class="p">:</span>
+            <span class="n">label_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                    <span class="n">label_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span>
 
-        <span class="c1"># Number of correctly detected events</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">sys_correct</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>  <span class="c1"># skip already matched events</span>
-                    <span class="n">label_condition</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span>
-
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
-                        <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+            <span class="n">hit_matrix</span> <span class="o">=</span> <span class="n">label_hit_matrix</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                <span class="n">onset_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                        <span class="n">onset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
                             <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
                             <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                             <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
                         <span class="p">)</span>
 
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">hit_matrix</span> <span class="o">*=</span> <span class="n">onset_hit_matrix</span>
 
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
-                        <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                <span class="n">offset_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                        <span class="n">offset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
                             <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
                             <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                             <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
                             <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
                         <span class="p">)</span>
 
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">hit_matrix</span> <span class="o">*=</span> <span class="n">offset_hit_matrix</span>
 
-                    <span class="k">if</span> <span class="n">label_condition</span> <span class="ow">and</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
-                        <span class="n">ref_correct</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                        <span class="n">sys_correct</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                        <span class="k">break</span>
+            <span class="n">hits</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">hit_matrix</span><span class="p">)</span>
+            <span class="n">G</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">ref_i</span><span class="p">,</span> <span class="n">est_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">hits</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">est_i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+                    <span class="n">G</span><span class="p">[</span><span class="n">est_i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="n">Ntp</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sys_correct</span><span class="p">)</span>
+                <span class="n">G</span><span class="p">[</span><span class="n">est_i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref_i</span><span class="p">)</span>
 
-        <span class="n">ref_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">ref_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">sys_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">sys_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">matching</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">bipartite_match</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
 
-        <span class="c1"># Substitutions</span>
-        <span class="n">Nsubs</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">sys_counted</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ref_leftover</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sys_leftover</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
-                        <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
-                            <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                            <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                            <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
-                        <span class="p">)</span>
+            <span class="n">ref_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nref</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">sys_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+                <span class="n">ref_correct</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">sys_correct</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
 
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">Ntp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matching</span><span class="p">)</span>
+            <span class="c1"># Substitutions</span>
+            <span class="n">Nsubs</span> <span class="o">=</span> <span class="mi">0</span>
 
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
-                        <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
-                            <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                            <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                            <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
-                            <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
-                        <span class="p">)</span>
+            <span class="n">ref_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">ref_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">sys_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">sys_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">sys_counted</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ref_leftover</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sys_leftover</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
+                            <span class="p">)</span>
 
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
 
-                    <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
-                        <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                        <span class="n">Nsubs</span> <span class="o">+=</span> <span class="mi">1</span>
-                        <span class="k">break</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
+                            <span class="p">)</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                        <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                            <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="n">Nsubs</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">break</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">==</span> <span class="s1">&#39;greedy&#39;</span><span class="p">:</span>
+            <span class="n">sys_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="n">ref_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nref</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+            <span class="c1"># Number of correctly detected events</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">sys_correct</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>  <span class="c1"># skip already matched events</span>
+                        <span class="n">label_condition</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span>
+
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
+                            <span class="p">)</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
+                            <span class="p">)</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                        <span class="k">if</span> <span class="n">label_condition</span> <span class="ow">and</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                            <span class="n">ref_correct</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="n">sys_correct</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">break</span>
+
+            <span class="n">Ntp</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sys_correct</span><span class="p">)</span>
+
+            <span class="n">ref_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">ref_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">sys_leftover</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">sys_correct</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="c1"># Substitutions</span>
+            <span class="n">Nsubs</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">sys_counted</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ref_leftover</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sys_leftover</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
+                            <span class="p">)</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
+                            <span class="p">)</span>
+
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                        <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                            <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="n">Nsubs</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="k">break</span>
 
         <span class="n">Nfp</span> <span class="o">=</span> <span class="n">Nsys</span> <span class="o">-</span> <span class="n">Ntp</span> <span class="o">-</span> <span class="n">Nsubs</span>
         <span class="n">Nfn</span> <span class="o">=</span> <span class="n">Nref</span> <span class="o">-</span> <span class="n">Ntp</span> <span class="o">-</span> <span class="n">Nsubs</span>
@@ -1623,36 +1801,86 @@
                 <span class="k">if</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
                     <span class="n">Nsys</span> <span class="o">+=</span> <span class="mi">1</span>
 
-            <span class="n">sys_counted</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
-                        <span class="k">if</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
-                                <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
-                                    <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                                    <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                                    <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
-                                <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">==</span> <span class="s1">&#39;optimal&#39;</span><span class="p">:</span>
+                <span class="n">class_reference_event_list</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">event_label</span><span class="o">=</span><span class="n">class_label</span><span class="p">)</span>
+                <span class="n">class_estimated_event_list</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">event_label</span><span class="o">=</span><span class="n">class_label</span><span class="p">)</span>
 
-                            <span class="k">else</span><span class="p">:</span>
-                                <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                    <span class="n">onset_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">)):</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)):</span>
+                            <span class="n">onset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">class_reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">class_estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
+                            <span class="p">)</span>
 
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
-                                <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
-                                    <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                                    <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                                    <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
-                                    <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
-                                <span class="p">)</span>
+                    <span class="n">hit_matrix</span> <span class="o">*=</span> <span class="n">onset_hit_matrix</span>
 
-                            <span class="k">else</span><span class="p">:</span>
-                                <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                    <span class="n">offset_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">)):</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)):</span>
+                            <span class="n">offset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">class_reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">class_estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
+                            <span class="p">)</span>
 
-                            <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
-                                <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                                <span class="n">Ntp</span> <span class="o">+=</span> <span class="mi">1</span>
-                                <span class="k">break</span>
+                    <span class="n">hit_matrix</span> <span class="o">*=</span> <span class="n">offset_hit_matrix</span>
+
+                <span class="n">hits</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">hit_matrix</span><span class="p">)</span>
+                <span class="n">G</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">ref_i</span><span class="p">,</span> <span class="n">est_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">hits</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">est_i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+                        <span class="n">G</span><span class="p">[</span><span class="n">est_i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+                    <span class="n">G</span><span class="p">[</span><span class="n">est_i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref_i</span><span class="p">)</span>
+
+                <span class="n">matching</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">bipartite_match</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+                <span class="n">ref_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Nref</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="n">sys_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Nsys</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+                    <span class="n">ref_correct</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">sys_correct</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+
+                <span class="n">Ntp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matching</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">==</span> <span class="s1">&#39;greedy&#39;</span><span class="p">:</span>
+                <span class="n">sys_counted</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                            <span class="k">if</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                                        <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                        <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                        <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
+                                    <span class="p">)</span>
+
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+                                        <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                        <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                        <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                        <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
+                                    <span class="p">)</span>
+
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                                <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                                    <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                                    <span class="n">Ntp</span> <span class="o">+=</span> <span class="mi">1</span>
+                                    <span class="k">break</span>
 
             <span class="n">Nfp</span> <span class="o">=</span> <span class="n">Nsys</span> <span class="o">-</span> <span class="n">Ntp</span>
             <span class="n">Nfn</span> <span class="o">=</span> <span class="n">Nref</span> <span class="o">-</span> <span class="n">Ntp</span>
@@ -1699,12 +1927,14 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        reference_event : dict</span>
-<span class="sd">            Reference event</span>
+<span class="sd">            Reference event.</span>
+
 <span class="sd">        estimated_event: dict</span>
-<span class="sd">            Estimated event</span>
+<span class="sd">            Estimated event.</span>
+
 <span class="sd">        t_collar : float &gt; 0, seconds</span>
-<span class="sd">            Time collar with which the estimated onset has to be in order to be consider valid estimation</span>
-<span class="sd">            (Default value = 0.2)</span>
+<span class="sd">            Time collar with which the estimated onset has to be in order to be consider valid estimation.</span>
+<span class="sd">            Default value 0.2</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1726,19 +1956,19 @@
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        reference_event : dict</span>
-<span class="sd">            Reference event</span>
+<span class="sd">            Reference event.</span>
 
 <span class="sd">        estimated_event : dict</span>
-<span class="sd">            Estimated event</span>
+<span class="sd">            Estimated event.</span>
 
 <span class="sd">        t_collar : float &gt; 0, seconds</span>
-<span class="sd">            First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation</span>
-<span class="sd">            (Default value = 0.2)</span>
+<span class="sd">            First condition, Time collar with which the estimated offset has to be in order to be consider valid estimation.</span>
+<span class="sd">            Default value 0.2</span>
 
 <span class="sd">        percentage_of_length : float in [0, 1]</span>
 <span class="sd">            Second condition, percentage of the length within which the estimated offset has to be in order to be</span>
-<span class="sd">            consider valid estimation</span>
-<span class="sd">            (Default value = 0.5)</span>
+<span class="sd">            consider valid estimation.</span>
+<span class="sd">            Default value 0.5</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1767,10 +1997,14 @@
 <span class="sd">            results in a dictionary format</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
-            <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
-            <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_system_output_handling</span> <span class="o">==</span> <span class="s1">&#39;zero_score&#39;</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
+                <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
+                <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
 
         <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span>
             <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">overall</span><span class="p">[</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
@@ -1850,11 +2084,14 @@
 <span class="sd">            results in a dictionary format</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty_system_output_handling</span> <span class="o">==</span> <span class="s1">&#39;zero_score&#39;</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="mi">0</span>
 
-        <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
-            <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
-            <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">precision</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">precision</span><span class="p">(</span>
+                <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
+                <span class="n">Nsys</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Nsys&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
 
         <span class="n">recall</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">recall</span><span class="p">(</span>
             <span class="n">Ntp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">class_wise</span><span class="p">[</span><span class="n">event_label</span><span class="p">][</span><span class="s1">&#39;Ntp&#39;</span><span class="p">],</span>
@@ -1932,6 +2169,9 @@
 </pre></div>
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -1940,7 +2180,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Toni Heittola et al..
+        &copy; Copyright 2018, Toni Heittola et al..
 
     </p>
   </div> 
@@ -1964,7 +2204,8 @@
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../_static/jquery.js"></script>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sed_eval.sound_event.SegmentBasedMetrics.results &mdash; sed_eval 0.1 documentation</title>
+  <title>sed_eval.util.event_matching.bipartite_match &mdash; sed_eval 0.1 documentation</title>
   
 
   
@@ -38,9 +38,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="sed_eval 0.1 documentation" href="../index.html"/>
-        <link rel="up" title="Sound Event Detection" href="../sound_event.html"/>
-        <link rel="next" title="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics" href="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html"/>
-        <link rel="prev" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate" href="sed_eval.sound_event.SegmentBasedMetrics.evaluate.html"/> 
+        <link rel="up" title="Utilities" href="../util.html"/>
+        <link rel="next" title="I/O" href="../io.html"/>
+        <link rel="prev" title="sed_eval.util.scene_list.unique_scene_labels" href="sed_eval.util.scene_list.unique_scene_labels.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -112,7 +112,7 @@
 </li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../sound_event.html">Sound Event Detection</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../sound_event.html">Sound Event Detection</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sound_event.html#intermediate-statistics">Intermediate statistics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../sound_event.html#segment-based">Segment-based</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sound_event.html#event-based">Event-based</a></li>
@@ -128,11 +128,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../sound_event.html#error-rate">Error Rate</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="reference internal" href="../sound_event.html#module-sed_eval.sound_event">Code</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../sound_event.html#segment-based-metrics">Segment based metrics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sound_event.html#module-sed_eval.sound_event">Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sound_event.html#segment-based-metrics">Segment based metrics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.html">sed_eval.sound_event.SegmentBasedMetrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.evaluate.html">sed_eval.sound_event.SegmentBasedMetrics.evaluate</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">sed_eval.sound_event.SegmentBasedMetrics.results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results.html">sed_eval.sound_event.SegmentBasedMetrics.results</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics.html">sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics</a></li>
@@ -214,7 +214,7 @@
 <li class="toctree-l2"><a class="reference internal" href="sed_eval.test.mcnemar.html">sed_eval.test.mcnemar</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../util.html">Utilities</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../util.html">Utilities</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../util.html#event-list-operations">Event list operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="sed_eval.util.event_list.unique_event_labels.html">sed_eval.util.event_list.unique_event_labels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sed_eval.util.event_list.unique_files.html">sed_eval.util.event_list.unique_files</a></li>
@@ -232,8 +232,8 @@
 <li class="toctree-l3"><a class="reference internal" href="sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../util.html#event-matching-operations">Event matching operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../util.html#event-matching-operations">Event matching operations</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sed_eval.util.event_matching.bipartite_match</a></li>
 </ul>
 </li>
 </ul>
@@ -300,15 +300,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../sound_event.html">Sound Event Detection</a> &raquo;</li>
+          <li><a href="../util.html">Utilities</a> &raquo;</li>
         
-      <li>sed_eval.sound_event.SegmentBasedMetrics.results</li>
+      <li>sed_eval.util.event_matching.bipartite_match</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/generated/sed_eval.sound_event.SegmentBasedMetrics.results.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/sed_eval.util.event_matching.bipartite_match.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -321,19 +321,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sed-eval-sound-event-segmentbasedmetrics-results">
-<h1>sed_eval.sound_event.SegmentBasedMetrics.results<a class="headerlink" href="#sed-eval-sound-event-segmentbasedmetrics-results" title="Permalink to this headline">¶</a></h1>
-<dl class="method">
-<dt id="sed_eval.sound_event.SegmentBasedMetrics.results">
-<code class="descclassname">SegmentBasedMetrics.</code><code class="descname">results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sed_eval.sound_event.SegmentBasedMetrics.results" title="Permalink to this definition">¶</a></dt>
-<dd><p>All metrics</p>
+  <div class="section" id="sed-eval-util-event-matching-bipartite-match">
+<h1>sed_eval.util.event_matching.bipartite_match<a class="headerlink" href="#sed-eval-util-event-matching-bipartite-match" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sed_eval.util.event_matching.bipartite_match">
+<code class="descclassname">sed_eval.util.event_matching.</code><code class="descname">bipartite_match</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sed_eval/util/event_matching.html#bipartite_match"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sed_eval.util.event_matching.bipartite_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find maximum cardinality matching of a bipartite graph (U,V,E).
+Function is borrowed from mir_eval toolbox (<a class="reference external" href="https://github.com/craffel/mir_eval">https://github.com/craffel/mir_eval</a>).</p>
+<p>The input format is a dictionary mapping members of U to a list of their neighbors in V.
+The output is a dict M mapping members of V to their matches in U.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>graph</strong> : dictionary</p>
+<blockquote>
+<div><p>The input bipartite graph.  Each edge need only be specified once.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>matching</strong> : dictionary</p>
 <blockquote class="last">
-<div><p>results in a dictionary format</p>
+<div><p>A maximal bipartite matching.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -353,10 +362,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html" class="btn btn-neutral float-right" title="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../io.html" class="btn btn-neutral float-right" title="I/O" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sed_eval.sound_event.SegmentBasedMetrics.evaluate.html" class="btn btn-neutral" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sed_eval.util.scene_list.unique_scene_labels.html" class="btn btn-neutral" title="sed_eval.util.scene_list.unique_scene_labels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -431,3 +431,396 @@ def test_direct_use_event():
     nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 0.3333333333333)
 
     print(event_based_metrics)
+
+
+def test_event_matching():
+
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.txt')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list = sed_eval.io.load_event_list(estimated)
+
+    event_based_metrics_optimal = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.20,
+        event_matching_type='optimal'
+    )
+    event_based_metrics_greedy = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.20,
+        event_matching_type='greedy'
+    )
+    for filename in reference_event_list.unique_files:
+        reference_event_list_for_current_file = reference_event_list.filter(
+            filename=filename
+        )
+
+        estimated_event_list_for_current_file = estimated_event_list.filter(
+            filename=filename
+        )
+
+        event_based_metrics_optimal.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+        event_based_metrics_greedy.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+
+    results_optimal = event_based_metrics_optimal.results()
+    results_greedy = event_based_metrics_greedy.results()
+
+    nose.tools.assert_almost_equals(
+        results_optimal['overall']['f_measure']['f_measure'],
+        results_greedy['overall']['f_measure']['f_measure']
+    )
+    nose.tools.assert_almost_equals(
+        results_optimal['overall']['error_rate']['error_rate'],
+        results_greedy['overall']['error_rate']['error_rate']
+    )
+    nose.tools.assert_almost_equals(
+        results_optimal['class_wise_average']['error_rate']['error_rate'],
+        results_greedy['class_wise_average']['error_rate']['error_rate']
+    )
+
+    reference = os.path.join('data', 'sound_event', 'mini_reference.txt')
+    estimated_a = os.path.join('data', 'sound_event', 'mini_detected_a.txt')
+    estimated_b = os.path.join('data', 'sound_event', 'mini_detected_b.txt')
+
+    reference_event_list = sed_eval.io.load_event_list(reference)
+    estimated_event_list_a = sed_eval.io.load_event_list(estimated_a)
+    estimated_event_list_b = sed_eval.io.load_event_list(estimated_b)
+
+    event_based_metrics_optimal_a = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.25,
+        event_matching_type='optimal',
+        evaluate_offset=False
+    )
+    event_based_metrics_optimal_b = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.25,
+        event_matching_type='optimal',
+        evaluate_offset=False
+    )
+    event_based_metrics_greedy_a = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.25,
+        event_matching_type='greedy',
+        evaluate_offset=False
+    )
+    event_based_metrics_greedy_b = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.25,
+        event_matching_type='greedy',
+        evaluate_offset=False
+    )
+
+    event_based_metrics_optimal_a.evaluate(
+        reference_event_list=reference_event_list,
+        estimated_event_list=estimated_event_list_a
+    )
+    event_based_metrics_optimal_b.evaluate(
+        reference_event_list=reference_event_list,
+        estimated_event_list=estimated_event_list_b
+    )
+
+    event_based_metrics_greedy_a.evaluate(
+        reference_event_list=reference_event_list,
+        estimated_event_list=estimated_event_list_a
+    )
+    event_based_metrics_greedy_b.evaluate(
+        reference_event_list=reference_event_list,
+        estimated_event_list=estimated_event_list_b
+    )
+
+    results_optimal_a = event_based_metrics_optimal_a.results()
+    results_optimal_b = event_based_metrics_optimal_b.results()
+
+    results_greedy_a = event_based_metrics_greedy_a.results()
+    results_greedy_b = event_based_metrics_greedy_b.results()
+
+    nose.tools.assert_almost_equals(
+        results_optimal_a['overall']['f_measure']['f_measure'],
+        results_optimal_b['overall']['f_measure']['f_measure']
+    )
+
+    nose.tools.assert_almost_equals(
+        results_greedy_a['overall']['f_measure']['f_measure'],
+        results_greedy_b['overall']['f_measure']['f_measure']
+    )
+
+    nose.tools.assert_almost_equals(
+        results_optimal_a['overall']['error_rate']['error_rate'],
+        results_optimal_b['overall']['error_rate']['error_rate']
+    )
+    nose.tools.assert_almost_equals(
+        results_optimal_a['class_wise_average']['error_rate']['error_rate'],
+        results_optimal_b['class_wise_average']['error_rate']['error_rate']
+    )
+
+    reference_event_list_A = [
+        {
+            'filename': 'f1.wav',
+            'onset': 1.0,
+            'offset': 3.0,
+            'event_label': 'event A'
+        },
+        {
+            'filename': 'f1.wav',
+            'onset': 1.5,
+            'offset': 3.0,
+            'event_label': 'event A'
+        }
+    ]
+    reference_event_list_B = [
+        {
+            'filename': 'f1.wav',
+            'onset': 1.5,
+            'offset': 3.0,
+            'event_label': 'event A'
+        },
+        {
+            'filename': 'f1.wav',
+            'onset': 1.0,
+            'offset': 3.0,
+            'event_label': 'event A'
+        }
+    ]
+    estimated_event_list_A = [
+        {
+            'filename': 'f1.wav',
+            'onset': 1.25,
+            'offset': 3.0,
+            'event_label': 'event A'
+        },
+        {
+            'filename': 'f1.wav',
+            'onset': 1.75,
+            'offset': 3.0,
+            'event_label': 'event A'
+        }
+    ]
+    estimated_event_list_B = [
+        {
+            'filename': 'f1.wav',
+            'onset': 1.75,
+            'offset': 3.0,
+            'event_label': 'event A'
+        },
+        {
+            'filename': 'f1.wav',
+            'onset': 1.25,
+            'offset': 3.0,
+            'event_label': 'event A'
+        }
+    ]
+
+    event_based_metrics_optimal_AA = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='optimal',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_optimal_AA.evaluate(
+        reference_event_list=reference_event_list_A,
+        estimated_event_list=estimated_event_list_A
+    )
+
+    event_based_metrics_optimal_AB = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='optimal',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_optimal_AB.evaluate(
+        reference_event_list=reference_event_list_A,
+        estimated_event_list=estimated_event_list_B
+    )
+
+    event_based_metrics_optimal_BA = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='optimal',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_optimal_BA.evaluate(
+        reference_event_list=reference_event_list_B,
+        estimated_event_list=estimated_event_list_A
+    )
+
+    event_based_metrics_optimal_BB = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='optimal',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_optimal_BB.evaluate(
+        reference_event_list=reference_event_list_B,
+        estimated_event_list=estimated_event_list_B
+    )
+
+    nose.tools.eq_(
+        event_based_metrics_optimal_AA.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_optimal_AB.results()['overall']['f_measure']['f_measure'],
+    )
+    nose.tools.eq_(
+        event_based_metrics_optimal_AB.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_optimal_AA.results()['overall']['f_measure']['f_measure'],
+    )
+    nose.tools.eq_(
+        event_based_metrics_optimal_AA.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_optimal_BA.results()['overall']['f_measure']['f_measure'],
+    )
+    nose.tools.eq_(
+        event_based_metrics_optimal_AA.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_optimal_BB.results()['overall']['f_measure']['f_measure'],
+    )
+
+    event_based_metrics_greedy_AA = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='greedy',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_greedy_AA.evaluate(
+        reference_event_list=reference_event_list_A,
+        estimated_event_list=estimated_event_list_A
+    )
+
+    event_based_metrics_greedy_AB = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='greedy',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_greedy_AB.evaluate(
+        reference_event_list=reference_event_list_A,
+        estimated_event_list=estimated_event_list_B
+    )
+
+    event_based_metrics_greedy_BA = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='greedy',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_greedy_BA.evaluate(
+        reference_event_list=reference_event_list_B,
+        estimated_event_list=estimated_event_list_A
+    )
+
+    event_based_metrics_greedy_BB = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=sed_eval.util.unique_event_labels(reference_event_list_A),
+        t_collar=0.25,
+        event_matching_type='greedy',
+        evaluate_onset=True,
+        evaluate_offset=False
+    )
+    event_based_metrics_greedy_BB.evaluate(
+        reference_event_list=reference_event_list_B,
+        estimated_event_list=estimated_event_list_B
+    )
+
+    nose.tools.eq_(
+        event_based_metrics_greedy_AA.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_greedy_AB.results()['overall']['f_measure']['f_measure'],
+    )
+    nose.tools.eq_(
+        event_based_metrics_greedy_AB.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_greedy_AA.results()['overall']['f_measure']['f_measure'],
+    )
+
+    nose.tools.eq_(
+        event_based_metrics_greedy_AA.results()['overall']['f_measure']['f_measure'],
+        event_based_metrics_greedy_BB.results()['overall']['f_measure']['f_measure'],
+    )
+
+    nose.tools.eq_(
+        event_based_metrics_greedy_AA.results()['overall']['f_measure']['f_measure'],
+        1.0
+    )
+
+    nose.tools.eq_(
+        event_based_metrics_greedy_BA.results()['overall']['f_measure']['f_measure'],
+        0.5
+    )
+
+
+def test_empty_system_output_handling():
+    reference = [
+        {
+            'filename': 'f1.wav',
+            'onset': 0.3,
+            'offset': 0.8,
+            'event_label': 'event A'
+        },
+        {
+            'filename': 'f2.wav',
+            'onset': 0.1,
+            'offset': 0.8,
+            'event_label': 'event B'
+        }
+    ]
+    estimated = [
+        {
+            'filename': 'f1.wav',
+            'onset': 0.2,
+            'offset': 0.9,
+            'event_label': 'event A'
+        }
+    ]
+    event_based_metric = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=['event A', 'event B'],
+        t_collar=0.200,
+        percentage_of_length=0.2
+    )
+    event_based_metric_zero = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=['event A', 'event B'],
+        t_collar=0.200,
+        percentage_of_length=0.2,
+        empty_system_output_handling='zero_score'
+    )
+
+    for filename in sed_eval.util.event_list.unique_files(reference):
+        reference_event_list_for_current_file = sed_eval.util.event_list.filter_event_list(
+            event_list=reference,
+            filename=filename
+        )
+
+        estimated_event_list_for_current_file = sed_eval.util.event_list.filter_event_list(
+            event_list=estimated,
+            filename=filename
+        )
+        event_based_metric.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+        event_based_metric_zero.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+
+    results = event_based_metric.results()
+    results_zero = event_based_metric_zero.results()
+
+    nose.tools.eq_(
+        results['class_wise_average']['f_measure']['f_measure'],
+        1.0
+    )
+    nose.tools.eq_(
+        results_zero['class_wise_average']['f_measure']['f_measure'],
+        0.5
+    )
+
+
+test_event_matching()

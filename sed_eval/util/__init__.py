@@ -36,10 +36,19 @@ Scene list operations
 
     scene_list.unique_scene_labels
 
+Event matching operations
+-------------------------
+
+.. autosummary::
+    :toctree: generated/
+
+    event_matching.bipartite_match
+
 """
 
 from .event_list import *
 from .event_roll import *
 from .scene_list import *
+from .event_matching import *
 
 __all__ = [_ for _ in dir() if not _.startswith('_')]

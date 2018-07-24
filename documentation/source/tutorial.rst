@@ -144,66 +144,165 @@ After ``sed_eval`` is installed (see :ref:`installation`), it can be imported to
 Sound event detection
 ^^^^^^^^^^^^^^^^^^^^^
 
-Usage example to evaluate files:
+Usage example when reading event lists from disk (you can run example in path ``tests/data/sound_event``):
 
 .. code-block:: python
     :linenos:
 
     import sed_eval
+    import dcase_util
 
     file_list = [
         {
          'reference_file': 'office_snr0_high_v2.txt',
-         'estimated_file': 'office_snr0_high_out.txt'
-        },
-        {
-         'reference_file': 'office_snr0_low_v2.txt',
-         'estimated_file': 'office_snr0_low_out.txt'
+         'estimated_file': 'office_snr0_high_v2_detected.txt'
         },
         {
          'reference_file': 'office_snr0_med_v2.txt',
-         'estimated_file': 'office_snr0_med_out.txt'
-        },
-        {
-         'reference_file': 'office_snr-6_high_v2.txt',
-         'estimated_file': 'office_snr-6_high_out.txt'
+         'estimated_file': 'office_snr0_med_v2_detected.txt'
         }
     ]
 
     data = []
 
     # Get used event labels
-    all_data = sed_eval.util.event_list.EventList()
+    all_data = dcase_util.containers.MetaDataContainer()
     for file_pair in file_list:
-        reference_event_list = sed_eval.io.load_event_list(file_pair['reference_file'])
-        estimated_event_list = sed_eval.io.load_event_list(file_pair['estimated_file'])
+        reference_event_list = sed_eval.io.load_event_list(
+            filename=file_pair['reference_file']
+        )
+        estimated_event_list = sed_eval.io.load_event_list(
+            filename=file_pair['estimated_file']
+        )
+
         data.append({'reference_event_list': reference_event_list,
                      'estimated_event_list': estimated_event_list})
+
         all_data += reference_event_list
+
     event_labels = all_data.unique_event_labels
 
     # Start evaluating
 
     # Create metrics classes, define parameters
-    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(event_label_list=event_labels,
-                                                                     time_resolution=1)
-    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(event_label_list=event_labels,
-                                                                 t_collar=0.250)
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=event_labels,
+        time_resolution=1.0
+    )
+
+    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=event_labels,
+        t_collar=0.250
+    )
 
     # Go through files
     for file_pair in data:
-        segment_based_metrics.evaluate(file_pair['reference_event_list'],
-                                       file_pair['estimated_event_list'])
-        event_based_metrics.evaluate(file_pair['reference_event_list'],
-                                     file_pair['estimated_event_list'])
+        segment_based_metrics.evaluate(
+            reference_event_list=file_pair['reference_event_list'],
+            estimated_event_list=file_pair['estimated_event_list']
+        )
+
+        event_based_metrics.evaluate(
+            reference_event_list=file_pair['reference_event_list'],
+            estimated_event_list=file_pair['estimated_event_list']
+        )
 
     # Get only certain metrics
     overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()
-    print "Accuracy:", overall_segment_based_metrics['accuracy']['accuracy']
+    print("Accuracy:", overall_segment_based_metrics['accuracy']['accuracy'])
 
     # Or print all metrics as reports
-    print segment_based_metrics
-    print event_based_metrics
+    print(segment_based_metrics)
+    print(event_based_metrics)
+
+Usage example to evaluate results stored in variables:
+
+.. code-block:: python
+    :linenos:
+
+    import sed_eval
+    import dcase_util
+
+    reference_event_list = dcase_util.containers.MetaDataContainer(
+        [
+            {
+                'event_label': 'car',
+                'event_onset': 0.0,
+                'event_offset': 2.5,
+                'file': 'audio/street/b099.wav',
+                'scene_label': 'street'
+            },
+            {
+                'event_label': 'car',
+                'event_onset': 2.8,
+                'event_offset': 4.5,
+                'file': 'audio/street/b099.wav',
+                'scene_label': 'street'
+            },
+            {
+                'event_label': 'car',
+                'event_onset': 6.0,
+                'event_offset': 10.0,
+                'file': 'audio/street/b099.wav',
+                'scene_label': 'street'
+            }
+        ]
+    )
+
+    estimated_event_list = dcase_util.containers.MetaDataContainer(
+        [
+            {
+                'event_label': 'car',
+                'event_onset': 1.0,
+                'event_offset': 3.5,
+                'file': 'audio/street/b099.wav',
+                'scene_label': 'street'
+            },
+            {
+                'event_label': 'car',
+                'event_onset': 7.0,
+                'event_offset': 8.0,
+                'file': 'audio/street/b099.wav',
+                'scene_label': 'street'
+            }
+        ]
+    )
+
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        time_resolution=1.0
+    )
+    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(
+        event_label_list=reference_event_list.unique_event_labels,
+        t_collar=0.250
+    )
+
+    for filename in reference_event_list.unique_files:
+        reference_event_list_for_current_file = reference_event_list.filter(
+            filename=filename
+        )
+
+        estimated_event_list_for_current_file = estimated_event_list.filter(
+            filename=filename
+        )
+
+        segment_based_metrics.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+
+        event_based_metrics.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+
+    # Get only certain metrics
+    overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()
+    print("Accuracy:", overall_segment_based_metrics['accuracy']['accuracy'])
+
+    # Or print all metrics as reports
+    print(segment_based_metrics)
+    print(event_based_metrics)
 
 Acoustic scene classification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -214,37 +313,118 @@ Usage example to evaluate files:
     :linenos:
 
     import sed_eval
+    import dcase_util
 
     file_list = [
-        {'reference_file': 'fold1_reference.txt', 'estimated_file': 'fold1_estimated.txt'},
-        {'reference_file': 'fold2_reference.txt', 'estimated_file': 'fold2_estimated.txt'},
-        {'reference_file': 'fold3_reference.txt', 'estimated_file': 'fold3_estimated.txt'},
-        {'reference_file': 'fold4_reference.txt', 'estimated_file': 'fold4_estimated.txt'},
-        {'reference_file': 'fold5_reference.txt', 'estimated_file': 'fold5_estimated.txt'},
+        {'reference_file': 'fold1_reference.txt', 'estimated_file': 'fold1_estimated.txt'}
     ]
 
     data = []
 
-    # Get used scene labels
+    # Get used scene labels and load data in
     all_data = []
     for file_pair in file_list:
-        reference_scene_list = sed_eval.io.load_scene_list(file_pair['reference_file'])
-        estimated_scene_list = sed_eval.io.load_scene_list(file_pair['estimated_file'])
-        data.append({'reference_scene_list': reference_scene_list,
-                     'estimated_scene_list': estimated_scene_list})
+        reference_scene_list = sed_eval.io.load_scene_list(
+            filename=file_pair['reference_file'],
+            csv_header=False,
+            file_format=dcase_util.utils.FileFormat.CSV,
+            fields=['filename', 'scene_label']
+        )
+        estimated_scene_list = sed_eval.io.load_scene_list(
+            filename=file_pair['estimated_file'],
+            csv_header=False,
+            file_format=dcase_util.utils.FileFormat.CSV,
+            fields=['filename', 'onset', 'offset', 'scene_label']
+        )
+
+        data.append(
+            {
+                'reference_scene_list': reference_scene_list,
+                'estimated_scene_list': estimated_scene_list
+            }
+        )
+
         all_data += reference_scene_list
 
     scene_labels = sed_eval.sound_event.util.unique_scene_labels(all_data)
 
     # Create metrics class
-    scene_metrics = sed_eval.scene.SceneClassificationMetrics(scene_labels)
+    scene_metrics = sed_eval.scene.SceneClassificationMetrics(
+        scene_labels=scene_labels
+    )
     for file_pair in data:
-        scene_metrics.evaluate(file_pair['reference_scene_list'],
-                               file_pair['estimated_scene_list'])
+        scene_metrics.evaluate(
+            reference_scene_list=file_pair['reference_scene_list'],
+            estimated_scene_list=file_pair['estimated_scene_list']
+        )
 
     # Get only certain metrics
     overall_metrics_results = scene_metrics.results_overall_metrics()
-    print "Accuracy:", overall_metrics_results['accuracy']
+    print("Accuracy:", overall_metrics_results['accuracy'])
 
     # Or print all metrics as reports
-    print scene_metrics
+    print(scene_metrics)
+
+Usage example to evaluate results stored in variables:
+
+.. code-block:: python
+    :linenos:
+
+    import sed_eval
+    import dcase_util
+
+    reference = dcase_util.containers.MetaDataContainer([
+        {
+            'scene_label': 'supermarket',
+            'file': 'supermarket09.wav'
+        },
+        {
+            'scene_label': 'tubestation',
+            'file': 'tubestation10.wav'
+        },
+        {
+            'scene_label': 'quietstreet',
+            'file': 'quietstreet08.wav'
+        },
+        {
+            'scene_label': 'office',
+            'file': 'office10.wav'
+        },
+        {
+            'scene_label': 'bus',
+            'file': 'bus01.wav'
+        },
+    ])
+
+    estimated = dcase_util.containers.MetaDataContainer([
+        {
+            'scene_label': 'supermarket',
+            'file': 'supermarket09.wav'
+        },
+        {
+            'scene_label': 'bus',
+            'file': 'tubestation10.wav'
+        },
+        {
+            'scene_label': 'quietstreet',
+            'file': 'quietstreet08.wav'
+        },
+        {
+            'scene_label': 'park',
+            'file': 'office10.wav'
+        },
+        {
+            'scene_label': 'car',
+            'file': 'bus01.wav'
+        },
+    ])
+
+    scene_labels = sed_eval.sound_event.util.unique_scene_labels(reference)
+
+    scene_metrics = sed_eval.scene.SceneClassificationMetrics(scene_labels)
+    scene_metrics.evaluate(
+        reference_scene_list=reference,
+        estimated_scene_list=estimated
+    )
+
+    print(scene_metrics)

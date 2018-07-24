@@ -15,45 +15,125 @@ Main functions:
 Function :func:`sed_eval.scene.SceneClassificationMetrics.evaluate` takes as a parameter scene lists,
 use :func:`sed_eval.io.load_scene_list` to read them from a file.
 
-Usage example:
+Usage example to evaluate files:
 
 .. code-block:: python
     :linenos:
-
     import sed_eval
+    import dcase_util
 
     file_list = [
-        {'reference_file': 'fold1_reference.txt', 'estimated_file': 'fold1_estimated.txt'},
-        {'reference_file': 'fold2_reference.txt', 'estimated_file': 'fold2_estimated.txt'},
-        {'reference_file': 'fold3_reference.txt', 'estimated_file': 'fold3_estimated.txt'},
-        {'reference_file': 'fold4_reference.txt', 'estimated_file': 'fold4_estimated.txt'},
-        {'reference_file': 'fold5_reference.txt', 'estimated_file': 'fold5_estimated.txt'},
+        {'reference_file': 'fold1_reference.txt', 'estimated_file': 'fold1_estimated.txt'}
     ]
 
     data = []
 
-    # Get used scene labels
+    # Get used scene labels and load data in
     all_data = []
     for file_pair in file_list:
-        reference_scene_list = sed_eval.io.load_scene_list(file_pair['reference_file'])
-        estimated_scene_list = sed_eval.io.load_scene_list(file_pair['estimated_file'])
-        data.append({'reference_scene_list': reference_scene_list,
-                     'estimated_scene_list': estimated_scene_list})
+        reference_scene_list = sed_eval.io.load_scene_list(
+            filename=file_pair['reference_file'],
+            csv_header=False,
+            file_format=dcase_util.utils.FileFormat.CSV,
+            fields=['filename', 'scene_label']
+        )
+        estimated_scene_list = sed_eval.io.load_scene_list(
+            filename=file_pair['estimated_file'],
+            csv_header=False,
+            file_format=dcase_util.utils.FileFormat.CSV,
+            fields=['filename', 'onset', 'offset', 'scene_label']
+        )
+
+        data.append(
+            {
+                'reference_scene_list': reference_scene_list,
+                'estimated_scene_list': estimated_scene_list
+            }
+        )
+
         all_data += reference_scene_list
 
     scene_labels = sed_eval.sound_event.util.unique_scene_labels(all_data)
 
     # Create metrics class
-    scene_metrics = sed_eval.scene.SceneClassificationMetrics(scene_labels)
+    scene_metrics = sed_eval.scene.SceneClassificationMetrics(
+        scene_labels=scene_labels
+    )
     for file_pair in data:
-        scene_metrics.evaluate(file_pair['reference_scene_list'],
-                               file_pair['estimated_scene_list'])
+        scene_metrics.evaluate(
+            reference_scene_list=file_pair['reference_scene_list'],
+            estimated_scene_list=file_pair['estimated_scene_list']
+        )
 
     # Get only certain metrics
     overall_metrics_results = scene_metrics.results_overall_metrics()
     print("Accuracy:", overall_metrics_results['accuracy'])
 
     # Or print all metrics as reports
+    print(scene_metrics)
+
+Usage example to evaluate results stored in variables:
+
+.. code-block:: python
+    :linenos:
+
+    import sed_eval
+    import dcase_util
+
+    reference = dcase_util.containers.MetaDataContainer([
+        {
+            'scene_label': 'supermarket',
+            'file': 'supermarket09.wav'
+        },
+        {
+            'scene_label': 'tubestation',
+            'file': 'tubestation10.wav'
+        },
+        {
+            'scene_label': 'quietstreet',
+            'file': 'quietstreet08.wav'
+        },
+        {
+            'scene_label': 'office',
+            'file': 'office10.wav'
+        },
+        {
+            'scene_label': 'bus',
+            'file': 'bus01.wav'
+        },
+    ])
+
+    estimated = dcase_util.containers.MetaDataContainer([
+        {
+            'scene_label': 'supermarket',
+            'file': 'supermarket09.wav'
+        },
+        {
+            'scene_label': 'bus',
+            'file': 'tubestation10.wav'
+        },
+        {
+            'scene_label': 'quietstreet',
+            'file': 'quietstreet08.wav'
+        },
+        {
+            'scene_label': 'park',
+            'file': 'office10.wav'
+        },
+        {
+            'scene_label': 'car',
+            'file': 'bus01.wav'
+        },
+    ])
+
+    scene_labels = sed_eval.sound_event.util.unique_scene_labels(reference)
+
+    scene_metrics = sed_eval.scene.SceneClassificationMetrics(scene_labels)
+    scene_metrics.evaluate(
+        reference_scene_list=reference,
+        estimated_scene_list=estimated
+    )
+
     print(scene_metrics)
 
 .. autosummary::
@@ -74,8 +154,8 @@ Usage example:
 
 from __future__ import absolute_import
 import numpy
-from . import metric
 import dcase_util
+from . import metric
 
 
 class SceneClassificationMetrics:
@@ -122,10 +202,16 @@ class SceneClassificationMetrics:
         ----------
 
         reference_scene_list : list of dict or dcase_util.containers.MetaDataContainer
-            Reference scene list
+            Reference scene list.
+            Default value None
 
         estimated_scene_list : list of dict or dcase_util.containers.MetaDataContainer
-            Estimated scene list
+            Estimated scene list.
+            Default value None
+
+        estimated_scene_probabilities : dcase_util.containers.ProbabilityContainer
+            Estimated scene probabilities. Currently not used.
+            Default value None
 
         Returns
         -------
@@ -137,7 +223,7 @@ class SceneClassificationMetrics:
             raise ValueError("Nothing to evaluate, give at least estimated_scene_list or estimated_scene_probabilities")
 
         # Make sure reference_scene_list is dcase_util.containers.MetaDataContainer
-        if not isinstance(reference_scene_list, dcase_util.containers.MetaDataContainer):
+        if not isinstance(estimated_scene_list, dcase_util.containers.MetaDataContainer):
             reference_scene_list = dcase_util.containers.MetaDataContainer(reference_scene_list)
 
         # Make sure estimated_scene_list is dcase_util.containers.MetaDataContainer
@@ -149,13 +235,22 @@ class SceneClassificationMetrics:
             if not isinstance(estimated_scene_probabilities, dcase_util.containers.ProbabilityContainer):
                 estimated_scene_probabilities = dcase_util.containers.ProbabilityContainer(estimated_scene_probabilities)
 
+        # Translate "file" field to "filename"
+        for item in reference_scene_list:
+            if 'filename' not in item and 'file' in item:
+                item['filename'] = item['file']
+
+        for item in estimated_scene_list:
+            if 'filename' not in item and 'file' in item:
+                item['filename'] = item['file']
+
         y_true = []
         y_pred = []
 
         for estimated_item in estimated_scene_list:
             reference_item_matched = {}
             for reference_item in reference_scene_list:
-                if estimated_item['file'] == reference_item['file']:
+                if estimated_item['filename'] == reference_item['filename']:
                     reference_item_matched = reference_item
                     break
 

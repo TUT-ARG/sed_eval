@@ -23,7 +23,7 @@ Usage example:
     import sed_eval
     import dcase_util
 
-        reference_tag_list = dcase_util.containers.MetaDataContainer([
+    reference_tag_list = dcase_util.containers.MetaDataContainer([
         {
             'filename': 'test1.wav',
             'tags': 'cat,dog'

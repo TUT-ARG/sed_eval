@@ -39,7 +39,7 @@ def filter_event_list(event_list, scene_label=None, event_label=None, filename=N
     return dcase_util.containers.MetaDataContainer(event_list).filter(
         filename=filename,
         scene_label=scene_label,
-        event_label=event_list
+        event_label=event_label
     )
 
 

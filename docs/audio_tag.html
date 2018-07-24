@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -46,6 +48,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -82,7 +85,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-pip">Using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html#using-setyp-py">Using <code class="docutils literal"><span class="pre">setyp.py</span></code></a></li>
@@ -225,6 +231,10 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.scene_list.unique_scene_labels.html">sed_eval.util.scene_list.unique_scene_labels</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="util.html#event-matching-operations">Event matching operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sed_eval.util.event_matching.bipartite_match.html">sed_eval.util.event_matching.bipartite_match</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">I/O</a><ul>
@@ -257,8 +267,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">sed_eval</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sed_eval</a>
+        
       </nav>
 
 
@@ -267,23 +279,40 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Audio Tagging</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Audio Tagging</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/audio_tag.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -520,7 +549,7 @@ without timing information (onset or offset).</p>
 212</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
 <span class="kn">import</span> <span class="nn">dcase_util</span>
 
-    <span class="n">reference_tag_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">([</span>
+<span class="n">reference_tag_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">([</span>
     <span class="p">{</span>
         <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;test1.wav&#39;</span><span class="p">,</span>
         <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="s1">&#39;cat,dog&#39;</span>
@@ -774,15 +803,18 @@ without timing information (onset or offset).</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.html" class="btn btn-neutral float-right" title="sed_eval.audio_tag.AudioTaggingMetrics" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="generated/sed_eval.audio_tag.AudioTaggingMetrics.html" class="btn btn-neutral float-right" title="sed_eval.audio_tag.AudioTaggingMetrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="generated/sed_eval.scene.SceneClassificationMetrics.reset.html" class="btn btn-neutral" title="sed_eval.scene.SceneClassificationMetrics.reset" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="generated/sed_eval.scene.SceneClassificationMetrics.reset.html" class="btn btn-neutral" title="sed_eval.scene.SceneClassificationMetrics.reset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -791,7 +823,7 @@ without timing information (onset or offset).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Toni Heittola et al..
+        &copy; Copyright 2018, Toni Heittola et al..
 
     </p>
   </div> 
@@ -815,7 +847,8 @@ without timing information (onset or offset).</p>
             VERSION:'0.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

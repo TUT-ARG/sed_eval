@@ -87,7 +87,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'sed_eval'
-copyright = u'2017, Toni Heittola et al.'
+copyright = u'2018, Toni Heittola et al.'
 author = u'Toni Heittola, Annamaria Mesaros, Tuomas Virtanen'
 
 # The version info for the project you're documenting, acts as replacement for

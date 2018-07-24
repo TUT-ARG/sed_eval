@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sed_eval.util.event_roll &mdash; sed_eval 0.1 documentation</title>
+  <title>sed_eval.util.event_matching &mdash; sed_eval 0.1 documentation</title>
   
 
   
@@ -300,7 +300,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>sed_eval.util.event_roll</li>
+      <li>sed_eval.util.event_matching</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -317,156 +317,119 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for sed_eval.util.event_roll</h1><div class="highlight"><pre>
+  <h1>Source code for sed_eval.util.event_matching</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;Event roll handling</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">event_list</span>
-<span class="kn">import</span> <span class="nn">dcase_util</span>
+<span class="sd">Event matching</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="bipartite_match"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_matching.bipartite_match.html#sed_eval.util.event_matching.bipartite_match">[docs]</a><span class="k">def</span> <span class="nf">bipartite_match</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find maximum cardinality matching of a bipartite graph (U,V,E).</span>
+<span class="sd">    Function is borrowed from mir_eval toolbox (https://github.com/craffel/mir_eval).</span>
 
-<div class="viewcode-block" id="event_list_to_event_roll"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_roll.event_list_to_event_roll.html#sed_eval.util.event_roll.event_list_to_event_roll">[docs]</a><span class="k">def</span> <span class="nf">event_list_to_event_roll</span><span class="p">(</span><span class="n">source_event_list</span><span class="p">,</span> <span class="n">event_label_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">time_resolution</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert event list into event roll, binary activity matrix</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    source_event_list : list, shape=(n,)</span>
-<span class="sd">        A list containing event dicts</span>
-
-<span class="sd">    event_label_list : list, shape=(k,) or None</span>
-<span class="sd">        A list of containing unique labels in alphabetical order</span>
-<span class="sd">        (Default value = None)</span>
-<span class="sd">    time_resolution : float &gt; 0</span>
-<span class="sd">        Time resolution in seconds of the event roll</span>
-<span class="sd">        (Default value = 0.01)</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-
-<span class="sd">    event_roll: np.ndarray, shape=(m,k)</span>
-<span class="sd">        Event roll</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source_event_list</span><span class="p">,</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">):</span>
-        <span class="n">max_offset_value</span> <span class="o">=</span> <span class="n">source_event_list</span><span class="o">.</span><span class="n">max_offset</span>
-
-        <span class="k">if</span> <span class="n">event_label_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">event_label_list</span> <span class="o">=</span> <span class="n">source_event_list</span><span class="o">.</span><span class="n">unique_event_labels</span>
-
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source_event_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">max_offset_value</span> <span class="o">=</span> <span class="n">event_list</span><span class="o">.</span><span class="n">max_event_offset</span><span class="p">(</span><span class="n">source_event_list</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">event_label_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">event_label_list</span> <span class="o">=</span> <span class="n">event_list</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">(</span><span class="n">source_event_list</span><span class="p">)</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown source_event_list type.&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Initialize event roll</span>
-    <span class="n">event_roll</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">max_offset_value</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">time_resolution</span><span class="p">)),</span> <span class="nb">len</span><span class="p">(</span><span class="n">event_label_list</span><span class="p">)))</span>
-
-    <span class="c1"># Fill-in event_roll</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">source_event_list</span><span class="p">:</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">event_label_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_label&#39;</span><span class="p">])</span>
-
-        <span class="k">if</span> <span class="s1">&#39;event_onset&#39;</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">and</span> <span class="s1">&#39;event_offset&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
-            <span class="n">event_onset</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_onset&#39;</span><span class="p">]</span>
-            <span class="n">event_offset</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;event_offset&#39;</span><span class="p">]</span>
-
-        <span class="k">elif</span> <span class="s1">&#39;onset&#39;</span> <span class="ow">in</span> <span class="n">event</span> <span class="ow">and</span> <span class="s1">&#39;offset&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
-            <span class="n">event_onset</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;onset&#39;</span><span class="p">]</span>
-            <span class="n">event_offset</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span>
-
-        <span class="n">onset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">event_onset</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">time_resolution</span><span class="p">)))</span>
-        <span class="n">offset</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">event_offset</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">time_resolution</span><span class="p">)))</span>
-
-        <span class="n">event_roll</span><span class="p">[</span><span class="n">onset</span><span class="p">:</span><span class="n">offset</span><span class="p">,</span> <span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="k">return</span> <span class="n">event_roll</span></div>
-
-
-<div class="viewcode-block" id="pad_event_roll"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_roll.pad_event_roll.html#sed_eval.util.event_roll.pad_event_roll">[docs]</a><span class="k">def</span> <span class="nf">pad_event_roll</span><span class="p">(</span><span class="n">event_roll</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Pad event roll&#39;s length to given length</span>
+<span class="sd">    The input format is a dictionary mapping members of U to a list of their neighbors in V.</span>
+<span class="sd">    The output is a dict M mapping members of V to their matches in U.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    event_roll: np.ndarray, shape=(m,k)</span>
-<span class="sd">        Event roll</span>
-
-<span class="sd">    length : int</span>
-<span class="sd">        Length to be padded</span>
+<span class="sd">    graph : dictionary : left-vertex -&gt; list of right vertices</span>
+<span class="sd">        The input bipartite graph.  Each edge need only be specified once.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    event_roll: np.ndarray, shape=(m,k)</span>
-<span class="sd">        Padded event roll</span>
+<span class="sd">    matching : dictionary : right-vertex -&gt; left vertex</span>
+<span class="sd">        A maximal bipartite matching.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Implementation is after _bipartite_match function in mir_eval toolbox:</span>
+    <span class="c1"># Colin Raffel, Brian McFee, Eric J. Humphrey, Justin Salamon, Oriol Nieto, Dawen Liang,</span>
+    <span class="c1"># and Daniel P. W. Ellis, &quot;mir_eval: A Transparent Implementation of Common MIR Metrics&quot;,</span>
+    <span class="c1"># Proceedings of the 15th International Conference on Music Information Retrieval, 2014.</span>
+    <span class="c1">#</span>
+    <span class="c1"># _bipartite_match function:</span>
+    <span class="c1"># https://github.com/craffel/mir_eval/blob/master/mir_eval/util.py#L547</span>
+    <span class="c1">#</span>
+    <span class="c1"># Function is originally adapted from:</span>
+    <span class="c1">#</span>
+    <span class="c1"># Hopcroft-Karp bipartite max-cardinality matching and max independent set</span>
+    <span class="c1"># David Eppstein, UC Irvine, 27 Apr 2002</span>
 
-    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="n">event_roll</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">padding</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">length</span><span class="o">-</span><span class="n">event_roll</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">event_roll</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="n">event_roll</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">event_roll</span><span class="p">,</span> <span class="n">padding</span><span class="p">))</span>
+    <span class="c1"># initialize greedy matching (redundant, but faster than full search)</span>
+    <span class="n">matching</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+                <span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+                <span class="k">break</span>
 
-    <span class="k">return</span> <span class="n">event_roll</span></div>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># structure residual graph into layers</span>
+        <span class="c1"># pred[u] gives the neighbor in the previous layer for u in U</span>
+        <span class="c1"># preds[v] gives a list of neighbors in the previous layer for v in V</span>
+        <span class="c1"># unmatched gives a list of unmatched vertices in final layer of V,</span>
+        <span class="c1"># and is also used as a flag value for pred[u] when u is in the first</span>
+        <span class="c1"># layer</span>
 
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">unmatched</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">u</span><span class="p">,</span> <span class="n">unmatched</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">])</span>
 
-<div class="viewcode-block" id="match_event_roll_lengths"><a class="viewcode-back" href="../../../generated/sed_eval.util.event_roll.match_event_roll_lengths.html#sed_eval.util.event_roll.match_event_roll_lengths">[docs]</a><span class="k">def</span> <span class="nf">match_event_roll_lengths</span><span class="p">(</span><span class="n">event_roll_a</span><span class="p">,</span> <span class="n">event_roll_b</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fix the length of two event rolls</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">pred</span><span class="p">[</span><span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]]</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    event_roll_a: np.ndarray, shape=(m1,k)</span>
-<span class="sd">        Event roll A</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
 
-<span class="sd">    event_roll_b: np.ndarray, shape=(m2,k)</span>
-<span class="sd">        Event roll B</span>
+        <span class="c1"># repeatedly extend layering structure by another pair of layers</span>
+        <span class="k">while</span> <span class="n">layer</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">unmatched</span><span class="p">:</span>
+            <span class="n">new_layer</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+                        <span class="n">new_layer</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 
-<span class="sd">    length: int, optional</span>
-<span class="sd">        Length of the event roll, if none given, shorter event roll is padded to match longer one.</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">new_layer</span><span class="p">:</span>
+                <span class="n">preds</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_layer</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    event_roll_a: np.ndarray, shape=(max(m1,m2),k)</span>
-<span class="sd">        Padded event roll A</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+                    <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+                    <span class="n">pred</span><span class="p">[</span><span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]]</span> <span class="o">=</span> <span class="n">v</span>
 
-<span class="sd">    event_roll_b: np.ndarray, shape=(max(m1,m2),k)</span>
-<span class="sd">        Padded event roll B</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">unmatched</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+        <span class="c1"># did we finish layering without finding any alternating paths?</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">unmatched</span><span class="p">:</span>
+            <span class="n">unlayered</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+                        <span class="n">unlayered</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="c1"># Fix durations of both event_rolls to be equal</span>
-    <span class="k">if</span> <span class="n">length</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">event_roll_b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">event_roll_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">matching</span>
 
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">recurse</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Recursively search backward through layers to find alternating</span>
+<span class="sd">            paths.  recursion returns true if found path, false otherwise</span>
+<span class="sd">            &quot;&quot;&quot;</span>
 
-    <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="n">event_roll_a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">event_roll_a</span> <span class="o">=</span> <span class="n">event_roll_a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">preds</span><span class="p">:</span>
+                <span class="n">L</span> <span class="o">=</span> <span class="n">preds</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                <span class="k">del</span> <span class="n">preds</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">:</span>
+                        <span class="n">pu</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+                        <span class="k">del</span> <span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="n">pu</span> <span class="ow">is</span> <span class="n">unmatched</span> <span class="ow">or</span> <span class="n">recurse</span><span class="p">(</span><span class="n">pu</span><span class="p">):</span>
+                            <span class="n">matching</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+                            <span class="k">return</span> <span class="kc">True</span>
 
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">event_roll_a</span> <span class="o">=</span> <span class="n">pad_event_roll</span><span class="p">(</span>
-            <span class="n">event_roll</span><span class="o">=</span><span class="n">event_roll_a</span><span class="p">,</span>
-            <span class="n">length</span><span class="o">=</span><span class="n">length</span>
-        <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="n">event_roll_b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">event_roll_b</span> <span class="o">=</span> <span class="n">event_roll_b</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">length</span><span class="p">,</span> <span class="p">:]</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">event_roll_b</span> <span class="o">=</span> <span class="n">pad_event_roll</span><span class="p">(</span>
-            <span class="n">event_roll</span><span class="o">=</span><span class="n">event_roll_b</span><span class="p">,</span>
-            <span class="n">length</span><span class="o">=</span><span class="n">length</span>
-        <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">event_roll_a</span><span class="p">,</span> <span class="n">event_roll_b</span></div>
-
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">unmatched</span><span class="p">:</span>
+            <span class="n">recurse</span><span class="p">(</span><span class="n">v</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

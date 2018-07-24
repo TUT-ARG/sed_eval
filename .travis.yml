@@ -1,31 +1,29 @@
 language:
     - python
+
 python:
     - "2.7"
     - "3.5"
     - "3.6"
 
+cache:
+  pip: true
+  bundler: true
+
 notifications:
   email: false
-
-#virtualenv:
-#  system_site_packages: true
 
 before_install:
     - "sudo apt-get install -qq python-scipy"
 
 # command to install dependencies
 install:
-    #- "mkdir tests/dcase2016/"
-    #- "cd tests/dcase2016/"
-    #- "wget https://github.com/TUT-ARG/DCASE2016-baseline-system-python/archive/v1.0.6.zip"
-    #- "unzip v1.0.6.zip"
-    #- "cd ../../"
     - "pip install -r requirements.txt"
     - "pip install python-coveralls"
     - "pip install coveralls"
     - "pip install nose"
     - "pip install scikit-learn"
+    - "pip install 'joblib==0.11' --force-reinstall"
     - "python setup.py develop"
 
 # command to run tests
