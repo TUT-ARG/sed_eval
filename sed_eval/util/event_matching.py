@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-General utils
+Event matching
 """
 
-def _bipartite_match(graph):
-    """Find maximum cardinality matching of a bipartite graph (U,V,E).
-    The input format is a dictionary mapping members of U to a list
-    of their neighbors in V.
+def bipartite_match(graph):
+    """
+    Find maximum cardinality matching of a bipartite graph (U,V,E).
+    Function is borrowed from mir_eval toolbox (https://github.com/craffel/mir_eval).
+
+    The input format is a dictionary mapping members of U to a list of their neighbors in V.
     The output is a dict M mapping members of V to their matches in U.
 
     Parameters
@@ -19,8 +21,17 @@ def _bipartite_match(graph):
     -------
     matching : dictionary : right-vertex -> left vertex
         A maximal bipartite matching.
+
     """
-    # Adapted from:
+    # Implementation is after _bipartite_match function in mir_eval toolbox:
+    # Colin Raffel, Brian McFee, Eric J. Humphrey, Justin Salamon, Oriol Nieto, Dawen Liang,
+    # and Daniel P. W. Ellis, "mir_eval: A Transparent Implementation of Common MIR Metrics",
+    # Proceedings of the 15th International Conference on Music Information Retrieval, 2014.
+    #
+    # _bipartite_match function:
+    # https://github.com/craffel/mir_eval/blob/master/mir_eval/util.py#L547
+    #
+    # Function is originally adapted from:
     #
     # Hopcroft-Karp bipartite max-cardinality matching and max independent set
     # David Eppstein, UC Irvine, 27 Apr 2002
@@ -40,11 +51,14 @@ def _bipartite_match(graph):
         # unmatched gives a list of unmatched vertices in final layer of V,
         # and is also used as a flag value for pred[u] when u is in the first
         # layer
+
         preds = {}
         unmatched = []
         pred = dict([(u, unmatched) for u in graph])
+
         for v in matching:
             del pred[matching[v]]
+
         layer = list(pred)
 
         # repeatedly extend layering structure by another pair of layers
@@ -54,12 +68,15 @@ def _bipartite_match(graph):
                 for v in graph[u]:
                     if v not in preds:
                         new_layer.setdefault(v, []).append(u)
+
             layer = []
             for v in new_layer:
                 preds[v] = new_layer[v]
+
                 if v in matching:
                     layer.append(matching[v])
                     pred[matching[v]] = v
+
                 else:
                     unmatched.append(v)
 
@@ -70,12 +87,14 @@ def _bipartite_match(graph):
                 for v in graph[u]:
                     if v not in preds:
                         unlayered[v] = None
+
             return matching
 
         def recurse(v):
             """Recursively search backward through layers to find alternating
             paths.  recursion returns true if found path, false otherwise
             """
+
             if v in preds:
                 L = preds[v]
                 del preds[v]
@@ -86,6 +105,7 @@ def _bipartite_match(graph):
                         if pu is unmatched or recurse(pu):
                             matching[v] = u
                             return True
+
             return False
 
         for v in unmatched:
