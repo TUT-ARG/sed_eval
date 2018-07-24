@@ -675,7 +675,8 @@ class SegmentBasedMetrics(SoundEventMetrics):
             Estimated event list
 
         evaluated_length_seconds : float, optional
-            Evaluated length
+            Evaluated length. If none given, maximum offset is used.
+            Default value None
 
         Returns
         -------
