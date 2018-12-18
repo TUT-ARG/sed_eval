@@ -162,6 +162,43 @@ def test_dcase_style2():
     nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.84244791666)
     nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.0616698292220115)
 
+def test_csv():
+    reference = os.path.join('data', 'sound_event', 'street_fold1_reference.csv')
+    estimated = os.path.join('data', 'sound_event', 'street_fold1_detected.csv')
+
+    reference_event_list = sed_eval.io.load_event_list(reference, delimiter='\t')
+    estimated_event_list = sed_eval.io.load_event_list(estimated, delimiter='\t')
+
+    evaluated_event_labels = reference_event_list.unique_event_labels
+    files={}
+    for event in reference_event_list:
+        files[event['filename']] = event['filename']
+
+    evaluated_files = sorted(list(files.keys()))
+
+    segment_based_metrics = sed_eval.sound_event.SegmentBasedMetrics(
+        event_label_list=evaluated_event_labels,
+        time_resolution=1.0
+    )
+
+    for file in evaluated_files:
+        reference_event_list_for_current_file = []
+        for event in reference_event_list:
+            if event['filename'] == file:
+                reference_event_list_for_current_file.append(event)
+                estimated_event_list_for_current_file = []
+        for event in estimated_event_list:
+            if event['filename'] == file:
+                estimated_event_list_for_current_file.append(event)
+
+        segment_based_metrics.evaluate(
+            reference_event_list=reference_event_list_for_current_file,
+            estimated_event_list=estimated_event_list_for_current_file
+        )
+
+    results = segment_based_metrics.results()
+    nose.tools.assert_almost_equals(results['overall']['accuracy']['accuracy'], 0.84244791666)
+    nose.tools.assert_almost_equals(results['overall']['error_rate']['error_rate'], 1.0616698292220115)
 
 def test_binary():
     file_list = [
