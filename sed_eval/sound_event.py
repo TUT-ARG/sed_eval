@@ -427,8 +427,11 @@ class SoundEventMetrics(object):
     def overall_accuracy(self, factor=0.5):
         return {}
     
+    def overall_intermediate_counts(self):
+        return {}
+    
     # Metrics / class-wise
-    def class_wise_count(self, event_label):
+    def class_wise_intermediate_counts(self, event_label):
         return {}
     
     def class_wise_f_measure(self, event_label):
@@ -454,7 +457,8 @@ class SoundEventMetrics(object):
         return {
             'f_measure': self.overall_f_measure(),
             'error_rate': self.overall_error_rate(),
-            'accuracy': self.overall_accuracy()
+            'accuracy': self.overall_accuracy(),
+            'counts': self.overall_intermediate_counts()
         }
 
     def results_class_wise_metrics(self):
@@ -475,7 +479,7 @@ class SoundEventMetrics(object):
             results[event_label]['f_measure'] = self.class_wise_f_measure(event_label)
             results[event_label]['accuracy'] = self.class_wise_accuracy(event_label)
             results[event_label]['error_rate'] = self.class_wise_error_rate(event_label)
-            results[event_label]['count'] = self.class_wise_count(event_label)
+            results[event_label]['count'] = self.class_wise_intermediate_counts(event_label)
 
         return results
 
@@ -951,7 +955,26 @@ class SegmentBasedMetrics(SoundEventMetrics):
             'specificity': specificity
         }
 
-    def class_wise_count(self, event_label):
+    def overall_intermediate_counts(self):
+        """Overall intermediate counts (Ntp, Ntn, Nfp, Nfn, Nref, and Nsys)
+
+        Returns
+        -------
+        dict
+            results in a dictionary format
+
+        """
+
+        return {
+            'Ntp': float(self.overall['Ntp']),
+            'Ntn': float(self.overall['Ntn']),
+            'Nfp': float(self.overall['Nfp']),
+            'Nfn': float(self.overall['Nfn']),
+            'Nref': float(self.overall['Nref']),
+            'Nsys': float(self.overall['Nsys']),
+        }
+
+    def class_wise_intermediate_counts(self, event_label):
         """Class-wise counts (Nref and Nsys)
 
         Returns
@@ -962,6 +985,11 @@ class SegmentBasedMetrics(SoundEventMetrics):
         """
 
         return {
+            'Ntp': float(self.class_wise[event_label]['Ntp']),
+            'Ntn': float(self.class_wise[event_label]['Ntn']),
+            'Nfp': float(self.class_wise[event_label]['Nfp']),
+            'Nfn': float(self.class_wise[event_label]['Nfn']),
+
             'Nref': float(self.class_wise[event_label]['Nref']),
             'Nsys': float(self.class_wise[event_label]['Nsys'])
         }
@@ -1681,7 +1709,7 @@ class EventBasedMetrics(SoundEventMetrics):
             'insertion_rate': insertion_rate
         }
 
-    def class_wise_count(self, event_label):
+    def class_wise_intermediate_counts(self, event_label):
         """Class-wise counts (Nref and Nsys)
 
         Returns
