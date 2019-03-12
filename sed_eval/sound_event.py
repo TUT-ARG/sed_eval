@@ -1275,7 +1275,8 @@ class EventBasedMetrics(SoundEventMetrics):
 
         estimated_event_list = valid_estimated_event_list
 
-        self.evaluated_length += reference_event_list.max_offset
+        evaluated_length_seconds = max(reference_event_list.max_offset, estimated_event_list.max_offset)
+        self.evaluated_length += evaluated_length_seconds
         self.evaluated_files += 1
 
         # Overall metrics
