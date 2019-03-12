@@ -96,7 +96,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -321,7 +321,7 @@
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="sed-eval-evaluation-toolbox-for-sound-event-detection">
-<span id="sed-eval"></span><h2><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection<a class="headerlink" href="#sed-eval-evaluation-toolbox-for-sound-event-detection" title="Permalink to this headline">¶</a></h2>
+<span id="sed-eval"></span><h2><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection<a class="headerlink" href="#sed-eval-evaluation-toolbox-for-sound-event-detection" title="Permalink to this headline">¶</a></h2>
 <p>The structure of the <code class="docutils literal"><span class="pre">sed_eval</span></code> toolbox is as follows:</p>
 <ul class="simple">
 <li>For evaluating the <strong>sound event detection system</strong> (SED system later), there are two types of metrics available: segment-based and event-based. For both types, there is a metric class <code class="docutils literal"><span class="pre">SegmentBasedMetrics</span></code> and <code class="docutils literal"><span class="pre">EventBasedMetrics</span></code>. A member function <code class="docutils literal"><span class="pre">evaluate()</span></code> is used to go through system output (estimated event list) and ground truth (reference event list) pairs. The <code class="docutils literal"><span class="pre">results()</span></code> function is used to get the metric values in dictionary. There are also functions to return results as a formatted string for convenience (e.g. <code class="docutils literal"><span class="pre">result_report_overall()</span></code>), or one can just print class instance.</li>
@@ -431,7 +431,7 @@ file and the second the estimated scene list file. Format is [reference_file][de
 <p><code class="docutils literal"><span class="pre">import</span> <span class="pre">sed_eval</span></code></p>
 <div class="section" id="id1">
 <h3>Sound event detection<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Usage example to evaluate files:</p>
+<p>Usage example when reading event lists from disk (you can run example in path <code class="docutils literal"><span class="pre">tests/data/sound_event</span></code>):</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -556,11 +556,179 @@ file and the second the estimated scene list file. Format is [reference_file][de
 
 <span class="c1"># Get only certain metrics</span>
 <span class="n">overall_segment_based_metrics</span> <span class="o">=</span> <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
-<span class="k">print</span> <span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_segment_based_metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_segment_based_metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
 <span class="c1"># Or print all metrics as reports</span>
-<span class="k">print</span> <span class="n">segment_based_metrics</span>
-<span class="k">print</span> <span class="n">event_based_metrics</span>
+<span class="k">print</span><span class="p">(</span><span class="n">segment_based_metrics</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">event_based_metrics</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Usage example to evaluate results stored in variables:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
+
+<span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">estimated_event_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
+            <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">segment_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">SegmentBasedMetrics</span><span class="p">(</span>
+    <span class="n">event_label_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">,</span>
+    <span class="n">time_resolution</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">)</span>
+<span class="n">event_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">EventBasedMetrics</span><span class="p">(</span>
+    <span class="n">event_label_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">,</span>
+    <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.250</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_files</span><span class="p">:</span>
+    <span class="n">reference_event_list_for_current_file</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">filename</span>
+    <span class="p">)</span>
+
+    <span class="n">estimated_event_list_for_current_file</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">filename</span>
+    <span class="p">)</span>
+
+    <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">reference_event_list</span><span class="o">=</span><span class="n">reference_event_list_for_current_file</span><span class="p">,</span>
+        <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">estimated_event_list_for_current_file</span>
+    <span class="p">)</span>
+
+    <span class="n">event_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">reference_event_list</span><span class="o">=</span><span class="n">reference_event_list_for_current_file</span><span class="p">,</span>
+        <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">estimated_event_list_for_current_file</span>
+    <span class="p">)</span>
+
+<span class="c1"># Get only certain metrics</span>
+<span class="n">overall_segment_based_metrics</span> <span class="o">=</span> <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_segment_based_metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="c1"># Or print all metrics as reports</span>
+<span class="k">print</span><span class="p">(</span><span class="n">segment_based_metrics</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">event_based_metrics</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -618,19 +786,11 @@ file and the second the estimated scene list file. Format is [reference_file][de
 49
 50
 51
-52
-53
-54
-55
-56</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
 <span class="kn">import</span> <span class="nn">dcase_util</span>
 
 <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold2_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold2_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold3_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold3_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold4_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold4_estimated.txt&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold5_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold5_estimated.txt&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;reference_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_reference.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;estimated_file&#39;</span><span class="p">:</span> <span class="s1">&#39;fold1_estimated.txt&#39;</span><span class="p">}</span>
 <span class="p">]</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
@@ -674,10 +834,128 @@ file and the second the estimated scene list file. Format is [reference_file][de
 
 <span class="c1"># Get only certain metrics</span>
 <span class="n">overall_metrics_results</span> <span class="o">=</span> <span class="n">scene_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
-<span class="k">print</span> <span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_metrics_results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_metrics_results</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
 <span class="c1"># Or print all metrics as reports</span>
-<span class="k">print</span> <span class="n">scene_metrics</span>
+<span class="k">print</span><span class="p">(</span><span class="n">scene_metrics</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>Usage example to evaluate results stored in variables:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
+
+<span class="n">reference</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket09.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;tubestation&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;tubestation10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet08.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;office&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;office10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;bus01.wav&#39;</span>
+    <span class="p">},</span>
+<span class="p">])</span>
+
+<span class="n">estimated</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">([</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;supermarket09.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;tubestation10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;quietstreet08.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;park&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;office10.wav&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;bus01.wav&#39;</span>
+    <span class="p">},</span>
+<span class="p">])</span>
+
+<span class="n">scene_labels</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">unique_scene_labels</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
+
+<span class="n">scene_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">SceneClassificationMetrics</span><span class="p">(</span><span class="n">scene_labels</span><span class="p">)</span>
+<span class="n">scene_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+    <span class="n">reference_scene_list</span><span class="o">=</span><span class="n">reference</span><span class="p">,</span>
+    <span class="n">estimated_scene_list</span><span class="o">=</span><span class="n">estimated</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">scene_metrics</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -706,7 +984,7 @@ file and the second the estimated scene list file. Format is [reference_file][de
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Toni Heittola et al..
+        &copy; Copyright 2018, Toni Heittola et al..
 
     </p>
   </div> 
@@ -737,7 +1015,7 @@ file and the second the estimated scene list file. Format is [reference_file][de
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

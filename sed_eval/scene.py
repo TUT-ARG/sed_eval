@@ -15,20 +15,15 @@ Main functions:
 Function :func:`sed_eval.scene.SceneClassificationMetrics.evaluate` takes as a parameter scene lists,
 use :func:`sed_eval.io.load_scene_list` to read them from a file.
 
-Usage example:
+Usage example to evaluate files:
 
 .. code-block:: python
     :linenos:
-
     import sed_eval
     import dcase_util
 
     file_list = [
-        {'reference_file': 'fold1_reference.txt', 'estimated_file': 'fold1_estimated.txt'},
-        {'reference_file': 'fold2_reference.txt', 'estimated_file': 'fold2_estimated.txt'},
-        {'reference_file': 'fold3_reference.txt', 'estimated_file': 'fold3_estimated.txt'},
-        {'reference_file': 'fold4_reference.txt', 'estimated_file': 'fold4_estimated.txt'},
-        {'reference_file': 'fold5_reference.txt', 'estimated_file': 'fold5_estimated.txt'},
+        {'reference_file': 'fold1_reference.txt', 'estimated_file': 'fold1_estimated.txt'}
     ]
 
     data = []
@@ -72,10 +67,74 @@ Usage example:
 
     # Get only certain metrics
     overall_metrics_results = scene_metrics.results_overall_metrics()
-    print "Accuracy:", overall_metrics_results['accuracy']
+    print("Accuracy:", overall_metrics_results['accuracy'])
 
     # Or print all metrics as reports
-    print scene_metrics
+    print(scene_metrics)
+
+Usage example to evaluate results stored in variables:
+
+.. code-block:: python
+    :linenos:
+
+    import sed_eval
+    import dcase_util
+
+    reference = dcase_util.containers.MetaDataContainer([
+        {
+            'scene_label': 'supermarket',
+            'file': 'supermarket09.wav'
+        },
+        {
+            'scene_label': 'tubestation',
+            'file': 'tubestation10.wav'
+        },
+        {
+            'scene_label': 'quietstreet',
+            'file': 'quietstreet08.wav'
+        },
+        {
+            'scene_label': 'office',
+            'file': 'office10.wav'
+        },
+        {
+            'scene_label': 'bus',
+            'file': 'bus01.wav'
+        },
+    ])
+
+    estimated = dcase_util.containers.MetaDataContainer([
+        {
+            'scene_label': 'supermarket',
+            'file': 'supermarket09.wav'
+        },
+        {
+            'scene_label': 'bus',
+            'file': 'tubestation10.wav'
+        },
+        {
+            'scene_label': 'quietstreet',
+            'file': 'quietstreet08.wav'
+        },
+        {
+            'scene_label': 'park',
+            'file': 'office10.wav'
+        },
+        {
+            'scene_label': 'car',
+            'file': 'bus01.wav'
+        },
+    ])
+
+    scene_labels = sed_eval.sound_event.util.unique_scene_labels(reference)
+
+    scene_metrics = sed_eval.scene.SceneClassificationMetrics(scene_labels)
+    scene_metrics.evaluate(
+        reference_scene_list=reference,
+        estimated_scene_list=estimated
+    )
+
+    print(scene_metrics)
 
 .. autosummary::
     :toctree: generated/

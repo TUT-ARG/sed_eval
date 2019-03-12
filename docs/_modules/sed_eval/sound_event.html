@@ -95,7 +95,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -406,13 +406,13 @@
 
 <span class="sd">    # Get only certain metrics</span>
 <span class="sd">    overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()</span>
-<span class="sd">    print &quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;]</span>
+<span class="sd">    print(&quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;])</span>
 
 <span class="sd">    # Or print all metrics as reports</span>
-<span class="sd">    print segment_based_metrics</span>
-<span class="sd">    print event_based_metrics</span>
+<span class="sd">    print(segment_based_metrics)</span>
+<span class="sd">    print(event_based_metrics)</span>
 
-<span class="sd">Usage example:</span>
+<span class="sd">Usage example to evaluate results stored in variables:</span>
 
 <span class="sd">.. code-block:: python</span>
 <span class="sd">    :linenos:</span>
@@ -426,21 +426,21 @@
 <span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
 <span class="sd">                &#39;event_onset&#39;: 0.0,</span>
 <span class="sd">                &#39;event_offset&#39;: 2.5,</span>
-<span class="sd">                &#39;filename&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
 <span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
 <span class="sd">            },</span>
 <span class="sd">            {</span>
 <span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
 <span class="sd">                &#39;event_onset&#39;: 2.8,</span>
 <span class="sd">                &#39;event_offset&#39;: 4.5,</span>
-<span class="sd">                &#39;filename&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
 <span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
 <span class="sd">            },</span>
 <span class="sd">            {</span>
 <span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
 <span class="sd">                &#39;event_onset&#39;: 6.0,</span>
 <span class="sd">                &#39;event_offset&#39;: 10.0,</span>
-<span class="sd">                &#39;filename&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
 <span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
 <span class="sd">            }</span>
 <span class="sd">        ]</span>
@@ -452,14 +452,14 @@
 <span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
 <span class="sd">                &#39;event_onset&#39;: 1.0,</span>
 <span class="sd">                &#39;event_offset&#39;: 3.5,</span>
-<span class="sd">                &#39;filename&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
 <span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
 <span class="sd">            },</span>
 <span class="sd">            {</span>
 <span class="sd">                &#39;event_label&#39;: &#39;car&#39;,</span>
 <span class="sd">                &#39;event_onset&#39;: 7.0,</span>
 <span class="sd">                &#39;event_offset&#39;: 8.0,</span>
-<span class="sd">                &#39;filename&#39;: &#39;audio/street/b099.wav&#39;,</span>
+<span class="sd">                &#39;file&#39;: &#39;audio/street/b099.wav&#39;,</span>
 <span class="sd">                &#39;scene_label&#39;: &#39;street&#39;</span>
 <span class="sd">            }</span>
 <span class="sd">        ]</span>
@@ -469,26 +469,37 @@
 <span class="sd">        event_label_list=reference_event_list.unique_event_labels,</span>
 <span class="sd">        time_resolution=1.0</span>
 <span class="sd">    )</span>
+<span class="sd">    event_based_metrics = sed_eval.sound_event.EventBasedMetrics(</span>
+<span class="sd">        event_label_list=reference_event_list.unique_event_labels,</span>
+<span class="sd">        t_collar=0.250</span>
+<span class="sd">    )</span>
 
-<span class="sd">    # Go through files</span>
 <span class="sd">    for filename in reference_event_list.unique_files:</span>
-<span class="sd">        # Get reference event list for file by filtering reference_event_list</span>
-<span class="sd">        reference_event_list_for_current_file = reference_event_list.filter(file=filename)</span>
+<span class="sd">        reference_event_list_for_current_file = reference_event_list.filter(</span>
+<span class="sd">            filename=filename</span>
+<span class="sd">        )</span>
 
-<span class="sd">        # Get estimated event list for file by filtering estimated_event_list</span>
-<span class="sd">        estimated_event_list_for_current_file = estimated_event_list.filter(file=filename)</span>
+<span class="sd">        estimated_event_list_for_current_file = estimated_event_list.filter(</span>
+<span class="sd">            filename=filename</span>
+<span class="sd">        )</span>
 
 <span class="sd">        segment_based_metrics.evaluate(</span>
 <span class="sd">            reference_event_list=reference_event_list_for_current_file,</span>
 <span class="sd">            estimated_event_list=estimated_event_list_for_current_file</span>
 <span class="sd">        )</span>
 
+<span class="sd">        event_based_metrics.evaluate(</span>
+<span class="sd">            reference_event_list=reference_event_list_for_current_file,</span>
+<span class="sd">            estimated_event_list=estimated_event_list_for_current_file</span>
+<span class="sd">        )</span>
+
 <span class="sd">    # Get only certain metrics</span>
 <span class="sd">    overall_segment_based_metrics = segment_based_metrics.results_overall_metrics()</span>
-<span class="sd">    print &quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;]</span>
+<span class="sd">    print(&quot;Accuracy:&quot;, overall_segment_based_metrics[&#39;accuracy&#39;][&#39;accuracy&#39;])</span>
 
 <span class="sd">    # Or print all metrics as reports</span>
-<span class="sd">    print segment_based_metrics</span>
+<span class="sd">    print(segment_based_metrics)</span>
+<span class="sd">    print(event_based_metrics)</span>
 
 <span class="sd">Segment based metrics</span>
 <span class="sd">^^^^^^^^^^^^^^^^^^^^^</span>
@@ -539,9 +550,9 @@
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">dcase_util</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">metric</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">util</span>
-<span class="kn">import</span> <span class="nn">dcase_util</span>
 
 
 <span class="k">class</span> <span class="nc">SoundEventMetrics</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -1449,6 +1460,9 @@
 
 <span class="sd">        event_matching_type : str</span>
 <span class="sd">            Event matching type. Set &#39;optimal&#39; for graph-based matching, or &#39;greedy&#39; for always select first found match.</span>
+<span class="sd">            Greedy type of event matching is kept for backward compatibility. Both event matching types produce</span>
+<span class="sd">            very similar results, however, greedy matching can be sensitive to the order of reference events.</span>
+<span class="sd">            Use default &#39;optimal&#39; event matching, if you do not intend to compare your results to old results.</span>
 <span class="sd">            Default value &#39;optimal&#39;</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1615,7 +1629,7 @@
                 <span class="n">onset_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
-                        <span class="n">onset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                        <span class="n">onset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
                             <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
                             <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                             <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
@@ -1688,11 +1702,7 @@
                             <span class="n">Nsubs</span> <span class="o">+=</span> <span class="mi">1</span>
                             <span class="k">break</span>
 
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span><span class="o">==</span><span class="s1">&#39;greedy&#39;</span><span class="p">:</span>
-            <span class="c1"># This type of event matching is kept for backward compatibility. Both event matching types produce</span>
-            <span class="c1"># very similar results. Use &#39;optimal&#39; event matching if you do not intend to compare your results to old</span>
-            <span class="c1"># results.</span>
-
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">==</span> <span class="s1">&#39;greedy&#39;</span><span class="p">:</span>
             <span class="n">sys_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nsys</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
             <span class="n">ref_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nref</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
 
@@ -1791,36 +1801,86 @@
                 <span class="k">if</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
                     <span class="n">Nsys</span> <span class="o">+=</span> <span class="mi">1</span>
 
-            <span class="n">sys_counted</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
-                        <span class="k">if</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
-                                <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
-                                    <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                                    <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                                    <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
-                                <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">==</span> <span class="s1">&#39;optimal&#39;</span><span class="p">:</span>
+                <span class="n">class_reference_event_list</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">event_label</span><span class="o">=</span><span class="n">class_label</span><span class="p">)</span>
+                <span class="n">class_estimated_event_list</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">event_label</span><span class="o">=</span><span class="n">class_label</span><span class="p">)</span>
 
-                            <span class="k">else</span><span class="p">:</span>
-                                <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                    <span class="n">onset_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">)):</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)):</span>
+                            <span class="n">onset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">class_reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">class_estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
+                            <span class="p">)</span>
 
-                            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
-                                <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
-                                    <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                                    <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                                    <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
-                                    <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
-                                <span class="p">)</span>
+                    <span class="n">hit_matrix</span> <span class="o">*=</span> <span class="n">onset_hit_matrix</span>
 
-                            <span class="k">else</span><span class="p">:</span>
-                                <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                    <span class="n">offset_hit_matrix</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_reference_event_list</span><span class="p">)):</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_estimated_event_list</span><span class="p">)):</span>
+                            <span class="n">offset_hit_matrix</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+                                <span class="n">reference_event</span><span class="o">=</span><span class="n">class_reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                <span class="n">estimated_event</span><span class="o">=</span><span class="n">class_estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
+                            <span class="p">)</span>
 
-                            <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
-                                <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                                <span class="n">Ntp</span> <span class="o">+=</span> <span class="mi">1</span>
-                                <span class="k">break</span>
+                    <span class="n">hit_matrix</span> <span class="o">*=</span> <span class="n">offset_hit_matrix</span>
+
+                <span class="n">hits</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">hit_matrix</span><span class="p">)</span>
+                <span class="n">G</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">ref_i</span><span class="p">,</span> <span class="n">est_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">hits</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">est_i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+                        <span class="n">G</span><span class="p">[</span><span class="n">est_i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+                    <span class="n">G</span><span class="p">[</span><span class="n">est_i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref_i</span><span class="p">)</span>
+
+                <span class="n">matching</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">bipartite_match</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+                <span class="n">ref_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Nref</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="n">sys_correct</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">Nsys</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">matching</span><span class="p">:</span>
+                    <span class="n">ref_correct</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">sys_correct</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+
+                <span class="n">Ntp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matching</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">event_matching_type</span> <span class="o">==</span> <span class="s1">&#39;greedy&#39;</span><span class="p">:</span>
+                <span class="n">sys_counted</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">reference_event_list</span><span class="p">)):</span>
+                    <span class="k">if</span> <span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimated_event_list</span><span class="p">)):</span>
+                            <span class="k">if</span> <span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;event_label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_label</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_onset</span><span class="p">:</span>
+                                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_onset</span><span class="p">(</span>
+                                        <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                        <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                        <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span>
+                                    <span class="p">)</span>
+
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">onset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_offset</span><span class="p">:</span>
+                                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_offset</span><span class="p">(</span>
+                                        <span class="n">reference_event</span><span class="o">=</span><span class="n">reference_event_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+                                        <span class="n">estimated_event</span><span class="o">=</span><span class="n">estimated_event_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                        <span class="n">t_collar</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">t_collar</span><span class="p">,</span>
+                                        <span class="n">percentage_of_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage_of_length</span>
+                                    <span class="p">)</span>
+
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">offset_condition</span> <span class="o">=</span> <span class="kc">True</span>
+
+                                <span class="k">if</span> <span class="n">onset_condition</span> <span class="ow">and</span> <span class="n">offset_condition</span><span class="p">:</span>
+                                    <span class="n">sys_counted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                                    <span class="n">Ntp</span> <span class="o">+=</span> <span class="mi">1</span>
+                                    <span class="k">break</span>
 
             <span class="n">Nfp</span> <span class="o">=</span> <span class="n">Nsys</span> <span class="o">-</span> <span class="n">Ntp</span>
             <span class="n">Nfn</span> <span class="o">=</span> <span class="n">Nref</span> <span class="o">-</span> <span class="n">Ntp</span>
@@ -1860,8 +1920,8 @@
 
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="EventBasedMetrics.validate_onset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.validate_onset">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">validate_onset</span><span class="p">(</span><span class="n">reference_event</span><span class="p">,</span> <span class="n">estimated_event</span><span class="p">,</span> <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="EventBasedMetrics.validate_onset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.validate_onset">[docs]</a>    <span class="k">def</span> <span class="nf">validate_onset</span><span class="p">(</span><span class="n">reference_event</span><span class="p">,</span> <span class="n">estimated_event</span><span class="p">,</span> <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Validate estimated event based on event onset</span>
 
 <span class="sd">        Parameters</span>
@@ -1889,8 +1949,8 @@
         <span class="k">elif</span> <span class="s1">&#39;onset&#39;</span> <span class="ow">in</span> <span class="n">reference_event</span> <span class="ow">and</span> <span class="s1">&#39;onset&#39;</span> <span class="ow">in</span> <span class="n">estimated_event</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">reference_event</span><span class="p">[</span><span class="s1">&#39;onset&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">estimated_event</span><span class="p">[</span><span class="s1">&#39;onset&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">t_collar</span></div>
 
-<div class="viewcode-block" id="EventBasedMetrics.validate_offset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.validate_offset">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">validate_offset</span><span class="p">(</span><span class="n">reference_event</span><span class="p">,</span> <span class="n">estimated_event</span><span class="p">,</span> <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">,</span> <span class="n">percentage_of_length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="EventBasedMetrics.validate_offset"><a class="viewcode-back" href="../../sound_event.html#sed_eval.sound_event.EventBasedMetrics.validate_offset">[docs]</a>    <span class="k">def</span> <span class="nf">validate_offset</span><span class="p">(</span><span class="n">reference_event</span><span class="p">,</span> <span class="n">estimated_event</span><span class="p">,</span> <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.200</span><span class="p">,</span> <span class="n">percentage_of_length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Validate estimated event based on event offset</span>
 
 <span class="sd">        Parameters</span>
@@ -2120,7 +2180,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Toni Heittola et al..
+        &copy; Copyright 2018, Toni Heittola et al..
 
     </p>
   </div> 
@@ -2151,7 +2211,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

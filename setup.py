@@ -4,7 +4,7 @@ long_description = open('README.rst').read()
 
 setup(
     name='sed_eval',
-    version='0.2.0',
+    version='0.2.1',
     description='Evaluation toolbox for Sound Event Detection',
     author='Toni Heittola',
     author_email='toni.heittola@gmail.com',
@@ -23,6 +23,6 @@ setup(
     license='MIT',
     install_requires=[
         'numpy >= 1.7.0',
-        'dcase_util >= 0.1.6'
+        'dcase_util >= 0.2.4'
     ],
 )

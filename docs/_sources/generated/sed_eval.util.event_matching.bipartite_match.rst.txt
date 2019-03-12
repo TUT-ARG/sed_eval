@@ -1,5 +1,5 @@
-sed\_eval\.util\.event\_matching\.bipartite\_match
-==================================================
+sed_eval.util.event_matching.bipartite_match
+============================================
 
 .. currentmodule:: sed_eval.util.event_matching
 

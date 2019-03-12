@@ -96,7 +96,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -579,14 +579,14 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 
 <span class="c1"># Get only certain metrics</span>
 <span class="n">overall_segment_based_metrics</span> <span class="o">=</span> <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
-<span class="k">print</span> <span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_segment_based_metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_segment_based_metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
 <span class="c1"># Or print all metrics as reports</span>
-<span class="k">print</span> <span class="n">segment_based_metrics</span>
-<span class="k">print</span> <span class="n">event_based_metrics</span>
+<span class="k">print</span><span class="p">(</span><span class="n">segment_based_metrics</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">event_based_metrics</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>Usage example:</p>
+<p>Usage example to evaluate results stored in variables:</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -658,7 +658,18 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 69
 70
 71
-72</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sed_eval</span>
 <span class="kn">import</span> <span class="nn">dcase_util</span>
 
 <span class="n">reference_event_list</span> <span class="o">=</span> <span class="n">dcase_util</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">MetaDataContainer</span><span class="p">(</span>
@@ -667,21 +678,21 @@ take as a parameter event lists, use <a class="reference internal" href="generat
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
-            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">2.8</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
-            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
-            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">}</span>
     <span class="p">]</span>
@@ -693,14 +704,14 @@ take as a parameter event lists, use <a class="reference internal" href="generat
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span>
-            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">},</span>
         <span class="p">{</span>
             <span class="s1">&#39;event_label&#39;</span><span class="p">:</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span>
             <span class="s1">&#39;event_onset&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
             <span class="s1">&#39;event_offset&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
-            <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="s1">&#39;audio/street/b099.wav&#39;</span><span class="p">,</span>
             <span class="s1">&#39;scene_label&#39;</span><span class="p">:</span> <span class="s1">&#39;street&#39;</span>
         <span class="p">}</span>
     <span class="p">]</span>
@@ -710,26 +721,37 @@ take as a parameter event lists, use <a class="reference internal" href="generat
     <span class="n">event_label_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">,</span>
     <span class="n">time_resolution</span><span class="o">=</span><span class="mf">1.0</span>
 <span class="p">)</span>
+<span class="n">event_based_metrics</span> <span class="o">=</span> <span class="n">sed_eval</span><span class="o">.</span><span class="n">sound_event</span><span class="o">.</span><span class="n">EventBasedMetrics</span><span class="p">(</span>
+    <span class="n">event_label_list</span><span class="o">=</span><span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_event_labels</span><span class="p">,</span>
+    <span class="n">t_collar</span><span class="o">=</span><span class="mf">0.250</span>
+<span class="p">)</span>
 
-<span class="c1"># Go through files</span>
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">unique_files</span><span class="p">:</span>
-    <span class="c1"># Get reference event list for file by filtering reference_event_list</span>
-    <span class="n">reference_event_list_for_current_file</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">reference_event_list_for_current_file</span> <span class="o">=</span> <span class="n">reference_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">filename</span>
+    <span class="p">)</span>
 
-    <span class="c1"># Get estimated event list for file by filtering estimated_event_list</span>
-    <span class="n">estimated_event_list_for_current_file</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">estimated_event_list_for_current_file</span> <span class="o">=</span> <span class="n">estimated_event_list</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="n">filename</span>
+    <span class="p">)</span>
 
     <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
         <span class="n">reference_event_list</span><span class="o">=</span><span class="n">reference_event_list_for_current_file</span><span class="p">,</span>
         <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">estimated_event_list_for_current_file</span>
     <span class="p">)</span>
 
+    <span class="n">event_based_metrics</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+        <span class="n">reference_event_list</span><span class="o">=</span><span class="n">reference_event_list_for_current_file</span><span class="p">,</span>
+        <span class="n">estimated_event_list</span><span class="o">=</span><span class="n">estimated_event_list_for_current_file</span>
+    <span class="p">)</span>
+
 <span class="c1"># Get only certain metrics</span>
 <span class="n">overall_segment_based_metrics</span> <span class="o">=</span> <span class="n">segment_based_metrics</span><span class="o">.</span><span class="n">results_overall_metrics</span><span class="p">()</span>
-<span class="k">print</span> <span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_segment_based_metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">overall_segment_based_metrics</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">][</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 
 <span class="c1"># Or print all metrics as reports</span>
-<span class="k">print</span> <span class="n">segment_based_metrics</span>
+<span class="k">print</span><span class="p">(</span><span class="n">segment_based_metrics</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">event_based_metrics</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <div class="section" id="segment-based-metrics">
@@ -740,10 +762,10 @@ take as a parameter event lists, use <a class="reference internal" href="generat
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics" title="sed_eval.sound_event.SegmentBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics</span></code></a>(event_label_list[,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics" title="sed_eval.sound_event.SegmentBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics</span></code></a>(event_label_list[,&nbsp;...])</td>
 <td>Constructor</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics.evaluate</span></code></a>(…[,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics.evaluate</span></code></a>(...[,&nbsp;...])</td>
 <td>Evaluate file pair (reference and estimated)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sed_eval.sound_event.SegmentBasedMetrics.results.html#sed_eval.sound_event.SegmentBasedMetrics.results" title="sed_eval.sound_event.SegmentBasedMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">SegmentBasedMetrics.results</span></code></a>()</td>
@@ -994,10 +1016,10 @@ Default value 0.5</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics" title="sed_eval.sound_event.EventBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics</span></code></a>(event_label_list[,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics" title="sed_eval.sound_event.EventBasedMetrics"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics</span></code></a>(event_label_list[,&nbsp;...])</td>
 <td>Constructor</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics.evaluate" title="sed_eval.sound_event.EventBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics.evaluate</span></code></a>(…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics.evaluate" title="sed_eval.sound_event.EventBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics.evaluate</span></code></a>(...)</td>
 <td>Evaluate file pair (reference and estimated)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#sed_eval.sound_event.EventBasedMetrics.results" title="sed_eval.sound_event.EventBasedMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">EventBasedMetrics.results</span></code></a>()</td>
@@ -1064,8 +1086,11 @@ Default value 0.5</p>
 </div></blockquote>
 <p><strong>event_matching_type</strong> : str</p>
 <blockquote class="last">
-<div><p>Event matching type. Set ‘optimal’ for graph-based matching, or ‘greedy’ for always select first found match.
-Default value ‘optimal’</p>
+<div><p>Event matching type. Set &#8216;optimal&#8217; for graph-based matching, or &#8216;greedy&#8217; for always select first found match.
+Greedy type of event matching is kept for backward compatibility. Both event matching types produce
+very similar results, however, greedy matching can be sensitive to the order of reference events.
+Use default &#8216;optimal&#8217; event matching, if you do not intend to compare your results to old results.
+Default value &#8216;optimal&#8217;</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1422,7 +1447,7 @@ Default value 0.5</p>
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Forman, G. and Scholz, M.
-“Apples-to-Apples in Cross-Validation Studies: Pitfalls in Classifier Performance Measurement”.
+&#8220;Apples-to-Apples in Cross-Validation Studies: Pitfalls in Classifier Performance Measurement&#8221;.
 SIGKDD Explor. Newsl. 12, 1, November 2010, pp. 49-57.
 <a class="reference external" href="http://kdd.org/exploration_files/v12-1-p49-forman-sigkdd.pdf">http://kdd.org/exploration_files/v12-1-p49-forman-sigkdd.pdf</a></td></tr>
 </tbody>
@@ -1452,7 +1477,7 @@ SIGKDD Explor. Newsl. 12, 1, November 2010, pp. 49-57.
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Toni Heittola et al..
+        &copy; Copyright 2018, Toni Heittola et al..
 
     </p>
   </div> 
@@ -1483,7 +1508,7 @@ SIGKDD Explor. Newsl. 12, 1, November 2010, pp. 49-57.
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

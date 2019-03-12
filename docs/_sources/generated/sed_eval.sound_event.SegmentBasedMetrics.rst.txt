@@ -22,6 +22,7 @@ sed_eval.sound_event.SegmentBasedMetrics
       ~SegmentBasedMetrics.overall_accuracy
       ~SegmentBasedMetrics.overall_error_rate
       ~SegmentBasedMetrics.overall_f_measure
+      ~SegmentBasedMetrics.reset
       ~SegmentBasedMetrics.result_report_class_wise
       ~SegmentBasedMetrics.result_report_class_wise_average
       ~SegmentBasedMetrics.result_report_overall

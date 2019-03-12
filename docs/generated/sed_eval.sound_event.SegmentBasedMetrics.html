@@ -97,7 +97,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> – Evaluation toolbox for Sound Event Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#sed-eval-evaluation-toolbox-for-sound-event-detection"><code class="docutils literal"><span class="pre">sed_eval</span></code> &#8211; Evaluation toolbox for Sound Event Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial.html#quickstart-using-the-evaluators">Quickstart: Using the evaluators</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorial.html#sound-event-detection">Sound event detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorial.html#acoustic-scene-classification">Acoustic scene classification</a></li>
@@ -389,7 +389,7 @@ Default value 1.0</p>
 <tr class="row-odd"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.class_wise_f_measure" title="sed_eval.sound_event.SegmentBasedMetrics.class_wise_f_measure"><code class="xref py py-obj docutils literal"><span class="pre">class_wise_f_measure</span></code></a>(event_label)</td>
 <td>Class-wise f-measure metrics (f_measure, precision, and recall)</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">evaluate</span></code></a>(reference_event_list,&nbsp;…[,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.evaluate" title="sed_eval.sound_event.SegmentBasedMetrics.evaluate"><code class="xref py py-obj docutils literal"><span class="pre">evaluate</span></code></a>(reference_event_list,&nbsp;...[,&nbsp;...])</td>
 <td>Evaluate file pair (reference and estimated)</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.overall_accuracy" title="sed_eval.sound_event.SegmentBasedMetrics.overall_accuracy"><code class="xref py py-obj docutils literal"><span class="pre">overall_accuracy</span></code></a>([factor])</td>
@@ -401,28 +401,31 @@ Default value 1.0</p>
 <tr class="row-odd"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.overall_f_measure" title="sed_eval.sound_event.SegmentBasedMetrics.overall_f_measure"><code class="xref py py-obj docutils literal"><span class="pre">overall_f_measure</span></code></a>()</td>
 <td>Overall f-measure metrics (f_measure, precision, and recall)</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise"><code class="xref py py-obj docutils literal"><span class="pre">result_report_class_wise</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.reset" title="sed_eval.sound_event.SegmentBasedMetrics.reset"><code class="xref py py-obj docutils literal"><span class="pre">reset</span></code></a>()</td>
+<td>Reset internal state</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise"><code class="xref py py-obj docutils literal"><span class="pre">result_report_class_wise</span></code></a>()</td>
 <td>Report class-wise results</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average"><code class="xref py py-obj docutils literal"><span class="pre">result_report_class_wise_average</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_class_wise_average"><code class="xref py py-obj docutils literal"><span class="pre">result_report_class_wise_average</span></code></a>()</td>
 <td>Report class-wise averages</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.result_report_overall.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_overall" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_overall"><code class="xref py py-obj docutils literal"><span class="pre">result_report_overall</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.result_report_overall.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_overall" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_overall"><code class="xref py py-obj docutils literal"><span class="pre">result_report_overall</span></code></a>()</td>
 <td>Report overall results</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters"><code class="xref py py-obj docutils literal"><span class="pre">result_report_parameters</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../sound_event.html#sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters" title="sed_eval.sound_event.SegmentBasedMetrics.result_report_parameters"><code class="xref py py-obj docutils literal"><span class="pre">result_report_parameters</span></code></a>()</td>
 <td>Report metric parameters</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results.html#sed_eval.sound_event.SegmentBasedMetrics.results" title="sed_eval.sound_event.SegmentBasedMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">results</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results.html#sed_eval.sound_event.SegmentBasedMetrics.results" title="sed_eval.sound_event.SegmentBasedMetrics.results"><code class="xref py py-obj docutils literal"><span class="pre">results</span></code></a>()</td>
 <td>All metrics</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics" title="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics"><code class="xref py py-obj docutils literal"><span class="pre">results_class_wise_average_metrics</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics" title="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_average_metrics"><code class="xref py py-obj docutils literal"><span class="pre">results_class_wise_average_metrics</span></code></a>()</td>
 <td>Class-wise averaged metrics</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics" title="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics"><code class="xref py py-obj docutils literal"><span class="pre">results_class_wise_metrics</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics" title="sed_eval.sound_event.SegmentBasedMetrics.results_class_wise_metrics"><code class="xref py py-obj docutils literal"><span class="pre">results_class_wise_metrics</span></code></a>()</td>
 <td>Class-wise metrics</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics" title="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics"><code class="xref py py-obj docutils literal"><span class="pre">results_overall_metrics</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics.html#sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics" title="sed_eval.sound_event.SegmentBasedMetrics.results_overall_metrics"><code class="xref py py-obj docutils literal"><span class="pre">results_overall_metrics</span></code></a>()</td>
 <td>Overall metrics</td>
 </tr>
 </tbody>
@@ -453,7 +456,7 @@ Default value 1.0</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Toni Heittola et al..
+        &copy; Copyright 2018, Toni Heittola et al..
 
     </p>
   </div> 
@@ -484,7 +487,7 @@ Default value 1.0</p>
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
