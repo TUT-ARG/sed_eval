@@ -239,6 +239,7 @@ class SoundEventMetrics(object):
     """Base class for sound event detection metrics.
 
     """
+
     def __init__(self,
                  empty_system_output_handling=None):
         """Constructor
@@ -295,11 +296,12 @@ class SoundEventMetrics(object):
 
         if results['accuracy']:
             output += self.ui.line('Accuracy', indent=2) + '\n'
-            output += self.ui.data(field='Sensitivity', value=float(results['accuracy']['sensitivity']*100),
+            output += self.ui.data(field='Sensitivity', value=float(results['accuracy']['sensitivity'] * 100),
                                    unit='%', indent=4) + '\n'
             output += self.ui.data(field='Specificity', value=float(results['accuracy']['specificity'] * 100),
                                    unit='%', indent=4) + '\n'
-            output += self.ui.data(field='Balanced accuracy', value=float(results['accuracy']['balanced_accuracy'] * 100),
+            output += self.ui.data(field='Balanced accuracy',
+                                   value=float(results['accuracy']['balanced_accuracy'] * 100),
                                    unit='%', indent=4) + '\n'
             output += self.ui.data(field='Accuracy', value=float(results['accuracy']['accuracy'] * 100),
                                    unit='%', indent=4) + '\n'
@@ -340,11 +342,12 @@ class SoundEventMetrics(object):
 
         if results['accuracy']:
             output += self.ui.line('Accuracy', indent=2) + '\n'
-            output += self.ui.data(field='Sensitivity', value=float(results['accuracy']['sensitivity']*100),
+            output += self.ui.data(field='Sensitivity', value=float(results['accuracy']['sensitivity'] * 100),
                                    unit='%', indent=4) + '\n'
             output += self.ui.data(field='Specificity', value=float(results['accuracy']['specificity'] * 100),
                                    unit='%', indent=4) + '\n'
-            output += self.ui.data(field='Balanced accuracy', value=float(results['accuracy']['balanced_accuracy'] * 100),
+            output += self.ui.data(field='Balanced accuracy',
+                                   value=float(results['accuracy']['balanced_accuracy'] * 100),
                                    unit='%', indent=4) + '\n'
             output += self.ui.data(field='Accuracy', value=float(results['accuracy']['accuracy'] * 100),
                                    unit='%', indent=4) + '\n'
@@ -426,7 +429,50 @@ class SoundEventMetrics(object):
 
             output += self.ui.row(*data, types=types) + '\n'
 
+        output += "  \n"
+
         return output
+
+
+    def result_report_confusion_matrix(self):
+        """Report event based confusion matrix
+
+         Returns
+         -------
+         str
+             result report in string format
+
+         """
+
+        n_classes = len(self.event_label_list)
+
+        output = self.ui.section_header('Confusion matrix', indent=2) + '\n'
+
+        headers = ['CLASS'] + self.event_label_list + ['missed', 'inserted','total']
+        sep = ['-']*len(headers)
+        widths = [12]*len(headers)
+        separators = [True]*(n_classes+1)
+
+        output += self.ui.row(*headers, widths=widths, indent=4, separators=separators) + '\n'
+        output += self.ui.row(*sep) + '\n'
+
+        rows = headers[1:-3]+['sum']
+
+        for cmline, row_title in zip(self.conf_matrix, rows):
+
+            if row_title is not 'sum':
+                data = [row_title]+list(cmline)+[sum(cmline)-cmline[-2]]
+                types = ['str15'] + ['int']*(n_classes+3)
+            else:
+                output += self.ui.row(*sep) + '\n'
+                data = [row_title] + list(numpy.sum(self.conf_matrix, axis=0)) + \
+                       [numpy.sum(self.conf_matrix)-numpy.sum(self.conf_matrix[:,-2])]
+                types = ['str15'] + ['int'] * (n_classes + 3)
+
+            output += self.ui.row(*data, types=types) + '\n'
+
+        return output
+
 
     # Metrics / overall
     def overall_f_measure(self):
@@ -437,11 +483,11 @@ class SoundEventMetrics(object):
 
     def overall_accuracy(self, factor=0.5):
         return {}
-    
+
     # Metrics / class-wise
     def class_wise_count(self, event_label):
         return {}
-    
+
     def class_wise_f_measure(self, event_label):
         return {}
 
@@ -505,11 +551,11 @@ class SoundEventMetrics(object):
         event_wise_f_measure = []
         event_wise_precision = []
         event_wise_recall = []
-        
+
         event_wise_error_rate = []
         event_wise_deletion_rate = []
         event_wise_insertion_rate = []
-        
+
         event_wise_sensitivity = []
         event_wise_specificity = []
         event_wise_balanced_accuracy = []
@@ -520,7 +566,7 @@ class SoundEventMetrics(object):
             event_wise_f_measure.append(event_wise_results[event_label]['f_measure']['f_measure'])
             event_wise_precision.append(event_wise_results[event_label]['f_measure']['precision'])
             event_wise_recall.append(event_wise_results[event_label]['f_measure']['recall'])
-            
+
             # Error rate
             event_wise_error_rate.append(event_wise_results[event_label]['error_rate']['error_rate'])
             event_wise_deletion_rate.append(event_wise_results[event_label]['error_rate']['deletion_rate'])
@@ -1200,6 +1246,8 @@ class EventBasedMetrics(SoundEventMetrics):
                 'Nfn': 0.0,
             }
 
+        self.conf_matrix = []
+
     def __enter__(self):
         return self
 
@@ -1227,6 +1275,7 @@ class EventBasedMetrics(SoundEventMetrics):
         output += self.result_report_overall() + '\n'
         output += self.result_report_class_wise_average() + '\n'
         output += self.result_report_class_wise() + '\n'
+        output += self.result_report_confusion_matrix() + '\n'
 
         return output
 
@@ -1299,12 +1348,12 @@ class EventBasedMetrics(SoundEventMetrics):
         Nref = len(reference_event_list)
 
         if self.event_matching_type == 'optimal':
-            label_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
-            for j in range(0, len(reference_event_list)):
-                for i in range(0, len(estimated_event_list)):
-                    label_hit_matrix[j, i] = reference_event_list[j]['event_label'] == estimated_event_list[i]['event_label']
+            labels_list = self.event_label_list
+            label_dict = {label: idx for idx, label in enumerate(labels_list)}
+            conf_mat = numpy.zeros((len(labels_list) + 2, len(labels_list) + 2))
 
-            hit_matrix = label_hit_matrix
+            hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
+
             if self.evaluate_onset:
                 onset_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
                 for j in range(0, len(reference_event_list)):
@@ -1315,7 +1364,7 @@ class EventBasedMetrics(SoundEventMetrics):
                             t_collar=self.t_collar
                         )
 
-                hit_matrix *= onset_hit_matrix
+                hit_matrix = onset_hit_matrix
 
             if self.evaluate_offset:
                 offset_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
@@ -1327,10 +1376,44 @@ class EventBasedMetrics(SoundEventMetrics):
                             t_collar=self.t_collar,
                             percentage_of_length=self.percentage_of_length
                         )
+                if self.evaluate_onset:
+                    hit_matrix *= offset_hit_matrix
+                else:
+                    hit_matrix = offset_hit_matrix
 
-                hit_matrix *= offset_hit_matrix
+            n_classes = len(labels_list)
+            # check missed events (event from reference list does not overlap with any from estimated list)
+            for idx in range(hit_matrix.shape[0]):
+                if sum(hit_matrix[idx, :]) == False:
+                    conf_mat[label_dict[reference_event_list[idx]['event_label']], n_classes] += 1
+            # check inserted events (event from estimated list does not overlap with any from reference list)
+            for idx in range(hit_matrix.shape[1]):
+                if sum(hit_matrix[:, idx]) == False:
+                    conf_mat[label_dict[estimated_event_list[idx]['event_label']], n_classes + 1] += 1
+
+            label_hit_matrix = numpy.zeros((len(reference_event_list), len(estimated_event_list)), dtype=bool)
+            for j in range(0, len(reference_event_list)):
+                for i in range(0, len(estimated_event_list)):
+                    label_hit_matrix[j, i] = reference_event_list[j]['event_label'] == estimated_event_list[i][
+                        'event_label']
+
+            # calculate class-agreement as confusion matrix for overlapping events
+            for idx in range(hit_matrix.shape[0]):
+                if sum(hit_matrix[idx, :]) == True:
+                    indeks = hit_matrix[idx, :].argmax()
+                    if label_hit_matrix[idx, indeks] == True:
+                        conf_mat[label_dict[reference_event_list[idx]['event_label']],
+                                 label_dict[reference_event_list[idx]['event_label']]] += 1
+                    else:
+                        conf_mat[label_dict[reference_event_list[idx]['event_label']],
+                                 label_dict[estimated_event_list[indeks]['event_label']]] += 1
+
+            hit_matrix *= label_hit_matrix
+
+            self.conf_matrix = conf_mat
 
             hits = numpy.where(hit_matrix)
+
             G = {}
             for ref_i, est_i in zip(*hits):
                 if est_i not in G:
@@ -1390,7 +1473,8 @@ class EventBasedMetrics(SoundEventMetrics):
             for j in range(0, len(reference_event_list)):
                 for i in range(0, len(estimated_event_list)):
                     if not sys_correct[i]:  # skip already matched events
-                        label_condition = reference_event_list[j]['event_label'] == estimated_event_list[i]['event_label']
+                        label_condition = reference_event_list[j]['event_label'] == estimated_event_list[i][
+                            'event_label']
 
                         if self.evaluate_onset:
                             onset_condition = self.validate_onset(
@@ -1487,7 +1571,8 @@ class EventBasedMetrics(SoundEventMetrics):
 
                 hit_matrix = numpy.ones((len(class_reference_event_list), len(class_estimated_event_list)), dtype=bool)
                 if self.evaluate_onset:
-                    onset_hit_matrix = numpy.zeros((len(class_reference_event_list), len(class_estimated_event_list)), dtype=bool)
+                    onset_hit_matrix = numpy.zeros((len(class_reference_event_list), len(class_estimated_event_list)),
+                                                   dtype=bool)
                     for j in range(0, len(class_reference_event_list)):
                         for i in range(0, len(class_estimated_event_list)):
                             onset_hit_matrix[j, i] = self.validate_onset(
@@ -1499,7 +1584,8 @@ class EventBasedMetrics(SoundEventMetrics):
                     hit_matrix *= onset_hit_matrix
 
                 if self.evaluate_offset:
-                    offset_hit_matrix = numpy.zeros((len(class_reference_event_list), len(class_estimated_event_list)), dtype=bool)
+                    offset_hit_matrix = numpy.zeros((len(class_reference_event_list), len(class_estimated_event_list)),
+                                                    dtype=bool)
                     for j in range(0, len(class_reference_event_list)):
                         for i in range(0, len(class_estimated_event_list)):
                             offset_hit_matrix[j, i] = self.validate_offset(
@@ -1660,12 +1746,14 @@ class EventBasedMetrics(SoundEventMetrics):
         if 'event_offset' in reference_event and 'event_offset' in estimated_event:
             annotated_length = reference_event['event_offset'] - reference_event['event_onset']
 
-            return math.fabs(reference_event['event_offset'] - estimated_event['event_offset']) <= max(t_collar, percentage_of_length * annotated_length)
+            return math.fabs(reference_event['event_offset'] - estimated_event['event_offset']) <= max(t_collar,
+                                                                                                       percentage_of_length * annotated_length)
 
         elif 'offset' in reference_event and 'offset' in estimated_event:
             annotated_length = reference_event['offset'] - reference_event['onset']
 
-            return math.fabs(reference_event['offset'] - estimated_event['offset']) <= max(t_collar, percentage_of_length * annotated_length)
+            return math.fabs(reference_event['offset'] - estimated_event['offset']) <= max(t_collar,
+                                                                                           percentage_of_length * annotated_length)
 
     # Metrics
     def overall_f_measure(self):
@@ -1838,11 +1926,11 @@ class EventBasedMetrics(SoundEventMetrics):
         output += self.ui.data(field='Evaluate offset', value=self.evaluate_offset) + '\n'
 
         if self.t_collar < 1:
-            output += self.ui.data(field='T collar', value=self.t_collar*1000, unit='ms') + '\n'
+            output += self.ui.data(field='T collar', value=self.t_collar * 1000, unit='ms') + '\n'
 
         else:
             output += self.ui.data(field='T collar', value=self.t_collar, unit='sec') + '\n'
 
-        output += self.ui.data(field='Offset (length)', value=self.percentage_of_length*100, unit='%') + '\n'
+        output += self.ui.data(field='Offset (length)', value=self.percentage_of_length * 100, unit='%') + '\n'
 
         return output
