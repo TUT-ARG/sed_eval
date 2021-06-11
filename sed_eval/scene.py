@@ -256,7 +256,7 @@ class SceneClassificationMetrics:
 
             if not reference_item_matched:
                 raise ValueError(
-                    "Cannot find reference_item for estimated item [{item}]".format(item=estimated_item['file'])
+                    "Cannot find reference_item for estimated item [{item}]".format(item=estimated_item['filename'])
                 )
 
             y_true.append(reference_item_matched['scene_label'])
