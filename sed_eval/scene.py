@@ -223,7 +223,7 @@ class SceneClassificationMetrics:
             raise ValueError("Nothing to evaluate, give at least estimated_scene_list or estimated_scene_probabilities")
 
         # Make sure reference_scene_list is dcase_util.containers.MetaDataContainer
-        if not isinstance(estimated_scene_list, dcase_util.containers.MetaDataContainer):
+        if not isinstance(reference_scene_list, dcase_util.containers.MetaDataContainer):
             reference_scene_list = dcase_util.containers.MetaDataContainer(reference_scene_list)
 
         # Make sure estimated_scene_list is dcase_util.containers.MetaDataContainer
@@ -247,14 +247,15 @@ class SceneClassificationMetrics:
         y_true = []
         y_pred = []
 
-        for estimated_item in estimated_scene_list:
-            reference_item_matched = {}
-            for reference_item in reference_scene_list:
-                if estimated_item['filename'] == reference_item['filename']:
-                    reference_item_matched = reference_item
-                    break
+        # Cache filenames of reference items into list for faster access
+        reference_item_filenames = reference_scene_list.get_field('filename')
 
-            if not reference_item_matched:
+        for estimated_item in estimated_scene_list:
+            try:
+                reference_item_index = reference_item_filenames.index(estimated_item['filename'])
+                reference_item_matched = reference_scene_list[reference_item_index]
+
+            except ValueError:
                 raise ValueError(
                     "Cannot find reference_item for estimated item [{item}]".format(item=estimated_item['filename'])
                 )
