@@ -600,7 +600,8 @@ class SoundEventMetrics(object):
 class SegmentBasedMetrics(SoundEventMetrics):
     def __init__(self,
                  event_label_list,
-                 time_resolution=1.0):
+                 time_resolution=1.0,
+                 **kwargs):
         """Constructor
 
         Parameters
@@ -614,7 +615,7 @@ class SegmentBasedMetrics(SoundEventMetrics):
 
         """
 
-        SoundEventMetrics.__init__(self)
+        SoundEventMetrics.__init__(self, **kwargs)
 
         if isinstance(event_label_list, numpy.ndarray) and len(event_label_list.shape) == 1:
             # We have numpy array, convert it to list
