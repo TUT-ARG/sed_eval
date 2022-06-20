@@ -248,13 +248,18 @@ class SceneClassificationMetrics:
         y_pred = []
 
         # Cache filenames of reference items into list for faster access
-        reference_item_filenames = reference_scene_list.get_field('filename')
+        reference_item_dict = {}
+        for item in reference_scene_list:
+            if item['filename'] not in reference_item_dict:
+                reference_item_dict[item['filename']] = item
+            else:
+                raise ValueError(
+                    "Multiple items with same filename [{filename}]".format(filename=item['filename'])
+                )
 
         for estimated_item in estimated_scene_list:
             try:
-                reference_item_index = reference_item_filenames.index(estimated_item['filename'])
-                reference_item_matched = reference_scene_list[reference_item_index]
-
+                reference_item_matched = reference_item_dict[estimated_item['filename']]
             except ValueError:
                 raise ValueError(
                     "Cannot find reference_item for estimated item [{item}]".format(item=estimated_item['filename'])
